@@ -1,25 +1,19 @@
 fileFormatVersion: 2
-guid: 6af324adc9f2438499c470e0a90dc452
+guid: 70cefca971f24a44897b73d5266ae4cd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5910345099180687473
-    second: Character_Knight_RunCycle_6frames_0
+      213: 145051136319715606
+    second: SlashTrail01_4frames_0
   - first:
-      213: 8488370025889342141
-    second: Character_Knight_RunCycle_6frames_1
+      213: 2877141051387488817
+    second: SlashTrail01_4frames_1
   - first:
-      213: 7464115963452560755
-    second: Character_Knight_RunCycle_6frames_2
+      213: -2784920766378459397
+    second: SlashTrail01_4frames_2
   - first:
-      213: 1872745443088650752
-    second: Character_Knight_RunCycle_6frames_3
-  - first:
-      213: 5014043024216986173
-    second: Character_Knight_RunCycle_6frames_4
-  - first:
-      213: 5297172296646368640
-    second: Character_Knight_RunCycle_6frames_5
+      213: 5429426634406227251
+    second: SlashTrail01_4frames_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -78,10 +72,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: 4
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -90,10 +84,10 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 1024
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: 4
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -104,127 +98,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Character_Knight_RunCycle_6frames_0
+      name: SlashTrail01_4frames_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
+        width: 52
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.17}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64c9c9a1a52a542489e91c73b3bcff77
-      internalID: 5910345099180687473
+      spriteID: f12bc9a80057e154d9dd506cf9b4e7c6
+      internalID: 145051136319715606
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character_Knight_RunCycle_6frames_1
+      name: SlashTrail01_4frames_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 52
         y: 0
-        width: 32
+        width: 52
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.17}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd4368320b145a940a6028cf8eb77fca
-      internalID: 8488370025889342141
+      spriteID: 345497747782371468877e8cf1f0044f
+      internalID: 2877141051387488817
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character_Knight_RunCycle_6frames_2
+      name: SlashTrail01_4frames_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 104
         y: 0
-        width: 32
+        width: 52
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.17}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d75387274a0b5142ac5ee4cd3de2d15
-      internalID: 7464115963452560755
+      spriteID: 285b59f60e4ffa14ca2e436a36634088
+      internalID: -2784920766378459397
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character_Knight_RunCycle_6frames_3
+      name: SlashTrail01_4frames_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 156
         y: 0
-        width: 32
+        width: 52
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.17}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f41b8a4abc77a434b945f6bfc5adfb8e
-      internalID: 1872745443088650752
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Character_Knight_RunCycle_6frames_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c34bb5a91b39958449c64601385ebec5
-      internalID: 5014043024216986173
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Character_Knight_RunCycle_6frames_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ed77a1a0ef9c6304283bd20cbf585c2e
-      internalID: 5297172296646368640
+      spriteID: 457ec98fe88273348b1ac2e24b87d7e3
+      internalID: 5429426634406227251
       vertices: []
       indices: 
       edges: []
