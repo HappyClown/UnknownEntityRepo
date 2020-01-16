@@ -24,8 +24,8 @@ public class Pathfinding : MonoBehaviour
 
     // Get the shortest* path from a start position to a target position.
     IEnumerator FindPath(Vector3 startPos, Vector3 targetPos) {
-        Stopwatch sw = new Stopwatch();
-        sw.Start();
+        //Stopwatch sw = new Stopwatch();
+        //sw.Start();
 
         Vector3[] waypoints = new Vector3[0];
         bool pathSuccess = false;
@@ -44,8 +44,8 @@ public class Pathfinding : MonoBehaviour
                 closedSet.Add(currentNode);
 
                 if (currentNode == targetNode) {
-                    sw.Stop();
-                    print ("Path Found: " + sw.ElapsedMilliseconds + "ms");
+                    //sw.Stop();
+                    //print ("Path Found: " + sw.ElapsedMilliseconds + "ms");
                     pathSuccess = true;
                     break;
                 }

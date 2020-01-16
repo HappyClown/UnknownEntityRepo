@@ -12,6 +12,7 @@ public class Unit : MonoBehaviour
     public float turnSpeed = 3f;
     public float turnDst = 0.5f;
     public float stoppingDst = 10f;
+    public bool slowDown = false;
     public Transform mySprite;
 
     Path path;
@@ -51,23 +52,29 @@ public class Unit : MonoBehaviour
     IEnumerator FollowPath() {
         bool followingPath = true;
         int pathIndex = 0;
-        transform.LookAt(path.lookPoints[0]);
+        if (path.lookPoints.Length > 0) {
+          transform.LookAt(path.lookPoints[0]);
+        }
 
         float speedPercent = 1;
 
         while (followingPath) {
             Vector2 pos2D = new Vector2(transform.position.x, transform.position.y);
             while (path.turnBoundaries[pathIndex].HasCrossedLine(pos2D)) {
-                if (pathIndex == path.finishLineIndex) {
+                if (pathIndex >= path.finishLineIndex) {
                     followingPath = false;
+                    pathIndex = 0;
                     break;
                 } else {
                     pathIndex++;
+                    if (pathIndex >= path.turnBoundaries.Length) {
+                        Debug.Log("Too big, dosnt fit.");
+                    }
                 }
             }
 
             if (followingPath) {
-                if (pathIndex >= path.slowDownIndex && stoppingDst > 0) {
+                if (pathIndex >= path.slowDownIndex && slowDown && stoppingDst > 0) {
                     speedPercent = Mathf.Clamp01(path.turnBoundaries[path.finishLineIndex].DistanceFromPoint(pos2D) / stoppingDst);
                     if (speedPercent < 0.01f) {
                         followingPath = false;
@@ -88,7 +95,7 @@ public class Unit : MonoBehaviour
     public void OnDrawGizmos() {
         if (path != null) {
 
-            path.DrawWithGizmos();
+            path.DrawWithGizmos(transform.position);
         }
     }
 }

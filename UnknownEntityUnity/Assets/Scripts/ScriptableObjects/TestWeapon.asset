@@ -1,0 +1,155 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6ccc0b2698a0d0468b27675e937d9b2, type: 3}
+  m_Name: TestWeapon
+  m_EditorClassIdentifier: 
+  weaponName: TestNotSoWoodenSword
+  chainResetDelay: 0.75
+  weaponSprite: {fileID: 21300000, guid: 1d1f75a71c3d6454abfc775989e27d22, type: 3}
+  attackChains:
+  - minDamage: 5
+    maxDamage: 10
+    playerSlowDown: 0.5
+    playerSlowDownDuration: 0.1
+    attackSpeed: 0.1
+    attackLength: 0.25
+    collisionStart: 0
+    collisionEnd: 0.2
+    attackSprites:
+    - {fileID: 1536053326677729943, guid: e8a7f4a385717674f90cf947ea30d411, type: 3}
+    - {fileID: -590060128391557420, guid: e8a7f4a385717674f90cf947ea30d411, type: 3}
+    attackSpriteChanges:
+    - 0
+    - 0.2
+    spawnDistance: 0
+    moveDistance: 1
+    moveDelay: 0.25
+    moveCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    collider: {fileID: 8439487225676276712, guid: 3ab819451ee93e147ae069fb2873fa35,
+      type: 3}
+  - minDamage: 6
+    maxDamage: 12
+    playerSlowDown: 1
+    playerSlowDownDuration: 0.2
+    attackSpeed: 0.2
+    attackLength: 0.25
+    collisionStart: 0
+    collisionEnd: 0.75
+    attackSprites:
+    - {fileID: 145051136319715606, guid: 70cefca971f24a44897b73d5266ae4cd, type: 3}
+    - {fileID: 2877141051387488817, guid: 70cefca971f24a44897b73d5266ae4cd, type: 3}
+    - {fileID: -2784920766378459397, guid: 70cefca971f24a44897b73d5266ae4cd, type: 3}
+    - {fileID: 5429426634406227251, guid: 70cefca971f24a44897b73d5266ae4cd, type: 3}
+    attackSpriteChanges:
+    - 0
+    - 0.125
+    - 0.175
+    - 0.2
+    spawnDistance: 0.2
+    moveDistance: 0.5
+    moveDelay: 0.5
+    moveCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    collider: {fileID: 8984107905421295816, guid: 18c414a5a26f061459d245a8486a94df,
+      type: 3}
+  - minDamage: 7
+    maxDamage: 14
+    playerSlowDown: 0.5
+    playerSlowDownDuration: 0.1
+    attackSpeed: 0.1
+    attackLength: 0.25
+    collisionStart: 0
+    collisionEnd: 0.2
+    attackSprites:
+    - {fileID: -3842229032708677331, guid: 5eedcfc3f814efd48a9c30337f366e8c, type: 3}
+    - {fileID: 2229913086928680055, guid: 5eedcfc3f814efd48a9c30337f366e8c, type: 3}
+    attackSpriteChanges:
+    - 0
+    - 0.2
+    spawnDistance: 0
+    moveDistance: 1
+    moveDelay: 0.25
+    moveCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    collider: {fileID: 8439487225676276712, guid: 3ab819451ee93e147ae069fb2873fa35,
+      type: 3}
+  rotationDuration: 0.5
+  rotationAngle: 120
+  rotationDifference: 30
+  baseAngle: 45

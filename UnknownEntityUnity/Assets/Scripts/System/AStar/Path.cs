@@ -38,15 +38,19 @@ public class Path
         return new Vector2 (v3.x, v3.y);
     }
 
-    public void DrawWithGizmos() {
+    public void DrawWithGizmos(Vector3 unitPos) {
         Gizmos.color = Color.black;
-        foreach(Vector3 p in lookPoints) {
-            Gizmos.DrawCube(p + Vector3.back, Vector3.one / 3f);
+        if (lookPoints.Length > 0) {
+          Gizmos.DrawLine(unitPos, lookPoints[0]);
+        }
+        for (int i = 0; i < lookPoints.Length - 1; i++) {
+            Gizmos.DrawCube(lookPoints[i] + Vector3.back, Vector3.one * 0.2f);
+            Gizmos.DrawLine(lookPoints[i], lookPoints[i+1]);
         }
 
         Gizmos.color = Color.white;
         foreach(Line l in turnBoundaries) {
-            l.DrawWithGizmos(1);
+            l.DrawWithGizmos(0.75f);
         }
     }
 }

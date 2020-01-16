@@ -5,6 +5,8 @@ using UnityEngine;
 public class AGrid : MonoBehaviour
 {
     public bool displayGridGizmos;
+    [Range(0, 1)]
+    public float gizmosCubeSizePercent;
     public LayerMask unwalkableMask;
     public Vector2 gridWorldSize;
     public float nodeRadius;
@@ -163,7 +165,7 @@ public class AGrid : MonoBehaviour
                 // // if (n.walkable && n.movementPenalty > 0) {
                 // //     Gizmos.color = Color.blue;
                 // // }
-                Gizmos.DrawCube(n.worldPos, Vector3.one * (nodeDiameter));
+                Gizmos.DrawCube(n.worldPos, Vector3.one * (nodeDiameter * gizmosCubeSizePercent));
             }
         }
     }

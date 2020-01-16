@@ -7,13 +7,4 @@ public class Attack_Hitbox : MonoBehaviour
     public Transform playerTran;
     public Transform weapTrailTran;
     public Transform weapOriginTran;
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 }
