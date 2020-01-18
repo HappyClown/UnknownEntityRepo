@@ -34,7 +34,7 @@ public class Character_AttackChain : MonoBehaviour
         curChain = nextChain;
         chainResetTimer = 0f;
         nextChain++;
-        Debug.Log("Attacking! Chain #" + curChain);
+        // Debug.Log("Attacking! Chain #" + curChain);
         if (nextChain >= weapon.attackChains.Length) {
             nextChain = 0;
         }

@@ -18,7 +18,6 @@ public class Character_Attack : MonoBehaviour
     void Update() {
         if (moIn.mouseLeftClicked && atkChain.ready) {
             atkWeaMotion.WeaponMotion(AttackSpeed);
-            Debug.Log(AttackSpeed);
             atkChain.ChainAttacks();
             atkDetection.StartCoroutine(atkDetection.AttackCollider(WeapAtkChain.collider, WeapAtkChain.collisionStart, WeapAtkChain.collisionEnd, atkChain.curChain));
             atkVisual.StartCoroutine(atkVisual.AttackAnimation(WeapAtkChain.attackSprites, WeapAtkChain.attackSpriteChanges, WeapAtkChain.attackLength,  atkChain.curChain));

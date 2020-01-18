@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 5eedcfc3f814efd48a9c30337f366e8c
+guid: e4c13bdc7177e0d46b0c486ff5cf8c81
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3842229032708677331
-    second: SlashTrail02Red_2frames_0
+      213: 8856854725579584818
+    second: SlashTrail02Green_2frames_0
   - first:
-      213: 2229913086928680055
-    second: SlashTrail02Red_2frames_1
+      213: 6267379589833336889
+    second: SlashTrail02Green_2frames_1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -92,7 +92,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SlashTrail02Red_2frames_0
+      name: SlashTrail02Green_2frames_0
       rect:
         serializedVersion: 2
         x: 0
@@ -106,14 +106,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d148209bad55a484eac8773f65d1560f
-      internalID: -3842229032708677331
+      spriteID: 3194084b1e29009468184925351805ba
+      internalID: 8856854725579584818
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlashTrail02Red_2frames_1
+      name: SlashTrail02Green_2frames_1
       rect:
         serializedVersion: 2
         x: 52
@@ -127,8 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9baf927a2b1ec1946946d98a4579479b
-      internalID: 2229913086928680055
+      spriteID: edd2a4cd6118573419658e5c0e5b6772
+      internalID: 6267379589833336889
       vertices: []
       indices: 
       edges: []

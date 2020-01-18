@@ -3516,6 +3516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapOrigTrans: {fileID: 191501268}
+  playerTrans: {fileID: 1954803268}
   attackTranfs:
   - {fileID: 713152729}
   - {fileID: 2044867428}
