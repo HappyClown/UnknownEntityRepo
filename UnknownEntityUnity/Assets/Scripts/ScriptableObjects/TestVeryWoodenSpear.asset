@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ccc0b2698a0d0468b27675e937d9b2, type: 3}
-  m_Name: TestWeapon
+  m_Name: TestVeryWoodenSpear
   m_EditorClassIdentifier: 
-  weaponName: TestNotSoWoodenSword
+  weaponName: TestVeryWoodenSpear
   chainResetDelay: 0.75
-  weaponSprite: {fileID: 21300000, guid: 1d1f75a71c3d6454abfc775989e27d22, type: 3}
+  weaponSprite: {fileID: 21300000, guid: c83232dabb2a6784cb5470771bf9b9f0, type: 3}
   attackChains:
   - minDamage: 5
     maxDamage: 10
