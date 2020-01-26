@@ -688,12 +688,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1954803268}
-  speed: 2
-  turnSpeed: 555
-  turnDst: 0.01
-  stoppingDst: 1
-  slowDown: 0
-  mySprite: {fileID: 60396749}
+  thisEnemyTrans: {fileID: 0}
+  enemy: {fileID: 0}
+  followingPath: 0
 --- !u!50 &310986466
 Rigidbody2D:
   serializedVersion: 4
@@ -787,12 +784,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1954803268}
-  speed: 2
-  turnSpeed: 555
-  turnDst: 0.01
-  stoppingDst: 1
-  slowDown: 0
-  mySprite: {fileID: 2069661872}
+  thisEnemyTrans: {fileID: 0}
+  enemy: {fileID: 0}
+  followingPath: 0
 --- !u!50 &323911655
 Rigidbody2D:
   serializedVersion: 4
@@ -855,7 +849,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &347441928
 Transform:
   m_ObjectHideFlags: 0
@@ -998,12 +992,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1954803268}
-  speed: 2
-  turnSpeed: 555
-  turnDst: 0.01
-  stoppingDst: 1
-  slowDown: 0
-  mySprite: {fileID: 265324925}
+  thisEnemyTrans: {fileID: 0}
+  enemy: {fileID: 0}
+  followingPath: 0
 --- !u!50 &397178215
 Rigidbody2D:
   serializedVersion: 4
@@ -1456,12 +1447,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1954803268}
-  speed: 2
-  turnSpeed: 555
-  turnDst: 0.01
-  stoppingDst: 1
-  slowDown: 0
-  mySprite: {fileID: 155303062}
+  thisEnemyTrans: {fileID: 155303062}
+  enemy: {fileID: 11400000, guid: 0dc117d78feb1b94a91f52e3cbae7ec8, type: 2}
+  followingPath: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1733,7 +1721,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &546910860
 Transform:
   m_ObjectHideFlags: 0
@@ -1986,7 +1974,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &732950921
 Transform:
   m_ObjectHideFlags: 0
@@ -2049,12 +2037,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1954803268}
-  speed: 2
-  turnSpeed: 555
-  turnDst: 0.01
-  stoppingDst: 1
-  slowDown: 0
-  mySprite: {fileID: 688264276}
+  thisEnemyTrans: {fileID: 0}
+  enemy: {fileID: 0}
+  followingPath: 0
 --- !u!50 &840637549
 Rigidbody2D:
   serializedVersion: 4
@@ -2275,7 +2260,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1142747763
 Transform:
   m_ObjectHideFlags: 0
@@ -3517,12 +3502,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1954803268}
-  speed: 2
-  turnSpeed: 555
-  turnDst: 0.01
-  stoppingDst: 1
-  slowDown: 0
-  mySprite: {fileID: 853244501}
+  thisEnemyTrans: {fileID: 0}
+  enemy: {fileID: 0}
+  followingPath: 0
 --- !u!50 &1378135045
 Rigidbody2D:
   serializedVersion: 4
@@ -3937,7 +3919,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1454083638
 Transform:
   m_ObjectHideFlags: 0
@@ -4241,12 +4223,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1954803268}
-  speed: 2
-  turnSpeed: 555
-  turnDst: 0.01
-  stoppingDst: 1
-  slowDown: 0
-  mySprite: {fileID: 134558631}
+  thisEnemyTrans: {fileID: 0}
+  enemy: {fileID: 0}
+  followingPath: 0
 --- !u!50 &1740255543
 Rigidbody2D:
   serializedVersion: 4
@@ -4531,14 +4510,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moIn: {fileID: 29005082}
-  weaponTran: {fileID: 390801626}
-  weaponAngle: 120
-  weapTrailAnimr: {fileID: 1654981495}
-  weapTrailTrans: {fileID: 1654981493}
-  weapOrigTran: {fileID: 500478277}
-  weapSpriteR: {fileID: 390801627}
-  attackCooldown: 0.5
-  rotDur: 0.5
+  weapon: {fileID: 0}
+  atkChain: {fileID: 0}
+  atkDetection: {fileID: 0}
+  atkWeaMotion: {fileID: 0}
+  atkVisual: {fileID: 0}
+  atkMovement: {fileID: 0}
+  readyToAtk: 0
 --- !u!1 &1998750264
 GameObject:
   m_ObjectHideFlags: 0
@@ -4705,7 +4683,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2066088264
 Transform:
   m_ObjectHideFlags: 0

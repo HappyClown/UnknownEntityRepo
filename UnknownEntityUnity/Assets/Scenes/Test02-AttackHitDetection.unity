@@ -526,7 +526,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: dd10e113d8ae0464e925085ebf7b14cf, type: 3}
-  m_Color: {r: 1, g: 0.74665534, b: 0.41037738, a: 1}
+  m_Color: {r: 0.9528302, g: 0.40383625, b: 0.12135102, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -719,12 +719,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1954803268}
-  speed: 2
-  turnSpeed: 555
-  turnDst: 0.01
-  stoppingDst: 1
-  slowDown: 0
-  mySprite: {fileID: 60396749}
+  thisEnemyTrans: {fileID: 0}
+  enemy: {fileID: 0}
+  followingPath: 0
 --- !u!50 &310986466
 Rigidbody2D:
   serializedVersion: 4
@@ -818,12 +815,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1954803268}
-  speed: 2
-  turnSpeed: 555
-  turnDst: 0.01
-  stoppingDst: 1
-  slowDown: 0
-  mySprite: {fileID: 2069661872}
+  thisEnemyTrans: {fileID: 0}
+  enemy: {fileID: 0}
+  followingPath: 0
 --- !u!50 &323911655
 Rigidbody2D:
   serializedVersion: 4
@@ -949,12 +943,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1954803268}
-  speed: 2
-  turnSpeed: 555
-  turnDst: 0.01
-  stoppingDst: 1
-  slowDown: 0
-  mySprite: {fileID: 265324925}
+  thisEnemyTrans: {fileID: 0}
+  enemy: {fileID: 0}
+  followingPath: 0
 --- !u!50 &397178215
 Rigidbody2D:
   serializedVersion: 4
@@ -1148,12 +1139,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1954803268}
-  speed: 2
-  turnSpeed: 555
-  turnDst: 0.01
-  stoppingDst: 1
-  slowDown: 0
-  mySprite: {fileID: 155303062}
+  thisEnemyTrans: {fileID: 155303062}
+  enemy: {fileID: 11400000, guid: 0dc117d78feb1b94a91f52e3cbae7ec8, type: 2}
+  followingPath: 0
 --- !u!1 &510761383
 GameObject:
   m_ObjectHideFlags: 0
@@ -1489,7 +1477,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: dd10e113d8ae0464e925085ebf7b14cf, type: 3}
-  m_Color: {r: 0.9150943, g: 0.46350843, b: 0.10791205, a: 1}
+  m_Color: {r: 0.14718643, g: 0.109803915, b: 0.9137255, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1813,12 +1801,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1954803268}
-  speed: 2
-  turnSpeed: 555
-  turnDst: 0.01
-  stoppingDst: 1
-  slowDown: 0
-  mySprite: {fileID: 688264276}
+  thisEnemyTrans: {fileID: 0}
+  enemy: {fileID: 0}
+  followingPath: 0
 --- !u!50 &840637549
 Rigidbody2D:
   serializedVersion: 4
@@ -2087,7 +2072,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1096949169
 Transform:
   m_ObjectHideFlags: 0
@@ -2096,7 +2081,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1096949168}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.96, y: -0.8, z: -0.1}
+  m_LocalPosition: {x: 5.18, y: 0.42, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 155303062}
@@ -3328,12 +3313,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1954803268}
-  speed: 2
-  turnSpeed: 555
-  turnDst: 0.01
-  stoppingDst: 1
-  slowDown: 0
-  mySprite: {fileID: 853244501}
+  thisEnemyTrans: {fileID: 0}
+  enemy: {fileID: 0}
+  followingPath: 0
 --- !u!50 &1378135045
 Rigidbody2D:
   serializedVersion: 4
@@ -3867,12 +3849,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1954803268}
-  speed: 2
-  turnSpeed: 555
-  turnDst: 0.01
-  stoppingDst: 1
-  slowDown: 0
-  mySprite: {fileID: 134558631}
+  thisEnemyTrans: {fileID: 0}
+  enemy: {fileID: 0}
+  followingPath: 0
 --- !u!50 &1740255543
 Rigidbody2D:
   serializedVersion: 4
@@ -4536,12 +4515,39 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3651932565041545242, guid: bc40ee15b36568b448b6a93e952115c9,
+    - target: {fileID: 3651932565041545236, guid: bc40ee15b36568b448b6a93e952115c9,
+        type: 3}
+      propertyPath: moIn
+      value: 
+      objectReference: {fileID: 29005082}
+    - target: {fileID: 3651932565041545236, guid: bc40ee15b36568b448b6a93e952115c9,
         type: 3}
       propertyPath: weapon
       value: 
       objectReference: {fileID: 11400000, guid: 05700d58c4d139248adeaf881378aca2,
         type: 2}
+    - target: {fileID: 3507419587604336638, guid: bc40ee15b36568b448b6a93e952115c9,
+        type: 3}
+      propertyPath: equippedWeap
+      value: 
+      objectReference: {fileID: 11400000, guid: 5da85580d8dac1246a551f19842ec9b3,
+        type: 2}
+    - target: {fileID: 3507419587604336638, guid: bc40ee15b36568b448b6a93e952115c9,
+        type: 3}
+      propertyPath: atk
+      value: 
+      objectReference: {fileID: 1731692024}
+    - target: {fileID: 3507419587604336638, guid: bc40ee15b36568b448b6a93e952115c9,
+        type: 3}
+      propertyPath: firstWeap
+      value: 
+      objectReference: {fileID: 11400000, guid: 05700d58c4d139248adeaf881378aca2,
+        type: 2}
+    - target: {fileID: 3507419587604336638, guid: bc40ee15b36568b448b6a93e952115c9,
+        type: 3}
+      propertyPath: weaponSpriteR
+      value: 
+      objectReference: {fileID: 1552072615}
     - target: {fileID: 3651932565041545238, guid: bc40ee15b36568b448b6a93e952115c9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4597,22 +4603,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3651932565041545239, guid: bc40ee15b36568b448b6a93e952115c9,
-        type: 3}
-      propertyPath: moIn
-      value: 
-      objectReference: {fileID: 29005082}
-    - target: {fileID: 3651932565041545236, guid: bc40ee15b36568b448b6a93e952115c9,
-        type: 3}
-      propertyPath: moIn
-      value: 
-      objectReference: {fileID: 29005082}
-    - target: {fileID: 3651932565041545236, guid: bc40ee15b36568b448b6a93e952115c9,
+    - target: {fileID: 3651932565041545242, guid: bc40ee15b36568b448b6a93e952115c9,
         type: 3}
       propertyPath: weapon
       value: 
       objectReference: {fileID: 11400000, guid: 05700d58c4d139248adeaf881378aca2,
         type: 2}
+    - target: {fileID: 3651932565041545239, guid: bc40ee15b36568b448b6a93e952115c9,
+        type: 3}
+      propertyPath: moIn
+      value: 
+      objectReference: {fileID: 29005082}
     - target: {fileID: 3651932565041545243, guid: bc40ee15b36568b448b6a93e952115c9,
         type: 3}
       propertyPath: moIn
@@ -4645,27 +4646,5 @@ PrefabInstance:
       propertyPath: drawRangeGizmos
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3507419587604336638, guid: bc40ee15b36568b448b6a93e952115c9,
-        type: 3}
-      propertyPath: equippedWeap
-      value: 
-      objectReference: {fileID: 11400000, guid: 5da85580d8dac1246a551f19842ec9b3,
-        type: 2}
-    - target: {fileID: 3507419587604336638, guid: bc40ee15b36568b448b6a93e952115c9,
-        type: 3}
-      propertyPath: atk
-      value: 
-      objectReference: {fileID: 1731692024}
-    - target: {fileID: 3507419587604336638, guid: bc40ee15b36568b448b6a93e952115c9,
-        type: 3}
-      propertyPath: firstWeap
-      value: 
-      objectReference: {fileID: 11400000, guid: 05700d58c4d139248adeaf881378aca2,
-        type: 2}
-    - target: {fileID: 3507419587604336638, guid: bc40ee15b36568b448b6a93e952115c9,
-        type: 3}
-      propertyPath: weaponSpriteR
-      value: 
-      objectReference: {fileID: 1552072615}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc40ee15b36568b448b6a93e952115c9, type: 3}

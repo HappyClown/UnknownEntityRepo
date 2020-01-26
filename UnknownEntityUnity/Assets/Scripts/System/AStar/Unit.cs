@@ -8,12 +8,15 @@ public class Unit : MonoBehaviour
     const float minPathUpdateTime = 0.2f;
     const float pathUpdateMoveThreshold = 0.5f;
     public Transform target;
-    public float speed = 1f;
-    public float turnSpeed = 3f;
-    public float turnDst = 0.5f;
-    public float stoppingDst = 10f;
-    public bool slowDown = false;
-    public Transform mySprite;
+    public Transform thisEnemyTrans;
+    // public float speed = 1f;
+    // public float turnSpeed = 3f;
+    // public float turnDst = 0.5f;
+    // public float stoppingDst = 10f;
+    // public bool slowDown = false;
+    // public Transform mySprite;
+    public SO_EnemyBase enemy;
+    public bool followingPath;
 
     Path path;
 
@@ -23,7 +26,7 @@ public class Unit : MonoBehaviour
 
     public void OnPathFound(Vector3[] waypoints, bool pathSuccessful) {
         if (pathSuccessful) {
-            path = new Path(waypoints, transform.position, turnDst, stoppingDst);
+            path = new Path(waypoints, transform.position, enemy.turnDst, enemy.slowDownDist);
             StopCoroutine("FollowPath");
             StartCoroutine("FollowPath");
         }
@@ -40,7 +43,7 @@ public class Unit : MonoBehaviour
         Vector3 targetPosOld = target.position;
 
         while (true) {
-            // Check if the path needs to be updated every X seconds.
+            // Check if the path needs to be updated every X seconds based on how far the target has moved.
             yield return new WaitForSeconds (minPathUpdateTime);
             if ((target.position - targetPosOld).sqrMagnitude > sqrMoveThreshold) {
                 PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
@@ -50,7 +53,7 @@ public class Unit : MonoBehaviour
     }
 
     IEnumerator FollowPath() {
-        bool followingPath = true;
+        followingPath = true;
         int pathIndex = 0;
         if (path.lookPoints.Length > 0) {
           transform.LookAt(path.lookPoints[0]);
@@ -59,6 +62,7 @@ public class Unit : MonoBehaviour
         float speedPercent = 1;
 
         while (followingPath) {
+            // Check to see if the unit has reached its destination.
             Vector2 pos2D = new Vector2(transform.position.x, transform.position.y);
             while (path.turnBoundaries[pathIndex].HasCrossedLine(pos2D)) {
                 if (pathIndex >= path.finishLineIndex) {
@@ -74,8 +78,9 @@ public class Unit : MonoBehaviour
             }
 
             if (followingPath) {
-                if (pathIndex >= path.slowDownIndex && slowDown && stoppingDst > 0) {
-                    speedPercent = Mathf.Clamp01(path.turnBoundaries[path.finishLineIndex].DistanceFromPoint(pos2D) / stoppingDst);
+                // Slow down when the enemy gets close to its target.
+                if (pathIndex >= path.slowDownIndex && enemy.slowDown && enemy.slowDownDist > 0) {
+                    speedPercent = Mathf.Clamp01(path.turnBoundaries[path.finishLineIndex].DistanceFromPoint(pos2D) / enemy.slowDownDist);
                     if (speedPercent < 0.01f) {
                         followingPath = false;
                     }
@@ -83,9 +88,10 @@ public class Unit : MonoBehaviour
                 // Turn to face the next waypoint in the path.
                 // The turn sharpness or size is determined by the speed at which the unit rotates to look at the next point.
                 Quaternion targetRotation = Quaternion.LookRotation(path.lookPoints[pathIndex] - transform.position);
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * turnSpeed);
-                transform.Translate(Vector3.forward * Time.deltaTime * speed * speedPercent, Space.Self);
-                mySprite.position = new Vector3(this.transform.position.x, this.transform.position.y, mySprite.position.z);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * enemy.turnSpeed);
+                // Movement.
+                transform.Translate(Vector3.forward * Time.deltaTime * enemy.moveSpeed * speedPercent, Space.Self);
+                thisEnemyTrans.position = new Vector3(this.transform.position.x, this.transform.position.y, thisEnemyTrans.position.z);
             }
 
             yield return null;

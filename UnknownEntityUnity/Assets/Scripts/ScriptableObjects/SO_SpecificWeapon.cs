@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SO_SpecificWeapon : SO_WeaponBase
+[CreateAssetMenu(fileName = "New Specific Weapon", menuName = "Specific Weapon")]
+public class SO_SpecificWeapon : ScriptableObject
 {
-
+    public new string name;
 }
