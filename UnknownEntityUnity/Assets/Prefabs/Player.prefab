@@ -417,6 +417,7 @@ GameObject:
   - component: {fileID: 1731692029}
   - component: {fileID: 1731692023}
   - component: {fileID: 3507419587604336638}
+  - component: {fileID: 396231391011437111}
   - component: {fileID: 1731692030}
   m_Layer: 0
   m_Name: Player
@@ -613,6 +614,9 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   charLootCol: {fileID: 3651932565309937570}
+  playerTrans: {fileID: 0}
+  equippedWeaps: {fileID: 0}
+  atk: {fileID: 0}
 --- !u!114 &3507419587604336638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,9 +629,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ec662d05bb429f42a98275a7f53790c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equippedWeap: {fileID: 0}
+  firstWeap: {fileID: 0}
   secondWeap: {fileID: 0}
   atk: {fileID: 0}
+  weaponSpriteR: {fileID: 0}
+--- !u!114 &396231391011437111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3651932565041545233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9937c332e3bba94d9aff820a7818ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myAggroCol: {fileID: 0}
+  filter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  updateListDelay: 0
+  enemyAggros: []
 --- !u!114 &1731692030
 MonoBehaviour:
   m_ObjectHideFlags: 0

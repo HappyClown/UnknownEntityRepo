@@ -18,9 +18,21 @@ MonoBehaviour:
   maxDamage: 4
   attackCooldown: 2
   sprite: {fileID: 21300000, guid: dd10e113d8ae0464e925085ebf7b14cf, type: 3}
+  atkRange: 1
+  aggroRange: 5
   moveSpeed: 1
   turnSpeed: 5
   turnDst: 0
-  stoppingDst: 0.5
+  slowDownDist: 10
   slowDown: 0
   intelligence: 0
+  animSprites:
+  - {fileID: 1536053326677729943, guid: e8a7f4a385717674f90cf947ea30d411, type: 3}
+  - {fileID: 8856854725579584818, guid: e4c13bdc7177e0d46b0c486ff5cf8c81, type: 3}
+  - {fileID: -3842229032708677331, guid: 5eedcfc3f814efd48a9c30337f366e8c, type: 3}
+  animTimings:
+  - 0
+  - 0.5
+  - 1
+  atkCol: {fileID: 2144531492564248647, guid: 3fcd7a7716ed24148afb822bfde1dde7, type: 3}
+  colTimingIndex: 1

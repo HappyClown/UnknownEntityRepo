@@ -10,16 +10,18 @@ public class SO_EnemyBase : ScriptableObject
     public float minDamage, maxDamage;
     public float attackCooldown;
     public Sprite sprite;
+    public float atkRange;
+    public float aggroRange;
     [Header("Movement")]
     public float moveSpeed;
     public float turnSpeed = 3f;
     public float turnDst = 0.5f;
     public float slowDownDist = 10f;
     public bool slowDown = false;
-    public float atkRange;
     public float intelligence;
     [Header ("Animation")]
     public Sprite[] animSprites;
     public float[] animTimings;
-    public Collider2D atkCol;
+    public PolygonCollider2D atkCol;
+    public int colTimingIndex;
 }

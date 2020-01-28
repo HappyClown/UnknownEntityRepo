@@ -16,12 +16,16 @@ public class Unit : MonoBehaviour
     // public bool slowDown = false;
     // public Transform mySprite;
     public SO_EnemyBase enemy;
+    public bool allowPathUpdate;
+    public bool followOnStart;
     public bool followingPath;
 
     Path path;
 
     void Start() {
-        StartCoroutine(UpdatePath());
+        if (followOnStart) {
+            StartCoroutine(UpdatePath());
+        }
     }
 
     public void OnPathFound(Vector3[] waypoints, bool pathSuccessful) {
@@ -32,22 +36,28 @@ public class Unit : MonoBehaviour
         }
     }
 
-    IEnumerator UpdatePath() {
+    public IEnumerator UpdatePath() {
         // Check if the level has been loaded for a certain amount of time before asking for the first path update.
         if (Time.timeSinceLevelLoad < firstPathUpdateOnLevelLoad) {
             yield return new WaitForSeconds (firstPathUpdateOnLevelLoad);
         }
         PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
+        
         // Get the squared move threshold value(comparing squared magnitudes is faster then checking distance).
         float sqrMoveThreshold = pathUpdateMoveThreshold * pathUpdateMoveThreshold;
         Vector3 targetPosOld = target.position;
 
         while (true) {
             // Check if the path needs to be updated every X seconds based on how far the target has moved.
-            yield return new WaitForSeconds (minPathUpdateTime);
-            if ((target.position - targetPosOld).sqrMagnitude > sqrMoveThreshold) {
-                PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
-                targetPosOld = target.position;
+            if (allowPathUpdate) {
+                yield return new WaitForSeconds (minPathUpdateTime);
+                if ((target.position - targetPosOld).sqrMagnitude > sqrMoveThreshold) {
+                    PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
+                    targetPosOld = target.position;
+                }
+            }
+            else {
+                yield return null;
             }
         }
     }
@@ -88,7 +98,8 @@ public class Unit : MonoBehaviour
                 // Turn to face the next waypoint in the path.
                 // The turn sharpness or size is determined by the speed at which the unit rotates to look at the next point.
                 Quaternion targetRotation = Quaternion.LookRotation(path.lookPoints[pathIndex] - transform.position);
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * enemy.turnSpeed);
+                //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * enemy.turnSpeed);
+                transform.rotation = targetRotation;
                 // Movement.
                 transform.Translate(Vector3.forward * Time.deltaTime * enemy.moveSpeed * speedPercent, Space.Self);
                 thisEnemyTrans.position = new Vector3(this.transform.position.x, this.transform.position.y, thisEnemyTrans.position.z);
