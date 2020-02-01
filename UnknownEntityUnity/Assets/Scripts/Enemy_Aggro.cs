@@ -38,6 +38,7 @@ public class Enemy_Aggro : MonoBehaviour
             Debug.Log("Enemy: " + this.name + " just checked aggro.");
             float distToTargetSqr = (target.position - this.transform.position).sqrMagnitude;
             if (distToTargetSqr < aggroRangeSqr) {
+                Debug.DrawLine(this.transform.position, target.position, Color.green, 0.5f);
                 if (!Physics2D.Raycast(this.transform.position, target.position - this.transform.position, enemy.aggroRange, blockLOSLayers)) {
                     //Enemy has aggroed its target, request first path.
                     unit.StartCoroutine(unit.UpdatePath());

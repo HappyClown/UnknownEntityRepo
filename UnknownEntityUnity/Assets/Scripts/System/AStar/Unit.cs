@@ -46,7 +46,7 @@ public class Unit : MonoBehaviour
         // Get the squared move threshold value(comparing squared magnitudes is faster then checking distance).
         float sqrMoveThreshold = pathUpdateMoveThreshold * pathUpdateMoveThreshold;
         Vector3 targetPosOld = target.position;
-
+        
         while (true) {
             // Check if the path needs to be updated every X seconds based on how far the target has moved.
             if (allowPathUpdate) {
