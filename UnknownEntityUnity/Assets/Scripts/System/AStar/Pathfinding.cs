@@ -8,6 +8,7 @@ public class Pathfinding : MonoBehaviour
 {
     PathRequestManager requestManager;
     AGrid aGrid;
+    List<Node> path = new List<Node>();
 
     void Awake() {
         if (requestManager == null) {
@@ -18,49 +19,45 @@ public class Pathfinding : MonoBehaviour
         }
     }
 
-    public void StartFindPath(Vector3 startPos, Vector3 targetPos) {
-        StartCoroutine(FindPath(startPos, targetPos));
+    public void StartFindPath(Vector3 startPos, Vector3 targetPos, float unitIntel) {
+        StartCoroutine(FindPath(startPos, targetPos, unitIntel));
     }
 
     // Get the shortest* path from a start position to a target position.
-    IEnumerator FindPath(Vector3 startPos, Vector3 targetPos) {
+    IEnumerator FindPath(Vector3 startPos, Vector3 targetPos, float unitIntel) {
         //Stopwatch sw = new Stopwatch();
         //sw.Start();
-
         Vector3[] waypoints = new Vector3[0];
         bool pathSuccess = false;
-
         // Get the node on which the start and target world positions are.
         Node startNode = aGrid.NodeFromWorldPoint(startPos);
         Node targetNode = aGrid.NodeFromWorldPoint(targetPos);
+        print("Is my start node walkable? " + startNode.walkable);
 
-        if (startNode.walkable && targetNode.walkable)  {
+        if (/* startNode.walkable &&  */targetNode.walkable)  {
             Heap<Node> openSet = new Heap<Node>(aGrid.MaxSize);
             HashSet<Node> closedSet = new HashSet<Node>();
             openSet.Add(startNode);
-
+            
             while (openSet.Count > 0) {
                 Node currentNode = openSet.RemoveFirst();
                 closedSet.Add(currentNode);
-
                 if (currentNode == targetNode) {
                     //sw.Stop();
                     //print ("Path Found: " + sw.ElapsedMilliseconds + "ms");
                     pathSuccess = true;
                     break;
                 }
-
                 foreach( Node neighbour in aGrid.GetNeighbours(currentNode)) {
                     if (!neighbour.walkable || closedSet.Contains(neighbour)) {
                         continue;
                     }
-
-                    int newMovementCostToNeighbour = currentNode.gCost + GetDistance(currentNode, neighbour) + neighbour.movementPenalty;
+                    int newMovementCostToNeighbour = currentNode.gCost + GetDistance(currentNode, neighbour) + Mathf.RoundToInt(neighbour.movementPenalty * unitIntel);
+                    //print(Mathf.RoundToInt(neighbour.movementPenalty * unitIntel));
                     if (newMovementCostToNeighbour < neighbour.gCost || !openSet.Contains(neighbour)) {
                         neighbour.gCost = newMovementCostToNeighbour;
                         neighbour.hCost = GetDistance(neighbour, targetNode);
                         neighbour.parent = currentNode;
-
                         if (!openSet.Contains(neighbour)) {
                             openSet.Add(neighbour);
                         }
@@ -79,7 +76,9 @@ public class Pathfinding : MonoBehaviour
     }
 
     Vector3[] RetracePath(Node startNode, Node endNode) {
-        List<Node> path = new List<Node>();
+        //List<Node> path = new List<Node>();
+        path.Clear();
+
         Node currentNode = endNode;
 
         while (currentNode != startNode) {
@@ -94,14 +93,14 @@ public class Pathfinding : MonoBehaviour
     Vector3[] SimplifyPath(List<Node> path) {
         List<Vector3> waypoints = new List<Vector3>();
         Vector2 directionOld = Vector2.zero;
-
         for (int i = 1; i < path.Count; i++) {
             Vector2 directionNew = new Vector2(path[i-1].gridX - path[i].gridX, path[i-1].gridY - path[i].gridY);
             if (directionNew != directionOld) {
-                waypoints.Add(path[i].worldPos);
+                waypoints.Add(path[i-1].worldPos);
             }
             directionOld = directionNew;
         }
+        waypoints.Add(path[path.Count-1].worldPos);
         return waypoints.ToArray();
     }
     // Get a value for the distance on the grid from A to B, diagonals being worth 14 and horizontals/verticals being worth 10.
@@ -117,5 +116,20 @@ public class Pathfinding : MonoBehaviour
         else {
             return 14 * dstX + 10 * (dstY - dstX);
         }
+    }
+
+    public void DrawWithGizmos(List<Node> pathNodes)
+    {
+        Gizmos.color = Color.yellow;
+        if (pathNodes.Count > 0) {
+            foreach(Node pathNode in pathNodes) {
+                Gizmos.DrawCube(pathNode.worldPos, Vector3.one * (aGrid.nodeRadius*2));
+            }
+        }
+    }
+
+    void OnDrawGizmos()
+    {
+        DrawWithGizmos(path);
     }
 }

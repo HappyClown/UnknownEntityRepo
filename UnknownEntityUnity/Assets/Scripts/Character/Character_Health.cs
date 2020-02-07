@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character_Stats : MonoBehaviour
+public class Character_Health : MonoBehaviour
 {
     public float maximumHealth;
-    public float movementSpeed;
-    public float currentHealth;
+    public  float currentHealth;
+
+    
 }

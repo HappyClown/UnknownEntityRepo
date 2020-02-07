@@ -8,6 +8,7 @@ public class Character_EnemyAggro : MonoBehaviour
     public ContactFilter2D filter;
     public float updateListDelay;
     public List<Enemy_Aggro> enemyAggros = new List<Enemy_Aggro>();
+    public bool aggroDebugs;
 
     private void Start() {
         StartCoroutine(ContinuousEnemyCheck());
@@ -15,7 +16,7 @@ public class Character_EnemyAggro : MonoBehaviour
 
     IEnumerator ContinuousEnemyCheck() {
         while(true) {
-            Debug.Log("Character is checking his aggro detection range for enemies.");
+            if (aggroDebugs) Debug.Log("Character is checking his aggro detection range for enemies.");
             //foreach (Enemy_Aggro enemyAggro in enemyAggros) {
             //    enemyAggro.DisableAggro();
             //}
@@ -25,10 +26,10 @@ public class Character_EnemyAggro : MonoBehaviour
             if (enemyCols.Count > 0) {
                 int index = 0;
                 if (enemyCols.Count > 1) {
-                    Debug.Log(enemyCols.Count + " enemies within activation range.");
+                    if (aggroDebugs) Debug.Log(enemyCols.Count + " enemies within activation range.");
                 } 
                 else {
-                    Debug.Log(enemyCols.Count + " enemy within activation range.");
+                    if (aggroDebugs) Debug.Log(enemyCols.Count + " enemy within activation range.");
                 }
                 foreach (Collider2D enemyCol in enemyCols) {
                     Enemy_Aggro enemyAggro = enemyCol.GetComponent<Enemy_Aggro>();

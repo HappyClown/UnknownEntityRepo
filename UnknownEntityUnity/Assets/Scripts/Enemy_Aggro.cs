@@ -13,6 +13,7 @@ public class Enemy_Aggro : MonoBehaviour
     public float checkAggroDelay;
     public LayerMask blockLOSLayers;
     public CircleCollider2D myCol;
+    public bool aggroDebugs;
 
     public void EnableAggro(float targRadius) {
         if (!aggroed) {
@@ -31,11 +32,11 @@ public class Enemy_Aggro : MonoBehaviour
     IEnumerator CheckAggro() {
         coroutineRunning = true;
         yield return null;
-        Debug.Log("Enemy: " + this.name + " CheckAggro coroutine has started.");
+        if (aggroDebugs) Debug.Log("Enemy: " + this.name + " CheckAggro coroutine has started.");
         float aggroRangeSqr = 0f;
         aggroRangeSqr = enemy.aggroRange * enemy.aggroRange;
         while(checkingAggro) {
-            Debug.Log("Enemy: " + this.name + " just checked aggro.");
+            if (aggroDebugs) Debug.Log("Enemy: " + this.name + " just checked aggro.");
             float distToTargetSqr = (target.position - this.transform.position).sqrMagnitude;
             if (distToTargetSqr < aggroRangeSqr) {
                 Debug.DrawLine(this.transform.position, target.position, Color.green, 0.5f);

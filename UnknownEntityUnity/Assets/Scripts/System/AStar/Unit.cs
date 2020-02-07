@@ -9,12 +9,6 @@ public class Unit : MonoBehaviour
     const float pathUpdateMoveThreshold = 0.5f;
     public Transform target;
     public Transform thisEnemyTrans;
-    // public float speed = 1f;
-    // public float turnSpeed = 3f;
-    // public float turnDst = 0.5f;
-    // public float stoppingDst = 10f;
-    // public bool slowDown = false;
-    // public Transform mySprite;
     public SO_EnemyBase enemy;
     public bool allowPathUpdate;
     public bool followOnStart;
@@ -29,7 +23,7 @@ public class Unit : MonoBehaviour
     }
 
     public void OnPathFound(Vector3[] waypoints, bool pathSuccessful) {
-        if (pathSuccessful) {
+        if (pathSuccessful && allowPathUpdate) {
             path = new Path(waypoints, transform.position, enemy.turnDst, enemy.slowDownDist);
             StopCoroutine("FollowPath");
             StartCoroutine("FollowPath");
@@ -41,7 +35,7 @@ public class Unit : MonoBehaviour
         if (Time.timeSinceLevelLoad < firstPathUpdateOnLevelLoad) {
             yield return new WaitForSeconds (firstPathUpdateOnLevelLoad);
         }
-        PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
+        PathRequestManager.RequestPath(transform.position, target.position, enemy.intelligence, OnPathFound);
         
         // Get the squared move threshold value(comparing squared magnitudes is faster then checking distance).
         float sqrMoveThreshold = pathUpdateMoveThreshold * pathUpdateMoveThreshold;
@@ -49,16 +43,20 @@ public class Unit : MonoBehaviour
         
         while (true) {
             // Check if the path needs to be updated every X seconds based on how far the target has moved.
+            yield return new WaitForSeconds (minPathUpdateTime);
             if (allowPathUpdate) {
-                yield return new WaitForSeconds (minPathUpdateTime);
+                //Debug.Log("Distance difference squared: " + (target.position - targetPosOld).sqrMagnitude);
+                //Debug.Log("Move threshold squared: " + sqrMoveThreshold);
                 if ((target.position - targetPosOld).sqrMagnitude > sqrMoveThreshold) {
-                    PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
+                    PathRequestManager.RequestPath(transform.position, target.position, enemy.intelligence, OnPathFound);
                     targetPosOld = target.position;
+                    //Debug.Log("PathRequest has been made.");
                 }
             }
-            else {
-                yield return null;
-            }
+            // else {
+            //     targetPosOld = target.position;
+            //     yield return null;
+            // }
         }
     }
 
@@ -97,9 +95,15 @@ public class Unit : MonoBehaviour
                 }
                 // Turn to face the next waypoint in the path.
                 // The turn sharpness or size is determined by the speed at which the unit rotates to look at the next point.
-                Quaternion targetRotation = Quaternion.LookRotation(path.lookPoints[pathIndex] - transform.position);
-                //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * enemy.turnSpeed);
-                transform.rotation = targetRotation;
+                if (enemy.lerpTurnRotations) {
+                    Quaternion targetRotation = Quaternion.LookRotation(path.lookPoints[pathIndex] - transform.position);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * enemy.turnSpeed);
+                    transform.rotation = targetRotation;
+                }
+                // Instantly turn to towaards the next point.
+                else {
+                    transform.forward = path.lookPoints[pathIndex] - transform.position;
+                }
                 // Movement.
                 transform.Translate(Vector3.forward * Time.deltaTime * enemy.moveSpeed * speedPercent, Space.Self);
                 thisEnemyTrans.position = new Vector3(this.transform.position.x, this.transform.position.y, thisEnemyTrans.position.z);
@@ -109,10 +113,15 @@ public class Unit : MonoBehaviour
         }
     }
 
+    public void StopFollowPathCoroutine() {
+        StopCoroutine("FollowPath");
+        allowPathUpdate = false;
+        followingPath = false;
+    }
+
     public void OnDrawGizmos() {
         if (path != null) {
-
-            path.DrawWithGizmos(transform.position);
+            path.DrawWithGizmos();
         }
     }
 }

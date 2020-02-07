@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Diagnostics;
 
 public class AGrid : MonoBehaviour
 {
@@ -46,6 +47,8 @@ public class AGrid : MonoBehaviour
 
     // Create a grid starting from the bottom left (0,0).
     void CreateGrid () {
+        Stopwatch sw = new Stopwatch();
+        sw.Start();
         grid = new Node[gridSizeX, gridSizeY];
         Vector3 worldBottomLeft = this.transform.position - Vector3.right * gridWorldSize.x/2 - Vector3.up * gridWorldSize.y/2;
 
@@ -73,6 +76,8 @@ public class AGrid : MonoBehaviour
         }
 
         BlurPenaltyMap(blurredPenaltyMapAmount);
+        sw.Stop();
+        print ("Grid created in: " + sw.ElapsedMilliseconds + "ms");
     }
 
     void BlurPenaltyMap(int blurSize) {

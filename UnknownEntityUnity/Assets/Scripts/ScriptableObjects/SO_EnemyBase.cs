@@ -13,11 +13,12 @@ public class SO_EnemyBase : ScriptableObject
     public float atkRange;
     public float aggroRange;
     [Header("Movement")]
+    public bool lerpTurnRotations;
     public float moveSpeed;
     public float turnSpeed = 3f;
     public float turnDst = 0.5f;
-    public float slowDownDist = 10f;
     public bool slowDown = false;
+    public float slowDownDist = 10f;
     public float intelligence;
     [Header ("Animation")]
     public Sprite[] animSprites;

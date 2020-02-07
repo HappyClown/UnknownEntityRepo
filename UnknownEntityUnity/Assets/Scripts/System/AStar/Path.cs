@@ -8,8 +8,10 @@ public class Path
     public readonly Line[] turnBoundaries;
     public readonly int finishLineIndex;
     public readonly int slowDownIndex;
+    private Vector3 pathStartPos = Vector3.zero;
 
     public Path(Vector3[] waypoints, Vector3 startPos, float turnDst, float stoppingDst) {
+        pathStartPos = startPos;
         lookPoints = waypoints;
         turnBoundaries = new Line[lookPoints.Length];
         finishLineIndex = turnBoundaries.Length - 1;
@@ -38,10 +40,11 @@ public class Path
         return new Vector2 (v3.x, v3.y);
     }
 
-    public void DrawWithGizmos(Vector3 unitPos) {
+    public void DrawWithGizmos() {
         Gizmos.color = Color.black;
         if (lookPoints.Length > 0) {
-          Gizmos.DrawLine(unitPos, lookPoints[0]);
+          Gizmos.DrawLine(pathStartPos, lookPoints[0]);
+          Gizmos.DrawCube(pathStartPos, Vector3.one * 0.1f);
         }
         for (int i = 0; i < lookPoints.Length - 1; i++) {
             Gizmos.DrawCube(lookPoints[i] + Vector3.back, Vector3.one * 0.2f);
