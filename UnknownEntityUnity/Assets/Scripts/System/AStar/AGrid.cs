@@ -134,7 +134,9 @@ public class AGrid : MonoBehaviour
         // Starting from the node's bottom left neighbour (-1,-1), the node being (0,0), to its top right neighbour (1,1).
         for (int x = -1; x <= 1; x++) {
             for (int y = -1; y <= 1; y++) {
-                if (x == 0 && y == 0) {
+                // Use (x==0 && y==0) if you want to check for diagonals.
+                // if (x == 0 && y == 0) {
+                if (x == 0 && y == 0 || x == 1 && y == 1 || x == 1 && y == -1 || x == -1 && y == -1 || x == -1 && y == 1) {
                     continue;
                 }
                 // (checkX, checkY) being the neighbor's grid coordinate.
