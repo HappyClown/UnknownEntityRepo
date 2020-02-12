@@ -941,6 +941,40 @@ Transform:
   m_Father: {fileID: 1020702754}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &505351513 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3651932565041545233, guid: bc40ee15b36568b448b6a93e952115c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 3651932565368499794}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &505351514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505351513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc4889193e01ff049991799d9d5c28d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  col: {fileID: 1315209321}
+  boxCol: {fileID: 1315209321}
+  castFilter:
+    useTriggers: 0
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 256
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
 --- !u!1 &510761383
 GameObject:
   m_ObjectHideFlags: 0
@@ -1294,7 +1328,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609658709}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.96, y: -0.8, z: -0.1}
+  m_LocalPosition: {x: 6.09, y: 3.1, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1621148601}
@@ -3116,6 +3150,12 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!61 &1315209321 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 96031778, guid: bc40ee15b36568b448b6a93e952115c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 3651932565368499794}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1378135042
 GameObject:
   m_ObjectHideFlags: 0
@@ -4354,7 +4394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feadef75c26345b4985f1ebca3d2b29c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayGridGizmos: 1
+  displayGridGizmos: 0
   gizmosCubeSizePercent: 0.5
   unwalkableMask:
     serializedVersion: 2
@@ -4365,7 +4405,7 @@ MonoBehaviour:
   - terrainMask:
       serializedVersion: 2
       m_Bits: 512
-    terrainPenalty: 50
+    terrainPenalty: 20
   obstacleProximityPenalty: 10
   blurredPenaltyMapAmount: 1
 --- !u!4 &2129245595
@@ -4394,10 +4434,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb9933c1ccacba748b8fa2bba6236f4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawPathFindingGizmos: 1
+  drawPathFindingGizmos: 0
   losLayerMask:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 256
 --- !u!114 &2129245597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4505,12 +4545,12 @@ PrefabInstance:
     - target: {fileID: 3651932565041545238, guid: bc40ee15b36568b448b6a93e952115c9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.41
+      value: -0.494
       objectReference: {fileID: 0}
     - target: {fileID: 3651932565041545238, guid: bc40ee15b36568b448b6a93e952115c9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.72
+      value: -0.654
       objectReference: {fileID: 0}
     - target: {fileID: 3651932565041545238, guid: bc40ee15b36568b448b6a93e952115c9,
         type: 3}
@@ -4577,6 +4617,11 @@ PrefabInstance:
       propertyPath: moIn
       value: 
       objectReference: {fileID: 29005082}
+    - target: {fileID: 3651932565041545239, guid: bc40ee15b36568b448b6a93e952115c9,
+        type: 3}
+      propertyPath: colDetect
+      value: 
+      objectReference: {fileID: 505351514}
     - target: {fileID: 3651932565041545243, guid: bc40ee15b36568b448b6a93e952115c9,
         type: 3}
       propertyPath: moIn
@@ -4590,7 +4635,7 @@ PrefabInstance:
     - target: {fileID: 1731692023, guid: bc40ee15b36568b448b6a93e952115c9, type: 3}
       propertyPath: charLootCol
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1315209321}
     - target: {fileID: 1731692030, guid: bc40ee15b36568b448b6a93e952115c9, type: 3}
       propertyPath: drawRangeGizmos
       value: 1
@@ -4612,6 +4657,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Attacker01 Parent
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965816835968718655, guid: fa4c98ea0b00be8479e6e42b7025f3b0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5965816834684995761, guid: fa4c98ea0b00be8479e6e42b7025f3b0,
         type: 3}

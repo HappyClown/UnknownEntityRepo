@@ -5,6 +5,7 @@ using UnityEngine;
 public class Character_Movement : MonoBehaviour
 {
     public MouseInputs moIn;
+    public Character_CollisionDetection colDetect;
     private bool running;
     public float runSpeed = 1f; 
     public SpriteRenderer spriteRend;
@@ -45,7 +46,11 @@ public class Character_Movement : MonoBehaviour
             animator.SetBool("Running", false);
         }
         SetRunAnimation();
-        this.transform.position = this.transform.position + normalizedMovement * runSpeed * Time.deltaTime;
+        // Check for collisions.
+        Vector3 curPosition = this.transform.position;
+        Vector3 newPosition = curPosition + normalizedMovement * runSpeed * Time.deltaTime;
+        this.transform.position = colDetect.CollisionCheck(normalizedMovement, runSpeed * Time.deltaTime, newPosition, curPosition);
+        //this.transform.position = curPosition + normalizedMovement * runSpeed * Time.deltaTime;
     }
 
     void FlipSprite () {

@@ -11,6 +11,8 @@ public class Pathfinding : MonoBehaviour
     List<Node> path = new List<Node>();
     List<Vector3> losWaypoints = new List<Vector3>();
     List<Vector3> simplifiedWaypoints = new List<Vector3>();
+    List<Vector3> posSampled = new List<Vector3>();
+    bool pathHasPenalty;
     public bool drawPathFindingGizmos;
     public LayerMask losLayerMask;
 
@@ -82,30 +84,33 @@ public class Pathfinding : MonoBehaviour
     Vector3[] RetracePath(Node startNode, Node endNode) {
         //List<Node> path = new List<Node>();
         path.Clear();
+        pathHasPenalty = false;
         int totalPathCost = 0;
-        int nodeAmnt = 0;
-        float costPerNode = 0;
+        //int nodeAmnt = 0;
+        //float costPerNode = 0;
 
         Node currentNode = endNode;
 
         while (currentNode != startNode) {
             path.Add(currentNode);
 
-            nodeAmnt++;
+            //nodeAmnt++;
             totalPathCost += (10 + currentNode.movementPenalty);
-            //print("Current Path Cost: " + totalPathCost);
+            if (currentNode.movementPenalty != 0) {
+                pathHasPenalty = true;
+            }
 
             currentNode = currentNode.parent;
         }
 
-        print("Total path cost: " + totalPathCost);
-        print("Total Amount of nodes: " + nodeAmnt);
-        costPerNode = totalPathCost / nodeAmnt;
-        print("Cost per node: " + costPerNode);
+        //print("Total path cost: " + totalPathCost);
+        //print("Total Amount of nodes: " + nodeAmnt);
+        //costPerNode = totalPathCost / nodeAmnt;
+        //print("Cost per node: " + costPerNode);
 
         Vector3[] waypoints = SimplifyPath(path);
         Array.Reverse(waypoints);
-        waypoints = LineOfSightPath(waypoints);
+        waypoints = LineOfSightPath(waypoints, totalPathCost);
         return waypoints;
     }
 
@@ -124,7 +129,7 @@ public class Pathfinding : MonoBehaviour
         return simplifiedWaypoints.ToArray();
     }
 
-    Vector3[] LineOfSightPath(Vector3[] waypoints) {
+    Vector3[] LineOfSightPath(Vector3[] waypoints, float totPathCost) {
         //List<Vector3> losWaypoints = new List<Vector3>();
         losWaypoints.Clear();
 
@@ -177,36 +182,48 @@ public class Pathfinding : MonoBehaviour
             }
 
         }
-        Sampling(losWaypoints);
-
-        return losWaypoints.ToArray();
+        // If any of the nodes had a movement penalty, calculate the movement cost of the LoS Path versus following the Simplified Path.
+        if (pathHasPenalty) {
+            if (totPathCost < LoSPathCost(losWaypoints)) {
+                return waypoints;
+            }
+            else {
+                return losWaypoints.ToArray();
+            }
+        }
+        else {
+            return losWaypoints.ToArray();
+        }
     }
 
     // Get samples of the node penalty costs every x along a distance and direction. To estimate the cost of a straight line that does not go through node centers. 
-    float Sampling(List<Vector3> waypointsToSample) {
+    float LoSPathCost(List<Vector3> waypointsToSample) {
             float sampleSpacing = aGrid.nodeRadius * 2;
             float totalCost = 0f;
             float totalDist = 0f;
             int totalSampleAmnt = 0;
-        for (int i = 0; i < waypointsToSample.Count-1; i++) 
+            //posSampled.Clear();
+        for (int i = 0; i < waypointsToSample.Count-1; i++)
         {
             Vector3 fromPos = waypointsToSample[i];
             Vector3 toPos = waypointsToSample[i+1];
+            UnityEngine.Debug.DrawLine(fromPos, toPos, Color.green, 1);
             Vector3 dir = toPos - fromPos;
             float dist = dir.magnitude;
             totalDist += dist;
             int sampleAmnt = Mathf.RoundToInt(dist/sampleSpacing);
             for (int ii = 1; ii <= sampleAmnt; ii++)
             {
-                Vector3 samplePos = toPos/(sampleAmnt*ii);
+                Vector3 samplePos = fromPos + (dir/sampleAmnt)*ii;
                 Node sampleNode = aGrid.NodeFromWorldPoint(samplePos);
+                //posSampled.Add(samplePos);
                 totalCost += 10 + sampleNode.movementPenalty;
                 totalSampleAmnt++;
             }
         }
-        print("LOS Sampling Total Dist: " + totalDist);
-        print("LOS Sampling Total Sample Amount: " + totalSampleAmnt);
-        print("LOS Sampling Total Cost: " + totalCost);
+        //print("LOS Sampling Total Dist: " + totalDist);
+        //print("LOS Sampling Total Sample Amount: " + totalSampleAmnt);
+        //print("LOS Sampling Total Cost: " + totalCost);
         return totalCost;
     }
 
@@ -252,13 +269,21 @@ public class Pathfinding : MonoBehaviour
             }
         }
     }
-
+    public void DrawWithGizmosSamplePositions(List<Vector3> posSamplings) {
+        Gizmos.color = Color.cyan;
+        foreach(Vector3 pos in posSamplings) 
+        {
+            Gizmos.DrawCube(pos, Vector3.one * 0.4f);
+        }
+    }
+    
     void OnDrawGizmos()
     {
         if (drawPathFindingGizmos) {
             DrawWithGizmosPath(path);
             DrawWithGizmosSimpleWaypoints(simplifiedWaypoints);
             DrawWithGizmosLoSWaypoints(losWaypoints);
+            DrawWithGizmosSamplePositions(posSampled);
         }
     }
 }
