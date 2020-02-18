@@ -4,93 +4,245 @@ using UnityEngine;
 
 public class Character_CollisionDetection : MonoBehaviour
 {
-    public Collider2D col;
     public BoxCollider2D boxCol;
-    public ContactFilter2D castFilter;
     public LayerMask colMask;
     Vector3 gizmosMoveDir = Vector3.zero;
     bool hitDetected;
-    bool adjustPos;
-    public Vector3 CollisionCheck(Vector3 moveDir, float moveSpeed, Vector3 newPos, Vector3 curPos)
+    Vector2[] rayStartPoints = new Vector2[0];
+    public float skinWidth;
+    public int raysPerSeg;
+
+    public Vector3 CollisionCheck(Vector3 normMoveDir, Vector3 newPos, Vector3 curPos)
     {
         hitDetected = false;
-        adjustPos = false;
-        gizmosMoveDir = moveDir;
+        gizmosMoveDir = normMoveDir;
+
+        float moveDist = (newPos - curPos).magnitude;
 
         float newX = newPos.x;
         float newY = newPos.y;
-        float smallestX = 999f;
-        float smallestY = 999f;
         float adjustedX = 0f;
         float adjustedY = 0f;
 
+        (adjustedX, adjustedY) = MovementRaycasts(normMoveDir, moveDist);
+        adjustedX = normMoveDir.x * adjustedX;
+        adjustedY = normMoveDir.y * adjustedY;
 
-        //RaycastHit2D[] hits = new RaycastHit2D[4];
-        List<RaycastHit2D> hits = new List<RaycastHit2D>();
-        boxCol.Cast(moveDir, castFilter, hits, moveDir.magnitude);
-        //hits[0] = Physics2D.Raycast(thisPos, moveDir, moveDir.magnitude, colMask);
-        if (hits.Count > 0) {
-            foreach (RaycastHit2D hit in hits)
-            {
-                print(hit.collider.name);
-
-                if (Mathf.Abs(hit.point.x - curPos.x) < smallestX) {
-                    smallestX = Mathf.Abs(hit.point.x - curPos.x);
-                }
-                if (Mathf.Abs(hit.point.y - curPos.y) < smallestY) {
-                    smallestY = Mathf.Abs(hit.point.y - curPos.y);
-                }
-                Debug.DrawLine(curPos, hit.point, Color.green, 1);
-            }
-            hitDetected = true;
-        }
-        // Check to see if the movement is bigger then the distance to the obstacle on both axis.
-        if (Mathf.Abs(newPos.x - curPos.x) > smallestX) {
-            adjustedX = smallestX;
-            adjustPos = true;
-        }
-        if (Mathf.Abs(newPos.y - curPos.y) > smallestY) {
-            adjustedY = smallestY;
-            adjustPos = true;
-        }
-        if (adjustPos) {
+        if (hitDetected) {
             Vector3 adjustedPos = new Vector3 (curPos.x + adjustedX, curPos.y + adjustedY, newPos.z);
             return adjustedPos;
-        } else {
+        } 
+        else {
             return newPos;
+        }
+    }
+
+    (float, float) MovementRaycasts(Vector3 normMoveDir, float moveDist) {
+        float shortestHitX = 999f;
+        float shortestHitY = 999f;
+        bool xHit = false;
+        bool yHit = false;
+        float xMoveDist = Mathf.Abs((normMoveDir * moveDist).x);
+        float yMoveDist = Mathf.Abs((normMoveDir * moveDist).y);
+
+        RaycastHit2D rayHit;
+        if (rayStartPoints.Length != raysPerSeg+2) {
+            rayStartPoints = new Vector2[raysPerSeg+2];
+        }
+
+        // Fire rays into x and y directions seperately based on moveDir.
+        // X rays:
+        if (normMoveDir.x != 0) {
+            // Rays to the left.
+            if (normMoveDir.x < 0) {
+                Vector2 colTopLeft = new Vector2(boxCol.bounds.min.x+skinWidth, boxCol.bounds.max.y-skinWidth);
+                rayStartPoints[0] = colTopLeft;
+                
+                Vector2 colBotLeft = new Vector2(boxCol.bounds.min.x+skinWidth, boxCol.bounds.min.y+skinWidth);
+                rayStartPoints[1] = colBotLeft;
+
+                Vector2 segSize = (colTopLeft-colBotLeft) / (raysPerSeg+1);
+                for (int i = 1; i < raysPerSeg+1; i++) {
+                    Vector2 newRayPoint = colBotLeft + (segSize*i);
+                    rayStartPoints[i+1] = newRayPoint;
+                }
+
+                foreach(Vector2 rayStartPoint in rayStartPoints) {
+                    rayHit = Physics2D.Raycast(rayStartPoint, Vector2.left, moveDist+skinWidth, colMask);
+                    if (rayHit) {
+                        hitDetected = true;
+                        xHit = true;
+                        if (Mathf.Abs((rayHit.point - rayStartPoint).x) < shortestHitX) {
+                            shortestHitX = Mathf.Abs((rayHit.point - rayStartPoint).x);
+                        }
+                    }
+                }
+            }
+            // Rays to the right.
+            else if (normMoveDir.x > 0) {
+                Vector2 colTopRight = new Vector2(boxCol.bounds.max.x-skinWidth, boxCol.bounds.max.y-skinWidth);
+                rayStartPoints[0] = colTopRight;
+
+                Vector2 colBotRight = new Vector2(boxCol.bounds.max.x-skinWidth, boxCol.bounds.min.y+skinWidth);
+                rayStartPoints[1] = colBotRight;
+
+                Vector2 segSize = (colTopRight-colBotRight) / (raysPerSeg+1);
+                for (int i = 1; i < raysPerSeg+1; i++) {
+                    Vector2 newRayPoint = colBotRight + (segSize*i);
+                    rayStartPoints[i+1] = newRayPoint;
+                }
+
+                foreach(Vector2 rayStartPoint in rayStartPoints) {
+                    rayHit = Physics2D.Raycast(rayStartPoint, Vector3.right, moveDist+skinWidth, colMask);
+                    if (rayHit) {
+                        hitDetected = true;
+                        xHit = true;
+                        if (Mathf.Abs((rayHit.point - rayStartPoint).x) < shortestHitX) {
+                            shortestHitX = Mathf.Abs((rayHit.point - rayStartPoint).x);
+                        }
+                    }
+                }
+            }
+        }
+        // Y rays:
+        if (normMoveDir.y != 0) {
+            // Rays to the top.
+            if (normMoveDir.y > 0) {
+                Vector2 colTopLeft = new Vector2(boxCol.bounds.min.x+skinWidth, boxCol.bounds.max.y-skinWidth);
+                rayStartPoints[0] = colTopLeft;
+
+                Vector2 colTopRight = new Vector2(boxCol.bounds.max.x-skinWidth, boxCol.bounds.max.y-skinWidth);
+                rayStartPoints[1] = colTopRight;
+
+                Vector2 segSize = (colTopRight-colTopLeft) / (raysPerSeg+1);
+                for (int i = 1; i < raysPerSeg+1; i++) {
+                    Vector2 newRayPoint = colTopLeft + (segSize*i);
+                    rayStartPoints[i+1] = newRayPoint;
+                }
+
+                foreach(Vector2 rayStartPoint in rayStartPoints) {
+                    rayHit = Physics2D.Raycast(rayStartPoint, Vector3.up, moveDist+skinWidth, colMask);
+                    if (rayHit) {
+                        hitDetected = true;
+                        yHit = true;
+                        if (Mathf.Abs((rayHit.point - rayStartPoint).y) < shortestHitY) {
+                            shortestHitY = Mathf.Abs((rayHit.point - rayStartPoint).y);
+                        }
+                    }
+                }
+            }
+            // Rays to the bottom.
+            else if (normMoveDir.y < 0) {
+                Vector2 colBotLeft = new Vector2(boxCol.bounds.min.x+skinWidth, boxCol.bounds.min.y+skinWidth);
+                rayStartPoints[0] = colBotLeft;
+
+                Vector2 colBotRight = new Vector2(boxCol.bounds.max.x-skinWidth, boxCol.bounds.min.y+skinWidth);
+                rayStartPoints[1] = colBotRight;
+
+                Vector2 segSize = (colBotRight-colBotLeft) / (raysPerSeg+1);
+                for (int i = 1; i < raysPerSeg+1; i++) {
+                    Vector2 newRayPoint = colBotLeft + (segSize*i);
+                    rayStartPoints[i+1] = newRayPoint;
+                }
+
+                foreach(Vector2 rayStartPoint in rayStartPoints) {
+                    rayHit = Physics2D.Raycast(rayStartPoint, Vector3.down, moveDist+skinWidth, colMask);
+                    if (rayHit) {
+                        hitDetected = true;
+                        yHit = true;
+                        if (Mathf.Abs((rayHit.point - rayStartPoint).y) < shortestHitY) {
+                            shortestHitY = Mathf.Abs((rayHit.point - rayStartPoint).y);
+                        }
+                    }
+                }
+            }
+        }
+
+        if (!xHit && !yHit) {
+            return (xMoveDist, yMoveDist);
+        }
+        else if (xHit && yHit) {
+            return (shortestHitX-skinWidth, shortestHitY-skinWidth);
+        }
+        else if (xHit && !yHit) {
+            return (shortestHitX-skinWidth, yMoveDist);
+        }
+        else if (!xHit && yHit) {
+            return (xMoveDist, shortestHitY-skinWidth);
+        }
+        else {
+            print("Returned else. Not sure when this happens...");
+            return (xMoveDist, yMoveDist);
         }
     }
 
     void OnDrawGizmos()
     {
         Vector3 thisPos = this.transform.position;
-
-        Vector3 colTopLeft = new Vector3(boxCol.bounds.min.x, boxCol.bounds.max.y, 0);
-        Vector3 colTopRight = new Vector3(boxCol.bounds.max.x, boxCol.bounds.max.y, 0);
-        Vector3 colBotRight = new Vector3(boxCol.bounds.max.x, boxCol.bounds.min.y, 0);
-        Vector3 colBotLeft = new Vector3(boxCol.bounds.min.x, boxCol.bounds.min.y, 0);
-
-        float width = boxCol.bounds.max.x - boxCol.bounds.min.x;
-        float height = boxCol.bounds.max.y - boxCol.bounds.min.y;
-
         Vector3 castPos = thisPos + gizmosMoveDir;
-
         float xDiff = castPos.x-thisPos.x;
         float yDiff = castPos.y-thisPos.y;
-
-        Vector3 gizTopLeft = new Vector3(boxCol.bounds.min.x+xDiff, boxCol.bounds.max.y+yDiff, 0);
-        Vector3 gizTopRight = new Vector3(boxCol.bounds.max.x+xDiff, boxCol.bounds.max.y+yDiff, 0);
-        Vector3 gizBotRight = new Vector3(boxCol.bounds.max.x+xDiff, boxCol.bounds.min.y+yDiff, 0);
-        Vector3 gizBotLeft = new Vector3(boxCol.bounds.min.x+xDiff, boxCol.bounds.min.y+yDiff, 0);
+        Vector3 normMoveDir = gizmosMoveDir;
+    
         if (!hitDetected) { Gizmos.color = Color.cyan; } else { Gizmos.color = Color.red; }
 
-        Gizmos.DrawLine(colTopLeft, gizTopLeft);
-        Gizmos.DrawLine(colTopRight, gizTopRight);
-        Gizmos.DrawLine(colBotRight, gizBotRight);
-        Gizmos.DrawLine(colBotLeft, gizBotLeft);
+        // X rays:
+        if (normMoveDir.x != 0) {
+            // Rays to the left.
+            if (normMoveDir.x < 0) {
+                Vector2 colTopLeft = new Vector2(boxCol.bounds.min.x+skinWidth, boxCol.bounds.max.y-skinWidth);
+                Gizmos.DrawRay(colTopLeft, Vector3.left*Mathf.Abs(xDiff));
+                Vector2 colBotLeft = new Vector2(boxCol.bounds.min.x+skinWidth, boxCol.bounds.min.y+skinWidth);
+                Gizmos.DrawRay(colBotLeft, Vector3.left*Mathf.Abs(xDiff));
+                
+                Vector2 segSize = (colTopLeft-colBotLeft) / (raysPerSeg+1);
+                for (int i = 1; i < raysPerSeg+1; i++) {
+                    Vector2 newRayPoint = colBotLeft + (segSize*i);
+                    Gizmos.DrawRay(newRayPoint, Vector3.left*Mathf.Abs(xDiff));
+                }
+            }
+            // Rays to the right.
+            else if (normMoveDir.x > 0) {
+                Vector2 colTopRight = new Vector2(boxCol.bounds.max.x-skinWidth, boxCol.bounds.max.y-skinWidth);
+                Gizmos.DrawRay(colTopRight, Vector3.right*Mathf.Abs(xDiff));
+                Vector2 colBotRight = new Vector2(boxCol.bounds.max.x-skinWidth, boxCol.bounds.min.y+skinWidth);
+                Gizmos.DrawRay(colBotRight, Vector3.right*Mathf.Abs(xDiff));
+                
+                Vector2 segSize = (colTopRight-colBotRight) / (raysPerSeg+1);
+                for (int i = 1; i < raysPerSeg+1; i++) {
+                    Vector2 newRayPoint = colBotRight + (segSize*i);
+                    Gizmos.DrawRay(newRayPoint, Vector3.right*Mathf.Abs(xDiff));
+                }
+            }
+        }
+        // Y rays:
+        if (normMoveDir.y != 0) {
+            // Rays to the top.
+            if (normMoveDir.y > 0) {
+                Vector2 colTopLeft = new Vector2(boxCol.bounds.min.x+skinWidth, boxCol.bounds.max.y-skinWidth);
+                Gizmos.DrawRay(colTopLeft, Vector3.up*Mathf.Abs(yDiff));
+                Vector2 colTopRight = new Vector2(boxCol.bounds.max.x-skinWidth, boxCol.bounds.max.y-skinWidth);
+                Gizmos.DrawRay(colTopRight, Vector3.up*Mathf.Abs(yDiff));
 
-        Vector3 size = new Vector3(width, height, 1);
+                Vector2 segSize = (colTopRight-colTopLeft) / (raysPerSeg+1);
+                for (int i = 1; i < raysPerSeg+1; i++) {
+                    Vector2 newRayPoint = colTopLeft + (segSize*i);
+                    Gizmos.DrawRay(newRayPoint, Vector3.up*Mathf.Abs(yDiff));
+                }
+            }
+            // Rays to the bottom.
+            else if (normMoveDir.y < 0) {
+                Vector2 colBotLeft = new Vector2(boxCol.bounds.min.x+skinWidth, boxCol.bounds.min.y+skinWidth);
+                Gizmos.DrawRay(colBotLeft, Vector3.down*Mathf.Abs(yDiff));
+                Vector2 colBotRight = new Vector2(boxCol.bounds.max.x-skinWidth, boxCol.bounds.min.y+skinWidth);
+                Gizmos.DrawRay(colBotRight, Vector3.down*Mathf.Abs(yDiff));
 
-        Gizmos.DrawCube(castPos, size);
+                Vector2 segSize = (colBotRight-colBotLeft) / (raysPerSeg+1);
+                for (int i = 1; i < raysPerSeg+1; i++) {
+                    Vector2 newRayPoint = colBotLeft + (segSize*i);
+                    Gizmos.DrawRay(newRayPoint, Vector3.down*Mathf.Abs(yDiff));
+                }
+            }
+        }
     }
 }

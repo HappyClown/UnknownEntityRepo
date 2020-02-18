@@ -11,10 +11,10 @@ public class Character_Movement : MonoBehaviour
     public SpriteRenderer spriteRend;
     public Animator animator;
     public float normMagMovement;
-    public float moveDirX;
+    public float moveDirX, moveDirY;
     private bool lookLeft, lookRight, moveLeft, moveRight;
 
-    void Update() {
+    void FixedUpdate() {
         // Check if sprite needs to be flipped based on mouse position.
         if (moIn.mouseMoved) {
           FlipSprite();
@@ -24,6 +24,7 @@ public class Character_Movement : MonoBehaviour
         Vector3 normalizedMovement = movement.normalized;
         normMagMovement = normalizedMovement.magnitude;
         moveDirX = Input.GetAxis("Horizontal");
+        moveDirY = Input.GetAxis("Vertical");
         if (normalizedMovement.magnitude >= 0.01f) {
             running = true;
             animator.SetBool("Running", true);
@@ -49,7 +50,7 @@ public class Character_Movement : MonoBehaviour
         // Check for collisions.
         Vector3 curPosition = this.transform.position;
         Vector3 newPosition = curPosition + normalizedMovement * runSpeed * Time.deltaTime;
-        this.transform.position = colDetect.CollisionCheck(normalizedMovement, runSpeed * Time.deltaTime, newPosition, curPosition);
+        this.transform.position = colDetect.CollisionCheck(normalizedMovement, newPosition, curPosition);
         //this.transform.position = curPosition + normalizedMovement * runSpeed * Time.deltaTime;
     }
 
