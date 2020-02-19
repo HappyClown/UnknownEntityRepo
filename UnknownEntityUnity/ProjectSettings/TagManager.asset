@@ -23,8 +23,8 @@ TagManager:
   - BlockLOS
   - Enemy
   - Player
-  - 
-  - 
+  - Obstacle
+  - Destructible
   - 
   - 
   - 
