@@ -24,8 +24,7 @@ public class AGrid : MonoBehaviour
     private int penaltyMin = int.MaxValue;
     private int penaltyMax = int.MinValue;
 
-
-    void Awake() {
+    public void SetupCreateGrid(){
         nodeDiameter = nodeRadius*2;
         // How many nodes fit in the grid on X and Y.
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);

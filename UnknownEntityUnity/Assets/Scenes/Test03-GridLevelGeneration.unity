@@ -268,7 +268,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &94320697
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1304,7 +1304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &510761384
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1469,7 +1469,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.2662424, g: 0.2924528, b: 0.2662424, a: 0}
+  m_BackGroundColor: {r: 0.21693662, g: 0.3679245, b: 0.29105794, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1688,7 +1688,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &609658710
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1768,7 +1768,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &631877753
 Transform:
   m_ObjectHideFlags: 0
@@ -1974,51 +1974,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &710769450
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 710769451}
-  - component: {fileID: 710769452}
-  m_Layer: 0
-  m_Name: Setup Order
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &710769451
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 710769450}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1751931190}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &710769452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 710769450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eae465074af1e4143b6ff2aecad3a6c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aGrid: {fileID: 2129245594}
-  lvlTiles: {fileID: 1673109900}
 --- !u!1 &732950920
 GameObject:
   m_ObjectHideFlags: 0
@@ -2067,7 +2022,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &791060943
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4171,14 +4126,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileGridWorldSize: {x: 30, y: 20}
-  tileRadius: 1
-  walkerChangeDirPerc: 1
-  walkerDestroyPerc: 0.1
-  walkerSpawnPerc: 0.1
+  tileRadius: 0.5
+  walkerChangeDirPerc: 0.5
+  walkerDestroyPerc: 0.05
+  walkerSpawnPerc: 0.05
   maxWalkers: 10
-  gridPercToFill: 0.2
-  tileObj: {fileID: 9009787550312290259, guid: ce39d5c8432e47547838b95181a945dc, type: 3}
-  wallObj: {fileID: 7080792634582430374, guid: cc444b19fd843e14dabef77bb80525c8, type: 3}
+  gridPercToFill: 0
+  tileObj: {fileID: 0}
+  wallObj: {fileID: 0}
 --- !u!1 &1740255540
 GameObject:
   m_ObjectHideFlags: 0
@@ -4307,7 +4262,6 @@ Transform:
   - {fileID: 29005081}
   - {fileID: 2129245595}
   - {fileID: 1673109899}
-  - {fileID: 710769451}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4433,7 +4387,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1856452137
 Transform:
   m_ObjectHideFlags: 0
@@ -4471,7 +4425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1860802739
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4551,7 +4505,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1921609293
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4637,7 +4591,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!156049354 &1998750265
 Grid:
   m_ObjectHideFlags: 0
@@ -4920,7 +4874,7 @@ MonoBehaviour:
   unwalkableMask:
     serializedVersion: 2
     m_Bits: 256
-  gridWorldSize: {x: 30, y: 20}
+  gridWorldSize: {x: 24, y: 16}
   nodeRadius: 0.25
   walkableRegions:
   - terrainMask:
@@ -5066,12 +5020,12 @@ PrefabInstance:
     - target: {fileID: 3651932565041545238, guid: bc40ee15b36568b448b6a93e952115c9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -6.36
       objectReference: {fileID: 0}
     - target: {fileID: 3651932565041545238, guid: bc40ee15b36568b448b6a93e952115c9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 3651932565041545238, guid: bc40ee15b36568b448b6a93e952115c9,
         type: 3}

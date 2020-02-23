@@ -10,7 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4445a442c562fc44aae73ed7ae3f5ce1, type: 3}
-  m_Name: 'TestRoom #001'
+  m_Name: 'TestRoom Rectangle #002'
   m_EditorClassIdentifier: 
-  spawnPoints: []
-  roomConnections: []
+  roomPrefab: {fileID: 5073021893705707796, guid: b31b954d32265394abb1a3d506c9adf7,
+    type: 3}
+  prefabRoomScript: {fileID: 1528558960395004181, guid: b31b954d32265394abb1a3d506c9adf7,
+    type: 3}
