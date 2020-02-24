@@ -5,8 +5,9 @@ using UnityEngine;
 public class SetupOrder : MonoBehaviour
 {
     public AGrid aGrid;
-    public CreateLevelTiles walkerRoomGen;
+    public CreateWalkerLevelTiles walkerRoomGen;
     public PremadeRoomLevelGeneration premadeRoomLvlGen;
+    public LevelGrid lvlGrid;
 
     void Update() {
         if (Input.GetKeyDown("c")) {
@@ -15,6 +16,10 @@ public class SetupOrder : MonoBehaviour
         }
         if (Input.GetKeyDown("v")) {
             premadeRoomLvlGen.SetupCreateLevel();
+            aGrid.SetupCreateGrid();
+        }
+        if (Input.GetKeyDown("b")) {
+            lvlGrid.CreateLevel();
             aGrid.SetupCreateGrid();
         }
     }

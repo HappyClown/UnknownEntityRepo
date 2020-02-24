@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Diagnostics;
 
-public class CreateLevelTiles : MonoBehaviour
+public class CreateWalkerLevelTiles : MonoBehaviour
 {
     // Size of the grid in Unity units.
     public Vector2 tileGridWorldSize = new Vector2(10, 10);

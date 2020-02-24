@@ -1558,7 +1558,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.5, z: -80.151886}
+  m_LocalPosition: {x: 0, y: 0, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2171,6 +2171,58 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &917174196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 917174197}
+  - component: {fileID: 917174198}
+  m_Layer: 0
+  m_Name: Combination Level Creation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &917174197
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917174196}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1751931190}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &917174198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917174196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dff8c61b35120543813a517283dbd34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileSize: 1
+  minRoomTilesX: 2
+  maxRoomTilesX: 10
+  minRoomTilesY: 2
+  maxRoomTilesY: 10
+  minAmntRoomsX: 3
+  maxAmntRoomsX: 5
+  minAmntRoomsY: 3
+  maxAmntRoomsY: 5
 --- !u!1 &1020702752
 GameObject:
   m_ObjectHideFlags: 0
@@ -2791,6 +2843,7 @@ MonoBehaviour:
   aGrid: {fileID: 2129245594}
   walkerRoomGen: {fileID: 1611201169}
   premadeRoomLvlGen: {fileID: 305579055}
+  lvlGrid: {fileID: 917174198}
 --- !u!1 &1611201167
 GameObject:
   m_ObjectHideFlags: 0
@@ -2834,15 +2887,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc6b7ea54c0fe8a44bd4a8e3eb2a58ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileGridWorldSize: {x: 10, y: 10}
+  tileGridWorldSize: {x: 20, y: 20}
   tileRadius: 0.5
   walkerChangeDirPerc: 0.5
   walkerDestroyPerc: 0.05
   walkerSpawnPerc: 0.05
   maxWalkers: 10
-  gridPercToFill: 0
-  tileObj: {fileID: 0}
-  wallObj: {fileID: 0}
+  gridPercToFill: 0.5
+  tileObj: {fileID: 9009787550312290259, guid: ce39d5c8432e47547838b95181a945dc, type: 3}
+  wallObj: {fileID: 7080792634582430374, guid: cc444b19fd843e14dabef77bb80525c8, type: 3}
 --- !u!1 &1621148600
 GameObject:
   m_ObjectHideFlags: 0
@@ -3137,6 +3190,7 @@ Transform:
   - {fileID: 2129245595}
   - {fileID: 1611201168}
   - {fileID: 305579054}
+  - {fileID: 917174197}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3863,12 +3917,12 @@ PrefabInstance:
     - target: {fileID: 3651932565041545238, guid: bc40ee15b36568b448b6a93e952115c9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.01
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3651932565041545238, guid: bc40ee15b36568b448b6a93e952115c9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3651932565041545238, guid: bc40ee15b36568b448b6a93e952115c9,
         type: 3}
