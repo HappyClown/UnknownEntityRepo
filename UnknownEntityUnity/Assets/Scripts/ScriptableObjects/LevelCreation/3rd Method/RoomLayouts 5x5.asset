@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d7c11f449fec5b4a926444044293134, type: 3}
-  m_Name: TestTileRoom
+  m_Script: {fileID: 11500000, guid: 3c781565b14a97b4e9e57e31b5e22f67, type: 3}
+  m_Name: RoomLayouts 5x5
   m_EditorClassIdentifier: 
-  columns:
-  - amntOfRows: 
-  - amntOfRows: 
+  TilesXByTilesY:
+  - {fileID: 11400000, guid: 6738144281323f245b5f98c6e50b3d14, type: 2}
+  - {fileID: 11400000, guid: 89c5c546ccce4a941a5d1b4d33bcb391, type: 2}

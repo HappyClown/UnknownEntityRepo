@@ -19,8 +19,12 @@ public class SetupOrder : MonoBehaviour
             aGrid.SetupCreateGrid();
         }
         if (Input.GetKeyDown("b")) {
-            lvlGrid.CreateLevel();
-            aGrid.SetupCreateGrid();
+            StartCoroutine(SetupThree());
         }
+    }
+    IEnumerator SetupThree() {
+        lvlGrid.CreateLevel();
+        yield return null;
+        aGrid.SetupCreateGrid();
     }
 }

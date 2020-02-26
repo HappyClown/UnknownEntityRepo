@@ -81,12 +81,12 @@ public class PremadeRoomLevelGeneration : MonoBehaviour
         // The randomness could be influenced if for example the dungeon needs to grow in a certain direction.
         int doorSide = 0;
         if (lastEntranceDoorSide < 999) {
-            int numberOfLoops = 0;
+            // int numberOfLoops = 0;
             do {
-                numberOfLoops++;
+                // numberOfLoops++;
                 doorSide = Random.Range(0, roomScript.potentialDoors.Length);
             } while (doorSide == lastEntranceDoorSide);
-            print(numberOfLoops);
+            //print(numberOfLoops);
         }
         else {
             doorSide = Random.Range(0, roomScript.potentialDoors.Length);

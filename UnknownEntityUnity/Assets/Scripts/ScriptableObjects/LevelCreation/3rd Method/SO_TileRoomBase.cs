@@ -10,4 +10,6 @@ public class SO_TileRoomBase : ScriptableObject
         public int[] amntOfRows;
     }
     public RowNumber[] columns;
+
+    
 }
