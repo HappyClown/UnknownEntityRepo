@@ -58,12 +58,12 @@ public class LevelGrid : MonoBehaviour
         // }
 
         int firstRoomX = Random.Range(0,roomsX);
+        int prevExit = 0;
         // If from bot to top -> one at random on the bottom row to start.
         Vector2 botLeftPos = new Vector2(centeredLvlBotLeft.x + firstRoomX*roomWidth, centeredLvlBotLeft.y + 0*roomHeight);
         rooms[firstRoomX, 0] = new Room(roomTilesX, roomTilesY, tileSize, botLeftPos, RandomRoomLayout(), firstRoomX, 0, 2);
         chosenRooms.Add(rooms[firstRoomX, 0]);
         Room curRoom = chosenRooms[0];
-        curRoom.exit = 0;
         for (int i = 1; i < amntOfRooms; i++) {
             // Reset possible directions.
             up = right = down = left = true;
@@ -79,7 +79,7 @@ public class LevelGrid : MonoBehaviour
                 if (curRoom.indexY == roomsY-1) {up = false;}
                 if (curRoom.indexY == 0) {down = false;}
                 // Remove opposite direction after moving, ex: move left(3) next cannot move right(1).
-                RemoveOpposite(curRoom.exit);
+                RemoveOpposite(prevExit);
                 // Remove a certain direction everytime. down = false;
                 RemoveOpposite(0);
             }
@@ -90,26 +90,33 @@ public class LevelGrid : MonoBehaviour
             }
             else {
                 // Get next direction.
-                int dir = Random.Range(0,availableDirs.Count);
+                int dirIndex = Random.Range(0,availableDirs.Count);
                 // Add the next direction vector to the current room index to get the next room's index.
                 Vector2 curRoomIndex = new Vector2(curRoom.indexX, curRoom.indexY);
-                Vector2 newRoomIndex = curRoomIndex + DirectionVector(availableDirs[dir]);
+                Vector2 newRoomIndex = curRoomIndex + DirectionVector(availableDirs[dirIndex]);
                 int newRoomIndexX = (int)newRoomIndex.x;
                 int newRoomIndexY = (int)newRoomIndex.y;
                 botLeftPos = new Vector2(centeredLvlBotLeft.x + newRoomIndexX*roomWidth, centeredLvlBotLeft.y + newRoomIndexY*roomHeight);
-                rooms[newRoomIndexX, newRoomIndexY] = new Room(roomTilesX, roomTilesY, tileSize, botLeftPos,RandomRoomLayout(), newRoomIndexX, newRoomIndexY, OppositeDoorSide(availableDirs[dir]));
+                rooms[newRoomIndexX, newRoomIndexY] = new Room(roomTilesX, roomTilesY, tileSize, botLeftPos,RandomRoomLayout(), newRoomIndexX, newRoomIndexY, OppositeDoorSide(availableDirs[dirIndex]));
                 chosenRooms.Add(rooms[newRoomIndexX, newRoomIndexY]);
+                curRoom.exit = availableDirs[dirIndex];
                 curRoom = chosenRooms[i];
-                curRoom.exit = availableDirs[dir];
+                prevExit = availableDirs[dirIndex];
             }
         }
+
         // Create all the chosen rooms.
         foreach(Room room in chosenRooms) {
             room.CreateRoom();
         }
         // Assign tiles to the chosen rooms.
         AssignRoomTiles(chosenRooms);
-        
+        roomConnect = new Room_Connections();
+        roomConnect.lvlGrid = this;
+        for (int i = 0; i < chosenRooms.Count-1; i++) {
+            roomConnect.MakeCorridor(chosenRooms[i], chosenRooms[i+1], chosenRooms[i].exit);
+        }
+
         sw.Stop();
         print("Level rooms & tiles created in: "+sw.ElapsedMilliseconds+"ms");
     }

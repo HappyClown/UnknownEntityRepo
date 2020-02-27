@@ -2276,7 +2276,7 @@ MonoBehaviour:
   maxAmntRoomsX: 10
   minAmntRoomsY: 10
   maxAmntRoomsY: 10
-  amntOfRooms: 20
+  amntOfRooms: 15
 --- !u!1 &1020702752
 GameObject:
   m_ObjectHideFlags: 0
@@ -4555,7 +4555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feadef75c26345b4985f1ebca3d2b29c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayGridGizmos: 1
+  displayGridGizmos: 0
   gizmosCubeSizePercent: 0.5
   unwalkableMask:
     serializedVersion: 2
