@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: RoomLayouts 10x10
   m_EditorClassIdentifier: 
   TilesXByTilesY:
-  - {fileID: 11400000, guid: 9c85b83327310ce4984924d63fac728b, type: 2}
+  - {fileID: 11400000, guid: 9893861cb255a11468604b9b52e2aad3, type: 2}
+  - {fileID: 11400000, guid: 6f871027570ae784697628307a2ef566, type: 2}
+  - {fileID: 11400000, guid: 69318e4b9d2329842a28a1f2e560e097, type: 2}

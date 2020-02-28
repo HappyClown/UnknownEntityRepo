@@ -214,30 +214,41 @@ public class LevelGrid : MonoBehaviour
     }
     // Set tiles from a list of rooms to null.
     void ClearAllRoomTiles(List<Room> roomsToTile) {
-        foreach(Room room in roomsToTile) {
-            // Tiles in rooms.
-            for (int tileX = 0; tileX < roomTilesX; tileX++) {
-                for (int tileY = 0; tileY < roomTilesY; tileY++) {
-                    int tileXLvlValue = room.indexX*roomTilesX + tileX;
-                    int tileYLvlValue = room.indexY*roomTilesY + tileY;
-                    Vector2Int tileCenter = new Vector2Int(tileXLvlValue, tileYLvlValue);
-                    switch (rooms[room.indexX, room.indexY].roomTiles[tileX, tileY])
-                    {
-                        case Room.Tile.empty:
-                            break;
-                        case Room.Tile.floor:
-                            floorTilemap.SetTile((Vector3Int)tileCenter, null);
-                            break;
-                        case Room.Tile.wall:
-                            wallTilemap.SetTile((Vector3Int)tileCenter, null);
-                            break;
-                        default:
-                            print("This shouldnt happen, send help! (Or check the room tile values of the scriptable object. ^_^)");
-                            break;
-                    }
-                }
+        // Tiles in rooms.
+        int totTilesX = roomsX * roomTilesX;
+        int totTilesY = roomsY * roomTilesY;
+        Vector2Int tilePos = new Vector2Int(0, 0);
+        for (int tileX = 0; tileX < totTilesX; tileX++) {
+            for (int tileY = 0; tileY < totTilesY; tileY++) {
+                tilePos = new Vector2Int(tileX, tileY);
+                floorTilemap.SetTile((Vector3Int)tilePos, null);
+                wallTilemap.SetTile((Vector3Int)tilePos, null);
             }
         }
+        // foreach(Room room in roomsToTile) {
+        //     // Tiles in rooms.
+        //     for (int tileX = 0; tileX < roomTilesX; tileX++) {
+        //         for (int tileY = 0; tileY < roomTilesY; tileY++) {
+        //             int tileXLvlValue = room.indexX*roomTilesX + tileX;
+        //             int tileYLvlValue = room.indexY*roomTilesY + tileY;
+        //             Vector2Int tileCenter = new Vector2Int(tileXLvlValue, tileYLvlValue);
+        //             switch (rooms[room.indexX, room.indexY].roomTiles[tileX, tileY])
+        //             {
+        //                 case Room.Tile.empty:
+        //                     break;
+        //                 case Room.Tile.floor:
+        //                     floorTilemap.SetTile((Vector3Int)tileCenter, null);
+        //                     break;
+        //                 case Room.Tile.wall:
+        //                     wallTilemap.SetTile((Vector3Int)tileCenter, null);
+        //                     break;
+        //                 default:
+        //                     print("This shouldnt happen, send help! (Or check the room tile values of the scriptable object. ^_^)");
+        //                     break;
+        //             }
+        //         }
+        //     }
+        // }
     }
 
     SO_TileRoomBase RandomRoomLayout() {

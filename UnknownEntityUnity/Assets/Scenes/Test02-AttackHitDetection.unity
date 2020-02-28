@@ -2046,7 +2046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a7d87cba182ff645b7b9a8c7f41d25d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 519420031}
   mousePos: {x: 0, y: 0, z: 0}
   mousePosWorld: {x: 0, y: 0, z: 0}
   mousePosWorld2D: {x: 0, y: 0}
@@ -4638,9 +4638,9 @@ MonoBehaviour:
   roomLayouts: {fileID: 11400000, guid: 336aa21bea96ba54ba626ee91ce12b03, type: 2}
   floorTile: {fileID: 11400000, guid: 4e7aa8abc32f241428b23cd54423c1fa, type: 2}
   wallTile: {fileID: 11400000, guid: 60bfd31c8b3a4034a861662f42617861, type: 2}
-  floorTilemap: {fileID: 0}
-  wallTilemap: {fileID: 0}
-  grid: {fileID: 0}
+  floorTilemap: {fileID: 1313147698}
+  wallTilemap: {fileID: 1313147698}
+  grid: {fileID: 1998750265}
   minAmntRoomsX: 10
   maxAmntRoomsX: 10
   minAmntRoomsY: 10
