@@ -125,7 +125,9 @@ public class Pathfinding : MonoBehaviour
             }
             directionOld = directionNew;
         }
-        simplifiedWaypoints.Add(path[path.Count-1].worldPos);
+        if (path.Count-1 < path.Count && path.Count-1 > -1) {
+            simplifiedWaypoints.Add(path[path.Count-1].worldPos);
+        }
         return simplifiedWaypoints.ToArray();
     }
 

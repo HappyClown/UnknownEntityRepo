@@ -10,9 +10,11 @@ public class Unit : MonoBehaviour
     public Transform target;
     public Transform thisEnemyTrans;
     public SO_EnemyBase enemy;
-    public bool allowPathUpdate;
+    public FlipObjectX flip;
+    public bool allowPathUpdate = true;
     public bool followOnStart;
     public bool followingPath;
+    public float speedModifier = 1f;
 
     Path path;
 
@@ -29,7 +31,7 @@ public class Unit : MonoBehaviour
             StartCoroutine("FollowPath");
         }
     }
-
+    // When to request a new path.
     public IEnumerator UpdatePath() {
         // Check if the level has been loaded for a certain amount of time before asking for the first path update.
         if (Time.timeSinceLevelLoad < firstPathUpdateOnLevelLoad) {
@@ -45,12 +47,10 @@ public class Unit : MonoBehaviour
             // Check if the path needs to be updated every X seconds based on how far the target has moved.
             yield return new WaitForSeconds (minPathUpdateTime);
             if (allowPathUpdate) {
-                //Debug.Log("Distance difference squared: " + (target.position - targetPosOld).sqrMagnitude);
-                //Debug.Log("Move threshold squared: " + sqrMoveThreshold);
+                // Check if the Player has moved enough to trigger a new path request.
                 if ((target.position - targetPosOld).sqrMagnitude > sqrMoveThreshold) {
                     PathRequestManager.RequestPath(transform.position, target.position, enemy.intelligence, OnPathFound);
                     targetPosOld = target.position;
-                    //Debug.Log("PathRequest has been made.");
                 }
             }
             // else {
@@ -72,7 +72,7 @@ public class Unit : MonoBehaviour
         while (followingPath) {
             // Check to see if the unit has reached its destination.
             Vector2 pos2D = new Vector2(transform.position.x, transform.position.y);
-            while (path.turnBoundaries[pathIndex].HasCrossedLine(pos2D)) {
+            while (path.turnBoundaries.Length > -1 && path.turnBoundaries[pathIndex].HasCrossedLine(pos2D)) {
                 if (pathIndex >= path.finishLineIndex) {
                     followingPath = false;
                     pathIndex = 0;
@@ -100,15 +100,15 @@ public class Unit : MonoBehaviour
                     transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * enemy.turnSpeed);
                     transform.rotation = targetRotation;
                 }
-                // Instantly turn to towaards the next point.
+                // Instantly turn to towards the next point.
                 else {
                     transform.forward = path.lookPoints[pathIndex] - transform.position;
                 }
                 // Movement.
-                transform.Translate(Vector3.forward * Time.deltaTime * enemy.moveSpeed * speedPercent, Space.Self);
-                thisEnemyTrans.position = new Vector3(this.transform.position.x, this.transform.position.y, thisEnemyTrans.position.z);
+                transform.Translate(Vector3.forward * Time.deltaTime * enemy.moveSpeed * speedModifier * speedPercent, Space.Self);
+                flip.Flip();
+                //thisEnemyTrans.position = new Vector3(this.transform.position.x, this.transform.position.y, thisEnemyTrans.position.z);
             }
-
             yield return null;
         }
     }

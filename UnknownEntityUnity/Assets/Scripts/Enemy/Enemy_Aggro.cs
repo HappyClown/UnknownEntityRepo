@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class Enemy_Aggro : MonoBehaviour
 {
+    public Enemy_Refs eRefs;
     public bool checkingAggro, aggroed;
     private bool coroutineRunning;
-    public SO_EnemyBase enemy;
-    public Unit unit;
-    public Transform target;
     private float targCheckRadiusSqr;
     public float checkAggroDelay;
     public LayerMask blockLOSLayers;
     public CircleCollider2D myCol;
     public bool aggroDebugs;
 
+    // Triggered by the Player.
     public void EnableAggro(float targRadius) {
         if (!aggroed) {
             checkingAggro = true;
@@ -34,15 +33,18 @@ public class Enemy_Aggro : MonoBehaviour
         yield return null;
         if (aggroDebugs) Debug.Log("Enemy: " + this.name + " CheckAggro coroutine has started.");
         float aggroRangeSqr = 0f;
-        aggroRangeSqr = enemy.aggroRange * enemy.aggroRange;
+        aggroRangeSqr = eRefs.eSO.aggroRange * eRefs.eSO.aggroRange;
         while(checkingAggro) {
             if (aggroDebugs) Debug.Log("Enemy: " + this.name + " just checked aggro.");
-            float distToTargetSqr = (target.position - this.transform.position).sqrMagnitude;
+            float distToTargetSqr = (eRefs.plyrTrans.position - this.transform.position).sqrMagnitude;
+            // Check if the Player is within aggro range.
             if (distToTargetSqr < aggroRangeSqr) {
-                Debug.DrawLine(this.transform.position, target.position, Color.green, 0.5f);
-                if (!Physics2D.Raycast(this.transform.position, target.position - this.transform.position, enemy.aggroRange, blockLOSLayers)) {
+                if (aggroDebugs)Debug.DrawLine(this.transform.position, eRefs.plyrTrans.position, Color.green, 0.5f);
+                // If I dont hit anything that blocks line of sight, aggro.
+                if (!Physics2D.Raycast(this.transform.position, eRefs.plyrTrans.position - this.transform.position, eRefs.eSO.aggroRange, blockLOSLayers)) {
                     //Enemy has aggroed its target, request first path.
-                    unit.StartCoroutine(unit.UpdatePath());
+                    eRefs.unit.StartCoroutine(eRefs.unit.UpdatePath());
+                    eRefs.eAction.StartChecks();
                     checkingAggro = false;
                     coroutineRunning = false;
                     aggroed = true;
@@ -55,6 +57,7 @@ public class Enemy_Aggro : MonoBehaviour
                 coroutineRunning = false;
                 break;
             }
+            // Wait a certain amount of time before checking again. (for more precision, increase rate based on Player distance)
             yield return new WaitForSeconds(checkAggroDelay);
         }
         coroutineRunning = false;

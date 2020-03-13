@@ -13,21 +13,23 @@ public class Character_Attack : MonoBehaviour
     public Character_AttackWeaponMotion atkWeaMotion;
     public Character_AttackVisual atkVisual;
     public Character_AttackMovement atkMovement;
+    public Character_AttackPlayerMovement atkPlyrMove;
     public bool readyToAtk;
 
     void Update() {
         if (moIn.mouseLeftClicked && atkChain.ready) {
-            atkWeaMotion.WeaponMotion(AttackSpeed);
             atkChain.ChainAttacks();
+            atkPlyrMove.AttackPlayerMovement(WeapAtkChain.plyrSlowDown, WeapAtkChain.plyrSlowDownDur, WeapAtkChain.attackLength, WeapAtkChain.plyrMoveDist, atkChain.curChain);
+            atkWeaMotion.WeaponMotion(WeapRotDur);
             atkDetection.StartCoroutine(atkDetection.AttackCollider(WeapAtkChain.collider, WeapAtkChain.collisionStart, WeapAtkChain.collisionEnd, atkChain.curChain));
             atkVisual.StartCoroutine(atkVisual.AttackAnimation(WeapAtkChain.attackSprites, WeapAtkChain.attackSpriteChanges, WeapAtkChain.attackLength,  atkChain.curChain));
             atkMovement.StartCoroutine(atkMovement.AttackMovement(atkChain.curChain, WeapAtkChain.spawnDistance, WeapAtkChain.moveDistance, WeapAtkChain.moveDelay, WeapAtkChain.attackLength, WeapAtkChain.moveCurve));
         }
     }
 
-    public float AttackSpeed {
+    public float WeapRotDur {
         get {
-            return WeapAtkChain.attackSpeed;
+            return WeapAtkChain.weapRotDur;
         }
     }
 

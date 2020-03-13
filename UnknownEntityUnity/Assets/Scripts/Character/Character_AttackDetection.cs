@@ -12,29 +12,6 @@ public class Character_AttackDetection : MonoBehaviour
     //public List<Collider2D> collidersHit;
     //public List<Collider2D> collidersDamaged;
 
-    // void Update () {
-        // if (attackCollider && attackCollider.enabled) {
-        //     // Detect hit collision.
-        //     Physics2D.OverlapCollider(attackCollider, hitLayers, collidersHit);
-
-        //     foreach (Collider2D col in collidersHit)
-        //     {
-        //         if (!collidersDamaged.Contains(col)) {
-        //             collidersDamaged.Add(col);
-        //             Debug.Log("A collider was hit! Hit hit, hurraay!");
-        //         }
-        //     }
-        // }
-        // else if (collidersHit.Count > 0) {
-        //     collidersHit.Clear();
-        //     collidersDamaged.Clear();
-        // }
-    // }
-
-    // public void SetColliderShape(PolygonCollider2D newCollider) {
-    //     attackCollider.points = newCollider.points;
-    // }
-
     public IEnumerator AttackCollider(PolygonCollider2D newCollider, float colStart, float colEnd, int chainNum) {
         if (activeAttacks[chainNum]) {
             activeAttacks[chainNum] = false;
@@ -66,7 +43,8 @@ public class Character_AttackDetection : MonoBehaviour
                 {
                     if (!collidersDamaged.Contains(col)) {
                         collidersDamaged.Add(col);
-                        Debug.Log("Collider: " + col.gameObject.name + " was hit! Hit hit, hurraay!");
+                        col.GetComponent<Enemy_Health>().ReceiveDamage(5);
+                        //Debug.Log("Collider: " + col.gameObject.name + " was hit! Hit hit, hurraay!");
                     }
                 }
             }

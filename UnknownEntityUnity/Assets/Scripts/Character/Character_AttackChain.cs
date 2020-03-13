@@ -31,6 +31,7 @@ public class Character_AttackChain : MonoBehaviour
 
     public void ChainAttacks() {
         charAtk.readyToAtk = false;
+        ready = false;
         curChain = nextChain;
         chainResetTimer = 0f;
         nextChain++;

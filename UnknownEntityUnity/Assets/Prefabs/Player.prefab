@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 96031778}
   m_Layer: 15
   m_Name: Hitbox
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -491,6 +491,8 @@ GameObject:
   - component: {fileID: 3507419587604336638}
   - component: {fileID: 396231391011437111}
   - component: {fileID: 1731692030}
+  - component: {fileID: 505351514}
+  - component: {fileID: 505351515}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -526,11 +528,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moIn: {fileID: 0}
+  colDetect: {fileID: 505351514}
   runSpeed: 3
   spriteRend: {fileID: 3651932565309937599}
   animator: {fileID: 3651932565309937598}
   normMagMovement: 0
   moveDirX: 0
+  moveDirY: 0
 --- !u!114 &3651932565041545236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -550,6 +554,7 @@ MonoBehaviour:
   atkWeaMotion: {fileID: 3651932565041545242}
   atkVisual: {fileID: 3651932565041545240}
   atkMovement: {fileID: 1731692029}
+  atkPlyrMove: {fileID: 505351515}
   readyToAtk: 0
 --- !u!114 &3651932565041545243
 MonoBehaviour:
@@ -685,7 +690,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  charLootCol: {fileID: 0}
+  charLootCol: {fileID: 96031778}
   playerTrans: {fileID: 3651932565041545238}
   equippedWeaps: {fileID: 3507419587604336638}
   atk: {fileID: 3651932565041545236}
@@ -701,7 +706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ec662d05bb429f42a98275a7f53790c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstWeap: {fileID: 11400000, guid: 05700d58c4d139248adeaf881378aca2, type: 2}
+  firstWeap: {fileID: 11400000, guid: 5da85580d8dac1246a551f19842ec9b3, type: 2}
   secondWeap: {fileID: 0}
   atk: {fileID: 3651932565041545236}
   weaponSpriteR: {fileID: 3651932565548517001}
@@ -734,6 +739,7 @@ MonoBehaviour:
     maxNormalAngle: 0
   updateListDelay: 1
   enemyAggros: []
+  aggroDebugs: 0
 --- !u!114 &1731692030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -746,10 +752,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 525b9c806a9efe746af1572b85f0e5d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawRangeGizmos: 0
+  drawRangeGizmos: 1
   drawUpToXRange: 5
   fromColor: {r: 1, g: 1, b: 1, a: 1}
   toColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &505351514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3651932565041545233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc4889193e01ff049991799d9d5c28d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxCol: {fileID: 96031778}
+  colMask:
+    serializedVersion: 2
+    m_Bits: 256
+  skinWidth: 0.005
+  raysPerSeg: 3
+--- !u!114 &505351515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3651932565041545233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec4d4d96aed9c34ab849715a96c1c4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charMov: {fileID: 3651932565041545239}
+  playerTrans: {fileID: 3651932565041545238}
+  weapOrigTrans: {fileID: 3651932565724258071}
 --- !u!1 &3651932565309937593
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,9 +803,9 @@ GameObject:
   - component: {fileID: 3651932565309937597}
   - component: {fileID: 1451212341}
   - component: {fileID: 1451212342}
-  m_Layer: 15
+  m_Layer: 0
   m_Name: Character Knight
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

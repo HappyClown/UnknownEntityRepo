@@ -8,6 +8,13 @@ public class SetupOrder : MonoBehaviour
     public CreateWalkerLevelTiles walkerRoomGen;
     public PremadeRoomLevelGeneration premadeRoomLvlGen;
     public LevelGrid lvlGrid;
+    public bool AStarGridOnStart = false;
+
+    void Start() {
+        if (AStarGridOnStart) {
+            aGrid.SetupCreateGrid();
+        }
+    }
 
     void Update() {
         if (Input.GetKeyDown("c")) {
@@ -20,6 +27,9 @@ public class SetupOrder : MonoBehaviour
         }
         if (Input.GetKeyDown("b")) {
             StartCoroutine(SetupThree());
+        }
+        if (Input.GetKeyDown("n")) {
+            aGrid.SetupCreateGrid();
         }
     }
     IEnumerator SetupThree() {

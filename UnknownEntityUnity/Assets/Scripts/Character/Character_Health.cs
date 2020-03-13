@@ -7,5 +7,7 @@ public class Character_Health : MonoBehaviour
     public float maximumHealth;
     public  float currentHealth;
 
-    
+    public void TakeDamage(float damage) {
+        currentHealth -= damage;
+    }
 }

@@ -11,7 +11,7 @@ public class Character_AttackWeaponMotion : MonoBehaviour
     private float rotAngle, baseRotAngle;
     private float tarZEuler, iniZEuler, diffZEuler, curZEuler, rotTimer, finalAtkAngle;
     private bool atkWeapRot, passByZero;
-    private float weapAtkSpeed;
+    private float weapRotDur;
     [Header("Scripts")]
     public SO_WeaponBase weapon;
     public Character_AttackChain atkChain;
@@ -39,7 +39,7 @@ public class Character_AttackWeaponMotion : MonoBehaviour
         }
         // Rotate weapon to the other side simulating an attack.
         if (atkWeapRot) {
-            rotTimer += Time.deltaTime / (weapAtkSpeed/2);
+            rotTimer += Time.deltaTime / (weapRotDur/2);
             curZEuler = Mathf.LerpAngle(iniZEuler, tarZEuler, rotTimer);
             if (rotTimer >= 1f) {
                 if (passByZero) {
@@ -50,6 +50,7 @@ public class Character_AttackWeaponMotion : MonoBehaviour
                 }
                 else {
                     charAtk.readyToAtk = true;
+                    atkChain.ready = true;
                     atkWeapRot = false;
                     rotTimer = 0f;
                     curZEuler = tarZEuler;
@@ -63,7 +64,7 @@ public class Character_AttackWeaponMotion : MonoBehaviour
         }
     }
     // Instatly rotate the weapon to the other side.
-    public void WeaponMotion(float weaponAttackSpeed) {
+    public void WeaponMotion(float _weapRotDur) {
         if (weaponFlip) {
             rotAngle = weapon.rotationAngle;
             diffZEuler = -weapon.rotationDifference;
@@ -78,7 +79,7 @@ public class Character_AttackWeaponMotion : MonoBehaviour
         }
         resetWeapRot = false;
         rotTimer = 0f;
-        weapAtkSpeed = weaponAttackSpeed;
+        weapRotDur = _weapRotDur;
         atkWeapRot = true;
         weaponSpriteR.color= Color.white;
         iniZEuler = weaponTran.localEulerAngles.z;

@@ -12,8 +12,8 @@ public class SO_WeaponBase : ScriptableObject
     [System.Serializable]
     public class AttackChain {
          public float minDamage, maxDamage;
-        public float playerSlowDown, playerSlowDownDuration;
-        public float attackSpeed;
+        public float plyrSlowDown, plyrSlowDownDur, plyrMoveDist;
+        public float weapRotDur;
         public float attackLength;
         public float collisionStart, collisionEnd;
         public Sprite[] attackSprites;

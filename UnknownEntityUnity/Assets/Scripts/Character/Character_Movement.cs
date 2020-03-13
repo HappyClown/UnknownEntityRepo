@@ -50,7 +50,7 @@ public class Character_Movement : MonoBehaviour
         // Check for collisions.
         Vector3 curPosition = this.transform.position;
         Vector3 newPosition = curPosition + normalizedMovement * runSpeed * Time.deltaTime;
-        this.transform.position = colDetect.CollisionCheck(normalizedMovement, newPosition, curPosition);
+        MoveThePlayer(normalizedMovement, newPosition, curPosition);
         //this.transform.position = curPosition + normalizedMovement * runSpeed * Time.deltaTime;
     }
 
@@ -120,5 +120,9 @@ public class Character_Movement : MonoBehaviour
             animator.SetBool("RunForward", false);
             animator.SetBool("RunBackward", false);
         }
+    }
+
+    public void MoveThePlayer(Vector3 _normalizedMovement, Vector3 _newPosition, Vector3 _curPosition) {
+        this.transform.position = colDetect.CollisionCheck(_normalizedMovement, _newPosition, _curPosition);
     }
 }

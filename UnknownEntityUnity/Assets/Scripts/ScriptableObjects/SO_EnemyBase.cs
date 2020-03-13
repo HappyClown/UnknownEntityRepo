@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "New Enemy", menuName = "Enemy")]
 public class SO_EnemyBase : ScriptableObject
@@ -13,6 +14,8 @@ public class SO_EnemyBase : ScriptableObject
     public float atkRange;
     public float aggroRange;
     [Header("Movement")]
+    public Sprite walkingSprite;
+    public Sprite[] walkingSprites;
     public bool lerpTurnRotations;
     public float moveSpeed;
     public float turnSpeed = 3f;
@@ -22,7 +25,8 @@ public class SO_EnemyBase : ScriptableObject
     public float intelligence;
     [Header ("Animation")]
     public Sprite[] animSprites;
-    public float[] animTimings;
+    public float[] animEvents;
     public PolygonCollider2D atkCol;
     public int colTimingIndex;
+    public UnityEvent[] events;
 }
