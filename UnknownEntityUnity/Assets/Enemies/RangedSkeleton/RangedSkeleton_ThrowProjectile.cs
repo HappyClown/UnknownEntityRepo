@@ -5,6 +5,7 @@ using UnityEngine;
 public class RangedSkeleton_ThrowProjectile : MonoBehaviour
 {
     public Enemy_Refs eRefs;
+    public RangedSkeleton_Actions rsActions;
     public LayerMask blockLOSLayers;
     public SO_Projectile projSO;
     public ProjectilePool projPool;
@@ -22,6 +23,7 @@ public class RangedSkeleton_ThrowProjectile : MonoBehaviour
     public float[] spriteChanges;
     public float[] events;
     public SpriteRenderer spriteR;
+    float distToTargetSqr;
 
     void Start() {
         sqrAtkRange = eRefs.eSO.atkRange * eRefs.eSO.atkRange;
@@ -35,12 +37,12 @@ public class RangedSkeleton_ThrowProjectile : MonoBehaviour
     // Could make it check every X frames / seconds.
         while (true) {
             // Check if the target is within attack range.
-            float distToTargetSqr = (eRefs.plyrTrans.position - this.transform.position).sqrMagnitude;
+            distToTargetSqr = (eRefs.plyrTrans.position - this.transform.position).sqrMagnitude;
             if (distToTargetSqr <= sqrAtkRange) {
                 // Check to see if there are obstacles in the way.
                 if (!Physics2D.Raycast(this.transform.position, eRefs.plyrTrans.position - this.transform.position, eRefs.eSO.atkRange, blockLOSLayers)) {
-                    StartCoroutine(ThrowProjectileAction());
                     eRefs.unit.StopFollowPathCoroutine();
+                    StartCoroutine(ThrowProjectileAction());
                     break;
                 }
             }
@@ -69,7 +71,9 @@ public class RangedSkeleton_ThrowProjectile : MonoBehaviour
             yield return null;
         }
         StartCoroutine(Cooldown());
-        eRefs.unit.allowPathUpdate = true;
+        // Request movement type (run away, chase, idle if in atk range, etc), in this case it should be walking away from the player.
+        rsActions.RunAway();
+        //eRefs.unit.allowPathUpdate = true;
         yield return null;
     }    
 
@@ -85,6 +89,8 @@ public class RangedSkeleton_ThrowProjectile : MonoBehaviour
             cdTimer += Time.deltaTime;
             yield return null;
         }
+        //eRefs.unit.RequestPathToTarget(eRefs.plyrTrans.position);
+        eRefs.unit.allowPathUpdate = true;
         StartCoroutine(CheckDistance());
     }
 }

@@ -19,7 +19,7 @@ MonoBehaviour:
   attackCooldown: 0.5
   sprite: {fileID: 21300000, guid: dd10e113d8ae0464e925085ebf7b14cf, type: 3}
   atkRange: 1.1
-  aggroRange: 10
+  aggroRange: 20
   walkingSprite: {fileID: 21300000, guid: 46be00cc7cb7dae488eaa8fcbdeab919, type: 3}
   walkingSprites: []
   lerpTurnRotations: 1

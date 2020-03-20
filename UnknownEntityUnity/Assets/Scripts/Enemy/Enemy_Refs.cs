@@ -21,6 +21,10 @@ public class Enemy_Refs : MonoBehaviour
     // Squared distance to player.
     public float SqrDistToPlayer(Vector3 origin) {
         return (plyrTrans.position - origin).sqrMagnitude;
+    }    
+    // Distance to player.
+    public float DistToPlayer(Vector3 origin) {
+        return (plyrTrans.position - origin).magnitude;
     }
     // Direction normalized to player from given position.
     public Vector2 NormDirToPlayerV2(Vector3 origin) {

@@ -31,8 +31,8 @@ public class Pathfinding : MonoBehaviour
 
     // Get the shortest* path from a start position to a target position.
     IEnumerator FindPath(Vector3 startPos, Vector3 targetPos, float unitIntel) {
-        Stopwatch sw = new Stopwatch();
-        sw.Start();
+        //Stopwatch sw = new Stopwatch();
+        //sw.Start();
         Vector3[] waypoints = new Vector3[0];
         bool pathSuccess = false;
         // Get the node on which the start and target world positions are.
@@ -49,8 +49,8 @@ public class Pathfinding : MonoBehaviour
                 Node currentNode = openSet.RemoveFirst();
                 closedSet.Add(currentNode);
                 if (currentNode == targetNode) {
-                    sw.Stop();
-                    print ("Path Found: " + sw.ElapsedMilliseconds + "ms");
+                    //sw.Stop();
+                    //print ("Path Found: " + sw.ElapsedMilliseconds + "ms");
                     pathSuccess = true;
                     break;
                 }
@@ -79,6 +79,7 @@ public class Pathfinding : MonoBehaviour
             waypoints = RetracePath(startNode, targetNode);
         }
         requestManager.FinishedProcessingPath(waypoints, pathSuccess);
+        //print("FindPath; pathSuccess: "+pathSuccess);
     }
 
     Vector3[] RetracePath(Node startNode, Node endNode) {
@@ -243,7 +244,7 @@ public class Pathfinding : MonoBehaviour
             return 14 * dstX + 10 * (dstY - dstX);
         }
     }
-
+    #region Drawing Gizmos
     public void DrawWithGizmosPath(List<Node> pathNodes)
     {
         Gizmos.color = Color.yellow;
@@ -288,4 +289,5 @@ public class Pathfinding : MonoBehaviour
             DrawWithGizmosSamplePositions(posSampled);
         }
     }
+    #endregion
 }

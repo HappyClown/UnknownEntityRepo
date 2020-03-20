@@ -24,7 +24,7 @@ public class ShieldSkeleton : Enemy_Specific
     public float shieldUpRange = 2.5f, minShieldUpTime = 1f, shieldUpPlrRangeCheck = 0.5f;
     float shieldUpRangeSqr;
     bool shieldIsUp;
-    bool forceShieldDown = false;
+    //bool forceShieldDown = false;
 
     void Start() {
         shieldUpRangeSqr = shieldUpRange * shieldUpRange;

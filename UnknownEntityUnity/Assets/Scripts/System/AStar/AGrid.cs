@@ -159,6 +159,34 @@ public class AGrid : MonoBehaviour
         int y = Mathf.RoundToInt((gridSizeY - 1) * percentY);
         return grid[x,y];
     }
+    /// <summary>
+    /// Get the last available node in a given direction by stepping through one node at a time until a node is unwalkable returning the last available node or until the maximum number of steps has been reached returning the last node.
+    /// </summary>
+    /// <param name="normDirection">The direction to step in, should be the equivalent of Vector2.up/down/left/right.</param>
+    public Node AvailableSteps(Node node, Vector2Int normDirection, int MaxSteps) {
+        Vector2Int nodeGridCoord = new Vector2Int(node.gridX, node.gridY);
+        // Return null if the starting node is not walkable.
+        if (!node.walkable) {
+            return null;
+        }
+        Node lastWalkableNode = node;
+        // Start stepping in the given direction and checking to see if the nodes are walkable.
+        for (int i = 0; i < MaxSteps; i++) {
+            // Step in the direction.
+            nodeGridCoord += normDirection;
+            // If the node is not on the grid return the last walkable node.
+            if (nodeGridCoord.x < 0 || nodeGridCoord.x >= gridSizeX || nodeGridCoord.y < 0 || nodeGridCoord.y >= gridSizeY) {
+                return lastWalkableNode;
+            }
+            // Return the last walkable node if the current one isn't.
+            if (!grid[nodeGridCoord.x, nodeGridCoord.y].walkable) {
+                return lastWalkableNode;
+            }
+            // If the current node being checked is walkable, set it as the last walkable node and keep going.
+            lastWalkableNode = grid[nodeGridCoord.x, nodeGridCoord.y];
+        }
+        return null;
+    }
     // Draw stuff in the scene window.
     void OnDrawGizmos() {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, gridWorldSize.y, 1f));

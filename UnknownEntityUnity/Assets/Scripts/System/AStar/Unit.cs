@@ -11,11 +11,11 @@ public class Unit : MonoBehaviour
     public Transform thisEnemyTrans;
     public SO_EnemyBase enemy;
     public FlipObjectX flip;
-    public bool allowPathUpdate = true;
+    public bool allowPathUpdate = true, customPathRequested = false;
     public bool followOnStart;
     public bool followingPath;
     public float speedModifier = 1f;
-
+    public bool drawPathGizmos;
     Path path;
 
     void Start() {
@@ -25,7 +25,7 @@ public class Unit : MonoBehaviour
     }
 
     public void OnPathFound(Vector3[] waypoints, bool pathSuccessful) {
-        if (pathSuccessful && allowPathUpdate) {
+        if (pathSuccessful && (allowPathUpdate || customPathRequested)) {
             path = new Path(waypoints, transform.position, enemy.turnDst, enemy.slowDownDist);
             StopCoroutine("FollowPath");
             StartCoroutine("FollowPath");
@@ -37,27 +37,32 @@ public class Unit : MonoBehaviour
         if (Time.timeSinceLevelLoad < firstPathUpdateOnLevelLoad) {
             yield return new WaitForSeconds (firstPathUpdateOnLevelLoad);
         }
+        // Request a path.
         PathRequestManager.RequestPath(transform.position, target.position, enemy.intelligence, OnPathFound);
-        
         // Get the squared move threshold value(comparing squared magnitudes is faster then checking distance).
         float sqrMoveThreshold = pathUpdateMoveThreshold * pathUpdateMoveThreshold;
         Vector3 targetPosOld = target.position;
-        
+        // Start path update request loop. Insert different reasons to update path to target.
         while (true) {
             // Check if the path needs to be updated every X seconds based on how far the target has moved.
             yield return new WaitForSeconds (minPathUpdateTime);
             if (allowPathUpdate) {
+                customPathRequested = false;
                 // Check if the Player has moved enough to trigger a new path request.
                 if ((target.position - targetPosOld).sqrMagnitude > sqrMoveThreshold) {
+                    // Request a path.
                     PathRequestManager.RequestPath(transform.position, target.position, enemy.intelligence, OnPathFound);
+                    // Store the target's position when the path was requested.
                     targetPosOld = target.position;
                 }
             }
-            // else {
-            //     targetPosOld = target.position;
-            //     yield return null;
-            // }
         }
+    }
+
+    public void RequestPathToTarget(Vector3 _pathTarget) {
+        customPathRequested = true;
+        Vector3 xyTarget = new Vector3(_pathTarget.x, _pathTarget.y, target.position.z);
+        PathRequestManager.RequestPath(transform.position, xyTarget, enemy.intelligence, OnPathFound);
     }
 
     IEnumerator FollowPath() {
@@ -66,13 +71,14 @@ public class Unit : MonoBehaviour
         if (path.lookPoints.Length > 0) {
           transform.LookAt(path.lookPoints[0]);
         }
-
         float speedPercent = 1;
-
+        // if (path.turnBoundaries.Length < pathIndex) {
+        //     followingPath = false;
+        // }
         while (followingPath) {
             // Check to see if the unit has reached its destination.
             Vector2 pos2D = new Vector2(transform.position.x, transform.position.y);
-            while (path.turnBoundaries.Length > -1 && path.turnBoundaries[pathIndex].HasCrossedLine(pos2D)) {
+            while (path.turnBoundaries.Length > -1 && pathIndex <= path.turnBoundaries.Length-1 && path.turnBoundaries[pathIndex].HasCrossedLine(pos2D)) {
                 if (pathIndex >= path.finishLineIndex) {
                     followingPath = false;
                     pathIndex = 0;
@@ -84,26 +90,28 @@ public class Unit : MonoBehaviour
                     }
                 }
             }
-
+            if (pathIndex > path.lookPoints.Length-1) {
+                followingPath = false;
+            }
             if (followingPath) {
                 // Slow down when the enemy gets close to its target.
-                if (pathIndex >= path.slowDownIndex && enemy.slowDown && enemy.slowDownDist > 0) {
-                    speedPercent = Mathf.Clamp01(path.turnBoundaries[path.finishLineIndex].DistanceFromPoint(pos2D) / enemy.slowDownDist);
-                    if (speedPercent < 0.01f) {
-                        followingPath = false;
-                    }
-                }
+                // if (pathIndex >= path.slowDownIndex && enemy.slowDown && enemy.slowDownDist > 0) {
+                //     speedPercent = Mathf.Clamp01(path.turnBoundaries[path.finishLineIndex].DistanceFromPoint(pos2D) / enemy.slowDownDist);
+                //     if (speedPercent < 0.01f) {
+                //         followingPath = false;
+                //     }
+                // }
                 // Turn to face the next waypoint in the path.
                 // The turn sharpness or size is determined by the speed at which the unit rotates to look at the next point.
-                if (enemy.lerpTurnRotations) {
-                    Quaternion targetRotation = Quaternion.LookRotation(path.lookPoints[pathIndex] - transform.position);
-                    transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * enemy.turnSpeed);
-                    transform.rotation = targetRotation;
-                }
+                // if (enemy.lerpTurnRotations) {
+                //     Quaternion targetRotation = Quaternion.LookRotation(path.lookPoints[pathIndex] - transform.position);
+                //     transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * enemy.turnSpeed);
+                //     transform.rotation = targetRotation;
+                // }
                 // Instantly turn to towards the next point.
-                else {
+                //else {
                     transform.forward = path.lookPoints[pathIndex] - transform.position;
-                }
+                //}
                 // Movement.
                 transform.Translate(Vector3.forward * Time.deltaTime * enemy.moveSpeed * speedModifier * speedPercent, Space.Self);
                 flip.Flip();
@@ -120,7 +128,7 @@ public class Unit : MonoBehaviour
     }
 
     public void OnDrawGizmos() {
-        if (path != null) {
+        if (drawPathGizmos && path != null) {
             path.DrawWithGizmos();
         }
     }
