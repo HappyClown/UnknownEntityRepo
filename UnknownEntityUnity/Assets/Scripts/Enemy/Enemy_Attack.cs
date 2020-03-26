@@ -33,11 +33,11 @@ public class Enemy_Attack : MonoBehaviour
             // Check if im not already attacking. Set back to true in the coroutine.
             if (!attacking) {
                 // Check if the target is within attack range.
-                float distToTargetSqr = (eRefs.plyrTrans.position - this.transform.position).sqrMagnitude;
+                float distToTargetSqr = (eRefs.PlayerPos - this.transform.position).sqrMagnitude;
                 float sqrAtkRange = eRefs.eSO.atkRange * eRefs.eSO.atkRange;
                 if (distToTargetSqr <= sqrAtkRange) {
                     // Check to see if there are obstacles in the way.
-                    if (!Physics2D.Raycast(this.transform.position, eRefs.plyrTrans.position - this.transform.position, eRefs.eSO.atkRange, blockLOSLayers)) {
+                    if (!Physics2D.Raycast(this.transform.position, eRefs.PlayerPos - this.transform.position, eRefs.eSO.atkRange, blockLOSLayers)) {
                         // Trigger Attack coroutine.
                         StartCoroutine(Attack());
                     }
@@ -52,11 +52,11 @@ public class Enemy_Attack : MonoBehaviour
     IEnumerator Attack() {
         attacking = true;
         // Stop following path to Player which also stops all movement.
-        eRefs.unit.StopFollowPathCoroutine();
+        eRefs.eFollowPath.StopAllMovementCoroutines();
         float timer = 0f;
         int animIndex = 0;
         // Get the attack direction as soon as the attack is triggered.
-        attackDir = eRefs.NormDirToPlayerV2(atkOrigin.position);
+        attackDir = eRefs.NormDirToTargetV2(atkOrigin.position, eRefs.PlayerPos);
         //Debug.DrawLine(target.position, this.transform.position, Color.magenta, enemy.animTimings[enemy.animSprites.Length-1]);
         // Timer based attack loop.
         while (attacking) {
@@ -96,7 +96,7 @@ public class Enemy_Attack : MonoBehaviour
     void ExitAttackReset() {
         //myCol.enabled = false;
         colliderOn = false;
-        eRefs.unit.allowPathUpdate = true;
+        eRefs.eFollowPath.allowPathUpdate = true;
         attacking = false;
         cooldownTimer = 0f;
     }

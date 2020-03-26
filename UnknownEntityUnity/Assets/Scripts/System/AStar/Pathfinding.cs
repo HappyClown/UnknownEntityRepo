@@ -15,6 +15,8 @@ public class Pathfinding : MonoBehaviour
     bool pathHasPenalty;
     public bool drawPathFindingGizmos;
     public LayerMask losLayerMask;
+    static Pathfinding thisScript;
+    Vector3 posOnPath;
 
     void Awake() {
         if (requestManager == null) {
@@ -23,6 +25,7 @@ public class Pathfinding : MonoBehaviour
         if (aGrid == null) {
             aGrid = this.GetComponent<AGrid>();
         }
+        thisScript = this;
     }
 
     public void StartFindPath(Vector3 startPos, Vector3 targetPos, float unitIntel) {
@@ -94,14 +97,24 @@ public class Pathfinding : MonoBehaviour
 
         while (currentNode != startNode) {
             path.Add(currentNode);
-
+            if (path.Count >= 50) {
+                print("Node count in path has passed 50.");
+                break;
+            }
             //nodeAmnt++;
             totalPathCost += (10 + currentNode.movementPenalty);
             if (currentNode.movementPenalty != 0) {
                 pathHasPenalty = true;
             }
-
+            if (currentNode == currentNode.parent) {
+                print("Node parent was = to this node.");
+                break;
+            }
             currentNode = currentNode.parent;
+            if (path[path.Count-1] == currentNode) {
+                print("Put the same node in twice in a row.");
+                break;
+            }
         }
 
         //print("Total path cost: " + totalPathCost);
@@ -228,6 +241,72 @@ public class Pathfinding : MonoBehaviour
         //print("LOS Sampling Total Sample Amount: " + totalSampleAmnt);
         //print("LOS Sampling Total Cost: " + totalCost);
         return totalCost;
+    }
+    
+    // Get a postion along a path at distance X from startPos along a path heading towards targetPos.
+    public static Vector3 GetDistAlongPath(Vector3 startPos, Vector3 targetPos, float distFromStart, float unitIntel) {
+        thisScript.posOnPath = Vector3.zero;
+        // Start a coroutine that sets the posOnPath value.
+        thisScript.StartCoroutine(thisScript.FindDistAlongPath(startPos, targetPos, distFromStart, unitIntel));
+        return thisScript.posOnPath;
+    }
+    IEnumerator FindDistAlongPath(Vector3 startPos, Vector3 targetPos, float distFromStart, float unitIntel) {
+        bool pathSuccess = false;
+        // Get the node on which the start and target world positions are.
+        Node startNode = aGrid.NodeFromWorldPoint(startPos);
+        Node targetNode = aGrid.NodeFromWorldPoint(targetPos);
+        float dist = 0f;
+        Vector3 position = Vector3.zero;
+        
+        if (targetNode.walkable)  {
+            Heap<Node> openSet = new Heap<Node>(aGrid.MaxSize);
+            HashSet<Node> closedSet = new HashSet<Node>();
+            openSet.Add(startNode);
+            
+            while (openSet.Count > 0) {
+                Node currentNode = openSet.RemoveFirst();
+                closedSet.Add(currentNode);
+                // Add the node radius*2 everytime a new node is added to the closed set. Radius*2 everytime because it can only move in a cross pattern.
+                dist += aGrid.nodeRadius*2;
+                // The path has reached the requested distance.
+                if (dist >= distFromStart) {
+                    position = currentNode.worldPos;
+                    pathSuccess = true;
+                    break;
+                }
+                else if (currentNode == targetNode) {
+                    position = targetNode.worldPos;
+                    pathSuccess = true;
+                    break;
+                }
+                foreach( Node neighbour in aGrid.GetNeighbours(currentNode)) {
+                    // If the node is Not walkable or if the path already contains the node, continue checking the next neighbour.
+                    if (!neighbour.walkable || closedSet.Contains(neighbour)) {
+                        continue;
+                    }
+                    // Calculate the movement cost to this neighbour including movement penalty.
+                    int newMovementCostToNeighbour = currentNode.gCost + GetDistance(currentNode, neighbour) + Mathf.RoundToInt(neighbour.movementPenalty * unitIntel);
+                    if (newMovementCostToNeighbour < neighbour.gCost || !openSet.Contains(neighbour)) {
+                        neighbour.gCost = newMovementCostToNeighbour;
+                        neighbour.hCost = GetDistance(neighbour, targetNode);
+                        neighbour.parent = currentNode;
+                        if (!openSet.Contains(neighbour)) {
+                            openSet.Add(neighbour);
+                        }
+                        else {
+                            openSet.UpdateItem(neighbour);
+                        }
+                    }
+                }
+            }
+        }
+        if (pathSuccess) {
+            posOnPath = position;
+            yield return null;
+        }
+        else {
+            UnityEngine.Debug.LogError("Something went wrong when trying to request a point along a path.");
+        }
     }
 
     // Get a value for the distance on the grid from A to B, diagonals being worth 14 and horizontals/verticals being worth 10.

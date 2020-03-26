@@ -6,7 +6,7 @@ public class Enemy_WalkAnim : MonoBehaviour
 {
     public Enemy_Refs eRefs;
     void Update() {
-        if (eRefs.unit.followingPath) {
+        if (eRefs.eFollowPath.followingPath) {
             eRefs.eSpriteR.sprite = eRefs.walkingSprite;
         }
     }

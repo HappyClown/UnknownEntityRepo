@@ -4,7 +4,6 @@ using UnityEngine;
 public class ShieldSkeleton_ShieldBash : MonoBehaviour
 {
     public Enemy_Refs eRefs;
-    public LayerMask blockLOSLayers;
     public ShieldSkeleton_ShieldUp ssShieldUp;
     [Header("ShieldBash Attack")]
     public SpriteRenderer atkSpriteR;
@@ -39,12 +38,12 @@ public class ShieldSkeleton_ShieldBash : MonoBehaviour
     IEnumerator CheckDistance() {
         while (true) {
             // Check if the target is within attack range.
-            float distToTargetSqr = (eRefs.plyrTrans.position - this.transform.position).sqrMagnitude;
+            float distToTargetSqr = (eRefs.PlayerPos - this.transform.position).sqrMagnitude;
             if (distToTargetSqr <= sqrAtkRange) {
                 // Check to see if there are obstacles in the way.
-                if (!Physics2D.Raycast(this.transform.position, eRefs.plyrTrans.position - this.transform.position, eRefs.eSO.atkRange, blockLOSLayers)) {
+                if (!Physics2D.Raycast(this.transform.position, eRefs.PlayerPos - this.transform.position, eRefs.eSO.atkRange, eRefs.losLayerMask)) {
                     StartCoroutine(ShieldBash());
-                    eRefs.unit.StopFollowPathCoroutine();
+                    eRefs.eFollowPath.StopAllMovementCoroutines();
                     break;
                 }
             }
@@ -56,7 +55,7 @@ public class ShieldSkeleton_ShieldBash : MonoBehaviour
         float timer = 0f;
         int spriteStep = 0;
         int eventStep = 0;
-        attackDir = eRefs.NormDirToPlayerV2(shieldTrans.position);
+        attackDir = eRefs.NormDirToTargetV2(shieldTrans.position, eRefs.PlayerPos);
         while (timer < totalDuration) {
             timer += Time.deltaTime;
             if (spriteStep < spriteChanges.Length && timer > spriteChanges[spriteStep]) {
@@ -75,14 +74,14 @@ public class ShieldSkeleton_ShieldBash : MonoBehaviour
         }
         StartCoroutine(Cooldown());
         ssShieldUp.AllowShieldUp();
-        eRefs.unit.allowPathUpdate = true;
+        eRefs.eFollowPath.allowPathUpdate = true;
     }
 
     public void SetupEnemyMovement() {
         atkDirNorm = attackDir.normalized;
         startMovePos = this.transform.position;
         endMovePos = (Vector2)this.transform.position + atkDirNorm*moveDist;
-        eRefs.unit.flip.PredictFlip(startMovePos, endMovePos);
+        eRefs.eFollowPath.flip.PredictFlip(startMovePos, endMovePos);
         StartCoroutine(Movement());
     }
 

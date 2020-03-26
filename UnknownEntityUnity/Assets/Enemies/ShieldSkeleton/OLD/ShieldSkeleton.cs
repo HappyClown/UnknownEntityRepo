@@ -48,7 +48,7 @@ public class ShieldSkeleton : Enemy_Specific
         // Slow down movement speed, reduce damage taken, change walking anim.
         shieldIsUp = true;
         eRefs.walkingSprite = shieldUpSprite;
-        eRefs.unit.speedModifier *= shieldUpSpeedMod;
+        eRefs.eFollowPath.speedModifier *= shieldUpSpeedMod;
         eRefs.eHealth.damageModifier *= shieldUpDamageMod;
         StartCoroutine(Shielded());
     }
@@ -56,7 +56,7 @@ public class ShieldSkeleton : Enemy_Specific
         // Reverse movement slow down, reverse damage reduction, change walking anim.
         shieldIsUp = false;
         eRefs.walkingSprite = eRefs.eSO.walkingSprite;
-        eRefs.unit.speedModifier /= shieldUpSpeedMod;
+        eRefs.eFollowPath.speedModifier /= shieldUpSpeedMod;
         eRefs.eHealth.damageModifier /= shieldUpDamageMod;
     }
     IEnumerator Shielded() {
@@ -66,7 +66,7 @@ public class ShieldSkeleton : Enemy_Specific
             // Minimum amount of time spent with shield up.
             if (timer > minShieldUpTime) {
                 // Check if the target is within ShieldUp range.
-                if (eRefs.SqrDistToPlayer(this.transform.position) > shieldUpRangeSqr) {
+                if (eRefs.SqrDistToTarget(this.transform.position, eRefs.PlayerPos) > shieldUpRangeSqr) {
                     ShieldDown();
                     break;
                 }
@@ -91,7 +91,7 @@ public class ShieldSkeleton : Enemy_Specific
         //atkDirNorm = eRefs.eAtk.attackDir.normalized;
         startMovePos = this.transform.position;
         endMovePos = (Vector2)this.transform.position + atkDirNorm*moveDist;
-        eRefs.unit.flip.PredictFlip(startMovePos, endMovePos);
+        eRefs.eFollowPath.flip.PredictFlip(startMovePos, endMovePos);
         StartCoroutine(ShieldBashMovement());
     }
     IEnumerator ShieldBashSwing() {

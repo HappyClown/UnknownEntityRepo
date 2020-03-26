@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy_Actions : MonoBehaviour
 {
+    public bool defended;
     public virtual void StartChecks(){
         print("This is from the BASE class. There is most likely a problem here.");
     }

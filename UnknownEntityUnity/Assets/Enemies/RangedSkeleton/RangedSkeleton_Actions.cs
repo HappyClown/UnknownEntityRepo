@@ -7,6 +7,7 @@ public class RangedSkeleton_Actions : Enemy_Actions
 {
     public RangedSkeleton_ThrowProjectile throwProj;
     public Enemy_Refs eRefs;
+    // To be transfered into modular scripts and referenced to allow multiple enemies to access this functionality.
     public LayerMask runlayers;
     public bool runAwayDebugs;
     public Transform circleCastVisualizer;
@@ -31,7 +32,7 @@ public class RangedSkeleton_Actions : Enemy_Actions
         sw.Start();
         Vector2 targetPos = Vector2.zero;
         Vector2 prevDir = Vector2.zero;
-        Vector2 plyrPos = eRefs.plyrTrans.position;
+        Vector2 plyrPos = eRefs.PlayerPos;
         Vector2 oppositeDirNorm = (plyrPos - (Vector2)this.transform.position).normalized * -1;
         RaycastHit2D hit, lastHit;
         // Change the circle cast radius to be set in the inspector (it should ?always? match or be slightly bigger then node radius.)
@@ -59,7 +60,7 @@ public class RangedSkeleton_Actions : Enemy_Actions
                 cWiseTestPos = targetPos + cWisePerpenDir;
                 counterCWiseTestPos = targetPos + counterCWisePerpenDir;
                 // Try clockwise.
-                if (eRefs.DistToPlayer(cWiseTestPos) > eRefs.DistToPlayer(counterCWiseTestPos) && !Physics2D.Raycast(targetPos, cWisePerpenDir, aGridNodeDiam, runlayers)) {
+                if (eRefs.DistToTarget(cWiseTestPos, eRefs.PlayerPos) > eRefs.DistToTarget(counterCWiseTestPos, eRefs.PlayerPos) && !Physics2D.Raycast(targetPos, cWisePerpenDir, aGridNodeDiam, runlayers)) {
                     if (runAwayDebugs) {
                         UnityEngine.Debug.DrawRay(targetPos, cWisePerpenDir*aGridNodeDiam, Color.cyan, 5f);
                         print("Chose to shoot clockwise.");
@@ -96,7 +97,7 @@ public class RangedSkeleton_Actions : Enemy_Actions
             targetPos = (Vector2)this.transform.position + oppositeDirNorm*distLeft;
         }
         if (runAwayDebugs) circleCastVisualizers[loopCount].position = new Vector3(targetPos.x, targetPos.y, circleCastVisualizer.position.z);
-        eRefs.unit.RequestPathToTarget(targetPos);
+        eRefs.eFollowPath.RequestPathToTarget(targetPos);
         sw.Stop();
         print("The run away target postiion took: "+sw.ElapsedMilliseconds+"ms to determine.");
     }

@@ -37,11 +37,11 @@ public class RangedSkeleton_ThrowProjectile : MonoBehaviour
     // Could make it check every X frames / seconds.
         while (true) {
             // Check if the target is within attack range.
-            distToTargetSqr = (eRefs.plyrTrans.position - this.transform.position).sqrMagnitude;
+            distToTargetSqr = (eRefs.PlayerPos - this.transform.position).sqrMagnitude;
             if (distToTargetSqr <= sqrAtkRange) {
                 // Check to see if there are obstacles in the way.
-                if (!Physics2D.Raycast(this.transform.position, eRefs.plyrTrans.position - this.transform.position, eRefs.eSO.atkRange, blockLOSLayers)) {
-                    eRefs.unit.StopFollowPathCoroutine();
+                if (!Physics2D.Raycast(this.transform.position, eRefs.PlayerPos - this.transform.position, eRefs.eSO.atkRange, blockLOSLayers)) {
+                    eRefs.eFollowPath.StopAllMovementCoroutines();
                     StartCoroutine(ThrowProjectileAction());
                     break;
                 }
@@ -55,7 +55,7 @@ public class RangedSkeleton_ThrowProjectile : MonoBehaviour
         float timer = 0f;
         int spriteStep = 0;
         int eventStep = 0;
-        projDirNorm = eRefs.NormDirToPlayerV2(projOriginTrans.position);
+        projDirNorm = eRefs.NormDirToTargetV2(projOriginTrans.position, eRefs.PlayerPos);
         while (timer < totalDuration) {
             timer += Time.deltaTime;
             if (spriteStep < spriteChanges.Length && timer > spriteChanges[spriteStep]) {
@@ -89,8 +89,8 @@ public class RangedSkeleton_ThrowProjectile : MonoBehaviour
             cdTimer += Time.deltaTime;
             yield return null;
         }
-        //eRefs.unit.RequestPathToTarget(eRefs.plyrTrans.position);
-        eRefs.unit.allowPathUpdate = true;
+        //eRefs.unit.RequestPathToTarget(eRefs.PlayerPos);
+        eRefs.eFollowPath.allowPathUpdate = true;
         StartCoroutine(CheckDistance());
     }
 }

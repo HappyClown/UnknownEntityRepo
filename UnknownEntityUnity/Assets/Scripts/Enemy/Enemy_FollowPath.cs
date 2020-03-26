@@ -2,21 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit : MonoBehaviour
+public class Enemy_FollowPath : MonoBehaviour
 {
     const float firstPathUpdateOnLevelLoad = 0.5f;
     const float minPathUpdateTime = 0.2f;
     const float pathUpdateMoveThreshold = 0.5f;
     public Transform target;
     public Transform thisEnemyTrans;
+    public float stopRangeToTarget;
+    public bool directlyMovingtoTarget;
+    Vector3 directTargetPos;
     public SO_EnemyBase enemy;
     public FlipObjectX flip;
+    public Enemy_Refs eRefs;
     public bool allowPathUpdate = true, customPathRequested = false;
     public bool followOnStart;
     public bool followingPath;
     public float speedModifier = 1f;
     public bool drawPathGizmos;
     Path path;
+    // Direct move stuff.
+    // Check line of sight between this enemy and the target wit ha circle cast the size of this enemy's collision.
 
     void Start() {
         if (followOnStart) {
@@ -47,9 +53,24 @@ public class Unit : MonoBehaviour
             // Check if the path needs to be updated every X seconds based on how far the target has moved.
             yield return new WaitForSeconds (minPathUpdateTime);
             if (allowPathUpdate) {
+                // Cancel custom path request authorization.
                 customPathRequested = false;
                 // Check if the Player has moved enough to trigger a new path request.
                 if ((target.position - targetPosOld).sqrMagnitude > sqrMoveThreshold) {
+                    // Check to see if a direct line of sight exists to the target. (Ignores Movement slowdown fields)
+                    if (!CheckDirectMoveToTarget()) {
+                        print ("Direct line of sight available, do not request path, walk directly towards target.");
+                        StopCoroutine(FollowPath());
+                        followingPath = false;
+                        StopCoroutine(DirectMoveToTarget());
+                        directlyMovingtoTarget = false;
+                        yield return null;
+                        StartCoroutine(DirectMoveToTarget());
+                        targetPosOld = target.position;
+                        continue;
+                    }
+                    StopCoroutine("DirectMoveToTarget");
+                    directlyMovingtoTarget = false;
                     // Request a path.
                     PathRequestManager.RequestPath(transform.position, target.position, enemy.intelligence, OnPathFound);
                     // Store the target's position when the path was requested.
@@ -57,6 +78,29 @@ public class Unit : MonoBehaviour
                 }
             }
         }
+    }
+
+    bool CheckDirectMoveToTarget() {
+        if (eRefs.CircleCastLOSToTarget(thisEnemyTrans.position, target.position, 0.25f).collider != null) {
+            print ("Something was hit by the circle cast, returning: true");
+            print(eRefs.CircleCastLOSToTarget(thisEnemyTrans.position, target.position, 0.25f).collider.gameObject.name);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    IEnumerator DirectMoveToTarget() {
+        directlyMovingtoTarget = true;
+        transform.forward = target.position - thisEnemyTrans.position;
+        directTargetPos = target.position;
+        while (directlyMovingtoTarget && eRefs.DistToTarget(thisEnemyTrans.position, directTargetPos) > stopRangeToTarget) {
+            print("Ping, direct move to target is running.");
+            transform.Translate(Vector3.forward * Time.deltaTime * enemy.moveSpeed * speedModifier, Space.Self);
+            flip.Flip();
+            yield return null;
+        }
+        directlyMovingtoTarget = false;
     }
 
     public void RequestPathToTarget(Vector3 _pathTarget) {
@@ -101,30 +145,20 @@ public class Unit : MonoBehaviour
                 //         followingPath = false;
                 //     }
                 // }
-                // Turn to face the next waypoint in the path.
-                // The turn sharpness or size is determined by the speed at which the unit rotates to look at the next point.
-                // if (enemy.lerpTurnRotations) {
-                //     Quaternion targetRotation = Quaternion.LookRotation(path.lookPoints[pathIndex] - transform.position);
-                //     transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * enemy.turnSpeed);
-                //     transform.rotation = targetRotation;
-                // }
-                // Instantly turn to towards the next point.
-                //else {
-                    transform.forward = path.lookPoints[pathIndex] - transform.position;
-                //}
+                transform.forward = path.lookPoints[pathIndex] - transform.position;
                 // Movement.
                 transform.Translate(Vector3.forward * Time.deltaTime * enemy.moveSpeed * speedModifier * speedPercent, Space.Self);
                 flip.Flip();
-                //thisEnemyTrans.position = new Vector3(this.transform.position.x, this.transform.position.y, thisEnemyTrans.position.z);
             }
             yield return null;
         }
     }
 
-    public void StopFollowPathCoroutine() {
+    public void StopAllMovementCoroutines() {
         StopCoroutine("FollowPath");
-        allowPathUpdate = false;
         followingPath = false;
+        directlyMovingtoTarget = false;
+        allowPathUpdate = false;
     }
 
     public void OnDrawGizmos() {

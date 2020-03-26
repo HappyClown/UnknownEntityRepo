@@ -36,15 +36,15 @@ public class Enemy_Aggro : MonoBehaviour
         aggroRangeSqr = eRefs.eSO.aggroRange * eRefs.eSO.aggroRange;
         while(checkingAggro) {
             if (aggroDebugs) Debug.Log("Enemy: " + this.name + " just checked aggro.");
-            float distToTargetSqr = eRefs.SqrDistToPlayer(this.transform.position);
+            float distToTargetSqr = eRefs.SqrDistToTarget(this.transform.position, eRefs.PlayerPos);
             // Check if the Player is within aggro range.
             if (distToTargetSqr < aggroRangeSqr) {
-                if (aggroDebugs)Debug.DrawRay(this.transform.position, eRefs.NormDirToPlayerV2(this.transform.position)*eRefs.DistToPlayer(this.transform.position), Color.green, 0.5f);
+                if (aggroDebugs)Debug.DrawRay(this.transform.position, eRefs.NormDirToTargetV2(this.transform.position, eRefs.PlayerPos)*eRefs.DistToTarget(this.transform.position, eRefs.PlayerPos), Color.green, 0.5f);
                 // If I dont hit anything that blocks line of sight, aggro.
-                if (!Physics2D.Raycast(this.transform.position, eRefs.NormDirToPlayerV2(this.transform.position), eRefs.DistToPlayer(this.transform.position), blockLOSLayers)) {
-                    //Enemy has aggroed its target, request first path.
-                    eRefs.unit.StartCoroutine(eRefs.unit.UpdatePath());
+                if (!Physics2D.Raycast(this.transform.position, eRefs.NormDirToTargetV2(this.transform.position, eRefs.PlayerPos), eRefs.DistToTarget(this.transform.position, eRefs.PlayerPos), blockLOSLayers)) {
                     eRefs.eAction.StartChecks();
+                    //Enemy has aggroed its target, request first path.
+                    eRefs.eFollowPath.StartCoroutine(eRefs.eFollowPath.UpdatePath());
                     checkingAggro = false;
                     coroutineRunning = false;
                     aggroed = true;

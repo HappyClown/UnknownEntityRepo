@@ -23,7 +23,7 @@ MonoBehaviour:
   walkingSprite: {fileID: 21300000, guid: 46be00cc7cb7dae488eaa8fcbdeab919, type: 3}
   walkingSprites: []
   lerpTurnRotations: 1
-  moveSpeed: 1
+  moveSpeed: 1.2
   turnSpeed: 5
   turnDst: 0
   slowDown: 1

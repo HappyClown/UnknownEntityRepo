@@ -720,8 +720,8 @@ GameObject:
   - component: {fileID: 3690657262318137123}
   - component: {fileID: 3690657262318137120}
   - component: {fileID: 3690657262318137147}
-  - component: {fileID: 3690657262318137127}
   - component: {fileID: 3690657262318137124}
+  - component: {fileID: 1990586592331264952}
   - component: {fileID: 3690657262318137126}
   - component: {fileID: 3690657262318137125}
   m_Layer: 0
@@ -761,7 +761,10 @@ MonoBehaviour:
   walkingSprite: {fileID: 21300000, guid: 46be00cc7cb7dae488eaa8fcbdeab919, type: 3}
   plyrTrans: {fileID: 0}
   eSpriteR: {fileID: 3690657262526239119}
-  unit: {fileID: 3690657262318137127}
+  losLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  eFollowPath: {fileID: 1990586592331264952}
   eWalkAnim: {fileID: 3690657262318137124}
   eAggro: {fileID: 7060817331708994764}
   eAction: {fileID: 3690657262318137126}
@@ -783,28 +786,6 @@ MonoBehaviour:
   transToFlip: {fileID: 3690657262526239118}
   lastPos: {x: 0, y: 0, z: 0}
   curPos: {x: 0, y: 0, z: 0}
---- !u!114 &3690657262318137127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3690657262318137121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30c2629ebd9f5bb4db14598af973e275, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  thisEnemyTrans: {fileID: 3690657262526239118}
-  enemy: {fileID: 11400000, guid: a0d0f8b4e0debe940b80ae28dd837868, type: 2}
-  flip: {fileID: 3690657262318137147}
-  allowPathUpdate: 1
-  customPathRequested: 0
-  followOnStart: 0
-  followingPath: 0
-  speedModifier: 1
-  drawPathGizmos: 0
 --- !u!114 &3690657262318137124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -818,6 +799,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eRefs: {fileID: 3690657262318137120}
+--- !u!114 &1990586592331264952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3690657262318137121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274de41fdf784204ca3a0452c3729cfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  thisEnemyTrans: {fileID: 3690657262526239118}
+  stopRangeToTarget: 3
+  directlyMovingtoTarget: 0
+  enemy: {fileID: 11400000, guid: a0d0f8b4e0debe940b80ae28dd837868, type: 2}
+  flip: {fileID: 3690657262318137147}
+  eRefs: {fileID: 3690657262318137120}
+  allowPathUpdate: 1
+  customPathRequested: 0
+  followOnStart: 0
+  followingPath: 0
+  speedModifier: 1
+  drawPathGizmos: 0
 --- !u!114 &3690657262318137126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -830,6 +836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d414384a8379a3d4cbc295e7f9dea9ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defended: 0
   throwProj: {fileID: 3690657262318137125}
   eRefs: {fileID: 3690657262318137120}
   runlayers:
@@ -868,18 +875,18 @@ MonoBehaviour:
   projSO: {fileID: 11400000, guid: 68dcb3e1b943bc541a7aeceb5d1715d6, type: 2}
   projPool: {fileID: 0}
   projOriginTrans: {fileID: 3690657260970495836}
-  cooldown: 2
-  totalDuration: 2
+  cooldown: 0.5
+  totalDuration: 1
   sprites:
   - {fileID: 21300000, guid: b23c15767abbac347a592cab42cf3cb7, type: 3}
   - {fileID: 21300000, guid: bc42f0c307eca8a4e8e47f07cb148e88, type: 3}
   - {fileID: 21300000, guid: b1199e49672d7d247aa091203ebd6c40, type: 3}
   spriteChanges:
   - 0
-  - 0.75
-  - 1
+  - 0.4
+  - 0.6
   events:
-  - 0.75
+  - 0.4
   spriteR: {fileID: 3690657262526239119}
 --- !u!1 &3690657262389814623
 GameObject:
