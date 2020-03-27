@@ -1960,6 +1960,7 @@ Transform:
   - {fileID: 1575402232}
   - {fileID: 1885131846}
   - {fileID: 1756619790}
+  - {fileID: 1703893328}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4336,6 +4337,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1703893327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1703893328}
+  m_Layer: 0
+  m_Name: Enemy FSM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1703893328
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703893327}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 897245182}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1731221977
 GameObject:
   m_ObjectHideFlags: 0
@@ -6195,12 +6226,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3651932565041545239, guid: bc40ee15b36568b448b6a93e952115c9,
+    - target: {fileID: 3651932565041545236, guid: bc40ee15b36568b448b6a93e952115c9,
         type: 3}
       propertyPath: moIn
       value: 
       objectReference: {fileID: 740239758}
-    - target: {fileID: 3651932565041545236, guid: bc40ee15b36568b448b6a93e952115c9,
+    - target: {fileID: 3651932565041545239, guid: bc40ee15b36568b448b6a93e952115c9,
         type: 3}
       propertyPath: moIn
       value: 
@@ -6221,12 +6252,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 05700d58c4d139248adeaf881378aca2,
         type: 2}
-    - target: {fileID: 3651932565548517001, guid: bc40ee15b36568b448b6a93e952115c9,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c83232dabb2a6784cb5470771bf9b9f0,
-        type: 3}
     - target: {fileID: 396231391011437111, guid: bc40ee15b36568b448b6a93e952115c9,
         type: 3}
       propertyPath: aggroDebugs
@@ -6241,6 +6266,12 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 3651932565548517001, guid: bc40ee15b36568b448b6a93e952115c9,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c83232dabb2a6784cb5470771bf9b9f0,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc40ee15b36568b448b6a93e952115c9, type: 3}
 --- !u!1001 &6424536112248385131
