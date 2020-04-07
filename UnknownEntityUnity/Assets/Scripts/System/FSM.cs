@@ -6,6 +6,7 @@ public class FSM : MonoBehaviour
 {
     public delegate void Del();
     public Del activeState;
+    public Del prevState;
 
     public void SetActiveState(Del newState) {
         activeState = newState;

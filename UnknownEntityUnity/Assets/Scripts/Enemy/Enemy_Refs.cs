@@ -25,7 +25,7 @@ public class Enemy_Refs : MonoBehaviour
     }
 
     // Check circle cast line of sight to target or up to distance if specified.
-    public RaycastHit2D CircleCastLOSToTarget(Vector3 origin, Vector3 target, float radius, float distance=0) {
+    public RaycastHit2D CircleCastLOSToTarget(Vector2 origin, Vector2 target, float radius, float distance=0) {
         float dist;
         if (distance > 0) {
             dist = distance;
@@ -37,16 +37,16 @@ public class Enemy_Refs : MonoBehaviour
         return hit;
     }
     // Squared distance to target.
-    public float SqrDistToTarget(Vector3 origin, Vector3 target) {
+    public float SqrDistToTarget(Vector2 origin, Vector2 target) {
         return (target - origin).sqrMagnitude;
     }    
     // Distance to target.
-    public float DistToTarget(Vector3 origin, Vector3 target) {
+    public float DistToTarget(Vector2 origin, Vector2 target) {
         return (target - origin).magnitude;
     }
     // Direction normalized to player from given position.
-    public Vector2 NormDirToTargetV2(Vector3 origin, Vector3 target) {
-        return ((Vector2)target - (Vector2)origin).normalized;
+    public Vector2 NormDirToTargetV2(Vector2 origin, Vector2 target) {
+        return (target - origin).normalized;
     }
 
 

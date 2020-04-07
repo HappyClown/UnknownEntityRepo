@@ -7,6 +7,7 @@ public class ShieldSkeleton_ShieldUp : MonoBehaviour
     public Enemy_Refs eRefs;
     [Header("ShieldUp Special")]
     public Sprite shieldUpSprite;
+    public SpriteRenderer shieldSpriteR;
     [Range(0,1)]
     public float shieldUpSpeedMod = 0.5f;
     [Range(0,1)]
@@ -14,9 +15,9 @@ public class ShieldSkeleton_ShieldUp : MonoBehaviour
     public float shieldUpRange = 2.5f, minShieldUpTime = 1f, shieldUpPlrRangeCheck = 0.5f;
     public float shieldUpCooldown;
     float shieldUpRangeSqr;
-    bool shieldIsUp;
+    public bool shieldIsUp;
     bool onCooldown;
-    bool forceShieldDown = false;
+    public bool forceShieldDown = false;
 
     void Start() {
         shieldUpRangeSqr = shieldUpRange * shieldUpRange;
@@ -32,7 +33,8 @@ public class ShieldSkeleton_ShieldUp : MonoBehaviour
     void ShieldUp() {
         // Slow down movement speed, reduce damage taken, change walking anim.
         shieldIsUp = true;
-        eRefs.walkingSprite = shieldUpSprite;
+        //eRefs.walkingSprite = shieldUpSprite;
+        shieldSpriteR.enabled = true;
         eRefs.eFollowPath.speedModifier *= shieldUpSpeedMod;
         eRefs.eHealth.damageModifier *= shieldUpDamageMod;
         StartCoroutine(Shielded());
@@ -57,14 +59,17 @@ public class ShieldSkeleton_ShieldUp : MonoBehaviour
     void ShieldDown() {
         // Reverse movement slow down, reverse damage reduction, change walking anim.
         shieldIsUp = false;
-        eRefs.walkingSprite = eRefs.eSO.walkingSprite;
+        //eRefs.walkingSprite = eRefs.eSO.walkingSprite;
+        shieldSpriteR.enabled = false;
         eRefs.eFollowPath.speedModifier /= shieldUpSpeedMod;
         eRefs.eHealth.damageModifier /= shieldUpDamageMod;
         SetShieldUpCooldown();
     }
     public void ForceShieldDown() {
         forceShieldDown = true;
-        ShieldDown();
+        if (shieldIsUp) {
+            ShieldDown();
+        }
     }    
     public void AllowShieldUp() {
         forceShieldDown = false;

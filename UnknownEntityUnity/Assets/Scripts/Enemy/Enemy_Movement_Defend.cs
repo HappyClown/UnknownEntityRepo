@@ -5,79 +5,113 @@ using UnityEngine;
 public class Enemy_Movement_Defend : MonoBehaviour
 {
     public Enemy_Refs eRefs;
-    public List<Enemy_Actions> enemiesToDefend;
-    public Enemy_Actions defendee;
-    Transform defendeeTrans;
-    public Transform defendTokenTrans;
-    public float distFromDefendee = 1f;
-    public float updateDistDelta = 0.5f, updateFrequency = 0.25f;
+    public Enemy_Defender eDefender;
+    public List<Enemy_AllyToDefend> alliesToDefend;
+    public Enemy_AllyToDefend allyToDefend;
+    public Transform allyTrans;
+    public Transform defensePosTokenTrans;
+    public float distFromAlly = 3f;
+    public float updateDistDelta = 0.1f, updateFrequency = 0.1f;
     Vector3 newTokenPos;
 
-    // Pick the first undefended enemy in the list and set it as this enemy's defendee.
-    void PickEnemyToDefend() {
-        defendee = null;
-        foreach(Enemy_Actions enemyToDefend in enemiesToDefend) {
-            if (!enemyToDefend.defended) {
-                enemyToDefend.defended = true;
-                defendee = enemyToDefend;
-                defendeeTrans = defendee.transform;
+    // Check to see if Im already defending an ally, if so return true, else if im not defending an ally, try to get one, if I can return true, if I cant return false.
+    public bool CheckAlly() {
+        if (allyTrans != null) {
+            return true;
+        }
+        else {
+            PickAllyToDefend();
+            if (allyTrans == null) {
+                eDefender.canDefend = false;
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+    } 
+
+    // Assign the defense position transform token to the follow path script.
+    public void AssignTokenToPathTarget() {
+        if (eRefs.eFollowPath.target != defensePosTokenTrans) {
+            eRefs.eFollowPath.target = defensePosTokenTrans;
+        }
+    }
+
+    // Choose any ally to defend. Then start updating the defense position.
+    public void StartDefendingAlly() {
+        if (!allyToDefend) {
+            PickAllyToDefend();
+        }
+        StartCoroutine(UpdateDefenderTargetPosition());
+    }
+    
+    // Pick the first undefended enemy in the list and set it as this enemy's allyToDefend.
+    void PickAllyToDefend() {
+        allyToDefend = null;
+        foreach(Enemy_AllyToDefend anAllyToDefend in alliesToDefend) {
+            if (!anAllyToDefend.defended) {
+                anAllyToDefend.defended = true;
+                allyToDefend = anAllyToDefend;
+                allyTrans = allyToDefend.transform;
+                allyToDefend.defender = eDefender;
                 break;
             }
         }
     }
 
-    void AssignTokenToPathTarget() {
-        eRefs.eFollowPath.target = defendTokenTrans;
-    }
-
-    public void StartDefendingDefendee() {
-        if (!defendee) {
-            PickEnemyToDefend();
-            AssignTokenToPathTarget();
+    // If the player is closer to the allyToDefend, start chasing the player directly.
+    public bool PlayerCloserToAlly() {
+        if (eRefs.SqrDistToTarget(allyTrans.position, eRefs.PlayerPos) < eRefs.SqrDistToTarget(allyTrans.position, this.transform.position)) {
+            return true;
         }
-        StartCoroutine(UpdateDefenderTargetPosition());
+        return false;
     }
 
+    // Update the defense position.
     IEnumerator UpdateDefenderTargetPosition() {
-        //defendTokenTrans.position = GetDistPositionFromPath();
-        defendTokenTrans.position = GetDefensePositionCircleCast();
+        // Get the defense position based on allyToDefend and player positions.
+        defensePosTokenTrans.position = GetDefensePositionCircleCast();
         float updateDistDeltaSqr = updateDistDelta*updateDistDelta;
         Vector3 plyrOldPos = eRefs.PlayerPos;
-        Vector3 defendeeOldPos = defendeeTrans.position;
+        Vector3 allyOldPos = allyTrans.position;
         yield return null;
+        // If the player and the allyToDefend together moved more then the update distance, request a new position.
         while(true) {
-            if (eRefs.SqrDistToTarget(plyrOldPos, eRefs.PlayerPos) + (defendeeTrans.position - defendeeOldPos).sqrMagnitude > updateDistDeltaSqr) {
-                //defendTokenTrans.position = GetDistPositionFromPath();
-                defendTokenTrans.position = GetDefensePositionCircleCast();
+            if (eRefs.SqrDistToTarget(plyrOldPos, eRefs.PlayerPos) + (allyTrans.position - allyOldPos).sqrMagnitude > updateDistDeltaSqr) {
+                defensePosTokenTrans.position = GetDefensePositionCircleCast();
+                //print(defensePosTokenTrans.position);
+                // Set the position when a position was last requested.
                 plyrOldPos = eRefs.PlayerPos;
-                defendeeOldPos = defendeeTrans.position;
-                yield return null;
+                allyOldPos = allyTrans.position;
             }
             yield return new WaitForSeconds(updateFrequency);
         }
     }
 
-    // CircleCast from the defended towards the player with a distance of the defense tightness. If it hits an obstacle adjust the position to x distance from the obstacle hit.
+    // CircleCast from the allyToDefend towards the player with a distance of the defense tightness. If it hits an obstacle adjust the position to x distance from the obstacle hit.
     Vector3 GetDefensePositionCircleCast() {
-        Vector2 dirToPlyr = eRefs.NormDirToTargetV2(defendeeTrans.position, eRefs.PlayerPos);
-        RaycastHit2D hit = Physics2D.CircleCast(defendeeTrans.position, 0.25f, dirToPlyr, distFromDefendee, eRefs.losLayerMask);
+        Vector2 dirToPlyr = eRefs.NormDirToTargetV2(allyTrans.position, eRefs.PlayerPos);
+        RaycastHit2D hit = Physics2D.CircleCast(allyTrans.position, 0.25f, dirToPlyr, distFromAlly, eRefs.losLayerMask);
         if (hit) {
-            // Decide what the defender does if there is something blocking the way. Try to get the position from path?
+            // If it hits something get the position from the ally along a pth towards the player.
             return GetDistPositionFromPath();
         }
         else {
-            return (Vector2)defendeeTrans.position + dirToPlyr * distFromDefendee;
+            // If it does not hit anything. Get the position at the full defense length from the ally towards the player.
+            return (Vector2)allyTrans.position + dirToPlyr * distFromAlly;
         }
     }
     
-    // Another way could be to request a simple path(not going through all the adjustments) from the defended enemy to the player and set the defense position to x distance along the path. This would be more accurate because the position would take into account pathing thorugh obstacles and be in the way of the shortest distance a lot better.
+    // Unused.
     Vector3 GetDistPositionFromPath() {
-        return Pathfinding.GetDistAlongPath(defendeeTrans.position, eRefs.PlayerPos, distFromDefendee, eRefs.eSO.intelligence);
+        // Get the position on the path from the allyToDefend towards the player, at a certain distance from the allyToDefend.
+        return Pathfinding.GetDistAlongPath(allyTrans.position, eRefs.PlayerPos, distFromAlly, eRefs.eSO.intelligence);
     }
 
     void GoToDefensePosition() {
-        // Request a path to the position of the distance along a path from the defendee to the player.
-        newTokenPos = Pathfinding.GetDistAlongPath(defendeeTrans.position, eRefs.PlayerPos, distFromDefendee, eRefs.eSO.intelligence);
-        eRefs.eFollowPath.RequestPathToTarget(newTokenPos);
+        // Request a path to the position of the distance along a path from the allyToDefend to the player.
+        newTokenPos = Pathfinding.GetDistAlongPath(allyTrans.position, eRefs.PlayerPos, distFromAlly, eRefs.eSO.intelligence);
+        eRefs.eFollowPath.CustomPathRequest(newTokenPos);
     }
 }

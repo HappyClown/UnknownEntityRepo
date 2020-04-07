@@ -24,30 +24,53 @@ public class RangedSkeleton_ThrowProjectile : MonoBehaviour
     public float[] events;
     public SpriteRenderer spriteR;
     float distToTargetSqr;
+    public bool inProjThrow;
+    public bool throwProjReady = true;
 
     void Start() {
         sqrAtkRange = eRefs.eSO.atkRange * eRefs.eSO.atkRange;
     }
 
-    public void StartCheck() {
-        StartCoroutine(CheckDistance());
-    }
+    // public void StartCheck() {
+    //     StartCoroutine(CheckDistance());
+    // }
 
-    IEnumerator CheckDistance() {
-    // Could make it check every X frames / seconds.
-        while (true) {
+    // IEnumerator CheckDistance() {
+    // // Could make it check every X frames / seconds.
+    //     while (true) {
+    //         // Check if the target is within attack range.
+    //         distToTargetSqr = (eRefs.PlayerPos - this.transform.position).sqrMagnitude;
+    //         if (distToTargetSqr <= sqrAtkRange) {
+    //             // Check to see if there are obstacles in the way.
+    //             if (!Physics2D.Raycast(this.transform.position, eRefs.PlayerPos - this.transform.position, eRefs.eSO.atkRange, blockLOSLayers)) {
+    //                 eRefs.eFollowPath.StopAllMovementCoroutines();
+    //                 StartCoroutine(ThrowProjectileAction());
+    //                 break;
+    //             }
+    //         }
+    //         yield return null;
+    //     }
+    // }
+
+    public bool CheckThrowProj() {
+        if (!inProjThrow && throwProjReady) {
             // Check if the target is within attack range.
-            distToTargetSqr = (eRefs.PlayerPos - this.transform.position).sqrMagnitude;
-            if (distToTargetSqr <= sqrAtkRange) {
-                // Check to see if there are obstacles in the way.
-                if (!Physics2D.Raycast(this.transform.position, eRefs.PlayerPos - this.transform.position, eRefs.eSO.atkRange, blockLOSLayers)) {
-                    eRefs.eFollowPath.StopAllMovementCoroutines();
-                    StartCoroutine(ThrowProjectileAction());
-                    break;
+            if (eRefs.SqrDistToTarget(eRefs.PlayerPos, this.transform.position) <= sqrAtkRange) {
+                print("Dist good.");
+            // Check to see if there are obstacles in the way. // Maybe switch to circle cas to make sure there is space to fire the projectile.
+                if (!Physics2D.Raycast(this.transform.position, eRefs.PlayerPos - this.transform.position, eRefs.DistToTarget(this.transform.position, eRefs.PlayerPos), blockLOSLayers)) {
+                    print("Raycast good.");
+                    return true;
                 }
             }
-            yield return null;
         }
+        return false;
+    
+    }
+    public void StartProjectileThrow() {
+        inProjThrow = true;
+        throwProjReady = false;
+        StartCoroutine(ThrowProjectileAction());
     }
 
     IEnumerator ThrowProjectileAction() {
@@ -71,8 +94,10 @@ public class RangedSkeleton_ThrowProjectile : MonoBehaviour
             yield return null;
         }
         StartCoroutine(Cooldown());
+        inProjThrow = false;
         // Request movement type (run away, chase, idle if in atk range, etc), in this case it should be walking away from the player.
-        rsActions.RunAway();
+        //rsActions.RunAway();
+        eRefs.eFollowPath.allowPathUpdate = true;
         //eRefs.unit.allowPathUpdate = true;
         yield return null;
     }    
@@ -89,8 +114,6 @@ public class RangedSkeleton_ThrowProjectile : MonoBehaviour
             cdTimer += Time.deltaTime;
             yield return null;
         }
-        //eRefs.unit.RequestPathToTarget(eRefs.PlayerPos);
-        eRefs.eFollowPath.allowPathUpdate = true;
-        StartCoroutine(CheckDistance());
+        throwProjReady = true;
     }
 }

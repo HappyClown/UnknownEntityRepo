@@ -59,14 +59,14 @@ public class Projectile : MonoBehaviour
                 if (col.CompareTag("Player")) {
                     // Apply damage to the player.
                     col.GetComponent<Character_Health>().TakeDamage(projSO.Damage);
-                    print("Projectile hit the Player");
+                    //print("Projectile hit the Player");
                 }
                 else if (col.CompareTag("Destructible")) {
                     // Get destructible script and apply damage to the object.
                 }
                 else {
                     // This should be the obstacles that just destroy the projectile nothing else.
-                    print("Projectile hit the a Wall most likely.");
+                    //print("Projectile hit the a Wall most likely.");
                 }
                 // Turn off the projectile with collision.
                 inUse = false;

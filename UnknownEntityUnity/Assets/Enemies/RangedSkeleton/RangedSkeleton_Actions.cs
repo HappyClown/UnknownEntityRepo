@@ -5,21 +5,29 @@ using System.Diagnostics;
 
 public class RangedSkeleton_Actions : Enemy_Actions
 {
+    [Header ("Script References")]
     public RangedSkeleton_ThrowProjectile throwProj;
+    public Enemy_Movement_RunAway enemy_RunAway;
+    public Enemy_Movement_Chase enemy_Chase;
     public Enemy_Refs eRefs;
-    // To be transfered into modular scripts and referenced to allow multiple enemies to access this functionality.
-    public LayerMask runlayers;
-    public bool runAwayDebugs;
-    public Transform circleCastVisualizer;
-    public Transform[] circleCastVisualizers;
-    public float circleCastRadius;
-    public float aGridNodeDiam = 0.5f;
-    int loopCount = 0;
-    public int maxLoops;
-    Vector2 cWisePerpenDir, counterCWisePerpenDir, cWiseTestPos, counterCWiseTestPos, surfaceNormal;
+
+    [Header ("To-set Variables")]
+    public bool debugs;
+    public float minRunAwayDist;
+
+    [Header ("Read Only")]
+    public string curState;
+    float minRunAwayDistSqr;
+    bool stateStarted = false;
 
     public override void StartChecks() {
-        throwProj.StartCheck();
+        // Create a new state machine for this enemy. 
+        // The "checkingAggro" state should be implemented in the state machine only if needed.
+        brain = new FSM();
+        // Set initial state.
+        brain.SetActiveState(ChaseTarget);
+        // Set squared variables.
+        minRunAwayDistSqr = minRunAwayDist * minRunAwayDist;
     }
 
     public override void StopActions() {
@@ -27,78 +35,106 @@ public class RangedSkeleton_Actions : Enemy_Actions
         throwProj.enabled = false;
     }
 
+    // --- ACTIVE STATE FUNCTION (RUN AWAY) ---
     public void RunAway() {
-        Stopwatch sw = new Stopwatch();
-        sw.Start();
-        Vector2 targetPos = Vector2.zero;
-        Vector2 prevDir = Vector2.zero;
-        Vector2 plyrPos = eRefs.PlayerPos;
-        Vector2 oppositeDirNorm = (plyrPos - (Vector2)this.transform.position).normalized * -1;
-        RaycastHit2D hit, lastHit;
-        // Change the circle cast radius to be set in the inspector (it should ?always? match or be slightly bigger then node radius.)
-        // Try making the distance as much as the difference between the unit's max attack range and distance from unit to player, for the unit to maximally walk away up to its attack range. 
-        // OR just set it to the units attack range. 
-        // OR leave it a bit farther to make sure the unit always keeps walking. OR calculate it based on the unit's movement speed and run away duration (attack cooldown) to be certain that it always walks during its cooldown and that it dosnt have to calculate a really far away path for nothing (probably not this since the path isnt walked along the lines this will cast).
-        
-        float distLeft = eRefs.eSO.atkRange;
-        hit = Physics2D.Raycast(this.transform.position, oppositeDirNorm, distLeft, runlayers);
-
-        if (hit) {
-            lastHit = hit;
-            targetPos = hit.point - (hit.normal*-1)*(circleCastRadius+0.1f);
-            distLeft -= (hit.distance-circleCastRadius);
-            surfaceNormal = hit.normal;
-            if (runAwayDebugs) circleCastVisualizers[0].position = new Vector3(targetPos.x, targetPos.y, circleCastVisualizer.position.z);
-            loopCount = 0;
-            while (loopCount < maxLoops) {
-                loopCount++;
-                if (runAwayDebugs) circleCastVisualizers[loopCount].position = new Vector3(targetPos.x, targetPos.y, circleCastVisualizer.position.z);
-                RaycastHit2D loopHit = new RaycastHit2D();
-                // Get the perpendicular direction the furtest away from the player that is not inside an obstacle and apply the remaining direction that way until it has been fully used.
-                cWisePerpenDir = new Vector2(surfaceNormal.y, -surfaceNormal.x);
-                counterCWisePerpenDir = new Vector2(-surfaceNormal.y, surfaceNormal.x);
-                cWiseTestPos = targetPos + cWisePerpenDir;
-                counterCWiseTestPos = targetPos + counterCWisePerpenDir;
-                // Try clockwise.
-                if (eRefs.DistToTarget(cWiseTestPos, eRefs.PlayerPos) > eRefs.DistToTarget(counterCWiseTestPos, eRefs.PlayerPos) && !Physics2D.Raycast(targetPos, cWisePerpenDir, aGridNodeDiam, runlayers)) {
-                    if (runAwayDebugs) {
-                        UnityEngine.Debug.DrawRay(targetPos, cWisePerpenDir*aGridNodeDiam, Color.cyan, 5f);
-                        print("Chose to shoot clockwise.");
-                    }
-                    loopHit = Physics2D.Raycast(targetPos, cWisePerpenDir, distLeft, runlayers);
-                    prevDir = cWisePerpenDir;
-                }
-                // Try counter-clockwise.
-                else if (!Physics2D.Raycast(targetPos, counterCWisePerpenDir, aGridNodeDiam, runlayers)) {
-                    if (runAwayDebugs) {
-                        UnityEngine.Debug.DrawRay(targetPos, counterCWisePerpenDir*aGridNodeDiam, Color.cyan, 5f);
-                        print("Chose to shoot counter-clockwise."); 
-                    }
-                    loopHit = Physics2D.Raycast(targetPos, counterCWisePerpenDir, distLeft, runlayers);
-                    prevDir = counterCWisePerpenDir;
-                }
-                else {
-                    break;
-                }
-                if (loopHit) {
-                    if (runAwayDebugs) circleCastVisualizer.position = new Vector3(targetPos.x, targetPos.y, circleCastVisualizer.position.z);
-                    targetPos = loopHit.point - (loopHit.normal*-1)*(circleCastRadius+0.1f);
-                    distLeft -= (loopHit.distance-circleCastRadius);
-                    surfaceNormal = loopHit.normal;
-                }
-                // If nothing was hit, set the position to move to, to the last direction plus the distance left.
-                else {
-                    targetPos = targetPos + (prevDir*distLeft);
-                    break;
-                }
-            }
+        // -- ENTER STATE --
+        if (!stateStarted) {
+            if (debugs) print("RunAway: Initial state setup.");
+            enemy_RunAway.SetupRunAwayPos();
+            stateStarted = true;
+            return;
         }
-        else {
-            targetPos = (Vector2)this.transform.position + oppositeDirNorm*distLeft;
+        if (debugs) print("RunAway: In state.");
+        // -- EXIT CONDITION --
+        // If my projectile attack is ready start chasing the player.
+        if (throwProj.throwProjReady){
+            if (debugs) print("RunAway: Switching state to: ChaseTarget");
+            brain.SetActiveState(ChaseTarget);
+            stateStarted = false;
+            return;
         }
-        if (runAwayDebugs) circleCastVisualizers[loopCount].position = new Vector3(targetPos.x, targetPos.y, circleCastVisualizer.position.z);
-        eRefs.eFollowPath.RequestPathToTarget(targetPos);
-        sw.Stop();
-        print("The run away target postiion took: "+sw.ElapsedMilliseconds+"ms to determine.");
+    }    
+    // --- ACTIVE STATE FUNCTION (CHASE TARGET) ---
+    public void ChaseTarget() {
+        // -- ENTER STATE --
+        if (!stateStarted) {
+            if (debugs) print("ChaseTarget: Initial state setup.");
+            enemy_Chase.AssignChaseTarget();
+            stateStarted = true;
+            return;
+        }
+        if (debugs) print("ChaseTarget: In state.");
+        // -- EXIT CONDITION --
+        // If the player is too close.
+        if (eRefs.SqrDistToTarget(this.transform.position, eRefs.PlayerPos) < minRunAwayDistSqr){
+            if (debugs) print("ChaseTarget: Switching state to: RunAway");
+            brain.SetActiveState(RunAway);
+            stateStarted = false;
+            return;
+        }
     }
+
+    // --- ACTIVE STATE FUNCTION (THROW PROJECTILE) ---
+    public void ThrowProjectile() {
+        // -- ENTER STATE --
+        if (!stateStarted) {
+            if (debugs) print("ThrowProjectile: Initial state setup.");
+            eRefs.eFollowPath.StopAllMovementCoroutines();
+            throwProj.StartProjectileThrow();
+            stateStarted = true;
+            return;
+        }
+        if (debugs) print("ThrowProjectile: In state.");
+        // -- EXIT CONDITION --
+        // If the player is no longer bashing.
+        if (!throwProj.inProjThrow){
+            if (debugs) print("ThrowProjectile: Exiting state.");
+            brain.SetActiveState(Neutral);
+            stateStarted = false;
+            return;
+        }
+    }   
+    
+    // --- ACTIVE STATE FUNCTION (NEUTRAL) ---
+    public void Neutral() {
+        // -- ENTER STATE --
+        if (!stateStarted) {
+            if (debugs) print("Neutral: Initial state setup.");
+            stateStarted = true;
+            return;
+        }
+        if (debugs) print("Neutral: In state.");
+        // -- EXIT CONDITION --
+        // If my projectile attack is ready start chasing the player.
+        if (throwProj.throwProjReady){
+            if (debugs) print("Neutral: Switching state to: ChaseTarget.");
+            brain.SetActiveState(ChaseTarget);
+            stateStarted = false;
+            return;
+        }
+        // If the player is too close.
+        if (!throwProj.throwProjReady){
+            if (debugs) print("Neutral: Switching state to: RunAway.");
+            brain.SetActiveState(RunAway);
+            stateStarted = false;
+            return;
+        }
+    }
+    
+    public void Update() {
+        // This can be switched to from ANY state.
+        // If the player is within attack range.
+        if (throwProj.CheckThrowProj() && brain.activeState != ThrowProjectile) {
+            if (debugs) print("ANYSTATE: Switching state to: ThrowProjectile.");
+            brain.SetActiveState(ThrowProjectile);
+            stateStarted = false;
+            return;
+        }
+        // This will run the active state. (Function)
+        brain.FSMUpdate();
+        if (debugs && brain.activeState != null) {
+            curState = brain.activeState.Method.ToString();
+        }
+    }
+
 }

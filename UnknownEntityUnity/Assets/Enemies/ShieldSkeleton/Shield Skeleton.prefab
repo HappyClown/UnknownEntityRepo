@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 764420645428285961}
   - component: {fileID: 764420645428285960}
   m_Layer: 11
-  m_Name: HitBox
+  m_Name: HitBox & Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -373,8 +373,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eRefs: {fileID: 764420645499934723}
-  maxHealth: 0
-  curHealth: 0
+  maxHealth: 15
+  curHealth: 15
   damageModifier: 1
 --- !u!114 &764420645428285960
 MonoBehaviour:
@@ -390,6 +390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eRefs: {fileID: 764420645499934723}
   deadSprite: {fileID: 21300000, guid: 1731f14c0585a634e9c203c1d2d71479, type: 3}
+  isDead: 0
 --- !u!1 &764420645499934842
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,11 +403,13 @@ GameObject:
   - component: {fileID: 764420645499934723}
   - component: {fileID: 3094976223254943911}
   - component: {fileID: 9012920482796434023}
+  - component: {fileID: 3480041269828341301}
   - component: {fileID: 764420645499934844}
   - component: {fileID: 764420645499934841}
   - component: {fileID: 4763131646878942772}
   - component: {fileID: 4763131646878942773}
   - component: {fileID: 4763131646878942770}
+  - component: {fileID: 948027800508216933}
   m_Layer: 0
   m_Name: Core
   m_TagString: Hittable
@@ -422,7 +425,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 764420645499934842}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6363887862280098709}
@@ -441,7 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1224f23f8f52a3243a1f2e0bfcc509d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkingSprite: {fileID: 21300000, guid: 46be00cc7cb7dae488eaa8fcbdeab919, type: 3}
+  walkingSprite: {fileID: 21300000, guid: e972bf2240caafc49844bb3bc8e8c880, type: 3}
   plyrTrans: {fileID: 0}
   eSpriteR: {fileID: 764420645824505556}
   losLayerMask:
@@ -466,18 +469,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 274de41fdf784204ca3a0452c3729cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  thisEnemyTrans: {fileID: 764420645824505557}
-  stopRangeToTarget: 0
   enemy: {fileID: 11400000, guid: 045ea6ddd98838e4d97441301425238a, type: 2}
   flip: {fileID: 764420645499934844}
   eRefs: {fileID: 764420645499934723}
+  followOnStart: 0
+  drawPathGizmos: 0
+  myZ: -0.1
+  stopRangeToTarget: 0.5
+  target: {fileID: 0}
+  thisEnemyTrans: {fileID: 764420645824505557}
+  speedModifier: 1
+  directlyMovingtoTarget: 0
+  followingPath: 0
   allowPathUpdate: 1
   customPathRequested: 0
-  followOnStart: 0
-  followingPath: 0
-  speedModifier: 1
-  drawPathGizmos: 0
 --- !u!114 &9012920482796434023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,15 +496,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eRefs: {fileID: 764420645499934723}
-  enemiesToDefend:
+  eDefender: {fileID: 948027800508216933}
+  alliesToDefend:
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  defendee: {fileID: 0}
-  defendTokenTrans: {fileID: 339229296}
-  distFromDefendee: 2
-  updateDistDelta: 0.1
-  updateFrequency: 0.1
+  allyToDefend: {fileID: 0}
+  allyTrans: {fileID: 0}
+  defensePosTokenTrans: {fileID: 339229296}
+  distFromAlly: 3
+  updateDistDelta: 0.5
+  updateFrequency: 1
+--- !u!114 &3480041269828341301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764420645499934842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61c92e79793940643b0be23d7b35f439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eRefs: {fileID: 764420645499934723}
 --- !u!114 &764420645499934844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541,10 +559,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defended: 0
+  brain: {fileID: 0}
   shieldBash: {fileID: 4763131646878942773}
   shieldUp: {fileID: 4763131646878942770}
   movement_Defend: {fileID: 9012920482796434023}
+  movement_Chase: {fileID: 3480041269828341301}
+  eDefender: {fileID: 948027800508216933}
   eRefs: {fileID: 764420645499934723}
+  debugs: 0
+  chaseDistance: 2.5
+  closeToDefensePoint: 1
+  farFromDefensePoint: 4
+  curState: 
+  isShieldUp: 0
 --- !u!114 &4763131646878942773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -563,24 +590,24 @@ MonoBehaviour:
   atkCol: {fileID: 764420644226168838}
   atkTrans: {fileID: 764420644226168839}
   shieldTrans: {fileID: 764420645729004494}
-  atkSpawnDist: 0
   atkDur: 0.25
-  atkMoveDist: 0.9
-  moveDist: 0.65
-  moveDur: 0.25
+  atkMoveDist: 0.85
+  moveDist: 0.5
+  moveDur: 0.15
   atkDirNorm: {x: 0, y: 0}
-  cooldown: 2
-  totalDuration: 1
+  inBash: 0
+  cooldown: 0.1
+  totalDuration: 2
   sprites:
-  - {fileID: 21300000, guid: b23c15767abbac347a592cab42cf3cb7, type: 3}
-  - {fileID: 21300000, guid: bc42f0c307eca8a4e8e47f07cb148e88, type: 3}
   - {fileID: 21300000, guid: b1199e49672d7d247aa091203ebd6c40, type: 3}
+  - {fileID: 21300000, guid: bc42f0c307eca8a4e8e47f07cb148e88, type: 3}
+  - {fileID: 21300000, guid: b23c15767abbac347a592cab42cf3cb7, type: 3}
   spriteChanges:
   - 0
-  - 0.4
-  - 0.65
+  - 0.75
+  - 1
   events:
-  - 0.4
+  - 0.75
   spriteR: {fileID: 764420645824505556}
 --- !u!114 &4763131646878942770
 MonoBehaviour:
@@ -596,12 +623,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eRefs: {fileID: 764420645499934723}
   shieldUpSprite: {fileID: 21300000, guid: f3867c88f408f2642856cf86fb58229e, type: 3}
-  shieldUpSpeedMod: 0.6
+  shieldSpriteR: {fileID: 764420645729004493}
+  shieldUpSpeedMod: 0.8
   shieldUpDamageMod: 0.1
-  shieldUpRange: 2.5
+  shieldUpRange: 10
   minShieldUpTime: 1
   shieldUpPlrRangeCheck: 0.5
-  shieldUpCooldown: 0
+  shieldUpCooldown: 1
+  shieldIsUp: 0
+  forceShieldDown: 0
+--- !u!114 &948027800508216933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764420645499934842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d046a76d1a306f443842ef5150229238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canDefend: 1
 --- !u!1 &764420645729004495
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,7 +683,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 764420645729004495}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -692,7 +735,7 @@ GameObject:
   m_Component:
   - component: {fileID: 764420645824505557}
   - component: {fileID: 764420645824505556}
-  - component: {fileID: 764420645824505563}
+  - component: {fileID: 268734512}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -708,7 +751,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 764420645824505558}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.15, z: 0}
+  m_LocalPosition: {x: 0, y: 0.15, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 764420645428285963}
@@ -766,7 +809,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &764420645824505563
+--- !u!114 &268734512
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -775,7 +818,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 764420645824505558}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f2b7ab53cafa0a4ba54874d8548cbe2, type: 3}
+  m_Script: {fileID: 11500000, guid: 2bfb9c4e44cc84848b2eed0a64a96e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 764420645499934840}
@@ -829,7 +872,7 @@ MonoBehaviour:
   checkAggroDelay: 0.5
   blockLOSLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   myCol: {fileID: 6363887862280098710}
   aggroDebugs: 0
 --- !u!58 &6363887862280098710

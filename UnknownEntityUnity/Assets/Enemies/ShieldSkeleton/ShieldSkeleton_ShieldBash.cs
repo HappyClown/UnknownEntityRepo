@@ -9,7 +9,7 @@ public class ShieldSkeleton_ShieldBash : MonoBehaviour
     public SpriteRenderer atkSpriteR;
     public Collider2D atkCol;
     public Transform atkTrans, shieldTrans;
-    public float atkSpawnDist = 0.5f, atkDur = 0.25f, atkMoveDist = 0.85f;
+    public float /* atkSpawnDist = 0.5f, */ atkDur = 0.25f, atkMoveDist = 0.85f;
     public float moveDist, moveDur;
     public Vector2 atkDirNorm;
     Vector2 startPos, endPos;
@@ -18,6 +18,7 @@ public class ShieldSkeleton_ShieldBash : MonoBehaviour
     float sqrAtkRange;
     Vector2 attackDir;
     [Header("Cooldown")]
+    public bool inBash = false;
     public float cooldown;
     float cdTimer;
     [Header("Animation")]
@@ -29,28 +30,48 @@ public class ShieldSkeleton_ShieldBash : MonoBehaviour
 
     void Start() {
         sqrAtkRange = eRefs.eSO.atkRange * eRefs.eSO.atkRange;
+        cdTimer = cooldown;
     }
 
-    public void StartCheck() {
-        StartCoroutine(CheckDistance());
-    }
+    // public void StartCheck() {
+    //     StartCoroutine(CheckDistance());
+    // }
 
-    IEnumerator CheckDistance() {
-        while (true) {
+    // IEnumerator CheckDistance() {
+    //     while (true) {
+    //         // Check if the target is within attack range.
+    //         float distToTargetSqr = (eRefs.PlayerPos - this.transform.position).sqrMagnitude;
+    //         if (distToTargetSqr <= sqrAtkRange) {
+    //             // Check to see if there are obstacles in the way.
+    //             if (!Physics2D.Raycast(this.transform.position, eRefs.PlayerPos - this.transform.position, eRefs.eSO.atkRange, eRefs.losLayerMask)) {
+    //                 StartCoroutine(ShieldBash());
+    //                 eRefs.eFollowPath.StopAllMovementCoroutines();
+    //                 break;
+    //             }
+    //         }
+    //         yield return null;
+    //     }
+    // }
+    public bool CheckToBash() {
+        // Check if im currently attacking and if its off cooldown.
+        if (!inBash && cdTimer >= cooldown) {
+            //print("inbash and cooldown all good.");
             // Check if the target is within attack range.
-            float distToTargetSqr = (eRefs.PlayerPos - this.transform.position).sqrMagnitude;
-            if (distToTargetSqr <= sqrAtkRange) {
+            if (eRefs.SqrDistToTarget(eRefs.PlayerPos, this.transform.position) <= sqrAtkRange) {
+            //print("distance is good.");
                 // Check to see if there are obstacles in the way.
-                if (!Physics2D.Raycast(this.transform.position, eRefs.PlayerPos - this.transform.position, eRefs.eSO.atkRange, eRefs.losLayerMask)) {
-                    StartCoroutine(ShieldBash());
-                    eRefs.eFollowPath.StopAllMovementCoroutines();
-                    break;
+                if (!Physics2D.Raycast(this.transform.position, (Vector2)eRefs.PlayerPos - (Vector2)this.transform.position, eRefs.DistToTarget(this.transform.position, eRefs.PlayerPos), eRefs.losLayerMask)) {
+                    //print("nothing in the way");
+                    return true;
                 }
             }
-            yield return null;
         }
+        return false;
     }
-
+    public void StartShieldBash() {
+        inBash = true;
+        StartCoroutine(ShieldBash());
+    }
     IEnumerator ShieldBash() {
         float timer = 0f;
         int spriteStep = 0;
@@ -73,8 +94,9 @@ public class ShieldSkeleton_ShieldBash : MonoBehaviour
             yield return null;
         }
         StartCoroutine(Cooldown());
-        ssShieldUp.AllowShieldUp();
+        //ssShieldUp.AllowShieldUp();
         eRefs.eFollowPath.allowPathUpdate = true;
+        inBash = false;
     }
 
     public void SetupEnemyMovement() {
@@ -125,7 +147,7 @@ public class ShieldSkeleton_ShieldBash : MonoBehaviour
             cdTimer += Time.deltaTime;
             yield return null;
         }
-        StartCoroutine(CheckDistance());
+        //StartCoroutine(CheckDistance());
     }
 
     public void StopAction() {

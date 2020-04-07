@@ -245,17 +245,17 @@ public class Pathfinding : MonoBehaviour
     
     // Get a postion along a path at distance X from startPos along a path heading towards targetPos.
     public static Vector3 GetDistAlongPath(Vector3 startPos, Vector3 targetPos, float distFromStart, float unitIntel) {
-        thisScript.posOnPath = Vector3.zero;
+        //thisScript.posOnPath = Vector3.zero;
         // Start a coroutine that sets the posOnPath value.
-        thisScript.StartCoroutine(thisScript.FindDistAlongPath(startPos, targetPos, distFromStart, unitIntel));
-        return thisScript.posOnPath;
+        //thisScript.StartCoroutine(thisScript.FindDistAlongPath(startPos, targetPos, distFromStart, unitIntel));
+        return thisScript.FindDistAlongPath(startPos, targetPos, distFromStart, unitIntel);
     }
-    IEnumerator FindDistAlongPath(Vector3 startPos, Vector3 targetPos, float distFromStart, float unitIntel) {
+    Vector3 FindDistAlongPath(Vector3 startPos, Vector3 targetPos, float distFromStart, float unitIntel) {
         bool pathSuccess = false;
         // Get the node on which the start and target world positions are.
         Node startNode = aGrid.NodeFromWorldPoint(startPos);
         Node targetNode = aGrid.NodeFromWorldPoint(targetPos);
-        float dist = 0f;
+        //float dist = 0f;
         Vector3 position = Vector3.zero;
         
         if (targetNode.walkable)  {
@@ -267,14 +267,14 @@ public class Pathfinding : MonoBehaviour
                 Node currentNode = openSet.RemoveFirst();
                 closedSet.Add(currentNode);
                 // Add the node radius*2 everytime a new node is added to the closed set. Radius*2 everytime because it can only move in a cross pattern.
-                dist += aGrid.nodeRadius*2;
+                //dist += aGrid.nodeRadius*2;
                 // The path has reached the requested distance.
-                if (dist >= distFromStart) {
-                    position = currentNode.worldPos;
-                    pathSuccess = true;
-                    break;
-                }
-                else if (currentNode == targetNode) {
+                // if (dist >= distFromStart) {
+                //     position = currentNode.worldPos;
+                //     pathSuccess = true;
+                //     break;
+                // }
+                /* else  */if (currentNode == targetNode) {
                     position = targetNode.worldPos;
                     pathSuccess = true;
                     break;
@@ -301,12 +301,63 @@ public class Pathfinding : MonoBehaviour
             }
         }
         if (pathSuccess) {
-            posOnPath = position;
-            yield return null;
+            posOnPath = RetracePathForDist(startNode, targetNode, distFromStart);
         }
         else {
             UnityEngine.Debug.LogError("Something went wrong when trying to request a point along a path.");
         }
+        //print(posOnPath);
+        return posOnPath;
+    }
+
+     Vector3 RetracePathForDist(Node startNode, Node endNode, float distFromStart) {
+        //List<Node> path = new List<Node>();
+        path.Clear();
+        pathHasPenalty = false;
+        int totalPathCost = 0;
+        //int nodeAmnt = 0;
+        //float costPerNode = 0;
+
+        Node currentNode = endNode;
+
+        while (currentNode != startNode) {
+            path.Add(currentNode);
+            if (path.Count >= 50) {
+                print("Node count in path has passed 50.");
+                break;
+            }
+            //nodeAmnt++;
+            totalPathCost += (10 + currentNode.movementPenalty);
+            if (currentNode.movementPenalty != 0) {
+                pathHasPenalty = true;
+            }
+            if (currentNode == currentNode.parent) {
+                print("Node parent was = to this node.");
+                break;
+            }
+            currentNode = currentNode.parent;
+            if (path[path.Count-1] == currentNode) {
+                print("Put the same node in twice in a row.");
+                break;
+            }
+        }
+
+        //print("Total path cost: " + totalPathCost);
+        //print("Total Amount of nodes: " + nodeAmnt);
+        //costPerNode = totalPathCost / nodeAmnt;
+        //print("Cost per node: " + costPerNode);
+
+        path.Reverse();
+        float dist = 0f;
+        Vector3 pos = Vector3.zero;
+        for (int i = 0; i < path.Count; i++) {
+            dist += aGrid.nodeRadius*2;
+            pos = path[i].worldPos;
+            if (dist >= distFromStart) {
+                break;
+            }
+        }
+        return pos;
     }
 
     // Get a value for the distance on the grid from A to B, diagonals being worth 14 and horizontals/verticals being worth 10.

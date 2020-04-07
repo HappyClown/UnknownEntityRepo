@@ -4,25 +4,27 @@ using UnityEngine;
 
 public class Enemy_FollowPath : MonoBehaviour
 {
-    const float firstPathUpdateOnLevelLoad = 0.5f;
-    const float minPathUpdateTime = 0.2f;
-    const float pathUpdateMoveThreshold = 0.5f;
-    public Transform target;
-    public Transform thisEnemyTrans;
-    public float stopRangeToTarget;
-    public bool directlyMovingtoTarget;
-    Vector3 directTargetPos;
+    [Header ("Script References")]
     public SO_EnemyBase enemy;
     public FlipObjectX flip;
     public Enemy_Refs eRefs;
-    public bool allowPathUpdate = true, customPathRequested = false;
+    [Header ("To-set Variables")]
     public bool followOnStart;
-    public bool followingPath;
-    public float speedModifier = 1f;
     public bool drawPathGizmos;
+    public float myZ;
+    public float stopRangeToTarget;
+    public Transform target;
+    public Transform thisEnemyTrans;
+    const float firstPathUpdateOnLevelLoad = 0.5f;
+    const float minPathUpdateTime = 0.2f;
+    const float pathUpdateMoveThreshold = 0.5f;
+    [Header ("Read Only")]
+    public float speedModifier = 1f;
+    public bool directlyMovingtoTarget;
+    public bool followingPath;
+    public bool allowPathUpdate = true, customPathRequested = false;
+    Vector3 directTargetPos;
     Path path;
-    // Direct move stuff.
-    // Check line of sight between this enemy and the target wit ha circle cast the size of this enemy's collision.
 
     void Start() {
         if (followOnStart) {
@@ -31,7 +33,7 @@ public class Enemy_FollowPath : MonoBehaviour
     }
 
     public void OnPathFound(Vector3[] waypoints, bool pathSuccessful) {
-        if (pathSuccessful && (allowPathUpdate || customPathRequested)) {
+        if (pathSuccessful && allowPathUpdate || pathSuccessful && customPathRequested) {
             path = new Path(waypoints, transform.position, enemy.turnDst, enemy.slowDownDist);
             StopCoroutine("FollowPath");
             StartCoroutine("FollowPath");
@@ -55,16 +57,20 @@ public class Enemy_FollowPath : MonoBehaviour
             if (allowPathUpdate) {
                 // Cancel custom path request authorization.
                 customPathRequested = false;
+                // --- NEW MOVE TARGET CONDITION ---
                 // Check if the Player has moved enough to trigger a new path request.
-                if ((target.position - targetPosOld).sqrMagnitude > sqrMoveThreshold) {
+                if (eRefs.SqrDistToTarget(targetPosOld, target.position) > sqrMoveThreshold) {
                     // Check to see if a direct line of sight exists to the target. (Ignores Movement slowdown fields)
-                    if (!CheckDirectMoveToTarget()) {
-                        print ("Direct line of sight available, do not request path, walk directly towards target.");
+                    if (CheckDirectMoveToTarget()) {
+                        //print ("Direct line of sight available, do not request path, walk directly towards target.");
                         StopCoroutine(FollowPath());
                         followingPath = false;
                         StopCoroutine(DirectMoveToTarget());
                         directlyMovingtoTarget = false;
                         yield return null;
+                        if (!allowPathUpdate) {
+                            print("This is probably whe nthe problem happenes. Yep. Right here, yo.");
+                        }
                         StartCoroutine(DirectMoveToTarget());
                         targetPosOld = target.position;
                         continue;
@@ -82,31 +88,24 @@ public class Enemy_FollowPath : MonoBehaviour
 
     bool CheckDirectMoveToTarget() {
         if (eRefs.CircleCastLOSToTarget(thisEnemyTrans.position, target.position, 0.25f).collider != null) {
-            print ("Something was hit by the circle cast, returning: true");
-            print(eRefs.CircleCastLOSToTarget(thisEnemyTrans.position, target.position, 0.25f).collider.gameObject.name);
-            return true;
-        }
-        else {
             return false;
         }
+        else {
+            return true;
+        }
     }
+    // Could maybe only be available to enemies with low intelligence since this dosnt take into account dangerous terrains.
     IEnumerator DirectMoveToTarget() {
         directlyMovingtoTarget = true;
-        transform.forward = target.position - thisEnemyTrans.position;
+        transform.forward = new Vector3(target.position.x - thisEnemyTrans.position.x, target.position.y - thisEnemyTrans.position.y, myZ);
         directTargetPos = target.position;
         while (directlyMovingtoTarget && eRefs.DistToTarget(thisEnemyTrans.position, directTargetPos) > stopRangeToTarget) {
-            print("Ping, direct move to target is running.");
+            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, myZ);
             transform.Translate(Vector3.forward * Time.deltaTime * enemy.moveSpeed * speedModifier, Space.Self);
             flip.Flip();
             yield return null;
         }
         directlyMovingtoTarget = false;
-    }
-
-    public void RequestPathToTarget(Vector3 _pathTarget) {
-        customPathRequested = true;
-        Vector3 xyTarget = new Vector3(_pathTarget.x, _pathTarget.y, target.position.z);
-        PathRequestManager.RequestPath(transform.position, xyTarget, enemy.intelligence, OnPathFound);
     }
     
     IEnumerator FollowPath() {
@@ -145,13 +144,20 @@ public class Enemy_FollowPath : MonoBehaviour
                 //         followingPath = false;
                 //     }
                 // }
-                transform.forward = path.lookPoints[pathIndex] - transform.position;
+                transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, myZ);
+                transform.forward = (Vector2)path.lookPoints[pathIndex] - (Vector2)transform.position;
                 // Movement.
                 transform.Translate(Vector3.forward * Time.deltaTime * enemy.moveSpeed * speedModifier * speedPercent, Space.Self);
                 flip.Flip();
             }
             yield return null;
         }
+    }
+
+    public void CustomPathRequest(Vector3 _pathTarget) {
+        customPathRequested = true;
+        Vector3 xyTarget = new Vector3(_pathTarget.x, _pathTarget.y, target.position.z);
+        PathRequestManager.RequestPath(transform.position, xyTarget, enemy.intelligence, OnPathFound);
     }
 
     public void StopAllMovementCoroutines() {
