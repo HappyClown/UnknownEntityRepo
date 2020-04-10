@@ -12,8 +12,7 @@ public class Enemy_Death : MonoBehaviour
     // Or just destroy the game object now and instatiate a sprite for the death anim. Destroying the game object will need to be done at some point.
     public void DeathSequence() {
         // Close or stop all active scripts (might be avoided by creating a state machine).
-        eRefs.eFollowPath.followingPath = false;
-        eRefs.eFollowPath.allowPathUpdate = false;
+        eRefs.eFollowPath.StopAllMovementCoroutines();
         eRefs.eAction.StopActions();
         eRefs.eAction.enabled = false;
         StopEnemyCoroutines();

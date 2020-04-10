@@ -15,6 +15,7 @@ public class Enemy_Refs : MonoBehaviour
     public Enemy_WalkAnim eWalkAnim;
     public Enemy_Aggro eAggro;
     public Enemy_Actions eAction;
+    public Enemy_CollisionDetection eCol;
     public Enemy_Health eHealth;
     public Enemy_Death eDeath;
     public SO_EnemyBase eSO;
@@ -48,6 +49,4 @@ public class Enemy_Refs : MonoBehaviour
     public Vector2 NormDirToTargetV2(Vector2 origin, Vector2 target) {
         return (target - origin).normalized;
     }
-
-
 }

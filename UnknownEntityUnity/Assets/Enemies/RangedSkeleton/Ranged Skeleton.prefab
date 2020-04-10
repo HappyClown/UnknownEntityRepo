@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 1990586592331264952}
   - component: {fileID: 596742917071586177}
   - component: {fileID: 7591618669351008184}
+  - component: {fileID: 4828088488615937271}
   - component: {fileID: 3690657262318137126}
   - component: {fileID: 3690657262318137125}
   - component: {fileID: 911921966}
@@ -235,6 +236,7 @@ MonoBehaviour:
   eWalkAnim: {fileID: 3690657262318137124}
   eAggro: {fileID: 7060817331708994764}
   eAction: {fileID: 3690657262318137126}
+  eCol: {fileID: 4828088488615937271}
   eHealth: {fileID: 3690657262389814610}
   eDeath: {fileID: 3690657262389814611}
   eSO: {fileID: 11400000, guid: a0d0f8b4e0debe940b80ae28dd837868, type: 2}
@@ -324,6 +326,22 @@ MonoBehaviour:
   runAwayToken: {fileID: 1025629148}
   runAwayDebugs: 0
   distToUpdatePath: 0
+--- !u!114 &4828088488615937271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3690657262318137121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd33c18f0cf4c542adea490b76ab4af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eRefs: {fileID: 3690657262318137120}
+  boxCol: {fileID: 3690657262389814609}
+  skinWidth: 0.005
+  raysPerSeg: 3
 --- !u!114 &3690657262318137126
 MonoBehaviour:
   m_ObjectHideFlags: 0

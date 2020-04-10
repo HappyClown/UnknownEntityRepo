@@ -79,7 +79,7 @@ public class Enemy_Movement_RunAway : MonoBehaviour
         }
         runAwayToken.position = targetPos;
         eRefs.eFollowPath.target = runAwayToken;
-        if (runAwayDebugs) sw.Stop(); print("The run away target postion took: "+sw.ElapsedMilliseconds+"ms to determine.");
+        if (runAwayDebugs) { sw.Stop(); print("The run away target postion took: "+sw.ElapsedMilliseconds+"ms to determine."); }
     }
 
     public bool UpdateTargetPosCondition() {

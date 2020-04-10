@@ -56,10 +56,10 @@ public class RangedSkeleton_ThrowProjectile : MonoBehaviour
         if (!inProjThrow && throwProjReady) {
             // Check if the target is within attack range.
             if (eRefs.SqrDistToTarget(eRefs.PlayerPos, this.transform.position) <= sqrAtkRange) {
-                print("Dist good.");
+                //print("Dist good.");
             // Check to see if there are obstacles in the way. // Maybe switch to circle cas to make sure there is space to fire the projectile.
                 if (!Physics2D.Raycast(this.transform.position, eRefs.PlayerPos - this.transform.position, eRefs.DistToTarget(this.transform.position, eRefs.PlayerPos), blockLOSLayers)) {
-                    print("Raycast good.");
+                    //print("Raycast good.");
                     return true;
                 }
             }

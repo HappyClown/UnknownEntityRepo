@@ -162,6 +162,7 @@ public class Enemy_FollowPath : MonoBehaviour
 
     public void StopAllMovementCoroutines() {
         StopCoroutine("FollowPath");
+        StopCoroutine("DirectMoveToTarget");
         followingPath = false;
         directlyMovingtoTarget = false;
         allowPathUpdate = false;
