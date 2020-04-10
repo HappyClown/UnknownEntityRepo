@@ -25,6 +25,7 @@ public class Enemy_FollowPath : MonoBehaviour
     public bool allowPathUpdate = true, customPathRequested = false;
     Vector3 directTargetPos;
     Path path;
+    bool freePathTrigger = false;
 
     void Start() {
         if (followOnStart) {
@@ -59,7 +60,8 @@ public class Enemy_FollowPath : MonoBehaviour
                 customPathRequested = false;
                 // --- NEW MOVE TARGET CONDITION ---
                 // Check if the Player has moved enough to trigger a new path request.
-                if (eRefs.SqrDistToTarget(targetPosOld, target.position) > sqrMoveThreshold) {
+                if (eRefs.SqrDistToTarget(targetPosOld, target.position) > sqrMoveThreshold || freePathTrigger) {
+                    freePathTrigger = false;
                     // Check to see if a direct line of sight exists to the target. (Ignores Movement slowdown fields)
                     if (CheckDirectMoveToTarget()) {
                         //print ("Direct line of sight available, do not request path, walk directly towards target.");
@@ -153,6 +155,12 @@ public class Enemy_FollowPath : MonoBehaviour
             yield return null;
         }
     }
+    // Allow the next path request check to pass no matter what.
+    public void TriggerFreePath() {
+        freePathTrigger = true;
+        // It could also cancel the wait time before the next path update check, allowing it to update the path next frame.
+        // Since the yield WaitForSeconds cannot be cancelled, it would need to be replaced by a float timer system.
+    }
 
     public void CustomPathRequest(Vector3 _pathTarget) {
         customPathRequested = true;
@@ -166,6 +174,7 @@ public class Enemy_FollowPath : MonoBehaviour
         followingPath = false;
         directlyMovingtoTarget = false;
         allowPathUpdate = false;
+        freePathTrigger = false;
     }
 
     public void OnDrawGizmos() {
