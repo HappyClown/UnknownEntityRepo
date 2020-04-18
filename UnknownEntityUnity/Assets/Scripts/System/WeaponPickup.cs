@@ -5,11 +5,11 @@ using UnityEngine;
 public class WeaponPickup : MonoBehaviour
 {
     public bool amIOn;
-    public SO_WeaponBase weaponBase;
+    public SO_Weapon weaponBase;
     public SpriteRenderer mySpriteR;
     public BoxCollider2D myBoxCol;
 
-    public void SwapWeaponLoot(SO_WeaponBase newWeapBase) {
+    public void SwapWeaponLoot(SO_Weapon newWeapBase) {
         weaponBase = newWeapBase;
         if (!mySpriteR) {
             mySpriteR = this.GetComponent<SpriteRenderer>();

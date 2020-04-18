@@ -20,9 +20,7 @@ public class Character_AttackVisual : MonoBehaviour
         float timer = 0f;
         int thisSpriteIndex = 0;
         atkSpriteRs[thisChainNum].sprite = atkSprites[thisSpriteIndex];
-        // Debug.Log(atkSpriteRs[thisChainNum]);
-        // Debug.Log(atkSprites[thisSpriteIndex]);
-        // Debug.Log(atkSpriteRs[thisChainNum].sprite);
+        
         while (activeAttacks[thisChainNum] && timer < thisAtkLength) {
             timer += Time.deltaTime;
             if (timer >= atkSpriteChangeTimes[thisSpriteIndex]) {

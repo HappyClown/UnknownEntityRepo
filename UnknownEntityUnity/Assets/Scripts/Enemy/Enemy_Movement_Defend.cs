@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class Enemy_Movement_Defend : MonoBehaviour
 {
+    [Header("Script References")]
     public Enemy_Refs eRefs;
     public Enemy_Defender eDefender;
+    [Header("To-set Variables")]
     public List<Enemy_AllyToDefend> alliesToDefend;
-    public Enemy_AllyToDefend allyToDefend;
-    public Transform allyTrans;
     public Transform defensePosTokenTrans;
     public float distFromAlly = 3f;
     public float updateDistDelta = 0.1f, updateFrequency = 0.1f;
+    [Header("Read Only")]
+    public Enemy_AllyToDefend allyToDefend;
+    public Transform allyTrans;
     Vector3 newTokenPos;
 
     // Check to see if Im already defending an ally, if so return true, else if im not defending an ally, try to get one, if I can return true, if I cant return false.

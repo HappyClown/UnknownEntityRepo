@@ -4,36 +4,73 @@ using UnityEngine;
 
 public class Character_Attack : MonoBehaviour
 {
-    //public float attackSpeed;
-    [Header("Scripts")]
+    [Header("Script References")]
     public MouseInputs moIn;
-    public SO_WeaponBase weapon;
     public Character_AttackChain atkChain;
     public Character_AttackDetection atkDetection;
-    public Character_AttackWeaponMotion atkWeaMotion;
+    //public Character_AttackWeaponMotion atkWeaMotion;
     public Character_AttackVisual atkVisual;
     public Character_AttackMovement atkMovement;
     public Character_AttackPlayerMovement atkPlyrMove;
+    public Weapon_MotionController weaponMotionController;
+    [Header("To-set Variables")]
+    public Transform weaponTrans;
+    public SpriteRenderer weaponSpriteR;
+    [Header("Read Only")]
     public bool readyToAtk;
+    // The initial weapon is set inside the Character_EquippedWeapon script.
+    public SO_Weapon weapon;
+    public Weapon_Motion weaponMotion;
+    public Weapon_Motion curWeaponMotion;
+    public List<Weapon_Motion> weaponMotions = new List<Weapon_Motion>();
 
     void Update() {
+        // If I clicked and can attack.
         if (moIn.mouseLeftClicked && atkChain.ready) {
+            // Checks and adjusts the current attack chain. (Chaining attacks)
             atkChain.ChainAttacks();
+            // Handles moving the player and slowing him down during the attack. (Player motion)
             atkPlyrMove.AttackPlayerMovement(WeapAtkChain.plyrSlowDown, WeapAtkChain.plyrSlowDownDur, WeapAtkChain.attackLength, WeapAtkChain.plyrMoveDist, atkChain.curChain);
-            atkWeaMotion.WeaponMotion(WeapRotDur);
+            // Stop the previous motion if needed.
+            StopPreviousMotion();
+            // Set the weapon back to its resting position and rotation. Usually the first attack chain's resting values.
+            ResetWeaponLocalValues();
+            // If I want to check the weapon motion every attack. (attack chains can have different motions)
+            //curWeaponMotion = weaponMotionController.CheckMotionList(weaponMotion);
+            curWeaponMotion = weaponMotions[atkChain.curChain];
+            // Start the attack.
+            curWeaponMotion.WeaponMotionSetup(this, weaponTrans, weaponSpriteR);
+            // Enables and disables the attack's collider during the "animation" and detects colliders it can hit, once.
             atkDetection.StartCoroutine(atkDetection.AttackCollider(WeapAtkChain.collider, WeapAtkChain.collisionStart, WeapAtkChain.collisionEnd, atkChain.curChain));
+            // Enables and changes the attack effect over the course of the attack.
             atkVisual.StartCoroutine(atkVisual.AttackAnimation(WeapAtkChain.attackSprites, WeapAtkChain.attackSpriteChanges, WeapAtkChain.attackLength,  atkChain.curChain));
+            // Moves the attack effect over the course of the attack.
             atkMovement.StartCoroutine(atkMovement.AttackMovement(atkChain.curChain, WeapAtkChain.spawnDistance, WeapAtkChain.moveDistance, WeapAtkChain.moveDelay, WeapAtkChain.attackLength, WeapAtkChain.moveCurve));
         }
     }
+    // If I want to check only when a new weapon is equipped, call this from the Character_EquippedWeapons.Change(). (every attack chain with the same motion)
+    public void AdjustMotionList() {
+        curWeaponMotion = weaponMotionController.CheckMotionList(weaponMotion);
+    }
 
-    public float WeapRotDur {
-        get {
-            return WeapAtkChain.weapRotDur;
+    public void ResetWeaponLocalValues() {
+        weaponTrans.localPosition = weapon.restingPosition;
+        weaponTrans.localEulerAngles = weapon.restingRotation;
+    }
+    public void StopPreviousMotion() {
+        if (curWeaponMotion != null) {
+            curWeaponMotion.StopMotions();
         }
     }
 
-    public SO_WeaponBase.AttackChain WeapAtkChain {
+    // // Shorter reference to the current attack chain's weapon rotation duration.
+    // public float WeaponMotionDuration {
+    //     get {
+    //         return WeapAtkChain.weaponMotionDuration;
+    //     }
+    // }
+    // Shorter reference to the weapon's scriptable object attack chain class.
+    public SO_Weapon.AttackChain WeapAtkChain {
         get {
             return weapon.attackChains[atkChain.curChain];
         }

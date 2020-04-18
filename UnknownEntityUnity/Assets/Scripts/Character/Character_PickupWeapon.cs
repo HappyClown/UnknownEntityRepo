@@ -11,8 +11,7 @@ public class Character_PickupWeapon : MonoBehaviour
     public Character_Attack atk;
     List<Collider2D> results = new List<Collider2D>();
 
-    void Update()
-    {
+    void Update() {
         if (Input.GetKeyDown("e")) {
             Physics2D.OverlapCollider(charLootCol, lootLayer, results);
             if (results.Count > 0) {
@@ -48,18 +47,18 @@ public class Character_PickupWeapon : MonoBehaviour
     }
     // Assign old active weapon to weapon loot on floor.
     void EquipWeapon (WeaponPickup weapLoot) {
-        SO_WeaponBase weapToDrop = equippedWeaps.firstWeap;
+        SO_Weapon weapToDrop = equippedWeaps.firstWeap;
         if (equippedWeaps.secondWeap == null) {
             equippedWeaps.secondWeap = equippedWeaps.firstWeap;
             equippedWeaps.firstWeap = weapLoot.weaponBase;
-            equippedWeaps.SpriteSwap();
+            equippedWeaps.Changes();
             weapLoot.TurnOff();
         }
         else {
             equippedWeaps.firstWeap = weapLoot.weaponBase;
             weapLoot.weaponBase = weapToDrop;
             weapLoot.SwapWeaponLoot(weapToDrop);
-            equippedWeaps.SpriteSwap();
+            equippedWeaps.Changes();
         }
         Debug.Log("Dropped weapon: " + weapToDrop + " and equipped: " + equippedWeaps.firstWeap);
     }

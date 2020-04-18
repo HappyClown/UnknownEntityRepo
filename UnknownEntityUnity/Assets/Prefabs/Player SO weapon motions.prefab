@@ -484,7 +484,6 @@ GameObject:
   - component: {fileID: 505351514}
   - component: {fileID: 3651932565041545236}
   - component: {fileID: 3651932565041545243}
-  - component: {fileID: 3651932565041545242}
   - component: {fileID: 3651932565041545240}
   - component: {fileID: 3651932565041545237}
   - component: {fileID: 1731692029}
@@ -494,7 +493,7 @@ GameObject:
   - component: {fileID: 396231391011437111}
   - component: {fileID: 1731692030}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player SO weapon motions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -568,12 +567,16 @@ MonoBehaviour:
   moIn: {fileID: 0}
   atkChain: {fileID: 3651932565041545243}
   atkDetection: {fileID: 3651932565041545237}
-  atkWeaMotion: {fileID: 3651932565041545242}
   atkVisual: {fileID: 3651932565041545240}
   atkMovement: {fileID: 1731692029}
   atkPlyrMove: {fileID: 505351515}
+  weaponMotionController: {fileID: 0}
+  weaponTrans: {fileID: 3651932565548517000}
+  weaponSpriteR: {fileID: 3651932565548517001}
   readyToAtk: 0
   weapon: {fileID: 0}
+  weaponMotion: {fileID: 0}
+  curWeaponMotion: {fileID: 0}
 --- !u!114 &3651932565041545243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -588,26 +591,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moIn: {fileID: 0}
   charAtk: {fileID: 3651932565041545236}
-  atkWeaMotion: {fileID: 3651932565041545242}
+  atkWeaMotion: {fileID: 0}
   ready: 1
   curChain: 0
---- !u!114 &3651932565041545242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3651932565041545233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 097b4a38b7249ac408fd2efd6afbc776, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  atkChain: {fileID: 3651932565041545243}
-  charAtk: {fileID: 3651932565041545236}
-  resetWeapRot: 0
-  weaponTran: {fileID: 3651932565548517000}
-  weaponSpriteR: {fileID: 3651932565548517001}
 --- !u!114 &3651932565041545240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -738,7 +724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charAtk: {fileID: 3651932565041545236}
-  firstWeap: {fileID: 11400000, guid: 5da85580d8dac1246a551f19842ec9b3, type: 2}
+  firstWeap: {fileID: 11400000, guid: 05700d58c4d139248adeaf881378aca2, type: 2}
   weaponSpriteR: {fileID: 3651932565548517001}
   secondWeap: {fileID: 0}
 --- !u!114 &396231391011437111
@@ -784,7 +770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawRangeGizmos: 1
-  drawUpToXRange: 3
+  drawUpToXRange: 5
   fromColor: {r: 1, g: 1, b: 1, a: 1}
   toColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &3651932565309937593
@@ -932,7 +918,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 20
+  m_Radius: 8
 --- !u!114 &1451212342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1017,7 +1003,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 18c61cc2554ceeb49a48cbcb49c5c950, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c83232dabb2a6784cb5470771bf9b9f0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

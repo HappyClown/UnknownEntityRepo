@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Weapon", menuName = "Weapon")]
-public class SO_WeaponBase : ScriptableObject
+[CreateAssetMenu(fileName = "SO_Weapon", menuName = "SOWeapons/SO_Weapon", order = 0)]
+public class SO_Weapon : ScriptableObject
 {
     public string weaponName;
     public Sprite weaponSprite;
     public float chainResetDelay;
+    public Vector3 restingRotation, restingPosition;
     public AttackChain[] attackChains;
     [System.Serializable]
     public class AttackChain {
+        public SO_Weapon_Motion sO_Weapon_Motion;
+        // /////////////////////////////////////////////////////////////////////
          public float minDamage, maxDamage;
         public float plyrSlowDown, plyrSlowDownDur, plyrMoveDist;
-        public float weapRotDur;
         public float attackLength;
         public float collisionStart, collisionEnd;
         public Sprite[] attackSprites;
@@ -29,19 +31,4 @@ public class SO_WeaponBase : ScriptableObject
         public AnimationCurve moveCurve;
         public PolygonCollider2D collider;
     }
-    
-    [Header("Weapon Motion")]
-    public Weapon_Motion weapon_Motion;
-    // If you want to alternate and control the rotation angle of the attack.
-    public float restingAngle;
-    public float waitingForResetAngle;
-    public float resetRotDuration;
-    public AnimationCurve attackRotAnimCurve;
-    public float RotationDifference {
-        get {
-            return Mathf.Abs(restingAngle-waitingForResetAngle);
-        }
-    }
-
-
 }

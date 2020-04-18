@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class Character_AttackChain : MonoBehaviour
 {
+    [Header("Script References")]
+    public MouseInputs moIn;
+    public Character_Attack charAtk;
+    public Character_AttackWeaponMotion atkWeaMotion;
+    [Header("Read Only")]
+    public bool ready = true;
     public int curChain;
     private int nextChain;
     private float chainResetTimer;
-    public bool ready = true;
-    [Header("Scripts")]
-    public MouseInputs moIn;
-    public SO_WeaponBase weapon;
-    public Character_Attack charAtk;
-    public Character_AttackWeaponMotion atkWeaMotion;
 
     void Start() {
-        chainResetTimer = weapon.chainResetDelay;
+        chainResetTimer = charAtk.weapon.chainResetDelay;
     }
 
     void Update() {
         // Chain reset timer.
-        if (chainResetTimer < weapon.chainResetDelay) {
+        if (chainResetTimer < charAtk.weapon.chainResetDelay) {
             chainResetTimer += Time.deltaTime;
-            if (chainResetTimer >= weapon.chainResetDelay) {
+            if (chainResetTimer >= charAtk.weapon.chainResetDelay) {
                 nextChain = 0;
-                atkWeaMotion.resetWeapRot = true;
+                //atkWeaMotion.resetWeapRot = true;
             }
         }
     }
@@ -35,9 +35,18 @@ public class Character_AttackChain : MonoBehaviour
         curChain = nextChain;
         chainResetTimer = 0f;
         nextChain++;
-        // Debug.Log("Attacking! Chain #" + curChain);
-        if (nextChain >= weapon.attackChains.Length) {
+        // This attack is the last in the chain. Code based on that can be added here.
+        if (nextChain >= charAtk.weapon.attackChains.Length) {
             nextChain = 0;
         }
+    }
+
+    // On weapon swap.
+    public void OnWeaponSwap() {
+        chainResetTimer = charAtk.weapon.chainResetDelay;
+        nextChain = 0;
+        curChain = 0;
+        charAtk.readyToAtk = true;
+        ready = true;
     }
 }
