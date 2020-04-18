@@ -59,6 +59,7 @@ public class ShieldSkeleton_Actions : Enemy_Actions
                 movement_Defend.AssignTokenToPathTarget();
                 movement_Defend.StartDefendingAlly();
             }
+            eRefs.eFollowPath.TriggerFreePath();
             shieldUp.AllowShieldUp();
             stateStarted = true;
             return;
@@ -98,6 +99,7 @@ public class ShieldSkeleton_Actions : Enemy_Actions
             if (!eDefender.canDefend && shieldUp.forceShieldDown) {
                 shieldUp.AllowShieldUp();
             }
+            eRefs.eFollowPath.TriggerFreePath();
             stateStarted = true;
             return;
         }
@@ -125,6 +127,7 @@ public class ShieldSkeleton_Actions : Enemy_Actions
         if (!stateStarted) {
             if (debugs) print("ChaseTarget: Initial state setup.");
             movement_Chase.AssignChaseTarget();
+            eRefs.eFollowPath.TriggerFreePath();
             shieldUp.AllowShieldUp();
             stateStarted = true;
             return;
