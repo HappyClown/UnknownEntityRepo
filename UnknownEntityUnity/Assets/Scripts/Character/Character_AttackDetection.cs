@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Character_AttackDetection : MonoBehaviour
 {
-    public PolygonCollider2D[] attackColliders;
+    //public PolygonCollider2D[] attackColliders;
     
     public bool[] activeAttacks;
     // public PolygonCollider2D attackCollider;
@@ -12,7 +12,7 @@ public class Character_AttackDetection : MonoBehaviour
     //public List<Collider2D> collidersHit;
     //public List<Collider2D> collidersDamaged;
 
-    public IEnumerator AttackCollider(PolygonCollider2D newCollider, float colStart, float colEnd, int chainNum) {
+    public IEnumerator AttackCollider(PolygonCollider2D newCollider, float colStart, float colEnd, int chainNum, PolygonCollider2D atkFXCol) {
         if (activeAttacks[chainNum]) {
             activeAttacks[chainNum] = false;
             yield return null;
@@ -25,19 +25,19 @@ public class Character_AttackDetection : MonoBehaviour
         float thisColEnd = colEnd;
         //attackColliders[thisChainNum].enabled = true;
         bool detectCol = false;
-        attackColliders[thisChainNum].points = newCollider.points;
+        atkFXCol.points = newCollider.points;
         List<Collider2D> collidersHit = new List<Collider2D>();
         List<Collider2D> collidersDamaged = new List<Collider2D>();
 
         while (activeAttacks[thisChainNum] && timer < thisColEnd) {
             timer += Time.deltaTime;
             if (timer >= thisColStart && !detectCol) {
-                attackColliders[thisChainNum].enabled = true;
+                atkFXCol.enabled = true;
                 detectCol = true;
             }
             if (detectCol) {
                 // Detect hit collision.
-                Physics2D.OverlapCollider(attackColliders[thisChainNum], hitLayers, collidersHit);
+                Physics2D.OverlapCollider(atkFXCol, hitLayers, collidersHit);
 
                 foreach (Collider2D col in collidersHit)
                 {
@@ -54,7 +54,7 @@ public class Character_AttackDetection : MonoBehaviour
             collidersHit.Clear();
             collidersDamaged.Clear();
         }
-        attackColliders[thisChainNum].enabled = false;
+        atkFXCol.enabled = false;
         activeAttacks[thisChainNum] = false;
         yield return null;
     }

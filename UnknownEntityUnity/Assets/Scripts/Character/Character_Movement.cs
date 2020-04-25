@@ -6,55 +6,85 @@ public class Character_Movement : MonoBehaviour
 {
     public MouseInputs moIn;
     public Character_CollisionDetection colDetect;
+    public bool canInputMove = true;
+    public bool charCanFlip = true;
     private bool running;
-    public float runSpeed = 1f; 
+    // Run speed.
+    public float baseRunSpeed = 1f; 
+    private float moddedRunSpeed, lessSpeedModifier, moreSpeedModifier;
+    //public List<float> speedLessValues = new List<float>();
+    //public List<float> speedMoreValues = new List<float>();
+    // public List<float> speedAddValues = new List<float>();
+    // public List<float> speedReduceValues = new List<float>();
+    //
     public SpriteRenderer spriteRend;
     public Animator animator;
     public float normMagMovement;
     public float moveDirX, moveDirY;
     private bool lookLeft, lookRight, moveLeft, moveRight;
 
-    void FixedUpdate() {
-        // Check if sprite needs to be flipped based on mouse position.
-        if (moIn.mouseMoved) {
-          FlipSprite();
-        }
-        // Detect Player Character movement.
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f);
-        Vector3 normalizedMovement = movement.normalized;
-        normMagMovement = normalizedMovement.magnitude;
-        moveDirX = Input.GetAxis("Horizontal");
-        moveDirY = Input.GetAxis("Vertical");
-        if (normalizedMovement.magnitude >= 0.01f) {
-            running = true;
-            animator.SetBool("Running", true);
-            // Check run direction, left or right.
-            if (moveDirX < 0) {
-                moveLeft = true;
-                moveRight = false;
-            }
-            else if (moveDirX > 0) {
-                moveLeft = false;
-                moveRight = true;
-            }
-            // Check if sprite need to be flipped based on the character's movement axis values.
-            // FlipSprite();
-        }
-        else {
-            running = false;
-            moveLeft = false;
-            moveRight = false;
-            animator.SetBool("Running", false);
-        }
-        SetRunAnimation();
-        // Check for collisions.
-        Vector3 curPosition = this.transform.position;
-        Vector3 newPosition = curPosition + normalizedMovement * runSpeed * Time.deltaTime;
-        MoveThePlayer(normalizedMovement, newPosition, curPosition);
-        //this.transform.position = curPosition + normalizedMovement * runSpeed * Time.deltaTime;
+    // Positive values to lower speed by % (0 to 1), negative values to return lowered speed.
+    public void ReduceSpeed (float percentOnOne) {
+        lessSpeedModifier += percentOnOne;
+        CalculateRunSpeed();
+    }
+    // Positive values to increase speed by % (0 to 1), negative values to return increased speed.
+    public void IncreaseSpeed (float percentOnOne) {
+        moreSpeedModifier += percentOnOne;
+        CalculateRunSpeed();
+    }
+    // Calculate actual run speed.
+    public void CalculateRunSpeed() {
+        moddedRunSpeed = Mathf.Clamp(baseRunSpeed * ((1-lessSpeedModifier) + moreSpeedModifier), 0f, 15f);
     }
 
-    void FlipSprite () {
+    void Start() {
+        CalculateRunSpeed();
+    }
+
+    void FixedUpdate() {
+        // Check if sprite needs to be flipped based on mouse position.
+        if (moIn.mouseMoved && charCanFlip) {
+          FlipSprite();
+        }
+        if (canInputMove) {
+            // Detect Player Character movement.
+            Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f);
+            Vector3 normalizedMovement = movement.normalized;
+            normMagMovement = normalizedMovement.magnitude;
+            moveDirX = Input.GetAxis("Horizontal");
+            moveDirY = Input.GetAxis("Vertical");
+            if (normalizedMovement.magnitude >= 0.01f) {
+                running = true;
+                animator.SetBool("Running", true);
+                // Check run direction, left or right.
+                if (moveDirX < 0) {
+                    moveLeft = true;
+                    moveRight = false;
+                }
+                else if (moveDirX > 0) {
+                    moveLeft = false;
+                    moveRight = true;
+                }
+                // Check if sprite need to be flipped based on the character's movement axis values.
+                // FlipSprite();
+            }
+            else {
+                running = false;
+                moveLeft = false;
+                moveRight = false;
+                animator.SetBool("Running", false);
+            }
+            SetRunAnimation();
+            // Check for collisions.
+            Vector3 curPosition = this.transform.position;
+            Vector3 newPosition = curPosition + normalizedMovement * moddedRunSpeed * Time.deltaTime;
+            MoveThePlayer(normalizedMovement, newPosition, curPosition);
+            //this.transform.position = curPosition + normalizedMovement * runSpeed * Time.deltaTime;
+        }
+    }
+
+    public void FlipSprite () {
         // Based on player mouse position.
         if (moIn.mousePosWorld2D.x < this.transform.position.x) {
             spriteRend.flipX = true;
@@ -66,13 +96,6 @@ public class Character_Movement : MonoBehaviour
             lookLeft = false;
             lookRight = true;
         }
-        // Based on player movement axis values.
-        // if (Input.GetAxis("Horizontal") < 0f) {
-        //     spriteRend.flipX = true;
-        // }
-        // else if (Input.GetAxis("Horizontal") > 0f) {
-        //     spriteRend.flipX = false;
-        // }
     }
 
     void SetRunAnimation () {
@@ -122,7 +145,39 @@ public class Character_Movement : MonoBehaviour
         }
     }
 
-    public void MoveThePlayer(Vector3 _normalizedMovement, Vector3 _newPosition, Vector3 _curPosition) {
-        this.transform.position = colDetect.CollisionCheck(_normalizedMovement, _newPosition, _curPosition);
+    public void StopInputMove() {
+        canInputMove = false;
+        running = false;
+        moveLeft = false;
+        moveRight = false;
+        animator.SetBool("Running", false);
+        SetRunAnimation();
     }
+    
+    public void MoveThePlayer(Vector3 _normMoveDir, Vector3 _newPosition, Vector3 _curPosition) {
+        this.transform.position = colDetect.CollisionCheck(_normMoveDir, _newPosition, _curPosition);
+    }
+
+    // public void SetupMoveThePlayerOverTime(float movementDuration, Vector3 targetPos, bool stopPlayerMove = false) {
+    //     if (stopPlayerMove) {
+    //         canMove = false;
+    //     }
+    //     StartCoroutine(MoveThePlayerOverTime(movementDuration, targetPos, stopPlayerMove));
+    // }
+
+    // public IEnumerator MoveThePlayerOverTime(float movementDuration, Vector3 targetPos, bool playerStopped) {
+    //     float moveTimer = 0f;
+    //     float speed = (this.transform.position-targetPos).magnitude / movementDuration;
+    //     while (moveTimer < 1f) {
+    //         moveTimer += Time.deltaTime/movementDuration;
+    //         Vector3 curPosition = this.transform.position;
+    //         Vector3 normDir = (targetPos - curPosition).normalized;
+    //         Vector3 newPosition = curPosition + normDir * speed * runSpeed * Time.deltaTime;
+    //         MoveThePlayer(normDir, newPosition, curPosition);
+    //         yield return null;
+    //     }
+    //     if (playerStopped) {
+    //         canMove = true;
+    //     }
+    // }
 }

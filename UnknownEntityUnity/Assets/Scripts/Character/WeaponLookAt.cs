@@ -5,8 +5,12 @@ using UnityEngine;
 public class WeaponLookAt : MonoBehaviour
 {
     public MouseInputs moIn;
+    public bool lookAtEnabled = true;
+
     void Update()
     {
-        this.transform.up = moIn.mousePosWorld2D - new Vector2(this.transform.position.x,this.transform.position.y);
+        if (lookAtEnabled) {
+            this.transform.up = moIn.mousePosWorld2D - new Vector2(this.transform.position.x,this.transform.position.y);
+        }
     }
 }

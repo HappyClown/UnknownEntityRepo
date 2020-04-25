@@ -289,7 +289,7 @@ MonoBehaviour:
   stopRangeToTarget: 0.9
   target: {fileID: 0}
   thisEnemyTrans: {fileID: 3690657262526239118}
-  speedModifier: 1
+  speedModifier: 2
   directlyMovingtoTarget: 0
   followingPath: 0
   allowPathUpdate: 1

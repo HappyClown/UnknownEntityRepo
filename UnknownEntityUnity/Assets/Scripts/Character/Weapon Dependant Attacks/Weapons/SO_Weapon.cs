@@ -14,8 +14,10 @@ public class SO_Weapon : ScriptableObject
     public class AttackChain {
         public SO_Weapon_Motion sO_Weapon_Motion;
         // /////////////////////////////////////////////////////////////////////
+        public SO_CharAtk_Motion sO_CharAtk_Motion;
+        // /////////////////////////////////////////////////////////////////////
          public float minDamage, maxDamage;
-        public float plyrSlowDown, plyrSlowDownDur, plyrMoveDist;
+        //public float plyrSlowDown, plyrSlowDownDur, plyrMoveDist;
         public float attackLength;
         public float collisionStart, collisionEnd;
         public Sprite[] attackSprites;

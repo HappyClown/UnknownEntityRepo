@@ -9,6 +9,7 @@ public class Character_Attack : MonoBehaviour
     public Character_AttackChain atkChain;
     public Character_AttackDetection atkDetection;
     //public Character_AttackWeaponMotion atkWeaMotion;
+    public Character_AttackFXPool atkFXPool;
     public Character_AttackVisual atkVisual;
     public Character_AttackMovement atkMovement;
     public Character_AttackPlayerMovement atkPlyrMove;
@@ -23,14 +24,13 @@ public class Character_Attack : MonoBehaviour
     public Weapon_Motion weaponMotion;
     public Weapon_Motion curWeaponMotion;
     public List<Weapon_Motion> weaponMotions = new List<Weapon_Motion>();
+    public Character_AttackFX atkFX;
 
     void Update() {
         // If I clicked and can attack.
         if (moIn.mouseLeftClicked && atkChain.ready) {
             // Checks and adjusts the current attack chain. (Chaining attacks)
             atkChain.ChainAttacks();
-            // Handles moving the player and slowing him down during the attack. (Player motion)
-            atkPlyrMove.AttackPlayerMovement(WeapAtkChain.plyrSlowDown, WeapAtkChain.plyrSlowDownDur, WeapAtkChain.attackLength, WeapAtkChain.plyrMoveDist, atkChain.curChain);
             // Stop the previous motion if needed.
             StopPreviousMotion();
             // Set the weapon back to its resting position and rotation. Usually the first attack chain's resting values.
@@ -40,12 +40,16 @@ public class Character_Attack : MonoBehaviour
             curWeaponMotion = weaponMotions[atkChain.curChain];
             // Start the attack.
             curWeaponMotion.WeaponMotionSetup(this, weaponTrans, weaponSpriteR);
+            // Request an attack FX from the attack FX pool, the attack FX contains a Sprite Renderer and a PolygonalCollider2D.
+            atkFX = atkFXPool.RequestAttackFX();
+            // Handles moving the player, slowing him down, etc., during the attack. (Player motion)
+            atkPlyrMove.SetupPlayerAttackMotions(WeapAtkChain.sO_CharAtk_Motion);
             // Enables and disables the attack's collider during the "animation" and detects colliders it can hit, once.
-            atkDetection.StartCoroutine(atkDetection.AttackCollider(WeapAtkChain.collider, WeapAtkChain.collisionStart, WeapAtkChain.collisionEnd, atkChain.curChain));
+            atkDetection.StartCoroutine(atkDetection.AttackCollider(WeapAtkChain.collider, WeapAtkChain.collisionStart, WeapAtkChain.collisionEnd, atkChain.curChain, atkFX.col));
             // Enables and changes the attack effect over the course of the attack.
-            atkVisual.StartCoroutine(atkVisual.AttackAnimation(WeapAtkChain.attackSprites, WeapAtkChain.attackSpriteChanges, WeapAtkChain.attackLength,  atkChain.curChain));
+            atkVisual.StartCoroutine(atkVisual.AttackAnimation(WeapAtkChain.attackSprites, WeapAtkChain.attackSpriteChanges, WeapAtkChain.attackLength,  atkChain.curChain, atkFX));
             // Moves the attack effect over the course of the attack.
-            atkMovement.StartCoroutine(atkMovement.AttackMovement(atkChain.curChain, WeapAtkChain.spawnDistance, WeapAtkChain.moveDistance, WeapAtkChain.moveDelay, WeapAtkChain.attackLength, WeapAtkChain.moveCurve));
+            atkMovement.StartCoroutine(atkMovement.AttackMovement(atkChain.curChain, WeapAtkChain.spawnDistance, WeapAtkChain.moveDistance, WeapAtkChain.moveDelay, WeapAtkChain.attackLength, WeapAtkChain.moveCurve, atkFX.transform));
         }
     }
     // If I want to check only when a new weapon is equipped, call this from the Character_EquippedWeapons.Change(). (every attack chain with the same motion)

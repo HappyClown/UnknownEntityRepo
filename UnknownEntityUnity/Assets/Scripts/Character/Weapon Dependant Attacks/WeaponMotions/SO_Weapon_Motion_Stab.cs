@@ -6,13 +6,17 @@ using UnityEngine;
 public class SO_Weapon_Motion_Stab : SO_Weapon_Motion
 {
     public float restingYPosition;
-    public float waitingForResetYPos;
+    //public float waitingForResetYPos;
     public float resetYPosDuration;
-    public AnimationCurve attackYPosAnimCurve;
+    //public AnimationCurve attackYPosAnimCurve;
+    [Header("Weapon motions; Windup, Action, Winddown")]
     public float weaponMotionDuration;
-    public float PositionDifference {
-        get {
-            return Mathf.Abs(restingYPosition-waitingForResetYPos);
-        }
-    }
+    public float[] motionDurations;
+    public float[] yPositions;
+    public AnimationCurve[] animCurves;
+    // public float PositionDifference {
+    //     get {
+    //         return Mathf.Abs(restingYPosition-waitingForResetYPos);
+    //     }
+    // }
 }
