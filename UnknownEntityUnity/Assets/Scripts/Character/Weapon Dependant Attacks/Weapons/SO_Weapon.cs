@@ -16,21 +16,12 @@ public class SO_Weapon : ScriptableObject
         // /////////////////////////////////////////////////////////////////////
         public SO_CharAtk_Motion sO_CharAtk_Motion;
         // /////////////////////////////////////////////////////////////////////
+        public SO_AttackFX sO_AttackFX;
+        // /////////////////////////////////////////////////////////////////////
          public float minDamage, maxDamage;
-        //public float plyrSlowDown, plyrSlowDownDur, plyrMoveDist;
-        public float attackLength;
-        public float collisionStart, collisionEnd;
-        public Sprite[] attackSprites;
-        public float[] attackSpriteChanges;
-        // This would be to normalize the attackSpriteChanges timings from 0 to 1 instead of from 0 to attackLength.
-        // public float spriteChange {
-        //     get {
-        //         return spriteChange * attackLength;
-        //     }
-        // }
-        public float spawnDistance;
-        public float moveDistance, moveDelay;
-        public AnimationCurve moveCurve;
-        public PolygonCollider2D collider;
+         public float DamageRoll {
+             get{ return Random.Range(minDamage, maxDamage); }
+         }
+         // ////////////////////////////////////////////////////////////////////
     }
 }

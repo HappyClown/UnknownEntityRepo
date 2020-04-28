@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ee2c9c7217a69944ae0799407868fd0, type: 3}
-  m_Name: SO_Weapon_Motion_Stab
+  m_Name: SO_Weapon_Motion_Stab_SimpleSpear01
   m_EditorClassIdentifier: 
   weapon_Motion: {fileID: 9053052833409374892, guid: 4ca0abfcaa07a2f4481cce7c2ee67904,
     type: 3}
