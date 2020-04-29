@@ -10,34 +10,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f167f306c0b1be84d9c7f92f4bae2a58, type: 3}
-  m_Name: SO_AttackFX_SimpleSpear01
+  m_Name: SO_AttackFX_SimpleSpear02
   m_EditorClassIdentifier: 
-  totalDuration: 0.75
+  totalDuration: 0.5
   collider: {fileID: 6841409416684675371, guid: e535e837fec552841a83269c5fb6ad72,
     type: 3}
-  colStart: 0.5
-  colEnd: 0.75
+  colStart: 0.25
+  colEnd: 0.5
   sprites:
-  - {fileID: 3000971718781307103, guid: f1784868994d03443aa4da9348a106f9, type: 3}
-  - {fileID: 5686189157857763169, guid: f1784868994d03443aa4da9348a106f9, type: 3}
-  - {fileID: 7520736533939956714, guid: f1784868994d03443aa4da9348a106f9, type: 3}
-  - {fileID: -180174802169907368, guid: f1784868994d03443aa4da9348a106f9, type: 3}
-  - {fileID: -4125544368259058146, guid: f1784868994d03443aa4da9348a106f9, type: 3}
-  - {fileID: 4747224573541026850, guid: f1784868994d03443aa4da9348a106f9, type: 3}
-  - {fileID: -3165532739164340801, guid: f1784868994d03443aa4da9348a106f9, type: 3}
-  - {fileID: 8098713575471113110, guid: f1784868994d03443aa4da9348a106f9, type: 3}
+  - {fileID: -1825094894319845875, guid: 7f695e342a0df0a4bb492a3f383ef372, type: 3}
+  - {fileID: -2125789126869493611, guid: 7f695e342a0df0a4bb492a3f383ef372, type: 3}
+  - {fileID: -5063955122995581951, guid: 7f695e342a0df0a4bb492a3f383ef372, type: 3}
+  - {fileID: 6800848836270166556, guid: 7f695e342a0df0a4bb492a3f383ef372, type: 3}
+  - {fileID: -3265155853073399551, guid: 7f695e342a0df0a4bb492a3f383ef372, type: 3}
+  - {fileID: -3667958075743057575, guid: 7f695e342a0df0a4bb492a3f383ef372, type: 3}
+  - {fileID: -410571930445644693, guid: 7f695e342a0df0a4bb492a3f383ef372, type: 3}
+  - {fileID: 3474281053549665992, guid: 7f695e342a0df0a4bb492a3f383ef372, type: 3}
   spriteChangeTiming:
-  - 0.5
-  - 0.53
-  - 0.55
-  - 0.58
-  - 0.62
-  - 0.65
-  - 0.68
-  - 0.71
-  spawnDistance: 0.6
+  - 0.25
+  - 0.28
+  - 0.3
+  - 0.33
+  - 0.37
+  - 0.4
+  - 0.43
+  - 0.46
+  spawnDistance: 0.8
   moveDistance: 1
-  moveDelay: 0.5
+  moveDelay: 0.25
   moveAnimCurve:
     serializedVersion: 2
     m_Curve:

@@ -16,11 +16,11 @@ MonoBehaviour:
     type: 3}
   restingYPosition: 0
   resetYPosDuration: 0.5
-  weaponMotionDuration: 0.85
+  weaponMotionDuration: 0.36
   motionDurations:
-  - 0.5
+  - 0.25
   - 0.05
-  - 0.3
+  - 0.1
   yPositions:
   - -0.2
   - 0.2

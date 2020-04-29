@@ -33,6 +33,7 @@ public class Character_AttackChain : MonoBehaviour
         charAtk.readyToAtk = false;
         ready = false;
         curChain = nextChain;
+        // Turn this chain reset timer to 0 after the attack is complete.
         chainResetTimer = 0f;
         nextChain++;
         // This attack is the last in the chain. Code based on that can be added here.
