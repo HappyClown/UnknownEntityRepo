@@ -44,12 +44,12 @@ public class Character_Attack : MonoBehaviour
             atkFX = atkFXPool.RequestAttackFX();
             // Handles moving the player, slowing him down, etc., during the attack. (Player motion)
             atkPlyrMove.SetupPlayerAttackMotions(WeapAtkChain.sO_CharAtk_Motion);
+            // Moves the attack effect over the course of the attack.
+            atkMovement.StartCoroutine(atkMovement.AttackMovement(WeapAtkChain.sO_AttackFX, atkFX.transform));
             // Enables and changes the attack effect over the course of the attack and dictates if the atkFX pool object is inUse then not.
             atkVisual.StartCoroutine(atkVisual.AttackAnimation(WeapAtkChain.sO_AttackFX, atkFX));
             // Enables and disables the attack's collider during the "animation" and detects colliders it can hit, once.
             atkDetection.StartCoroutine(atkDetection.AttackCollider(WeapAtkChain, WeapAtkChain.sO_AttackFX, atkFX.col));
-            // Moves the attack effect over the course of the attack.
-            atkMovement.StartCoroutine(atkMovement.AttackMovement(WeapAtkChain.sO_AttackFX, atkFX.transform));
         }
     }
     // If I want to check only when a new weapon is equipped, call this from the Character_EquippedWeapons.Change(). (every attack chain with the same motion)

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f167f306c0b1be84d9c7f92f4bae2a58, type: 3}
-  m_Name: SO_AttackFX_SimpleSpear02
+  m_Name: SO_AttackFX_SimpleSpear03
   m_EditorClassIdentifier: 
   totalDuration: 0.5
   collider: {fileID: 6841409416684675371, guid: e535e837fec552841a83269c5fb6ad72,
@@ -28,15 +28,15 @@ MonoBehaviour:
   - {fileID: 3474281053549665992, guid: 7f695e342a0df0a4bb492a3f383ef372, type: 3}
   spriteChangeTiming:
   - 0.25
-  - 0.28
-  - 0.31
+  - 0.275
+  - 0.3
   - 0.33
-  - 0.38
-  - 0.41
-  - 0.44
-  - 0.47
-  spawnDistance: 0.6
-  moveDistance: 1.1
+  - 0.37
+  - 0.4
+  - 0.43
+  - 0.46
+  spawnDistance: 0.8
+  moveDistance: 1
   moveDelay: 0.25
   moveAnimCurve:
     serializedVersion: 2

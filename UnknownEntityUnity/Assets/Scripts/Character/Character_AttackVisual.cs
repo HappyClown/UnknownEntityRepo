@@ -19,6 +19,7 @@ public class Character_AttackVisual : MonoBehaviour
         atkFX.inUse = true;
         SpriteRenderer atkSpriteR = atkFX.spriteR;
         atkFX.gameObject.SetActive(true);
+        atkSpriteR.sprite = null;
         // References from the SO_AttackFX.
         Sprite[] atkSprites = sO_AttackFX.sprites;
         float[] atkSpriteChangeTimes = sO_AttackFX.spriteChangeTiming;
@@ -26,7 +27,9 @@ public class Character_AttackVisual : MonoBehaviour
         // Set other variables.
         float timer = 0f;
         int thisSpriteIndex = 0;
-        
+        // This was put it to avoid having the first sprite appear before the attack movement was set.
+        yield return null;
+        // Go through all the attack FX sprites based on their change timings.
         while (timer < totalDuration) {
             timer += Time.deltaTime;
             if (timer >= atkSpriteChangeTimes[thisSpriteIndex]) {
@@ -40,6 +43,5 @@ public class Character_AttackVisual : MonoBehaviour
         atkSpriteR.sprite = null;
         atkFX.gameObject.SetActive(false);
         atkFX.inUse = false;
-        yield return null;
     }
 }

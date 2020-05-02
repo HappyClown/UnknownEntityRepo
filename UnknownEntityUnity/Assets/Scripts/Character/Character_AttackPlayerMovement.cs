@@ -20,6 +20,7 @@ public class Character_AttackPlayerMovement : MonoBehaviour
     private Vector2 curDirection;
     private float curDuration;
     private float curSpeed;
+    private float curSlow;
     private Vector2 curPosition, newPosition;
     // General
     public bool charAtkMotionOn;
@@ -42,28 +43,37 @@ public class Character_AttackPlayerMovement : MonoBehaviour
         if (curMotion == durations.Length) {
             charMov.canInputMove = true;
             charMov.charCanFlip = true;
+            charMov.ReduceSpeed(-curSlow);
+            curSlow = 0f;
             charMov.FlipSprite();
-            weaponLookAt.lookAtEnabled = true; 
+            weaponLookAt.lookAtEnabled = true;
             curMotion = 0;
             charAtkMotionOn = false;
             moveTimer = 0f;
             return;
         }
+        // If there was no movement for the previous motion (distance set to "0"), set the movement direction now.
+        if (curDistance == 0) { curDirection = weapOrigTrans.up; }
+        // Undo the previous movement slow down.
+        charMov.ReduceSpeed(-curSlow);
         // Set the next motions current values.
         curDistance = distances[curMotion];
         curDuration = durations[curMotion];
         curSpeed = Mathf.Abs(curDistance/curDuration);
         curPosition = this.transform.position;
+        curSlow = slowDownRunSpeed[curMotion];
         // Set initial locks and slowdown.
         if (lockInputMovement[curMotion]) { charMov.StopInputMove(); }
         else { charMov.canInputMove = true; }
         if (lockCharacterAndWeapon[curMotion]) { charMov.charCanFlip = false; weaponLookAt.lookAtEnabled = false; }
         else { charMov.charCanFlip = true; weaponLookAt.lookAtEnabled = true; }
-        //
+        // Apply the new slowdown.
+        charMov.ReduceSpeed(curSlow);
         moveTimer = 0f;
     }
 
     public void SetupPlayerAttackMotions(SO_CharAtk_Motion sOCharAtkMotion) {
+        if (curSlow != 0f) { charMov.ReduceSpeed(-curSlow); }
         // Get references from the Scriptable Object.
         durations = sOCharAtkMotion.durations;
         distances = sOCharAtkMotion.distances;
@@ -77,12 +87,17 @@ public class Character_AttackPlayerMovement : MonoBehaviour
         curDirection = weapOrigTrans.up;
         curSpeed = Mathf.Abs(curDistance/curDuration);
         curPosition = weapOrigTrans.position;
+        curSlow = slowDownRunSpeed[curMotion];
         // Set initial locks and slowdown.
+        // Locks the player movement input.
         if (lockInputMovement[curMotion]) { charMov.StopInputMove(); }
         else { charMov.canInputMove = true; }
+        // This locks the character sprite flip and weapon rotation. (Can be seperated)
         if (lockCharacterAndWeapon[curMotion]) { charMov.charCanFlip = false; weaponLookAt.lookAtEnabled = false; }
         else { charMov.charCanFlip = true; weaponLookAt.lookAtEnabled = true; }
-        //
+        // Applies a slow to the player input movement speed.
+        charMov.ReduceSpeed(curSlow);
+
         moveTimer = 0f;
         charAtkMotionOn = true;
     }
