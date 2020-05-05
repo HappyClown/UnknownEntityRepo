@@ -34,7 +34,6 @@ public class Character_EquippedWeapons : MonoBehaviour
             charAtk.curWeaponMotion.StopMotions();
         }
         //Assign the weapon motion script.
-
         for (int i = 0; i < firstWeap.attackChains.Length; i++) {
             if (charAtk.weaponMotions.Count < i+1) {
                 charAtk.weaponMotions.Add(charAtk.weaponMotionController.CheckMotionList(firstWeap.attackChains[i].sO_Weapon_Motion.weapon_Motion));
@@ -48,15 +47,15 @@ public class Character_EquippedWeapons : MonoBehaviour
 
         // Assign the Scriptable Object weapon in the Character_Attack script.
         charAtk.weapon = firstWeap;
-        // Assign its resting angle.
-        charAtk.weaponTrans.localEulerAngles = firstWeap.restingRotation;
-        // Assign its resting position.
-        charAtk.weaponTrans.localPosition = firstWeap.restingPosition;
         // Change the weapon's appearance.
         weaponSpriteR.sprite = firstWeap.weaponSprite;
         // Find somewhere to insert the rest of the previous weapon's attack duration. 
         weaponSpriteR.color = Color.white;
         // Go back to the first chain.
-        charAtk.atkChain.OnWeaponSwap();
+        charAtk.atkChain.OnWeaponSwap(firstWeap, secondWeap);
+        // Assign its resting angle.
+        charAtk.weaponTrans.localEulerAngles = charAtk.WeapAtkChain.sO_Weapon_Motion.restingRotation;
+        // Assign its resting position.
+        charAtk.weaponTrans.localPosition = charAtk.WeapAtkChain.sO_Weapon_Motion.restingPosition;
     }
 }

@@ -16,7 +16,7 @@ public class Weapon_StabMotion : Weapon_Motion
     private float moveTimer;
     //
     private float restingY;
-    private float /* weaponMotionDur,  */curMotionDur;
+    private float curMotionDur;
     private AnimationCurve curAnimCurve;
     private float[] motionDurations;
     private float[] yPositions;
@@ -24,9 +24,6 @@ public class Weapon_StabMotion : Weapon_Motion
     //
     private float curYPos, startYPos, endYPos;
     private int curMotion;
-    //private float waitingForResetAngle, restingAngle;
-    //private float startAngle, curZAngle, moveTimer, endAngle;
-    //private bool clockwise = true;
 
     void Update() {
         // Rotate charAtk.weapon back to its reset position.
@@ -42,25 +39,6 @@ public class Weapon_StabMotion : Weapon_Motion
             }
             weaponTrans.localPosition = new Vector3(weaponTrans.localPosition.x, curYPos, weaponTrans.localPosition.z);
         }
-
-        // Rotate charAtk.weapon to the other side simulating an attack.
-        // if (weapMotionOn) {
-        //     moveTimer += Time.deltaTime / weaponMotionDur;
-        //     // Lerp.
-        //     curYPos = Mathf.Lerp(startYPos, endYPos, curAnimCurve.Evaluate(moveTimer));
-        //     if (moveTimer >= 1f) {
-        //         charAtk.readyToAtk = true;
-        //         charAtk.atkChain.ready = true;
-        //         weapMotionOn = false;
-        //         moveTimer = 0f;
-        //         resetWeapRot = true;
-        //         curYPos = endYPos;
-        //         endYPos = startYPos;
-        //         startYPos = curYPos;
-        //         weaponSpriteR.color= Color.gray;
-        //     }
-        //     weaponTrans.localPosition = new Vector3(weaponTrans.localPosition.x, curYPos, weaponTrans.localPosition.z);
-        // }
 
         if (weapMotionOn) {
             moveTimer += Time.deltaTime / curMotionDur;
@@ -102,11 +80,10 @@ public class Weapon_StabMotion : Weapon_Motion
         charAtk = _charAtk;
         // References from the motion SO associated with the current attack chain.
         sOWeaponMotionStab = charAtk.weapon.attackChains[charAtk.atkChain.curChain].sO_Weapon_Motion as SO_Weapon_Motion_Stab;
-        //weaponMotionDur = sOWeaponMotionStab.weaponMotionDuration;
         motionDurations = sOWeaponMotionStab.motionDurations;
         yPositions = sOWeaponMotionStab.yPositions;
         animCurves = sOWeaponMotionStab.animCurves;
-        restingY = sOWeaponMotionStab.restingYPosition;
+        restingY = sOWeaponMotionStab.restingPosition.y;
         curMotion = 0;
         // First motion setup.
         curMotionDur = motionDurations[curMotion];

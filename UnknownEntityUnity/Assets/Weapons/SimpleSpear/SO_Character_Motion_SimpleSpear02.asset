@@ -20,8 +20,8 @@ MonoBehaviour:
   - 0
   - 0.5
   - 0
-  lockInputMovement: 000000
-  lockCharacterAndWeapon: 000000
+  lockInputMovement: 000101
+  lockCharacterAndWeapon: 000101
   slowDownRunSpeed:
   - 0.5
   - 0.1

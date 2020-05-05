@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f167f306c0b1be84d9c7f92f4bae2a58, type: 3}
+  m_Name: SO_AttackFX_ShortBroadSwordTest
+  m_EditorClassIdentifier: 
+  totalDuration: 0.4
+  collider: {fileID: 8439487225676276712, guid: 3ab819451ee93e147ae069fb2873fa35,
+    type: 3}
+  colStart: 0.2
+  colEnd: 0.4
+  sprites:
+  - {fileID: 2052972233745253448, guid: c62c25045be4c554cb49e4e4c5d2f53e, type: 3}
+  - {fileID: 2651764134251142006, guid: c62c25045be4c554cb49e4e4c5d2f53e, type: 3}
+  - {fileID: 9007154975283250475, guid: c62c25045be4c554cb49e4e4c5d2f53e, type: 3}
+  - {fileID: 1614133437942407668, guid: c62c25045be4c554cb49e4e4c5d2f53e, type: 3}
+  - {fileID: -6740573795990151913, guid: c62c25045be4c554cb49e4e4c5d2f53e, type: 3}
+  spriteChangeTiming:
+  - 0.2
+  - 0.24
+  - 0.28
+  - 0.36
+  - 0.38
+  spawnDistance: 0.75
+  moveDistance: 0.5
+  moveDelay: 0.2
+  moveAnimCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

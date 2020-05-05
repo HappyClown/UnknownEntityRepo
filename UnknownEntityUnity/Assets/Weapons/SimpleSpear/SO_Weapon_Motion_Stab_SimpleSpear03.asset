@@ -16,14 +16,14 @@ MonoBehaviour:
     type: 3}
   restingYPosition: 0
   resetYPosDuration: 0.5
-  weaponMotionDuration: 0.36
+  weaponMotionDuration: 0.45
   motionDurations:
-  - 0.25
+  - 0.39
   - 0.05
   - 0.1
   yPositions:
-  - -0.3
-  - 0.2
+  - -0.2
+  - 0.3
   - 0.2
   animCurves:
   - serializedVersion: 2

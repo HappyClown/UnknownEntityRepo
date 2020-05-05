@@ -16,7 +16,7 @@ public class SO_Weapon : ScriptableObject
         // /////////////////////////////////////////////////////////////////////
         public SO_CharAtk_Motion sO_CharAtk_Motion;
         // /////////////////////////////////////////////////////////////////////
-        public SO_AttackFX sO_AttackFX;
+        public SO_AttackFX[] sO_AttackFXs;
         // /////////////////////////////////////////////////////////////////////
          public float minDamage, maxDamage;
          public float DamageRoll {

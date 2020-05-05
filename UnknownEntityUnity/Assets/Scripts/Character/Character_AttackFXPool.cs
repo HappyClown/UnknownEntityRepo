@@ -13,7 +13,7 @@ public class Character_AttackFXPool : MonoBehaviour
                 return atkFX;
             }
         }
-        atkFXs.Add(Instantiate(poolPrefab, poolPrefab.transform.position, Quaternion.identity, this.transform).GetComponent<Character_AttackFX>());
+        atkFXs.Add(Instantiate(poolPrefab, poolPrefab.transform.localPosition, Quaternion.identity, this.transform).GetComponent<Character_AttackFX>());
         return atkFXs[atkFXs.Count-1];
     }
 }

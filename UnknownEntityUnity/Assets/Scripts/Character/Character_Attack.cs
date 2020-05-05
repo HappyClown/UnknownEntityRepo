@@ -25,6 +25,8 @@ public class Character_Attack : MonoBehaviour
     public Weapon_Motion curWeaponMotion;
     public List<Weapon_Motion> weaponMotions = new List<Weapon_Motion>();
     public Character_AttackFX atkFX;
+    public bool atkDirectionChanges;
+    public bool atkFXFlip;
 
     void Update() {
         // If I clicked and can attack.
@@ -40,16 +42,25 @@ public class Character_Attack : MonoBehaviour
             curWeaponMotion = weaponMotions[atkChain.curChain];
             // Start the attack.
             curWeaponMotion.WeaponMotionSetup(this, weaponTrans, weaponSpriteR);
-            // Request an attack FX from the attack FX pool, the attack FX contains a Sprite Renderer and a PolygonalCollider2D.
-            atkFX = atkFXPool.RequestAttackFX();
             // Handles moving the player, slowing him down, etc., during the attack. (Player motion)
             atkPlyrMove.SetupPlayerAttackMotions(WeapAtkChain.sO_CharAtk_Motion);
-            // Moves the attack effect over the course of the attack.
-            atkMovement.StartCoroutine(atkMovement.AttackMovement(WeapAtkChain.sO_AttackFX, atkFX.transform));
-            // Enables and changes the attack effect over the course of the attack and dictates if the atkFX pool object is inUse then not.
-            atkVisual.StartCoroutine(atkVisual.AttackAnimation(WeapAtkChain.sO_AttackFX, atkFX));
-            // Enables and disables the attack's collider during the "animation" and detects colliders it can hit, once.
-            atkDetection.StartCoroutine(atkDetection.AttackCollider(WeapAtkChain, WeapAtkChain.sO_AttackFX, atkFX.col));
+            // Activate all this attack's FX's.
+            foreach (SO_AttackFX sO_AttackFX in ChainAttackFXs) {
+                print("Passes one atkFX." + sO_AttackFX);
+                // Request an attack FX from the attack FX pool, the attack FX contains a Sprite Renderer and a PolygonalCollider2D.
+                atkFX = atkFXPool.RequestAttackFX();
+                // Flip the attack FX Sprite if needed. (So far, for alternating Slash motions)
+                if (atkDirectionChanges) { atkFX.spriteR.flipX = atkFXFlip; } else { atkFX.spriteR.flipX = false; }
+                atkDirectionChanges = false;
+                // Moves the attack effect over the course of the attack.
+                atkMovement.StartCoroutine(atkMovement.AttackMovement(sO_AttackFX, atkFX.transform));
+                // Enables and changes the attack effect over the course of the attack and dictates if the atkFX pool object is inUse then not.
+                atkVisual.StartCoroutine(atkVisual.AttackAnimation(sO_AttackFX, atkFX));
+                // Enables and disables the attack's collider during the "animation" and detects colliders it can hit, once, if it has one assigned.
+                if (sO_AttackFX.collider != null) {
+                    atkDetection.StartCoroutine(atkDetection.AttackCollider(WeapAtkChain, sO_AttackFX, atkFX.col));
+                }
+            }
         }
     }
     // If I want to check only when a new weapon is equipped, call this from the Character_EquippedWeapons.Change(). (every attack chain with the same motion)
@@ -66,17 +77,22 @@ public class Character_Attack : MonoBehaviour
             curWeaponMotion.StopMotions();
         }
     }
-
-    // // Shorter reference to the current attack chain's weapon rotation duration.
-    // public float WeaponMotionDuration {
-    //     get {
-    //         return WeapAtkChain.weaponMotionDuration;
-    //     }
-    // }
     // Shorter reference to the weapon's scriptable object attack chain class.
     public SO_Weapon.AttackChain WeapAtkChain {
         get {
             return weapon.attackChains[atkChain.curChain];
         }
     }
+
+    public SO_AttackFX[] ChainAttackFXs {
+        get {
+            return WeapAtkChain.sO_AttackFXs;
+        }
+    }
+    // // Shorter reference to the current attack chain's weapon rotation duration.
+    // public float WeaponMotionDuration {
+    //     get {
+    //         return WeapAtkChain.weaponMotionDuration;
+    //     }
+    // }
 }

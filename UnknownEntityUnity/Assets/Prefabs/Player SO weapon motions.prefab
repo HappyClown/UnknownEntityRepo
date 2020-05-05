@@ -191,9 +191,8 @@ MonoBehaviour:
   moIn: {fileID: 0}
   colDetect: {fileID: 505351514}
   canInputMove: 1
+  charCanFlip: 1
   baseRunSpeed: 3
-  speedLessValues: []
-  speedMoreValues: []
   spriteRend: {fileID: 3651932565309937599}
   animator: {fileID: 3651932565309937598}
   normMagMovement: 0
@@ -286,7 +285,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e404b732ade4f4d938fff1ddefd58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeAttacks: 0000000000
   hitLayers:
     useTriggers: 0
     useLayerMask: 1
@@ -314,7 +312,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapOrigTrans: {fileID: 3651932565724258071}
-  playerTrans: {fileID: 3651932565041545238}
 --- !u!114 &505351515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,9 +325,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charMov: {fileID: 3651932565041545239}
-  playerTrans: {fileID: 3651932565041545238}
+  weaponLookAt: {fileID: 3651932565724258068}
   weapOrigTrans: {fileID: 3651932565724258071}
-  distances: []
+  playerTrans: {fileID: 3651932565041545238}
   charAtkMotionOn: 0
 --- !u!114 &1731692023
 MonoBehaviour:

@@ -21,18 +21,22 @@ MonoBehaviour:
   - sO_Weapon_Motion: {fileID: 11400000, guid: 63fb10732d1464c48b2442c31ab71f87, type: 2}
     sO_CharAtk_Motion: {fileID: 11400000, guid: b549f9e4d237c6746b2977f1f61af60a,
       type: 2}
-    sO_AttackFX: {fileID: 11400000, guid: 22414965654cd5a4f8298813ac14945b, type: 2}
+    sO_AttackFXs:
+    - {fileID: 11400000, guid: 22414965654cd5a4f8298813ac14945b, type: 2}
     minDamage: 7
     maxDamage: 10
   - sO_Weapon_Motion: {fileID: 11400000, guid: 63fb10732d1464c48b2442c31ab71f87, type: 2}
     sO_CharAtk_Motion: {fileID: 11400000, guid: b549f9e4d237c6746b2977f1f61af60a,
       type: 2}
-    sO_AttackFX: {fileID: 11400000, guid: 22414965654cd5a4f8298813ac14945b, type: 2}
+    sO_AttackFXs:
+    - {fileID: 11400000, guid: 22414965654cd5a4f8298813ac14945b, type: 2}
     minDamage: 7
     maxDamage: 10
-  - sO_Weapon_Motion: {fileID: 11400000, guid: 63fb10732d1464c48b2442c31ab71f87, type: 2}
-    sO_CharAtk_Motion: {fileID: 11400000, guid: b549f9e4d237c6746b2977f1f61af60a,
+  - sO_Weapon_Motion: {fileID: 11400000, guid: 8535b3eadfa0f5c4f9356d90446429e0, type: 2}
+    sO_CharAtk_Motion: {fileID: 11400000, guid: c91657aad70ec3242bb1aaa3de00e39b,
       type: 2}
-    sO_AttackFX: {fileID: 11400000, guid: 22414965654cd5a4f8298813ac14945b, type: 2}
+    sO_AttackFXs:
+    - {fileID: 11400000, guid: 62b5a2666fa042f47b7b2f4cdefe7692, type: 2}
+    - {fileID: 11400000, guid: 48e974abc7968aa42989f482583ca653, type: 2}
     minDamage: 7
     maxDamage: 10
