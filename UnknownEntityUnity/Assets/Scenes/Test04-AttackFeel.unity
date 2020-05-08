@@ -2415,6 +2415,15 @@ PrefabInstance:
       propertyPath: moIn
       value: 
       objectReference: {fileID: 740239758}
+    - target: {fileID: 1731692023, guid: 17191f42f3a871b4a83450ce0b9bcb4a, type: 3}
+      propertyPath: moIn
+      value: 
+      objectReference: {fileID: 740239758}
+    - target: {fileID: 3507419587604336638, guid: 17191f42f3a871b4a83450ce0b9bcb4a,
+        type: 3}
+      propertyPath: moIn
+      value: 
+      objectReference: {fileID: 740239758}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17191f42f3a871b4a83450ce0b9bcb4a, type: 3}
 --- !u!4 &696896412 stripped
@@ -2433,8 +2442,9 @@ GameObject:
   m_Component:
   - component: {fileID: 740239757}
   - component: {fileID: 740239758}
+  - component: {fileID: 740239759}
   m_Layer: 0
-  m_Name: MouseInputs
+  m_Name: Inputs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2473,6 +2483,28 @@ MonoBehaviour:
   lastMousePosWorld2D: {x: 0, y: 0}
   mouseLeftClicked: 0
   mouseMoved: 0
+  graceUsesFrames: 1
+  attackGraceDuration: 0.08
+  attackGraceFrames: 5
+  inputMovementValues: {x: 0, y: 0}
+  x: 0
+  y: 0
+  weaponSwapGraceDuration: 0.08
+  weaponSwapGraceFrames: 5
+  weaponSwapPressed: 0
+  interactPressed: 0
+--- !u!114 &740239759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740239756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b374e1ca10d902744b2f80f9e61ace3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &748088917
 GameObject:
   m_ObjectHideFlags: 0
@@ -7359,20 +7391,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shield Skeleton
       objectReference: {fileID: 0}
-    - target: {fileID: 764420644618864627, guid: 7d675c4d252fd7d44a82ce26571ae166,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 764420644618864626, guid: 7d675c4d252fd7d44a82ce26571ae166,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 764420644618864626, guid: 7d675c4d252fd7d44a82ce26571ae166,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.74
       objectReference: {fileID: 0}
     - target: {fileID: 764420644618864626, guid: 7d675c4d252fd7d44a82ce26571ae166,
         type: 3}

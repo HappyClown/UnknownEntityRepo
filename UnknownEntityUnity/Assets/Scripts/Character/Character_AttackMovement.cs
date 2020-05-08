@@ -14,30 +14,40 @@ public class Character_AttackMovement : MonoBehaviour
         float spawnDistance = sO_AttackFX.spawnDistance;
         float moveDelay = sO_AttackFX.moveDelay;
         AnimationCurve moveAnimCurve = sO_AttackFX.moveAnimCurve;
-        // If there is no moveDelay, get the position and rotation on click.
-        if (moveDelay <= 0) {
+        // Setup variables.
+        Vector3 startPos = Vector3.zero;
+        Vector3 targetPos = Vector3.zero;
+        Vector3 xyweapOrig = Vector3.zero;
+
+        // Get movement values before or after delay.
+        if (sO_AttackFX.setupBeforeDelay || moveDelay <= 0f) {
             // Get the correct orientation for the cur chain attack.
             atkFXTrans.rotation = weapOrigTrans.rotation;
             // Get the weapon's XY position.
-            Vector3 xyweapOrig = new Vector3(weapOrigTrans.position.x, weapOrigTrans.position.y, atkFXTrans.position.z);
-            // Put the attack at the correct spawn point.
-            atkFXTrans.position = xyweapOrig + (weapOrigTrans.up * spawnDistance);
-        }
-        // Set the initial move delay, get the position and rotation right after the delay.
-        else {
-            yield return new WaitForSeconds(moveDelay);
-            // Get the correct orientation for the cur chain attack.
-            atkFXTrans.rotation = weapOrigTrans.rotation;
-            // Get the weapon's XY position.
-            Vector3 xyweapOrig = new Vector3(weapOrigTrans.position.x, weapOrigTrans.position.y, atkFXTrans.position.z);
+            xyweapOrig = new Vector3(weapOrigTrans.position.x, weapOrigTrans.position.y, atkFXTrans.position.z);
             // Put the attack at the correct spawn point, after the move delay.
             atkFXTrans.position = xyweapOrig + (weapOrigTrans.up * spawnDistance);
+            // Set Lerp values.
+            startPos = atkFXTrans.position;
+            targetPos = atkFXTrans.position + (weapOrigTrans.up * moveDistance);
         }
-        // Set Lerp values.
+        if (moveDelay > 0f) {
+            yield return new WaitForSeconds(moveDelay);
+        }
+        if (!sO_AttackFX.setupBeforeDelay) {
+            // Get the correct orientation for the cur chain attack.
+            atkFXTrans.rotation = weapOrigTrans.rotation;
+            // Get the weapon's XY position.
+            xyweapOrig = new Vector3(weapOrigTrans.position.x, weapOrigTrans.position.y, atkFXTrans.position.z);
+            // Put the attack at the correct spawn point, after the move delay.
+            atkFXTrans.position = xyweapOrig + (weapOrigTrans.up * spawnDistance);
+            // Set Lerp values.
+            startPos = atkFXTrans.position;
+            targetPos = atkFXTrans.position + (weapOrigTrans.up * moveDistance);
+        }
+
         float timer = 0f;
         float moveDuration = totalDuration - moveDelay;
-        Vector3 startPos = atkFXTrans.position;
-        Vector3 targetPos = atkFXTrans.position + (weapOrigTrans.up * moveDistance);
 
         // Move the attack a certain distance over attack length period using a lerp.
         while (timer < 1) {

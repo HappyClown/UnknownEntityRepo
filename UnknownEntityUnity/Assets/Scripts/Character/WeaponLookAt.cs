@@ -13,4 +13,8 @@ public class WeaponLookAt : MonoBehaviour
             this.transform.up = moIn.mousePosWorld2D - new Vector2(this.transform.position.x,this.transform.position.y);
         }
     }
+
+    public void ForceLookAtUpdate() {
+        this.transform.up = moIn.mousePosWorld2D - new Vector2(this.transform.position.x,this.transform.position.y);
+    }
 }

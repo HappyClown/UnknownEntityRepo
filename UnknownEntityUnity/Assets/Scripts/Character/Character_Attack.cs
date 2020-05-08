@@ -13,6 +13,9 @@ public class Character_Attack : MonoBehaviour
     public Character_AttackVisual atkVisual;
     public Character_AttackMovement atkMovement;
     public Character_AttackPlayerMovement atkPlyrMove;
+    public Character_EquippedWeapons equippedWeapons;
+    public Character_Movement charMov;
+    public WeaponLookAt weaponLookAt;
     public Weapon_MotionController weaponMotionController;
     [Header("To-set Variables")]
     public Transform weaponTrans;
@@ -31,12 +34,18 @@ public class Character_Attack : MonoBehaviour
     void Update() {
         // If I clicked and can attack.
         if (moIn.mouseLeftClicked && atkChain.ready) {
+            // May be a better way of doing this, set mouseLeftClicked back to false to avoid one click doing many actions. (possible set back to false at the start of next frame in the mouse input script)
+            moIn.mouseLeftClicked = false;
             // Checks and adjusts the current attack chain. (Chaining attacks)
             atkChain.ChainAttacks();
+            // Disallow weapon swapping.
+            equippedWeapons.canSwapWeapon = false;
             // Stop the previous motion if needed.
             StopPreviousMotion();
             // Set the weapon back to its resting position and rotation. Usually the first attack chain's resting values.
             ResetWeaponLocalValues();
+            // Allow character flip and the weapon to "look at" the mouse.
+            ForceCharFlipAndWeaponLookAt();
             // If I want to check the weapon motion every attack. (attack chains can have different motions)
             //curWeaponMotion = weaponMotionController.CheckMotionList(weaponMotion);
             curWeaponMotion = weaponMotions[atkChain.curChain];
@@ -46,7 +55,6 @@ public class Character_Attack : MonoBehaviour
             atkPlyrMove.SetupPlayerAttackMotions(WeapAtkChain.sO_CharAtk_Motion);
             // Activate all this attack's FX's.
             foreach (SO_AttackFX sO_AttackFX in ChainAttackFXs) {
-                print("Passes one atkFX." + sO_AttackFX);
                 // Request an attack FX from the attack FX pool, the attack FX contains a Sprite Renderer and a PolygonalCollider2D.
                 atkFX = atkFXPool.RequestAttackFX();
                 // Flip the attack FX Sprite if needed. (So far, for alternating Slash motions)
@@ -67,23 +75,31 @@ public class Character_Attack : MonoBehaviour
     public void AdjustMotionList() {
         curWeaponMotion = weaponMotionController.CheckMotionList(weaponMotion);
     }
-
+    // Instantly sets the weapon to its basic resting position. (might not be needed where it is called since the next attack would start from the appropriate resting position)
     public void ResetWeaponLocalValues() {
         weaponTrans.localPosition = weapon.restingPosition;
         weaponTrans.localEulerAngles = weapon.restingRotation;
     }
+    // Triggers the generic function shared by all weapon motions to stop the weapon motions.
     public void StopPreviousMotion() {
         if (curWeaponMotion != null) {
             curWeaponMotion.StopMotions();
         }
     }
-    // Shorter reference to the weapon's scriptable object attack chain class.
+    // Instantly tests the character's sprite flip and adjusts the weapon's orientation both based on mouse position.
+    public void ForceCharFlipAndWeaponLookAt() {
+        charMov.charCanFlip = true;
+        charMov.FlipSprite();
+        weaponLookAt.lookAtEnabled = true;
+        weaponLookAt.ForceLookAtUpdate();
+    }
+    // Shorter reference to the weapon scriptable object's attack chain class.
     public SO_Weapon.AttackChain WeapAtkChain {
         get {
             return weapon.attackChains[atkChain.curChain];
         }
     }
-
+    // Shorter reference to the current attack chain's attack FXs.
     public SO_AttackFX[] ChainAttackFXs {
         get {
             return WeapAtkChain.sO_AttackFXs;

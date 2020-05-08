@@ -13,15 +13,21 @@ MonoBehaviour:
   m_Name: ShieldSkeletonTest
   m_EditorClassIdentifier: 
   name: Shield Skeleton
-  maximumLife: 15
+  maximumLife: 20
   minDamage: 3
   maxDamage: 4
   attackCooldown: 0.5
-  sprite: {fileID: 21300000, guid: dd10e113d8ae0464e925085ebf7b14cf, type: 3}
+  sprite: {fileID: 21300000, guid: 90677c209943e0a4284cc2643d6d6796, type: 3}
   atkRange: 1.1
   aggroRange: 20
-  walkingSprite: {fileID: 21300000, guid: 46be00cc7cb7dae488eaa8fcbdeab919, type: 3}
-  walkingSprites: []
+  walkingSprite: {fileID: 21300000, guid: 90677c209943e0a4284cc2643d6d6796, type: 3}
+  walkingSprites:
+  - {fileID: 447559064974276748, guid: 915bb735b66dc944d90b0bdb9f898bb9, type: 3}
+  - {fileID: 6450848032872636298, guid: 915bb735b66dc944d90b0bdb9f898bb9, type: 3}
+  - {fileID: -7637892088662665569, guid: 915bb735b66dc944d90b0bdb9f898bb9, type: 3}
+  - {fileID: 3142649866062259597, guid: 915bb735b66dc944d90b0bdb9f898bb9, type: 3}
+  - {fileID: -5779174655572872074, guid: 915bb735b66dc944d90b0bdb9f898bb9, type: 3}
+  - {fileID: 3806191161198664263, guid: 915bb735b66dc944d90b0bdb9f898bb9, type: 3}
   lerpTurnRotations: 1
   moveSpeed: 1.2
   turnSpeed: 5
@@ -30,10 +36,7 @@ MonoBehaviour:
   slowDownDist: 1
   intelligence: 1
   animSprites:
-  - {fileID: 21300000, guid: b23c15767abbac347a592cab42cf3cb7, type: 3}
-  - {fileID: 21300000, guid: bc42f0c307eca8a4e8e47f07cb148e88, type: 3}
-  - {fileID: 21300000, guid: b1199e49672d7d247aa091203ebd6c40, type: 3}
-  - {fileID: 21300000, guid: b1199e49672d7d247aa091203ebd6c40, type: 3}
+  - {fileID: 21300000, guid: 90677c209943e0a4284cc2643d6d6796, type: 3}
   animEvents:
   - 0
   - 0.5

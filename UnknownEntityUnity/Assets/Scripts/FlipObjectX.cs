@@ -12,22 +12,22 @@ public class FlipObjectX : MonoBehaviour
         curPos = transToFlip.position;
         // Walking to the right.
         if (curPos.x > lastPos.x) {
-            transToFlip.localScale = new Vector3(-1, transToFlip.localScale.y, transToFlip.localScale.z);
+            transToFlip.localScale = new Vector3(1, transToFlip.localScale.y, transToFlip.localScale.z);
         }
         // Walking to the left.
         else if (curPos.x < lastPos.x){
-            transToFlip.localScale = new Vector3(1, transToFlip.localScale.y, transToFlip.localScale.z);
+            transToFlip.localScale = new Vector3(-1, transToFlip.localScale.y, transToFlip.localScale.z);
         }
         lastPos = transToFlip.position;
     }
     public void PredictFlip(Vector3 curPos, Vector3 nextPos) {
         // Going to the left.
         if (curPos.x > nextPos.x) {
-            transToFlip.localScale = new Vector3(1, transToFlip.localScale.y, transToFlip.localScale.z);
+            transToFlip.localScale = new Vector3(-1, transToFlip.localScale.y, transToFlip.localScale.z);
         }
         // Going to the Right.
         else if (curPos.x < nextPos.x){
-            transToFlip.localScale = new Vector3(-1, transToFlip.localScale.y, transToFlip.localScale.z);
+            transToFlip.localScale = new Vector3(1, transToFlip.localScale.y, transToFlip.localScale.z);
         }
     }
 }

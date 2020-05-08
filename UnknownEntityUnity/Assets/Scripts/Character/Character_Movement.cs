@@ -4,24 +4,25 @@ using UnityEngine;
 
 public class Character_Movement : MonoBehaviour
 {
+    [Header("Script References")]
     public MouseInputs moIn;
     public Character_CollisionDetection colDetect;
+    [Header("To-set variables")]
+    public float baseRunSpeed = 1f; 
+    public SpriteRenderer spriteRend;
+    public Animator animator;
+    [Header("Read Only")]
+    private float moddedRunSpeed, lessSpeedModifier, moreSpeedModifier;
     public bool canInputMove = true;
     public bool charCanFlip = true;
+    public float normMagMovement;
+    public float moveDirX, moveDirY;
+    private bool lookLeft, lookRight, moveLeft, moveRight;
     private bool running;
-    // Run speed.
-    public float baseRunSpeed = 1f; 
-    private float moddedRunSpeed, lessSpeedModifier, moreSpeedModifier;
     //public List<float> speedLessValues = new List<float>();
     //public List<float> speedMoreValues = new List<float>();
     // public List<float> speedAddValues = new List<float>();
     // public List<float> speedReduceValues = new List<float>();
-    //
-    public SpriteRenderer spriteRend;
-    public Animator animator;
-    public float normMagMovement;
-    public float moveDirX, moveDirY;
-    private bool lookLeft, lookRight, moveLeft, moveRight;
 
     // Positive values to lower speed by % (0 to 1), negative values to return lowered speed.
     public void ReduceSpeed (float percentOnOne) {
@@ -49,11 +50,13 @@ public class Character_Movement : MonoBehaviour
         }
         if (canInputMove) {
             // Detect Player Character movement.
-            Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f);
-            Vector3 normalizedMovement = movement.normalized;
+            //Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f);
+            //Vector3 normalizedMovement = movement.normalized;
+            Vector3 normalizedMovement = new Vector3(moIn.x, moIn.y, 0f);
             normMagMovement = normalizedMovement.magnitude;
-            moveDirX = Input.GetAxis("Horizontal");
-            moveDirY = Input.GetAxis("Vertical");
+            // moveDirX = Input.GetAxis("Horizontal");
+            // moveDirY = Input.GetAxis("Vertical");
+            moveDirX = normalizedMovement.x;
             if (normalizedMovement.magnitude >= 0.01f) {
                 running = true;
                 animator.SetBool("Running", true);
@@ -85,7 +88,7 @@ public class Character_Movement : MonoBehaviour
     }
 
     public void FlipSprite () {
-        // Based on player mouse position.
+        // Flip sprite based on player mouse position.
         if (moIn.mousePosWorld2D.x < this.transform.position.x) {
             spriteRend.flipX = true;
             lookLeft = true;

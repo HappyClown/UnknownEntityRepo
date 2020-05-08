@@ -52,16 +52,22 @@ public class Weapon_StabMotion : Weapon_Motion
 
     void SetupNextMotion() {
         curMotion++;
+        // At what motion can the player start his next attack and swap his weapon.
+        if (curMotion >= sOWeaponMotionStab.allowAttackAndSwap) {
+            charAtk.readyToAtk = true;
+            charAtk.atkChain.ready = true;
+            charAtk.equippedWeapons.canSwapWeapon = true;
+        }
         // If there are no more attack motions.
-        if (curMotion == motionDurations.Length) {
+        if (curMotion >= motionDurations.Length) {
             weapMotionOn = false;
             resetWeapRot = true;
             curYPos = endYPos;
             startYPos = curYPos;
             endYPos = restingY;
             moveTimer = 0f;
-            charAtk.readyToAtk = true;
-            charAtk.atkChain.ready = true;
+            //charAtk.readyToAtk = true;
+            //charAtk.atkChain.ready = true;
             // Setup weapon reset here.
             return;
         }
@@ -94,6 +100,9 @@ public class Weapon_StabMotion : Weapon_Motion
         // Enable motion.
         resetWeapRot = false;
         weapMotionOn = true;
+        // 
+        weaponTrans.localPosition = sOWeaponMotionStab.restingPosition;
+        weaponTrans.localRotation = Quaternion.Euler(sOWeaponMotionStab.restingRotation);
     }
 
     //Stop rotations, used for weapon swapping, ...interrupts, like stuns?
@@ -101,5 +110,8 @@ public class Weapon_StabMotion : Weapon_Motion
         resetWeapRot = false;
         weapMotionOn = false;
         moveTimer = 0f;
+        // charAtk.readyToAtk = true;
+        // charAtk.atkChain.ready = true;
+        // charAtk.equippedWeapons.canSwapWeapon = true;
     }
 }

@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon_Motion: {fileID: 9053052833409374892, guid: 4ca0abfcaa07a2f4481cce7c2ee67904,
     type: 3}
-  restingYPosition: 0
+  restingPosition: {x: 0, y: 0, z: 0}
+  restingRotation: {x: 0, y: 0, z: 0}
+  allowAttackAndSwap: 2
   resetYPosDuration: 0.5
   weaponMotionDuration: 0.45
   motionDurations:

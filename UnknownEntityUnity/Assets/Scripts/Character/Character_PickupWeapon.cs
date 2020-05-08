@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class Character_PickupWeapon : MonoBehaviour
 {
+    [Header("Script References")]
+    public MouseInputs moIn;
+    public Character_Attack atk;
+    public Character_EquippedWeapons equippedWeaps;
+    [Header("To-set variables")]
     public ContactFilter2D lootLayer;
     public Collider2D charLootCol;
     public Transform playerTrans;
-    public Character_EquippedWeapons equippedWeaps;
-    public Character_Attack atk;
+    [Header("Read Only")]
     List<Collider2D> results = new List<Collider2D>();
 
     void Update() {
-        if (Input.GetKeyDown("e")) {
+        if (moIn.interactPressed) {
             Physics2D.OverlapCollider(charLootCol, lootLayer, results);
             if (results.Count > 0) {
                 if (results.Count > 1) {
@@ -41,7 +45,7 @@ public class Character_PickupWeapon : MonoBehaviour
                 // Assign old active weapon to weapon loot on floor.
             }
             else {
-                Debug.Log("Tried to pick up a weapon, but nothing was found.");
+                //Debug.Log("Tried to pick up a weapon, but nothing was found.");
             }
         }
     }

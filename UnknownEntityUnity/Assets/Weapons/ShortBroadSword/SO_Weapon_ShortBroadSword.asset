@@ -25,10 +25,18 @@ MonoBehaviour:
     - {fileID: 11400000, guid: c20a8cf01f4a6fe4bad2ca479168ff23, type: 2}
     minDamage: 10
     maxDamage: 12
-  - sO_Weapon_Motion: {fileID: 11400000, guid: bfc311301cad83a4bac08130f80cbe6c, type: 2}
+  - sO_Weapon_Motion: {fileID: 11400000, guid: 2f59c7d987f9ce1459ac5a2f4d70c5c9, type: 2}
     sO_CharAtk_Motion: {fileID: 11400000, guid: 4fc148f62dec2d446b1a55b4b3e0728e,
       type: 2}
     sO_AttackFXs:
-    - {fileID: 11400000, guid: b56e406e487b14c45b671de06bb03412, type: 2}
+    - {fileID: 11400000, guid: c20a8cf01f4a6fe4bad2ca479168ff23, type: 2}
     minDamage: 10
     maxDamage: 12
+  - sO_Weapon_Motion: {fileID: 11400000, guid: bfc311301cad83a4bac08130f80cbe6c, type: 2}
+    sO_CharAtk_Motion: {fileID: 11400000, guid: a78dba3d2a86d0a47a29d7b023a2a3d8,
+      type: 2}
+    sO_AttackFXs:
+    - {fileID: 11400000, guid: 287a44a3a19e9bc44b9508af469e83af, type: 2}
+    - {fileID: 11400000, guid: e3c1f44e6fdd0714b89ba5cad2b47bd8, type: 2}
+    minDamage: 14
+    maxDamage: 17

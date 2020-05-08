@@ -190,11 +190,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moIn: {fileID: 0}
   colDetect: {fileID: 505351514}
-  canInputMove: 1
-  charCanFlip: 1
   baseRunSpeed: 3
   spriteRend: {fileID: 3651932565309937599}
   animator: {fileID: 3651932565309937598}
+  canInputMove: 1
+  charCanFlip: 1
   normMagMovement: 0
   moveDirX: 0
   moveDirY: 0
@@ -235,6 +235,9 @@ MonoBehaviour:
   atkVisual: {fileID: 3651932565041545240}
   atkMovement: {fileID: 1731692029}
   atkPlyrMove: {fileID: 505351515}
+  equippedWeapons: {fileID: 3507419587604336638}
+  charMov: {fileID: 3651932565041545239}
+  weaponLookAt: {fileID: 3651932565724258068}
   weaponMotionController: {fileID: 0}
   weaponTrans: {fileID: 3651932565548517000}
   weaponSpriteR: {fileID: 3651932565548517001}
@@ -244,6 +247,8 @@ MonoBehaviour:
   curWeaponMotion: {fileID: 0}
   weaponMotions: []
   atkFX: {fileID: 0}
+  atkDirectionChanges: 0
+  atkFXFlip: 0
 --- !u!114 &3651932565041545243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,6 +264,7 @@ MonoBehaviour:
   moIn: {fileID: 0}
   charAtk: {fileID: 3651932565041545236}
   atkWeaMotion: {fileID: 0}
+  chainResetDelay: 1
   ready: 1
   curChain: 0
 --- !u!114 &3651932565041545240
@@ -341,6 +347,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10351599dbc57014bb1b5cb9a67911b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moIn: {fileID: 0}
+  atk: {fileID: 3651932565041545236}
+  equippedWeaps: {fileID: 3507419587604336638}
   lootLayer:
     useTriggers: 0
     useLayerMask: 1
@@ -357,8 +366,6 @@ MonoBehaviour:
     maxNormalAngle: 0
   charLootCol: {fileID: 96031778}
   playerTrans: {fileID: 3651932565041545238}
-  equippedWeaps: {fileID: 3507419587604336638}
-  atk: {fileID: 3651932565041545236}
 --- !u!114 &3507419587604336638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,9 +379,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charAtk: {fileID: 3651932565041545236}
+  moIn: {fileID: 0}
   firstWeap: {fileID: 11400000, guid: b6fb155073f3c984ab124eb714af6397, type: 2}
   weaponSpriteR: {fileID: 3651932565548517001}
-  secondWeap: {fileID: 0}
+  secondWeap: {fileID: 11400000, guid: 7ab0f055dc61acb4682c8cf11a984f41, type: 2}
+  canSwapWeapon: 1
 --- !u!114 &396231391011437111
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -45,6 +45,7 @@ MonoBehaviour:
   spawnDistance: 0.1
   moveDistance: 0.4
   moveDelay: 0
+  setupBeforeDelay: 0
   moveAnimCurve:
     serializedVersion: 2
     m_Curve:

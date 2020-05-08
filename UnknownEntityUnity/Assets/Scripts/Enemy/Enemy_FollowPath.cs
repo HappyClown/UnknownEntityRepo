@@ -105,6 +105,7 @@ public class Enemy_FollowPath : MonoBehaviour
             transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, myZ);
             transform.Translate(Vector3.forward * Time.deltaTime * enemy.moveSpeed * speedModifier, Space.Self);
             flip.Flip();
+            eRefs.eWalkAnim.UpdateWalkCycleAnim();
             yield return null;
         }
         directlyMovingtoTarget = false;
@@ -151,6 +152,7 @@ public class Enemy_FollowPath : MonoBehaviour
                 // Movement.
                 transform.Translate(Vector3.forward * Time.deltaTime * enemy.moveSpeed * speedModifier * speedPercent, Space.Self);
                 flip.Flip();
+                eRefs.eWalkAnim.UpdateWalkCycleAnim();
             }
             yield return null;
         }

@@ -8,6 +8,8 @@ public class Character_AttackChain : MonoBehaviour
     public MouseInputs moIn;
     public Character_Attack charAtk;
     public Character_AttackWeaponMotion atkWeaMotion;
+    [Header("To set variables")]
+    public float chainResetDelay;
     [Header("Read Only")]
     public bool ready = true;
     public int curChain;
@@ -15,14 +17,14 @@ public class Character_AttackChain : MonoBehaviour
     private float chainResetTimer;
 
     void Start() {
-        chainResetTimer = charAtk.weapon.chainResetDelay;
+        chainResetTimer = chainResetDelay;
     }
 
     void Update() {
         // Chain reset timer.
-        if (chainResetTimer < charAtk.weapon.chainResetDelay) {
+        if (chainResetTimer < chainResetDelay) {
             chainResetTimer += Time.deltaTime;
-            if (chainResetTimer >= charAtk.weapon.chainResetDelay) {
+            if (chainResetTimer >= chainResetDelay) {
                 nextChain = 0;
                 curChain = 0;
                 //atkWeaMotion.resetWeapRot = true;
@@ -45,7 +47,12 @@ public class Character_AttackChain : MonoBehaviour
 
     // On weapon swap.
     public void OnWeaponSwap(SO_Weapon firstWeap, SO_Weapon secondWeap) {
-        chainResetTimer = charAtk.weapon.chainResetDelay;
+        chainResetTimer = chainResetDelay;
+        // If the next chain was higher then the max attack chains of the weapon that was just swapped, meaning that its last attack was done.
+        if (nextChain >= secondWeap.attackChains.Length) {
+            nextChain = 0;
+            curChain = 0;
+        }
         // This is to keep the current chain, if its over the new first weapon's max chain count: set it to the last chain.
         if (nextChain >= firstWeap.attackChains.Length) {
             nextChain = firstWeap.attackChains.Length-1;
@@ -53,8 +60,8 @@ public class Character_AttackChain : MonoBehaviour
         }
         // Same as above but if its above the new first weapon's max chain count, set it to first chain.
         // This is to reset the chain.
-        //nextChain = 0;
-        //curChain = 0;
+        // nextChain = 0;
+        // curChain = 0;
         charAtk.readyToAtk = true;
         ready = true;
     }

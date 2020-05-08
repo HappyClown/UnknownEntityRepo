@@ -18,6 +18,7 @@ public class ShieldSkeleton_ShieldUp : MonoBehaviour
     public bool shieldIsUp;
     bool onCooldown;
     public bool forceShieldDown = false;
+    public Sprite[] shieldUpWalkCycle;
 
     void Start() {
         shieldUpRangeSqr = shieldUpRange * shieldUpRange;
@@ -37,6 +38,8 @@ public class ShieldSkeleton_ShieldUp : MonoBehaviour
         shieldSpriteR.enabled = true;
         eRefs.eFollowPath.speedModifier *= shieldUpSpeedMod;
         eRefs.eHealth.damageModifier *= shieldUpDamageMod;
+        // Change the walking sprite array to the shield up sprites.
+        eRefs.eWalkAnim.ChangeCycleAnimation(shieldUpWalkCycle);
         StartCoroutine(Shielded());
     }
     IEnumerator Shielded() {
@@ -63,6 +66,8 @@ public class ShieldSkeleton_ShieldUp : MonoBehaviour
         shieldSpriteR.enabled = false;
         eRefs.eFollowPath.speedModifier /= shieldUpSpeedMod;
         eRefs.eHealth.damageModifier /= shieldUpDamageMod;
+        // Set the walk cycle back to the shield down walk cycle.
+        eRefs.eWalkAnim.ChangeCycleAnimation(eRefs.eSO.walkingSprites);
         SetShieldUpCooldown();
     }
     public void ForceShieldDown() {

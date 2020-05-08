@@ -23,8 +23,8 @@ public class Enemy_CollisionDetection : MonoBehaviour
         gizmosMoveDir = normMoveDir;
         myCurPos = curPos;
         myNewPos = newPos;
-        print("BOX COLLIDER POSITION: "+boxCol.transform.position);
-        print("CURRENT POS: "+"("+curPos.x+", "+curPos.y+", "+curPos.z+")");
+        //print("BOX COLLIDER POSITION: "+boxCol.transform.position);
+        //print("CURRENT POS: "+"("+curPos.x+", "+curPos.y+", "+curPos.z+")");
         float moveDist = (newPos - curPos).magnitude;
 
         float newX = newPos.x;
@@ -33,18 +33,18 @@ public class Enemy_CollisionDetection : MonoBehaviour
         float adjustedY = 0f;
         gizmosMoveDist = moveDist;
         (adjustedX, adjustedY) = MovementRaycasts(normMoveDir, moveDist);
-        print ("ADJUSTED X: "+adjustedX+", ADJUSTED Y: "+adjustedY);
+        //print ("ADJUSTED X: "+adjustedX+", ADJUSTED Y: "+adjustedY);
         // float finalX = normMoveDir.x * adjustedX;
         // float finalY = normMoveDir.y * adjustedY;
         // print ("FINAL X: "+finalX+", FINAL Y: "+finalY);
 
         if (hitDetected) {
             Vector3 adjustedPos = new Vector3 (curPos.x + adjustedX, curPos.y + adjustedY, curPos.z);
-            print("POS ADJUSTED: "+"("+adjustedPos.x+", "+adjustedPos.y+", "+adjustedPos.z+")");
+            //print("POS ADJUSTED: "+"("+adjustedPos.x+", "+adjustedPos.y+", "+adjustedPos.z+")");
             return adjustedPos;
         } 
         else {
-            print("POS NEWPOS: "+"("+newPos.x+", "+newPos.y+", "+newPos.z+")");
+            //print("POS NEWPOS: "+"("+newPos.x+", "+newPos.y+", "+newPos.z+")");
             return newPos;
         }
     }

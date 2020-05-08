@@ -6,11 +6,13 @@ public class Character_EquippedWeapons : MonoBehaviour
 {
     [Header("Script References")]
     public Character_Attack charAtk;
+    public MouseInputs moIn;
     [Header("To-set Variables")]
     public SO_Weapon firstWeap;
     public SpriteRenderer weaponSpriteR;
     [Header("Read Only")]
     public SO_Weapon secondWeap;
+    public bool canSwapWeapon = true;
 
     void Start() {
         Changes();
@@ -18,7 +20,8 @@ public class Character_EquippedWeapons : MonoBehaviour
 
     void Update() {
         // Weapon swap if two weapons are equipped.
-        if (Input.GetKeyDown("q")) {
+        if (canSwapWeapon && moIn.weaponSwapPressed) {
+            moIn.weaponSwapPressed = false;
             if (firstWeap != null && secondWeap != null) {
                 SO_Weapon tempSecondWeap = secondWeap;
                 secondWeap = firstWeap;

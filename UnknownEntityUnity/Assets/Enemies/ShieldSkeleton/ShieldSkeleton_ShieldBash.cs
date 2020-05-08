@@ -145,11 +145,11 @@ public class ShieldSkeleton_ShieldBash : MonoBehaviour
             float printX = newPos.x - oldPos.x;
             float printY = newPos.y - oldPos.y;
             eRefs.eCol.boxCol.gameObject.transform.position = this.transform.position;
-            print("DELTA TIME: "+Time.deltaTime);
-            print ("NEW-OLD MAGNITUDE: "+printMag+", X: "+printX+", Y: "+printY);
+            //print("DELTA TIME: "+Time.deltaTime);
+            //print ("NEW-OLD MAGNITUDE: "+printMag+", X: "+printX+", Y: "+printY);
             this.transform.position = eRefs.eCol.CollisionCheck(atkDirNorm, newPos, oldPos);
-            print("FINAL POSITION: "+"("+transform.position.x+", "+transform.position.y+", "+transform.position.z+")");
-            print("-------------------------");
+            //print("FINAL POSITION: "+"("+transform.position.x+", "+transform.position.y+", "+transform.position.z+")");
+            //print("-------------------------");
             yield return null;
             // The final problem is indeed the box collider position sometimes not being updated in time despite the objects position being updated. This causes issue because the raycast position bases itself on the collider's bounds. The result is that it occasionally casts the rays from the previous frame's position again and applies the same but now erroneous values.
             // The solution is to calculate where the bounds are based on the collider's size:
