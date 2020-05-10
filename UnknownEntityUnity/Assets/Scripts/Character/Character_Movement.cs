@@ -19,6 +19,19 @@ public class Character_Movement : MonoBehaviour
     public float moveDirX, moveDirY;
     private bool lookLeft, lookRight, moveLeft, moveRight;
     private bool running;
+    [Header("Animation Test")]
+    //
+    public Sprite idleSprite;
+    private Sprite[] curSprites;
+    // Hand sprite animations test
+    public Sprite[] startRunForward, startRunBackwards, runForward, runbackwards;
+    public float[] startRunForwardTimings, startRunBackwardsTimings, runForwardTimings, runBackwardsTimings;
+    private bool startRunForwardBool, startRunBackwardsBool, runForwardBool, runBackwardsBool;
+    private float animTimer;
+    private int tick;
+    public float animRunSpeedMult = 1f;
+    //
+    private bool lastLookLeft, lastLookRight, lastMoveLeft, lastMoveRight;
     //public List<float> speedLessValues = new List<float>();
     //public List<float> speedMoreValues = new List<float>();
     // public List<float> speedAddValues = new List<float>();
@@ -59,7 +72,7 @@ public class Character_Movement : MonoBehaviour
             moveDirX = normalizedMovement.x;
             if (normalizedMovement.magnitude >= 0.01f) {
                 running = true;
-                animator.SetBool("Running", true);
+                //animator.SetBool("Running", true);
                 // Check run direction, left or right.
                 if (moveDirX < 0) {
                     moveLeft = true;
@@ -69,6 +82,10 @@ public class Character_Movement : MonoBehaviour
                     moveLeft = false;
                     moveRight = true;
                 }
+                else {
+                    moveRight = lookRight;
+                    moveLeft = lookLeft;
+                }
                 // Check if sprite need to be flipped based on the character's movement axis values.
                 // FlipSprite();
             }
@@ -76,9 +93,18 @@ public class Character_Movement : MonoBehaviour
                 running = false;
                 moveLeft = false;
                 moveRight = false;
-                animator.SetBool("Running", false);
+                //animator.SetBool("Running", false);
             }
-            SetRunAnimation();
+            // SetRunAnimation();
+            if (running) {
+                // Check if direction is different from last update.
+                ShouldRunAnimChange();
+                // Animate based on current sprites and bools.
+                RunAnim();
+            }
+            else {
+                spriteRend.sprite = idleSprite;
+            }
             // Check for collisions.
             Vector3 curPosition = this.transform.position;
             Vector3 newPosition = curPosition + normalizedMovement * moddedRunSpeed * Time.deltaTime;
@@ -101,50 +127,190 @@ public class Character_Movement : MonoBehaviour
         }
     }
 
-    void SetRunAnimation () {
-        if (running) {
-            if (moveLeft && lookLeft) {
-                if (!animator.GetBool("RunForward")) {
-                    animator.SetTrigger("StartRunForward");
-                }
-                animator.SetBool("RunForward", true);
-                animator.SetBool("RunBackward", false);
-                return;
-            }
-            if (moveLeft && lookRight) {
-                if (!animator.GetBool("RunBackward")) {
-                    animator.SetTrigger("StartRunBackward");
-                }
-                animator.SetBool("RunForward", false);
-                animator.SetBool("RunBackward", true);
-                return;
-            }
-            if (moveRight && lookLeft) {
-                if (!animator.GetBool("RunBackward")) {
-                    animator.SetTrigger("StartRunBackward");
-                }
-                animator.SetBool("RunForward", false);
-                animator.SetBool("RunBackward", true);
-                return;
-            }
-            if (moveRight && lookRight) {
-                if (!animator.GetBool("RunForward")) {
-                    animator.SetTrigger("StartRunForward");
-                }
-                animator.SetBool("RunForward", true);
-                animator.SetBool("RunBackward", false);
-                return;
-            }
-            if (!moveLeft && !moveRight) {
-                if (!animator.GetBool("RunForward")) {
-                    animator.SetTrigger("StartRunForward");
-                }
-                animator.SetBool("RunForward", true);
-            }
+    // void SetRunAnimation () {
+    //     if (running) {
+    //         if (moveLeft && lookLeft) {
+    //             // if (!animator.GetBool("RunForward")) {
+    //             //     animator.SetTrigger("StartRunForward");
+    //             // }
+    //             // animator.SetBool("RunForward", true);
+    //             // animator.SetBool("RunBackward", false);
+
+    //             // if (!runForwardBool) {
+    //             //     startRunForwardBool = true;
+    //             // }
+    //             // runForwardBool = true;
+    //             // runbackwardsBool = false;
+    //             // return;
+    //         }
+    //         if (moveLeft && lookRight) {
+    //             // if (!animator.GetBool("RunBackward")) {
+    //             //     animator.SetTrigger("StartRunBackward");
+    //             // }
+    //             // animator.SetBool("RunForward", false);
+    //             // animator.SetBool("RunBackward", true);
+
+    //             // if (!runbackwardsBool) {
+    //             //     startRunBackwardsBool = true;
+    //             // }
+    //             // runForwardBool = false;
+    //             // runbackwardsBool = true;
+    //             // return;
+    //         }
+    //         if (moveRight && lookLeft) {
+    //             // if (!animator.GetBool("RunBackward")) {
+    //             //     animator.SetTrigger("StartRunBackward");
+    //             // }
+    //             // animator.SetBool("RunForward", false);
+    //             // animator.SetBool("RunBackward", true);
+
+    //             // if (!runbackwardsBool) {
+    //             //     startRunBackwardsBool = true;
+    //             // }
+    //             // runForwardBool = false;
+    //             // runbackwardsBool = true;
+    //             // return;
+    //         }
+    //         if (moveRight && lookRight) {
+    //             // if (!animator.GetBool("RunForward")) {
+    //             //     animator.SetTrigger("StartRunForward");
+    //             // }
+    //             // animator.SetBool("RunForward", true);
+    //             // animator.SetBool("RunBackward", false);
+
+    //             // if (!runForwardBool) {
+    //             //     startRunForwardBool = true;
+    //             // }
+    //             // runForwardBool = true;
+    //             // runbackwardsBool = false;
+    //             // return;
+    //         }
+    //         if (!moveLeft && !moveRight) {
+    //             // if (!animator.GetBool("RunForward")) {
+    //             //     animator.SetTrigger("StartRunForward");
+    //             // }
+    //             // animator.SetBool("RunForward", true);
+                
+    //             // if (!runForwardBool) {
+    //             //     startRunForwardBool = true;
+    //             // }
+    //             // runForwardBool = true;
+    //         }
+    //     }
+    //     else {
+    //         // animator.SetBool("RunForward", false);
+    //         // animator.SetBool("RunBackward", false);
+            
+    //         // runForwardBool = false;
+    //         // runbackwardsBool = false;
+    //     }
+    // }
+
+    void ShouldRunAnimChange() {
+        if (moveLeft != lastMoveLeft || moveRight != lastMoveRight || lookLeft != lastLookLeft || lookRight != lastLookRight) {
+            RunAnimChange();
+        }
+        lastMoveLeft = moveLeft;
+        lastMoveRight = moveRight;
+        lastLookLeft = lookLeft;
+        lastLookRight = lookRight;
+    }
+
+    void RunAnimChange() {
+        // Animation just changes, reset animation values.
+        animTimer = 0f;
+        tick = 0;
+        startRunForwardBool = false;
+        startRunBackwardsBool = false;
+        runForwardBool = false;
+        runBackwardsBool = false;
+        // Check to see if the character should run forward or backwards based on its move and look direcrtions.
+        if (moveLeft && lookLeft) {
+            startRunForwardBool = true;
+        }
+        else if (moveLeft && lookRight) {
+            startRunBackwardsBool = true;
+        }
+        else if (moveRight && lookRight) {
+            startRunForwardBool = true;
+        }
+        else if (moveRight && lookLeft) {
+            startRunBackwardsBool = true;
         }
         else {
-            animator.SetBool("RunForward", false);
-            animator.SetBool("RunBackward", false);
+            startRunForwardBool = false;
+            startRunBackwardsBool = false;
+        }
+        // Set the current run animation sprites to the start run sprites of the correct direction.
+        if (startRunForwardBool) {
+            curSprites = startRunForward;
+        }
+        else if (startRunBackwardsBool) {
+            curSprites = startRunBackwards;
+        }
+    }
+
+    void RunAnim() {
+        animTimer += Time.deltaTime * animRunSpeedMult;
+
+        // Running forward starting frames. (played once)
+        if (startRunForwardBool) {
+            if (animTimer > startRunForwardTimings[tick]) {
+                spriteRend.sprite = startRunForward[tick];
+                tick++;
+            }
+            // Change to run forward loop.
+            if (tick >= curSprites.Length) {
+                animTimer = 0f;
+                tick = 0;
+                curSprites = runForward;
+                startRunForwardBool = false;
+                runForwardBool = true;
+                return;
+            }
+        }
+        // Running forward looping frames.
+        else if (runForwardBool) {
+            if (animTimer > runForwardTimings[tick]) {
+                spriteRend.sprite = curSprites[tick];
+                tick++;
+            }
+            // Restart animation.
+            if (tick >= curSprites.Length) {
+                animTimer = 0f;
+                tick = 0;
+                return;
+            }
+        }
+
+        // Running backward starting frames. (played once)
+        if (startRunBackwardsBool) {
+            if (animTimer > startRunBackwardsTimings[tick]) {
+                spriteRend.sprite = startRunBackwards[tick];
+                tick++;
+            }
+            // Change to run backward loop.
+            if (tick >= curSprites.Length) {
+                animTimer = 0f;
+                tick = 0;
+                curSprites = runbackwards;
+                startRunBackwardsBool = false;
+                runBackwardsBool = true;
+                return;
+            }
+        }
+        // Running backward looping frames.
+        else if (runBackwardsBool) {
+            if (animTimer > runBackwardsTimings[tick]) {
+                spriteRend.sprite = curSprites[tick];
+                tick++;
+            }
+            // Restart animation.
+            if (tick >= curSprites.Length) {
+                animTimer = 0f;
+                tick = 0;
+                return;
+            }
         }
     }
 
@@ -153,8 +319,9 @@ public class Character_Movement : MonoBehaviour
         running = false;
         moveLeft = false;
         moveRight = false;
-        animator.SetBool("Running", false);
-        SetRunAnimation();
+        spriteRend.sprite = idleSprite;
+        //animator.SetBool("Running", false);
+        //SetRunAnimation();
     }
     
     public void MoveThePlayer(Vector3 _normMoveDir, Vector3 _newPosition, Vector3 _curPosition) {

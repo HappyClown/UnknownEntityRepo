@@ -56,7 +56,7 @@ public class Projectile : MonoBehaviour
     void CheckColliders() {
         if (collidedList.Count > 0 && collidedList[0] != null) {
             foreach(Collider2D col in collidedList) {
-                if (col.CompareTag("Player")) {
+                if (col.CompareTag("Player")) { // Change for variable reference to Tag to allow being used by player???
                     // Apply damage to the player.
                     col.GetComponent<Character_Health>().TakeDamage(projSO.Damage);
                     //print("Projectile hit the Player");

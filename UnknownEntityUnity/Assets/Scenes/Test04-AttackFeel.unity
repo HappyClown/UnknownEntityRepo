@@ -2710,6 +2710,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &968539640 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3651932565723185217, guid: 17191f42f3a871b4a83450ce0b9bcb4a,
+    type: 3}
+  m_PrefabInstance: {fileID: 696896411}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &968600410
 GameObject:
   m_ObjectHideFlags: 0
@@ -7325,12 +7331,12 @@ PrefabInstance:
     - target: {fileID: 6065669524832438867, guid: e06ddd4c9ca369346a9f345a1627cf1e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.445
+      value: -4.55
       objectReference: {fileID: 0}
     - target: {fileID: 6065669524832438867, guid: e06ddd4c9ca369346a9f345a1627cf1e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.86
       objectReference: {fileID: 0}
     - target: {fileID: 6065669524832438867, guid: e06ddd4c9ca369346a9f345a1627cf1e,
         type: 3}
@@ -7450,7 +7456,7 @@ PrefabInstance:
         type: 3}
       propertyPath: plyrTrans
       value: 
-      objectReference: {fileID: 696896412}
+      objectReference: {fileID: 968539640}
     - target: {fileID: 4763131646878942772, guid: 7d675c4d252fd7d44a82ce26571ae166,
         type: 3}
       propertyPath: brain
@@ -7548,12 +7554,12 @@ PrefabInstance:
     - target: {fileID: 7350607415771720234, guid: 8e1bef9d0f2ce5649916dad3ef79871d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.8010001
+      value: -3.9060001
       objectReference: {fileID: 0}
     - target: {fileID: 7350607415771720234, guid: 8e1bef9d0f2ce5649916dad3ef79871d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.86
       objectReference: {fileID: 0}
     - target: {fileID: 7350607415771720234, guid: 8e1bef9d0f2ce5649916dad3ef79871d,
         type: 3}

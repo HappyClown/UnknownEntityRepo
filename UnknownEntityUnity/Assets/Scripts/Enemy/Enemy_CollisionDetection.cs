@@ -96,7 +96,7 @@ public class Enemy_CollisionDetection : MonoBehaviour
 
                 foreach(Vector2 rayStartPoint in rayStartPoints) {
                     rayHit = Physics2D.Raycast(rayStartPoint, Vector2.right, xMoveDist+skinWidth, eRefs.losLayerMask);
-                    Debug.DrawLine(rayStartPoint, rayStartPoint+(Vector2.right*(xMoveDist+skinWidth)), Color.white, 100f);
+                    // Debug.DrawLine(rayStartPoint, rayStartPoint+(Vector2.right*(xMoveDist+skinWidth)), Color.white, 100f);
                     if (rayHit) {
                         hitDetected = true;
                         xHit = true;
@@ -122,7 +122,7 @@ public class Enemy_CollisionDetection : MonoBehaviour
 
                 foreach(Vector2 rayStartPoint in rayStartPoints) {
                     rayHit = Physics2D.Raycast(rayStartPoint, Vector2.right, xMoveDist+skinWidth, eRefs.losLayerMask);
-                    Debug.DrawLine(rayStartPoint, rayStartPoint+(Vector2.right*(xMoveDist+skinWidth)), Color.white, 100f);
+                    // Debug.DrawLine(rayStartPoint, rayStartPoint+(Vector2.right*(xMoveDist+skinWidth)), Color.white, 100f);
                     if (rayHit) {
                         hitDetected = true;
                         xHit = true;
@@ -151,7 +151,7 @@ public class Enemy_CollisionDetection : MonoBehaviour
 
                 foreach(Vector2 rayStartPoint in rayStartPoints) {
                     rayHit = Physics2D.Raycast(rayStartPoint, Vector2.up, yMoveDist+skinWidth, eRefs.losLayerMask);
-                    Debug.DrawLine(rayStartPoint, rayStartPoint+(Vector2.up*(yMoveDist+skinWidth)), Color.white, 100f);
+                    // Debug.DrawLine(rayStartPoint, rayStartPoint+(Vector2.up*(yMoveDist+skinWidth)), Color.white, 100f);
                     if (rayHit) {
                         hitDetected = true;
                         yHit = true;
@@ -177,7 +177,7 @@ public class Enemy_CollisionDetection : MonoBehaviour
 
                 foreach(Vector2 rayStartPoint in rayStartPoints) {
                     rayHit = Physics2D.Raycast(rayStartPoint, Vector2.up, yMoveDist+skinWidth, eRefs.losLayerMask);
-                    Debug.DrawLine(rayStartPoint, rayStartPoint+(Vector2.up*(yMoveDist+skinWidth)), Color.white, 100f);
+                    // Debug.DrawLine(rayStartPoint, rayStartPoint+(Vector2.up*(yMoveDist+skinWidth)), Color.white, 100f);
                     if (rayHit) {
                         hitDetected = true;
                         yHit = true;
