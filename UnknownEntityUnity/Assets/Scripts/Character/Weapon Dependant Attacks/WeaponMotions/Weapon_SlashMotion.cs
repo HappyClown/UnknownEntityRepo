@@ -132,6 +132,8 @@ public class Weapon_SlashMotion : Weapon_Motion
         resetWeapOn = false;
         weapMotionOn = false;
         moveTimer = 0f;
+        weaponTrans.localPosition = sOWeaponMotionSlash.restingPosition;
+        weaponTrans.localRotation = Quaternion.Euler(sOWeaponMotionSlash.restingRotation);
         // charAtk.readyToAtk = true;
         // charAtk.atkChain.ready = true;
         // charAtk.equippedWeapons.canSwapWeapon = true;

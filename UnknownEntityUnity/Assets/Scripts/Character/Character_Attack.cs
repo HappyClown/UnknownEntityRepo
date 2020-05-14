@@ -63,13 +63,35 @@ public class Character_Attack : MonoBehaviour
                 // Moves the attack effect over the course of the attack.
                 atkMovement.StartCoroutine(atkMovement.AttackMovement(sO_AttackFX, atkFX.transform));
                 // Enables and changes the attack effect over the course of the attack and dictates if the atkFX pool object is inUse then not.
-                atkVisual.StartCoroutine(atkVisual.AttackAnimation(sO_AttackFX, atkFX));
+                // Start the coroutine ON the pool object script, not the script holding the coroutine logic.
+                // The gameObject needs to be turned on before starting the coroutine on it.
+                atkFX.gameObject.SetActive(true);
+                atkFX.StartCoroutine(atkVisual.AttackAnimation(sO_AttackFX, atkFX));
                 // Enables and disables the attack's collider during the "animation" and detects colliders it can hit, once, if it has one assigned.
                 if (sO_AttackFX.collider != null) {
                     atkDetection.StartCoroutine(atkDetection.AttackCollider(WeapAtkChain, sO_AttackFX, atkFX.col));
                 }
             }
         }
+    }
+    // When you want to stop the current attack.
+    public void StopAttack() {
+        if (curWeaponMotion) {
+            curWeaponMotion.StopMotions();
+        }
+        foreach (Character_AttackFX poolAtkFX in atkFXPool.atkFXs) {
+            if (poolAtkFX.stopOnStun) {
+                poolAtkFX.StopAllCoroutines();
+                poolAtkFX.spriteR.sprite = null;
+                poolAtkFX.gameObject.SetActive(false);
+                poolAtkFX.stopOnStun = false;
+                poolAtkFX.inUse = false;
+            }
+        }
+        if (atkPlyrMove.charAtkMotionOn) {
+            atkPlyrMove.StopPlayerMotion();
+        }
+        //atkVisual.StopAllCoroutines();
     }
     // If I want to check only when a new weapon is equipped, call this from the Character_EquippedWeapons.Change(). (every attack chain with the same motion)
     public void AdjustMotionList() {
@@ -89,7 +111,7 @@ public class Character_Attack : MonoBehaviour
     // Instantly tests the character's sprite flip and adjusts the weapon's orientation both based on mouse position.
     public void ForceCharFlipAndWeaponLookAt() {
         charMov.charCanFlip = true;
-        charMov.FlipSprite();
+        charMov.FlipSpriteMouseBased();
         weaponLookAt.lookAtEnabled = true;
         weaponLookAt.ForceLookAtUpdate();
     }

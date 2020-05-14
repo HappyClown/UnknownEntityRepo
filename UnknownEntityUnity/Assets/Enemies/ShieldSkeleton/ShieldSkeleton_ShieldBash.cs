@@ -183,8 +183,10 @@ public class ShieldSkeleton_ShieldBash : MonoBehaviour
                     }
                 }
                 if (col.CompareTag("Player")) { // Change for variable reference to Tag to allow being used by player???
+                    // Calculate hit direction.
+                    Vector2 hitDirToPlyr = eRefs.NormDirToTargetV2(this.transform.position, eRefs.plyrTrans.position);
                     // Apply damage to the player.
-                    col.GetComponent<Character_Health>().TakeDamage(Damage);
+                    col.GetComponent<Character_Health>().TakeDamage(Damage, hitDirToPlyr);
                     hitTransforms.Add(col.transform);
                     print("Shield bash hit the Player");
                 }

@@ -59,7 +59,7 @@ public class Character_Movement : MonoBehaviour
     void FixedUpdate() {
         // Check if sprite needs to be flipped based on mouse position.
         if (moIn.mouseMoved && charCanFlip) {
-          FlipSprite();
+          FlipSpriteMouseBased();
         }
         if (canInputMove) {
             // Detect Player Character movement.
@@ -113,7 +113,7 @@ public class Character_Movement : MonoBehaviour
         }
     }
 
-    public void FlipSprite () {
+    public void FlipSpriteMouseBased () {
         // Flip sprite based on player mouse position.
         if (moIn.mousePosWorld2D.x < this.transform.position.x) {
             spriteRend.flipX = true;
@@ -124,6 +124,24 @@ public class Character_Movement : MonoBehaviour
             spriteRend.flipX = false;
             lookLeft = false;
             lookRight = true;
+        }
+    }
+
+    public void FlipSpritePositionBased(Vector3 otherPosition) {
+        if (otherPosition.x < this.transform.position.x) {
+            spriteRend.flipX = true;
+        }
+        else {
+            spriteRend.flipX = false;
+        }
+    }
+
+    public void FlipSpriteDirectionBased(Vector3 direction) {
+        if (direction.x > 0f) {
+            spriteRend.flipX = true;
+        }
+        else {
+            spriteRend.flipX = false;
         }
     }
 

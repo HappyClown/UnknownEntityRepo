@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SO_AttackFX_ShortBroadSwordTest
   m_EditorClassIdentifier: 
   totalDuration: 0.4
+  stopOnStun: 1
   collider: {fileID: 8439487225676276712, guid: 3ab819451ee93e147ae069fb2873fa35,
     type: 3}
   colStart: 0.2
@@ -32,6 +33,7 @@ MonoBehaviour:
   spawnDistance: 0.75
   moveDistance: 0.5
   moveDelay: 0.2
+  setupBeforeDelay: 0
   moveAnimCurve:
     serializedVersion: 2
     m_Curve:

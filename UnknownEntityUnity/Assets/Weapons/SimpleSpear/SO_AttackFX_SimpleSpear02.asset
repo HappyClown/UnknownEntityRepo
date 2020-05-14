@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SO_AttackFX_SimpleSpear02
   m_EditorClassIdentifier: 
   totalDuration: 0.5
+  stopOnStun: 1
   collider: {fileID: 6841409416684675371, guid: e535e837fec552841a83269c5fb6ad72,
     type: 3}
   colStart: 0.25

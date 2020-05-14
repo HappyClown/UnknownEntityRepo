@@ -17,6 +17,9 @@ public class Character_AttackVisual : MonoBehaviour
     public IEnumerator AttackAnimation(SO_AttackFX sO_AttackFX, Character_AttackFX atkFX) {
         // References from the AttackFX object from the CharacterAttackFX Pool.
         atkFX.inUse = true;
+        if (sO_AttackFX.stopOnStun) {
+            atkFX.stopOnStun = true;
+        }
         SpriteRenderer atkSpriteR = atkFX.spriteR;
         atkFX.gameObject.SetActive(true);
         atkSpriteR.sprite = null;
@@ -42,6 +45,7 @@ public class Character_AttackVisual : MonoBehaviour
         }
         atkSpriteR.sprite = null;
         atkFX.gameObject.SetActive(false);
+        atkFX.stopOnStun = false;
         atkFX.inUse = false;
     }
 }

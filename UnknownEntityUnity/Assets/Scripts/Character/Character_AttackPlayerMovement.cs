@@ -45,7 +45,7 @@ public class Character_AttackPlayerMovement : MonoBehaviour
             charMov.charCanFlip = true;
             charMov.ReduceSpeed(-curSlow);
             curSlow = 0f;
-            charMov.FlipSprite();
+            charMov.FlipSpriteMouseBased();
             weaponLookAt.lookAtEnabled = true;
             curMotion = 0;
             charAtkMotionOn = false;
@@ -107,5 +107,13 @@ public class Character_AttackPlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(slowDuration);
         charMov.ReduceSpeed(-speedReduceOnOne);
         yield return null;
+    }
+
+    public void StopPlayerMotion() {
+        if (charAtkMotionOn) {
+            charMov.ReduceSpeed(-curSlow);
+            curSlow = 0f;
+            charAtkMotionOn = false;
+        }
     }
 }

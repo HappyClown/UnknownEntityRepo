@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9203858671286982863}
   - component: {fileID: 96031779}
+  - component: {fileID: 2656337685487112101}
   - component: {fileID: 611606231693693825}
   - component: {fileID: 96031778}
   m_Layer: 15
@@ -47,18 +48,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131a5de8fdab37e44bd23e9825e0877e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumHealth: 50
-  currentHealth: 50
+  charMov: {fileID: 3651932565041545239}
+  charDeath: {fileID: 2656337685487112101}
   healthBar: {fileID: 611606231693693825}
+  maximumHealth: 10
+  currentHealth: 10
+  spriteR: {fileID: 3651932565309937599}
   hitSprites:
   - {fileID: -334237908168880825, guid: 94f1025fe8e6b384ab84a94416ec7afd, type: 3}
   - {fileID: -7383483480462489881, guid: 94f1025fe8e6b384ab84a94416ec7afd, type: 3}
   hitSpriteTimings:
   - 0
   - 0.3
-  spriteR: {fileID: 3651932565309937599}
   getHitDuration: 0.5
-  charMov: {fileID: 3651932565041545239}
+--- !u!114 &2656337685487112101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96031776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085daba67d69c04d953626f0a276eba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathAnimSprites:
+  - {fileID: -3265467846760811175, guid: 96171bab1ad63fb469566709b5210e0a, type: 3}
+  - {fileID: 6300518345135983760, guid: 96171bab1ad63fb469566709b5210e0a, type: 3}
+  - {fileID: -6072298256207440457, guid: 96171bab1ad63fb469566709b5210e0a, type: 3}
+  - {fileID: 5543442751306533146, guid: 96171bab1ad63fb469566709b5210e0a, type: 3}
+  - {fileID: 3065355301133690315, guid: 96171bab1ad63fb469566709b5210e0a, type: 3}
+  - {fileID: 3018202264035415660, guid: 96171bab1ad63fb469566709b5210e0a, type: 3}
+  - {fileID: 7932032492527545859, guid: 96171bab1ad63fb469566709b5210e0a, type: 3}
+  - {fileID: 2936172682666599899, guid: 96171bab1ad63fb469566709b5210e0a, type: 3}
+  deathAnimTimings:
+  - 0
+  - 0.1
+  - 0.2
+  - 0.3
+  - 0.4
+  - 0.5
+  - 0.6
+  - 0.7
+  - 0.8
+  spriteR: {fileID: 3651932565309937599}
 --- !u!114 &611606231693693825
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -110,6 +110,8 @@ public class Weapon_StabMotion : Weapon_Motion
         resetWeapRot = false;
         weapMotionOn = false;
         moveTimer = 0f;
+        weaponTrans.localPosition = sOWeaponMotionStab.restingPosition;
+        weaponTrans.localRotation = Quaternion.Euler(sOWeaponMotionStab.restingRotation);
         // charAtk.readyToAtk = true;
         // charAtk.atkChain.ready = true;
         // charAtk.equippedWeapons.canSwapWeapon = true;

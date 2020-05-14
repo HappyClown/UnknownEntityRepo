@@ -24,5 +24,5 @@ MonoBehaviour:
   lockCharacterAndWeapon: 000101
   slowDownRunSpeed:
   - 0.5
-  - 0.1
-  - 0.75
+  - 0
+  - 0

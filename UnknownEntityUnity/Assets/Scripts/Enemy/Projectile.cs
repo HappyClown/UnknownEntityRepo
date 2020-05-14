@@ -57,8 +57,11 @@ public class Projectile : MonoBehaviour
         if (collidedList.Count > 0 && collidedList[0] != null) {
             foreach(Collider2D col in collidedList) {
                 if (col.CompareTag("Player")) { // Change for variable reference to Tag to allow being used by player???
+                Character_Health charHealth = col.GetComponent<Character_Health>();
+                    // Calculate hit direction.
+                    Vector2 hitDirToPlyr = (charHealth.transform.position - this.transform.position).normalized;
                     // Apply damage to the player.
-                    col.GetComponent<Character_Health>().TakeDamage(projSO.Damage);
+                    col.GetComponent<Character_Health>().TakeDamage(projSO.Damage, hitDirToPlyr);
                     //print("Projectile hit the Player");
                 }
                 else if (col.CompareTag("Destructible")) {

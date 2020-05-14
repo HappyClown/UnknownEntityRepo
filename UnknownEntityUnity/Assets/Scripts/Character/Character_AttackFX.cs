@@ -5,6 +5,7 @@ using UnityEngine;
 public class Character_AttackFX : MonoBehaviour
 {
     public bool inUse;
+    public bool stopOnStun;
     public SpriteRenderer spriteR;
     public PolygonCollider2D col;
 }

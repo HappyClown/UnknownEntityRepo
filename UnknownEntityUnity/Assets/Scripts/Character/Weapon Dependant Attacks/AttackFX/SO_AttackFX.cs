@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SO_AttackFX", menuName = "SOAttackFX", order = 0)]
 public class SO_AttackFX : ScriptableObject {
     public float totalDuration;
+    public bool stopOnStun;
     [Header("Collision")]
     public PolygonCollider2D collider; // Maybe need more then one in the future.
     public float colStart, colEnd;
