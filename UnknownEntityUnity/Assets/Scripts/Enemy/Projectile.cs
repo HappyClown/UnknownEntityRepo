@@ -60,8 +60,13 @@ public class Projectile : MonoBehaviour
                 Character_Health charHealth = col.GetComponent<Character_Health>();
                     // Calculate hit direction.
                     Vector2 hitDirToPlyr = (charHealth.transform.position - this.transform.position).normalized;
+                    Vector2 hitPos = Vector2.zero;
+                    RaycastHit2D hit = Physics2D.Raycast(myCol.transform.position, (col.transform.position - myCol.transform.position).normalized, (myCol.transform.position - col.transform.position).magnitude, projSO.contactFilter.layerMask);
+                    if (hit) {
+                        hitPos = hit.point;
+                    }
                     // Apply damage to the player.
-                    col.GetComponent<Character_Health>().TakeDamage(projSO.Damage, hitDirToPlyr);
+                    col.GetComponent<Character_Health>().TakeDamage(projSO.Damage, hitDirToPlyr, hitPos);
                     //print("Projectile hit the Player");
                 }
                 else if (col.CompareTag("Destructible")) {

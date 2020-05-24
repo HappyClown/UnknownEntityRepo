@@ -26,8 +26,15 @@ public class Character_Health : MonoBehaviour
     private Vector3 moveDirection;
     private float moveTimer;
     private Vector3 curPosition, newPosition;
+    // Same as animation, 
+    [Header("Hit FX Impact")]
+    public SO_ImpactFX sOImpactFX;
+    private ImpactFX impactFX;
+    public ImpactFXPool impactFXPool;
+    private Vector3 hitPosition;
 
     public IEnumerator TakeHitAnimation() {
+        HitEffect();
         // Can be transfered to the update.
         // Switch this for an Interumpt/Stun, stop all input, attacks, etc. Can also add variables for knockback and stun duration, based on damage received, buffs, damage immunity, etc.
         // Player cannot move with input.
@@ -66,11 +73,12 @@ public class Character_Health : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage, Vector2 hitDirection) {
+    public void TakeDamage(float damage, Vector2 hitDirection, Vector2 hitPos) {
         currentHealth -= damage;
         healthBar.AdjustHealthBar(maximumHealth, currentHealth);
         // Hit movement and animation.
         moveDirection = new Vector3(hitDirection.x, hitDirection.y, charMov.transform.position.z);
+        hitPosition = hitPos;
         StartCoroutine(TakeHitAnimation());
         HitTakenMovement();
     }
@@ -83,6 +91,15 @@ public class Character_Health : MonoBehaviour
         moveTimer = 0f;
         moveSpeed = moveDistance / getHitDuration;
     }
+
+    public void HitEffect() {
+        impactFX = impactFXPool.RequestImpactFX();
+        impactFX.transform.position = new Vector3(hitPosition.x, hitPosition.y, impactFX.transform.position.z);
+        float angle = Vector3.Angle(moveDirection, transform.up);
+        impactFX.gameObject.transform.Rotate(new Vector3(0,0,angle));
+        impactFX.StartCoroutine(impactFX.PlayImpactFX(sOImpactFX));
+    }
+
     void Update() {
         // Can be transfered to the coroutine for the animation, specialyl since they both rely on he same get hit duration.
         if (charHitMoveOn) {

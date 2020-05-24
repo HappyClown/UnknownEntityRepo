@@ -35,6 +35,8 @@ public class Character_AttackDetection : MonoBehaviour
                 {
                     if (!collidersDamaged.Contains(col)) {
                         collidersDamaged.Add(col);
+                        // Get weapon specific hit FX (and sound FX).
+                        
                         col.GetComponent<Enemy_Health>().ReceiveDamage(WeapAtkChain.DamageRoll);
                         //Debug.Log("Collider: " + col.gameObject.name + " was hit! Hit hit, hurraay!");
                     }
