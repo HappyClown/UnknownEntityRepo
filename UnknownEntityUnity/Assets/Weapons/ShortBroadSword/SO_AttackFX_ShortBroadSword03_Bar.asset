@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalDuration: 0.6
   stopOnStun: 1
-  collider: {fileID: 8439487225676276712, guid: 3ab819451ee93e147ae069fb2873fa35,
-    type: 3}
+  collider: {fileID: 0}
   colStart: 0
-  colEnd: 0.1
+  colEnd: 0
+  soImpactFX: {fileID: 0}
   sprites:
   - {fileID: 4491319768703263949, guid: 882d819e05f7b234199f07f546f47c28, type: 3}
   - {fileID: 7435908937382819508, guid: 882d819e05f7b234199f07f546f47c28, type: 3}

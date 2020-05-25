@@ -22,6 +22,7 @@ public class Character_AttackVisual : MonoBehaviour
         }
         SpriteRenderer atkSpriteR = atkFX.spriteR;
         atkFX.gameObject.SetActive(true);
+        print ("ATK FX OBJECT set active");
         atkSpriteR.sprite = null;
         // References from the SO_AttackFX.
         Sprite[] atkSprites = sO_AttackFX.sprites;

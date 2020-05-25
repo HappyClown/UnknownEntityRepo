@@ -183,13 +183,14 @@ public class ShieldSkeleton_ShieldBash : MonoBehaviour
                     }
                 }
                 if (col.CompareTag("Player")) { // Change for variable reference to Tag to allow being used by player???
-                    // Calculate hit direction.
+                    // Calculate hit direction, partially for the Hit FX.
                     Vector2 hitDirToPlyr = eRefs.NormDirToTargetV2(this.transform.position, eRefs.plyrTrans.position);
                     Vector2 hitPos = Vector2.zero;
                     RaycastHit2D hit = Physics2D.Raycast(atkCol.transform.position, eRefs.NormDirToTargetV2(atkCol.transform.position, col.transform.position), eRefs.DistToTarget(atkCol.transform.position, col.transform.position), atkContactFilter.layerMask);
                     if (hit) {
                         hitPos = hit.point;
                     }
+                    // print("HIT DIR TO PLYR: "+hitDirToPlyr+"  &&  HIT POS: "+hitPos);
                     // Apply damage to the player.
                     col.GetComponent<Character_Health>().TakeDamage(Damage, hitDirToPlyr, hitPos);
                     hitTransforms.Add(col.transform);

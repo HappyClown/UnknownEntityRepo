@@ -34,7 +34,10 @@ public class Character_Health : MonoBehaviour
     private Vector3 hitPosition;
 
     public IEnumerator TakeHitAnimation() {
+        // Hit FX.
         HitEffect();
+        // Slow down time.
+        StartCoroutine(TimeSlow.SlowTimeScale(5, 0));
         // Can be transfered to the update.
         // Switch this for an Interumpt/Stun, stop all input, attacks, etc. Can also add variables for knockback and stun duration, based on damage received, buffs, damage immunity, etc.
         // Player cannot move with input.
@@ -95,9 +98,8 @@ public class Character_Health : MonoBehaviour
     public void HitEffect() {
         impactFX = impactFXPool.RequestImpactFX();
         impactFX.transform.position = new Vector3(hitPosition.x, hitPosition.y, impactFX.transform.position.z);
-        float angle = Vector3.Angle(moveDirection, transform.up);
-        impactFX.gameObject.transform.Rotate(new Vector3(0,0,angle));
-        impactFX.StartCoroutine(impactFX.PlayImpactFX(sOImpactFX));
+        impactFX.transform.up = moveDirection;
+        impactFX.StartImpactFX(sOImpactFX);
     }
 
     void Update() {

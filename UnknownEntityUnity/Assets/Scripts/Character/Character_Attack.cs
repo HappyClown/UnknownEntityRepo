@@ -83,7 +83,9 @@ public class Character_Attack : MonoBehaviour
             if (poolAtkFX.stopOnStun) {
                 poolAtkFX.StopAllCoroutines();
                 poolAtkFX.spriteR.sprite = null;
+                poolAtkFX.col.enabled = false;
                 poolAtkFX.gameObject.SetActive(false);
+                //poolAtkFX.transform.position = new Vector3(999, 999, poolAtkFX.transform.position.z);
                 poolAtkFX.stopOnStun = false;
                 poolAtkFX.inUse = false;
             }

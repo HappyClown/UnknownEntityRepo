@@ -12,13 +12,21 @@ public class ImpactFX : MonoBehaviour
     float[] spriteTimings;
     int totalTicks;
     int tick;
+    SO_ImpactFX sO_ImpactFX;
 
-    public IEnumerator PlayImpactFX(SO_ImpactFX sOImpactFX) {
+    public void StartImpactFX(SO_ImpactFX sOImpactFX) {
+        inUse = true;
+        sO_ImpactFX = sOImpactFX;
+        sprites = sO_ImpactFX.impactFXSprites;
+        spriteTimings = sO_ImpactFX.impactFXTimings;
+        totalTicks = spriteTimings.Length-1;
         tick = 0;
         timer = 0f;
-        sprites = sOImpactFX.impactFXSprites;
-        spriteTimings = sOImpactFX.impactFXTimings;
-        totalTicks = spriteTimings.Length-1;
+        this.gameObject.SetActive(true);
+        StartCoroutine(PlayImpactFX());
+    }
+
+    public IEnumerator PlayImpactFX() {
         while (tick < totalTicks) {
             timer += Time.deltaTime;
             if (timer >= spriteTimings[tick]) {
@@ -28,5 +36,7 @@ public class ImpactFX : MonoBehaviour
             yield return null;
         }
         spriteR.sprite = null;
+        this.gameObject.SetActive(false);
+        inUse = false;
     }
 }

@@ -30,11 +30,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 101568786}
-  - {fileID: 1701453885}
+  m_Children: []
   m_Father: {fileID: 3651932565309937596}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &96031779
 MonoBehaviour:
@@ -48,11 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131a5de8fdab37e44bd23e9825e0877e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charAtk: {fileID: 3651932565041545236}
   charMov: {fileID: 3651932565041545239}
   charDeath: {fileID: 2656337685487112101}
+  weapLookAt: {fileID: 3651932565724258068}
   healthBar: {fileID: 611606231693693825}
-  maximumHealth: 10
-  currentHealth: 10
+  maximumHealth: 50
+  currentHealth: 50
   spriteR: {fileID: 3651932565309937599}
   hitSprites:
   - {fileID: -334237908168880825, guid: 94f1025fe8e6b384ab84a94416ec7afd, type: 3}
@@ -60,7 +60,10 @@ MonoBehaviour:
   hitSpriteTimings:
   - 0
   - 0.3
-  getHitDuration: 0.5
+  getHitDuration: 0.4
+  charHitMoveOn: 0
+  sOImpactFX: {fileID: 11400000, guid: c33ff6a63b90e1c43aa9153d97b3dc50, type: 2}
+  impactFXPool: {fileID: 0}
 --- !u!114 &2656337685487112101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,6 +76,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9085daba67d69c04d953626f0a276eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charWeaps: {fileID: 3507419587604336638}
+  charAtk: {fileID: 3651932565041545236}
+  charMov: {fileID: 3651932565041545239}
+  hitCol: {fileID: 96031778}
+  weaponSpriteR: {fileID: 3651932565548517001}
+  shadow: {fileID: 3651932565723185216}
   deathAnimSprites:
   - {fileID: -3265467846760811175, guid: 96171bab1ad63fb469566709b5210e0a, type: 3}
   - {fileID: 6300518345135983760, guid: 96171bab1ad63fb469566709b5210e0a, type: 3}
@@ -158,12 +167,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 101568785}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.375, y: -0.6, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.375, y: -0.5999999, z: 0}
   m_LocalScale: {x: 6, y: 0.75, z: 1}
   m_Children: []
-  m_Father: {fileID: 9203858671286982863}
-  m_RootOrder: 0
+  m_Father: {fileID: 3651932565309937596}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &101568787
 SpriteRenderer:
@@ -239,11 +248,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701453884}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.375, y: -0.6, z: 0.01}
+  m_LocalPosition: {x: -0.375, y: -0.5999999, z: 0.00999999}
   m_LocalScale: {x: 6, y: 0.75, z: 1}
   m_Children: []
-  m_Father: {fileID: 9203858671286982863}
-  m_RootOrder: 1
+  m_Father: {fileID: 3651932565309937596}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1701453886
 SpriteRenderer:
@@ -353,7 +362,7 @@ Transform:
   m_Children:
   - {fileID: 3651932564347373518}
   m_Father: {fileID: 3651932565309937596}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3651932565041545233
 GameObject:
@@ -555,6 +564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e404b732ade4f4d938fff1ddefd58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  impactFXPool: {fileID: 0}
   hitLayers:
     useTriggers: 0
     useLayerMask: 1
@@ -727,6 +737,8 @@ Transform:
   m_Children:
   - {fileID: 7847637287177695944}
   - {fileID: 3460520485528610456}
+  - {fileID: 101568786}
+  - {fileID: 1701453885}
   - {fileID: 9203858671286982863}
   - {fileID: 3651932565723185217}
   - {fileID: 3651932565724258071}
@@ -944,7 +956,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3651932565309937596}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3651932565723185222
 SpriteRenderer:
@@ -1025,7 +1037,7 @@ Transform:
   m_Children:
   - {fileID: 3651932565548517000}
   m_Father: {fileID: 3651932565309937596}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3651932565724258068
 MonoBehaviour:

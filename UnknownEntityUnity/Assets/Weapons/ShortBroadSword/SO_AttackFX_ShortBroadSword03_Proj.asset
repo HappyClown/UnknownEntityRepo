@@ -18,6 +18,7 @@ MonoBehaviour:
     type: 3}
   colStart: 0.35
   colEnd: 0.75
+  soImpactFX: {fileID: 11400000, guid: c33ff6a63b90e1c43aa9153d97b3dc50, type: 2}
   sprites:
   - {fileID: -2379977663514284478, guid: 3cf4f8a9a9de02b4c91d483220f56c2e, type: 3}
   - {fileID: 6543350016567360311, guid: 3cf4f8a9a9de02b4c91d483220f56c2e, type: 3}
