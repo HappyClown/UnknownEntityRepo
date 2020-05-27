@@ -22,5 +22,6 @@ public class SO_Projectile : ScriptableObject
     public Sprite sprite;
     public Collider2D col;
     public ContactFilter2D contactFilter;
+    public SO_ImpactFX sO_ImpactFX;
 
 }

@@ -27,7 +27,7 @@ public class Character_AttackMovement : MonoBehaviour
             xyweapOrig = new Vector3(weapOrigTrans.position.x, weapOrigTrans.position.y, atkFXTrans.position.z);
             // Put the attack at the correct spawn point, after the move delay.
             atkFXTrans.position = xyweapOrig + (weapOrigTrans.up * spawnDistance);
-            print ("ATK FX has been MOVED to its initital position.");
+            //print ("ATK FX has been MOVED to its initital position.");
             // Set Lerp values.
             startPos = atkFXTrans.position;
             targetPos = atkFXTrans.position + (weapOrigTrans.up * moveDistance);
@@ -42,7 +42,7 @@ public class Character_AttackMovement : MonoBehaviour
             xyweapOrig = new Vector3(weapOrigTrans.position.x, weapOrigTrans.position.y, atkFXTrans.position.z);
             // Put the attack at the correct spawn point, after the move delay.
             atkFXTrans.position = xyweapOrig + (weapOrigTrans.up * spawnDistance);
-            print ("ATK FX has been MOVED to its initital position.");
+            //print ("ATK FX has been MOVED to its initital position.");
             // Set Lerp values.
             startPos = atkFXTrans.position;
             targetPos = atkFXTrans.position + (weapOrigTrans.up * moveDistance);

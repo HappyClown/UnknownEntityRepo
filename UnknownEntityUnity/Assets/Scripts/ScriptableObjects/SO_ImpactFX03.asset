@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30197a3e3f97a66498f923bd65aa317a, type: 3}
+  m_Name: SO_ImpactFX03
+  m_EditorClassIdentifier: 
+  impactFXSprites:
+  - {fileID: 7181354786984967704, guid: edcea8e19769d5945a470ec0e190ea9b, type: 3}
+  - {fileID: -9136456892950400999, guid: edcea8e19769d5945a470ec0e190ea9b, type: 3}
+  - {fileID: -8160636980373017012, guid: edcea8e19769d5945a470ec0e190ea9b, type: 3}
+  impactFXTimings:
+  - 0
+  - 0.05
+  - 0.1
+  - 0.15

@@ -15,6 +15,7 @@ public class ShieldSkeleton_ShieldBash : MonoBehaviour
     //public float /* atkSpawnDist = 0.5f, */ atkDur = 0.25f, atkMoveDist = 0.85f;
     public float moveDist, moveDur;
     public float minAtkDamage, maxAtkDamage;
+    public SO_ImpactFX sO_ImpactFX;
     Vector2 atkDirNorm;
     //Vector2 startPos, endPos;
     Vector2 startMovePos, endMovePos;
@@ -184,15 +185,18 @@ public class ShieldSkeleton_ShieldBash : MonoBehaviour
                 }
                 if (col.CompareTag("Player")) { // Change for variable reference to Tag to allow being used by player???
                     // Calculate hit direction, partially for the Hit FX.
-                    Vector2 hitDirToPlyr = eRefs.NormDirToTargetV2(this.transform.position, eRefs.plyrTrans.position);
-                    Vector2 hitPos = Vector2.zero;
-                    RaycastHit2D hit = Physics2D.Raycast(atkCol.transform.position, eRefs.NormDirToTargetV2(atkCol.transform.position, col.transform.position), eRefs.DistToTarget(atkCol.transform.position, col.transform.position), atkContactFilter.layerMask);
-                    if (hit) {
-                        hitPos = hit.point;
-                    }
+                    //Vector2 hitDirToPlyr = eRefs.NormDirToTargetV2(this.transform.position, eRefs.plyrTrans.position);
+                    // Vector2 hitPos = Vector2.zero;
+                    // RaycastHit2D hit = Physics2D.Raycast(atkCol.transform.position, eRefs.NormDirToTargetV2(atkCol.transform.position, col.transform.position), eRefs.DistToTarget(atkCol.transform.position, col.transform.position), atkContactFilter.layerMask);
+                    // if (hit) {
+                    //     hitPos = hit.point;
+                    // }
+                    
+                    // Hit impact FX. Apply the correct rotation, position, sprites and layerMask to an impactFX.
+                    HitImpact.PlayImpactFX(atkCol.transform.position, col.transform.position, sO_ImpactFX, atkContactFilter.layerMask, col);
                     // print("HIT DIR TO PLYR: "+hitDirToPlyr+"  &&  HIT POS: "+hitPos);
-                    // Apply damage to the player.
-                    col.GetComponent<Character_Health>().TakeDamage(Damage, hitDirToPlyr, hitPos);
+                    // Apply damage to the player, also give it the direction from the hittingCollider to the playerCollider.
+                    col.GetComponent<Character_Health>().TakeDamage(Damage, eRefs.NormDirToTargetV2(atkCol.transform.position, col.transform.position));
                     hitTransforms.Add(col.transform);
                     //print("Shield bash hit the Player");
                 }

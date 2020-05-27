@@ -18,7 +18,7 @@ public class Character_AttackDetection : MonoBehaviour
         float thisColEnd = sO_AttackFX.colEnd;
         atkFXCol.points = sO_AttackFX.collider.points;
         SO_ImpactFX sO_ImpactFX = sO_AttackFX.soImpactFX;
-        ImpactFX impactFX;
+        // ImpactFX impactFX;
         // Set other variables.
         List<Collider2D> collidersHit = new List<Collider2D>();
         List<Collider2D> collidersDamaged = new List<Collider2D>();
@@ -30,9 +30,10 @@ public class Character_AttackDetection : MonoBehaviour
         while (timer < thisColEnd) {
             timer += Time.deltaTime;
             if (timer >= thisColStart && !detectCol) {
+                yield return null;
                 atkFXCol.enabled = true;
                 detectCol = true;
-                print ("ATK FX COLLISION has been enabled");
+                //print ("ATK FX COLLISION has been enabled");
                 yield return null;
             }
             if (detectCol) {
@@ -42,23 +43,22 @@ public class Character_AttackDetection : MonoBehaviour
                 {
                     if (!collidersDamaged.Contains(col)) {
                         collidersDamaged.Add(col);
-                        // Get weapon specific hit FX (and hit sound FX).
-                        impactFX = impactFXPool.RequestImpactFX();
+                        // // Get weapon specific hit FX (and hit sound FX).
+                        // impactFX = impactFXPool.RequestImpactFX();
+                    
+                        // Vector2 dirToEnemy = col.transform.position - atkFXCol.transform.position;
+                        // impactFX.transform.up = dirToEnemy;
+                        // Vector2 impactPoint = Physics2D.Raycast(atkFXCol.transform.position, dirToEnemy, dirToEnemy.magnitude, hitLayers.layerMask).point;
+                        // impactFX.transform.position = new Vector3(impactPoint.x, impactPoint.y, impactFX.transform.position.z);
+
+                        // // Apply a position and rotation to the impact.
+                        // impactFX.StartImpactFX(sO_ImpactFX);
                         
-                    // Vector2 hitDirToPlyr = eRefs.NormDirToTargetV2(this.transform.position, eRefs.plyrTrans.position);
-                    // Vector2 hitPos = Vector2.zero;
-                    // RaycastHit2D hit = Physics2D.Raycast(atkCol.transform.position, eRefs.NormDirToTargetV2(atkCol.transform.position, col.transform.position), eRefs.DistToTarget(atkCol.transform.position, col.transform.position), atkContactFilter.layerMask);
-                    // if (hit) {
-                    //     hitPos = hit.point;
-                    // }
-                        Vector2 dirToEnemy = col.transform.position - atkFXCol.transform.position;
-                        impactFX.transform.up = dirToEnemy;
-                        Vector2 impactPoint = Physics2D.Raycast(atkFXCol.transform.position, dirToEnemy, dirToEnemy.magnitude, hitLayers.layerMask).point;
-                        impactFX.transform.position = new Vector3(impactPoint.x, impactPoint.y, impactFX.transform.position.z);
-                        // Apply a position and rotation to the impact.
-                        impactFX.StartImpactFX(sO_ImpactFX);
-                        // Slow time.
-                        StartCoroutine(TimeSlow.SlowTimeScale(5, 0));
+                        // Hit impact FX. Apply the correct rotation, position, sprites and layerMask to an impactFX.
+                        HitImpact.PlayImpactFX(atkFXCol.transform.position, col.transform.position, sO_ImpactFX, hitLayers.layerMask, col);
+                        // Slow time. Duration to be set by weapon damage, slow to be adjusted (animation curve) by TimeSlow script.
+                        TimeSlow.StartTimeSlow(6, 0f);
+                        //StartCoroutine(TimeSlow.SlowTimeScale(6, 0f));
                         // Apply damage.
                         col.GetComponent<Enemy_Health>().ReceiveDamage(WeapAtkChain.DamageRoll);
                         //Debug.Log("Collider: " + col.gameObject.name + " was hit! Hit hit, hurraay!");

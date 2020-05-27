@@ -742,7 +742,7 @@ MonoBehaviour:
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 32768
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
@@ -751,6 +751,7 @@ MonoBehaviour:
   moveDur: 0.15
   minAtkDamage: 3
   maxAtkDamage: 4
+  sO_ImpactFX: {fileID: 11400000, guid: ee52250fe04d09a4c9e94699de25cdd5, type: 2}
   inBash: 0
   cooldown: 0.1
   totalDuration: 2

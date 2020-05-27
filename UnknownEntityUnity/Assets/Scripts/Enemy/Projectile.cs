@@ -59,14 +59,17 @@ public class Projectile : MonoBehaviour
                 if (col.CompareTag("Player")) { // Change for variable reference to Tag to allow being used by player???
                 Character_Health charHealth = col.GetComponent<Character_Health>();
                     // Calculate hit direction.
-                    Vector2 hitDirToPlyr = (charHealth.transform.position - this.transform.position).normalized;
-                    Vector2 hitPos = Vector2.zero;
-                    RaycastHit2D hit = Physics2D.Raycast(myCol.transform.position, (col.transform.position - myCol.transform.position).normalized, (myCol.transform.position - col.transform.position).magnitude, projSO.contactFilter.layerMask);
-                    if (hit) {
-                        hitPos = hit.point;
-                    }
+                    // Vector2 hitDirToPlyr = (charHealth.transform.position - this.transform.position).normalized;
+                    // Vector2 hitPos = Vector2.zero;
+                    // RaycastHit2D hit = Physics2D.Raycast(myCol.transform.position, (col.transform.position - myCol.transform.position).normalized, (myCol.transform.position - col.transform.position).magnitude, projSO.contactFilter.layerMask);
+                    // if (hit) {
+                    //     hitPos = hit.point;
+                    // }
+                    
+                    // Hit impact FX. Apply the correct rotation, position, sprites and layerMask to an impactFX.
+                    HitImpact.PlayImpactFX(myCol.transform.position, col.transform.position, projSO.sO_ImpactFX, projSO.contactFilter.layerMask, col);
                     // Apply damage to the player.
-                    col.GetComponent<Character_Health>().TakeDamage(projSO.Damage, hitDirToPlyr, hitPos);
+                    col.GetComponent<Character_Health>().TakeDamage(projSO.Damage, ((Vector2)charHealth.transform.position - (Vector2)this.transform.position).normalized);
                     //print("Projectile hit the Player");
                 }
                 else if (col.CompareTag("Destructible")) {

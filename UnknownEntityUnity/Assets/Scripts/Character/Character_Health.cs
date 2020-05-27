@@ -23,28 +23,29 @@ public class Character_Health : MonoBehaviour
     [Header("Get Hit Movement")]
     public bool charHitMoveOn;
     private float moveSpeed, moveDistance;
-    private Vector3 moveDirection;
+    private Vector3 normHitDirection;
     private float moveTimer;
     private Vector3 curPosition, newPosition;
     // Same as animation, 
-    [Header("Hit FX Impact")]
-    public SO_ImpactFX sOImpactFX;
-    private ImpactFX impactFX;
-    public ImpactFXPool impactFXPool;
-    private Vector3 hitPosition;
+    // [Header("Hit FX Impact")]
+    // public SO_ImpactFX sOImpactFX;
+    // private ImpactFX impactFX;
+    // public ImpactFXPool impactFXPool;
+    // private Vector3 hitPosition;
 
     public IEnumerator TakeHitAnimation() {
         // Hit FX.
-        HitEffect();
+        //HitEffect();
         // Slow down time.
-        StartCoroutine(TimeSlow.SlowTimeScale(5, 0));
+        TimeSlow.StartTimeSlow(5, 0f);
+        //StartCoroutine(TimeSlow.SlowTimeScale(5, 0));
         // Can be transfered to the update.
         // Switch this for an Interumpt/Stun, stop all input, attacks, etc. Can also add variables for knockback and stun duration, based on damage received, buffs, damage immunity, etc.
         // Player cannot move with input.
         charMov.StopInputMove();
         // Player cannot flip.
         charMov.charCanFlip = false;
-        charMov.FlipSpriteDirectionBased(moveDirection);
+        charMov.FlipSpriteDirectionBased(normHitDirection);
         // Stops; player attack movement, attack FXs that are stopped on stun, weapon attack motion.
         charAtk.StopAttack();
         // Player weapon does not follow cursor.
@@ -76,12 +77,12 @@ public class Character_Health : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage, Vector2 hitDirection, Vector2 hitPos) {
+    public void TakeDamage(float damage, Vector2 normHitDirection_) {
         currentHealth -= damage;
         healthBar.AdjustHealthBar(maximumHealth, currentHealth);
-        // Hit movement and animation.
-        moveDirection = new Vector3(hitDirection.x, hitDirection.y, charMov.transform.position.z);
-        hitPosition = hitPos;
+        // Normalized hit direction from the hittingCollider to the playerCollider.
+        normHitDirection = new Vector3(normHitDirection_.x, normHitDirection_.y, charMov.transform.position.z);
+        //hitPosition = hitPos;
         StartCoroutine(TakeHitAnimation());
         HitTakenMovement();
     }
@@ -95,15 +96,15 @@ public class Character_Health : MonoBehaviour
         moveSpeed = moveDistance / getHitDuration;
     }
 
-    public void HitEffect() {
-        impactFX = impactFXPool.RequestImpactFX();
-        impactFX.transform.position = new Vector3(hitPosition.x, hitPosition.y, impactFX.transform.position.z);
-        impactFX.transform.up = moveDirection;
-        impactFX.StartImpactFX(sOImpactFX);
-    }
+    // public void HitEffect() {
+    //     impactFX = impactFXPool.RequestImpactFX();
+    //     impactFX.transform.position = new Vector3(hitPosition.x, hitPosition.y, impactFX.transform.position.z);
+    //     impactFX.transform.up = normHitDirection;
+    //     impactFX.StartImpactFX(sOImpactFX);
+    // }
 
     void Update() {
-        // Can be transfered to the coroutine for the animation, specialyl since they both rely on he same get hit duration.
+        // Can be transfered to the coroutine for the animation, specially since they both rely on the same get hit duration.
         if (charHitMoveOn) {
             moveTimer += Time.deltaTime / getHitDuration;
             if (moveTimer >= getHitDuration) {
@@ -112,8 +113,8 @@ public class Character_Health : MonoBehaviour
             }
             //print(curPosition.z + "And new posz: " + newPosition.z);
             curPosition = charMov.transform.position;
-            newPosition = curPosition + (moveDirection*moveSpeed*Time.deltaTime);
-            charMov.MoveThePlayer(moveDirection, newPosition, curPosition);
+            newPosition = curPosition + (normHitDirection*moveSpeed*Time.deltaTime);
+            charMov.MoveThePlayer(normHitDirection, newPosition, curPosition);
         }
     }
 }
