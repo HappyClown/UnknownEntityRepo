@@ -8,4 +8,7 @@ public class SO_Weapon_Motion : ScriptableObject
     public Vector3 restingPosition;
     public Vector3 restingRotation;
     public int allowAttackAndSwap;
+    // At what motion will the camera be nudged.
+    public int nudgeCamera;
+    public float nudgeDistance;
 }

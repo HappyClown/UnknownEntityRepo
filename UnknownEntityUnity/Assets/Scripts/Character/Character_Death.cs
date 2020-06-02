@@ -7,6 +7,7 @@ public class Character_Death : MonoBehaviour
     public Character_EquippedWeapons charWeaps;
     public Character_Attack charAtk;
     public Character_Movement charMov;
+    public DeathSequence deathSequence;
     public Collider2D hitCol;
     public SpriteRenderer weaponSpriteR;
     public GameObject shadow;
@@ -42,10 +43,12 @@ public class Character_Death : MonoBehaviour
         // Stop checking for character flip.
         // Turn off mouse pointer?
 
-        StartCoroutine(DeathSequence());
+        StartCoroutine(DeathAnimation());
     }
 
-    public IEnumerator DeathSequence() {
+    public IEnumerator DeathAnimation() {
+        deathSequence.StartCoroutine(deathSequence.DeathUI());
+        Time.timeScale = 0.33f;
         // Stop all scripts that need to be stopped.
         while(tick < totalTicks) {
             timer += Time.deltaTime;
@@ -55,5 +58,6 @@ public class Character_Death : MonoBehaviour
             }
             yield return null;
         }
+        Time.timeScale = 1f;
     }
 }

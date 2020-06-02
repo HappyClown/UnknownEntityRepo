@@ -13,11 +13,13 @@ public class HitImpact : MonoBehaviour
     }
 
     public static void PlayImpactFX(Vector2 hittingColliderPos, Vector2 receivingColliderPos, SO_ImpactFX sOImpactFX, LayerMask hitLayerMask, Collider2D receivingCollider) {
+
         // Request an ImpactFX script(attached to a GameObject) from an ImpactFX pool.
         impactFX_St = impactFXPool_St.RequestImpactFX();
         // Calculate and apply the direction from the hittingCollider to the receivingCollider.
         Vector2 dirToEnemy = receivingColliderPos - hittingColliderPos;
         impactFX_St.transform.up = dirToEnemy;
+
         // Fire a raycast from the hittingCollider to the receivingCollider to get a "hit" position, in order to place the impactFX close the the receiver.
 //
         //receivingCollider.Raycast(dirToEnemy,);

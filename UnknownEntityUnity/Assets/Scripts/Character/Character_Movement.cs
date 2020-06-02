@@ -56,7 +56,7 @@ public class Character_Movement : MonoBehaviour
         CalculateRunSpeed();
     }
 
-    void FixedUpdate() {
+    void Update() {
         // Check if sprite needs to be flipped based on mouse position.
         if (moIn.mouseMoved && charCanFlip) {
           FlipSpriteMouseBased();

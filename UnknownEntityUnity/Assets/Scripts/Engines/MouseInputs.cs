@@ -28,6 +28,7 @@ public class MouseInputs : MonoBehaviour
     private int weaponSwapGraceFrameCount;
     public bool weaponSwapPressed;
     public bool interactPressed;
+    public bool confirmPressed;
 
     void Awake() {
         inputMaster = new InputMaster();
@@ -37,6 +38,7 @@ public class MouseInputs : MonoBehaviour
         //inputMaster.Player.Attack.Enable();
         //inputMaster.Player.MousePosition.Enable();
         //inputMaster.Player.InputMovement.Enable();
+        // Cursor.visible = false;
     }
 
     void Start()
@@ -113,6 +115,13 @@ public class MouseInputs : MonoBehaviour
         if (inputMaster.Player.Interact.triggered) {
             interactPressed = true;
         }
+        
+        // Confirm pressed.
+        confirmPressed = false;
+        if (inputMaster.Player.Confirm.triggered) {
+            confirmPressed = true;
+        }
+
         // Check if the mouse moved.
         // mousePos = UnityEngine.Input.mousePosition;
         mousePos = inputMaster.Player.MousePosition.ReadValue<Vector2>();

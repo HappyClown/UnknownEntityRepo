@@ -24,6 +24,8 @@ public class Weapon_StabMotion : Weapon_Motion
     //
     private float curYPos, startYPos, endYPos;
     private int curMotion;
+    //
+    private bool camNudged;
 
     void Update() {
         // Rotate charAtk.weapon back to its reset position.
@@ -57,6 +59,11 @@ public class Weapon_StabMotion : Weapon_Motion
             charAtk.readyToAtk = true;
             charAtk.atkChain.ready = true;
             charAtk.equippedWeapons.canSwapWeapon = true;
+        }
+        // At what motion will the camera nudge.
+        if (curMotion >= sOWeaponMotionStab.nudgeCamera && !camNudged) {
+            CameraFollow.CameraNudge_St((charAtk.moIn.mousePosWorld2D - (Vector2)charAtk.transform.position).normalized, sOWeaponMotionStab.nudgeDistance);
+            camNudged = true;
         }
         // If there are no more attack motions.
         if (curMotion >= motionDurations.Length) {
@@ -97,6 +104,7 @@ public class Weapon_StabMotion : Weapon_Motion
         endYPos = yPositions[curMotion];
         curAnimCurve = animCurves[curMotion];
         moveTimer = 0f;
+        camNudged = false;
         // Enable motion.
         resetWeapRot = false;
         weapMotionOn = true;

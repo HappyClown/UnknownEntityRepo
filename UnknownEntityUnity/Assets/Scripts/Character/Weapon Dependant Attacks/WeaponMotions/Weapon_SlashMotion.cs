@@ -26,6 +26,7 @@ public class Weapon_SlashMotion : Weapon_Motion
     float moveTimer;
     bool weapMotionOn;
     //
+    private bool camNudged;
 
     void Update() {      
         // Rotate charAtk.weapon back to its reset position.
@@ -58,6 +59,11 @@ public class Weapon_SlashMotion : Weapon_Motion
             charAtk.readyToAtk = true;
             charAtk.atkChain.ready = true;
             charAtk.equippedWeapons.canSwapWeapon = true;
+        }
+        // At what motion will the camera nudge.
+        if (curMotion >= sOWeaponMotionSlash.nudgeCamera && !camNudged) {
+            CameraFollow.CameraNudge_St((charAtk.moIn.mousePosWorld2D - (Vector2)charAtk.transform.position).normalized, sOWeaponMotionSlash.nudgeDistance);
+            camNudged = true;
         }
         // If there are no more attack motions.
         if (curMotion == motionDurations.Length) {
@@ -104,6 +110,7 @@ public class Weapon_SlashMotion : Weapon_Motion
         curMotionDur = motionDurations[curMotion];
         curAnimCurve = animCurves[curMotion];
         moveTimer = 0f;
+        camNudged = false;
         // Enable motion.
         resetWeapOn = false;
         weapMotionOn = true;

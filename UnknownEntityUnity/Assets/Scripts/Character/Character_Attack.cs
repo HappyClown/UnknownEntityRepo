@@ -117,6 +117,8 @@ public class Character_Attack : MonoBehaviour
         weaponLookAt.lookAtEnabled = true;
         weaponLookAt.ForceLookAtUpdate();
     }
+    // Get the direction from the player towards the mouse position.
+    
     // Shorter reference to the weapon scriptable object's attack chain class.
     public SO_Weapon.AttackChain WeapAtkChain {
         get {
