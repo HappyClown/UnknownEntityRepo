@@ -18,7 +18,7 @@ MonoBehaviour:
   restingRotation: {x: 0, y: 0, z: 0}
   allowAttackAndSwap: 2
   nudgeCamera: 2
-  nudgeDistance: 0.5
+  nudgeDistance: 0.15
   resetYPosDuration: 0.5
   weaponMotionDuration: 3
   motionDurations:

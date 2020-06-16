@@ -8,12 +8,18 @@ public class TimeSlow : MonoBehaviour
     public AnimationCurve slowTimeAnimCurve;
     [Header("Read Only")]
     public bool slowTimeOn;
+    public bool allowTimeSlow;
     [Header("Static Values")]
+    public static bool allowTimeSlow_St;
     public static bool slowTimeOn_St;
     public static int slowTimeticks_St;
     public static int slowTimeTotalFrames_St;
     private static float oneTickPercent_St;
     private static float ticksPercentage_St;
+
+    void Start() {
+        allowTimeSlow_St = allowTimeSlow;
+    }
     
     void Update() {
         if (slowTimeOn_St) {
@@ -32,17 +38,19 @@ public class TimeSlow : MonoBehaviour
         }
     }
     public static void StartTimeSlow(int frames, float timeScale) {
-        slowTimeticks_St = 0;
-        ticksPercentage_St = 0f;
-        // += will add the frames to prolong time slow if more slows are requested.
-        // Could be changed to instead start a new time slow by setting to frames requested.
-        slowTimeTotalFrames_St = frames;
-        //print("Slow time total frame amount: "+ slowTimeTotalFrames_St);
-        // This calculates the tick percentage to go from a value of 0 on the first frame to 1 on the last frame in the total amount of frames.
-        oneTickPercent_St = (1f / slowTimeTotalFrames_St);
-        oneTickPercent_St = oneTickPercent_St + ((1f / slowTimeTotalFrames_St) / (slowTimeTotalFrames_St-1f));
-        //print("Tick percentage increase: "+oneTickPercent_St);
-        slowTimeOn_St = true;
+        if (allowTimeSlow_St) {
+            slowTimeticks_St = 0;
+            ticksPercentage_St = 0f;
+            // += will add the frames to prolong time slow if more slows are requested.
+            // Could be changed to instead start a new time slow by setting to frames requested.
+            slowTimeTotalFrames_St = frames;
+            //print("Slow time total frame amount: "+ slowTimeTotalFrames_St);
+            // This calculates the tick percentage to go from a value of 0 on the first frame to 1 on the last frame in the total amount of frames.
+            oneTickPercent_St = (1f / slowTimeTotalFrames_St);
+            oneTickPercent_St = oneTickPercent_St + ((1f / slowTimeTotalFrames_St) / (slowTimeTotalFrames_St-1f));
+            //print("Tick percentage increase: "+oneTickPercent_St);
+            slowTimeOn_St = true;
+        }
     }
 
     public static IEnumerator SlowTimeScale(int frames, float timeScale) {

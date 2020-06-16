@@ -42,6 +42,7 @@ public class DeathSequence : MonoBehaviour
         camDeath.DeathCamLerpSetup();
         yield return new WaitForSeconds(backGroundAppearDelay);
         playerSR.sortingLayerName = "UI";
+        playerSR.sortingOrder = 1;
         backGround.SetActive(true);
         yield return new WaitForSeconds(titleTextAppearDelay);
         titleText.SetActive(true);

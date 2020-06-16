@@ -65,6 +65,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""MovementSkill"",
+                    ""type"": ""Button"",
+                    ""id"": ""ac9fa40d-fc81-4e04-81ff-18deaa1f2286"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -188,6 +196,17 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""action"": ""Confirm"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9e8b993d-8fe4-4b75-abab-5bcca1cedabf"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovementSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -202,6 +221,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_InputMovement = m_Player.FindAction("InputMovement", throwIfNotFound: true);
         m_Player_MousePosition = m_Player.FindAction("MousePosition", throwIfNotFound: true);
         m_Player_Confirm = m_Player.FindAction("Confirm", throwIfNotFound: true);
+        m_Player_MovementSkill = m_Player.FindAction("MovementSkill", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -257,6 +277,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_InputMovement;
     private readonly InputAction m_Player_MousePosition;
     private readonly InputAction m_Player_Confirm;
+    private readonly InputAction m_Player_MovementSkill;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -267,6 +288,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @InputMovement => m_Wrapper.m_Player_InputMovement;
         public InputAction @MousePosition => m_Wrapper.m_Player_MousePosition;
         public InputAction @Confirm => m_Wrapper.m_Player_Confirm;
+        public InputAction @MovementSkill => m_Wrapper.m_Player_MovementSkill;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -294,6 +316,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Confirm.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnConfirm;
                 @Confirm.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnConfirm;
                 @Confirm.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnConfirm;
+                @MovementSkill.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovementSkill;
+                @MovementSkill.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovementSkill;
+                @MovementSkill.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovementSkill;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -316,6 +341,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Confirm.started += instance.OnConfirm;
                 @Confirm.performed += instance.OnConfirm;
                 @Confirm.canceled += instance.OnConfirm;
+                @MovementSkill.started += instance.OnMovementSkill;
+                @MovementSkill.performed += instance.OnMovementSkill;
+                @MovementSkill.canceled += instance.OnMovementSkill;
             }
         }
     }
@@ -328,5 +356,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnInputMovement(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
         void OnConfirm(InputAction.CallbackContext context);
+        void OnMovementSkill(InputAction.CallbackContext context);
     }
 }

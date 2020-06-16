@@ -20,15 +20,21 @@ public class CameraFollow : MonoBehaviour
     //public float followSpeed, minFollowSpeed, maxFollowSpeed;
     private Vector3 refVelocity;
     // Nudge
-    private static Vector3 cameraNudge_St;
     public float nudgeDuration;
     private float nudgeTimer;
     public AnimationCurve nudgeAnimCurve;
-    private static float nudgeForce_St;
     private float nudgeForce;
+    public bool allowNudging;
+    // Static variables.
+    public static bool allowNudging_St;
+    private static Vector3 cameraNudge_St;
+    private static float nudgeForce_St;
     private static Vector2 nudgeDirection_St;
     private static bool nudged_St;
 
+    void Start() {
+        allowNudging_St = allowNudging;
+    }
 
     void LateUpdate()
     {
@@ -66,10 +72,12 @@ public class CameraFollow : MonoBehaviour
         }
     }
 
-    public static void CameraNudge_St(Vector3 direction, float force) {
-        nudgeForce_St = force;
-        nudgeDirection_St = direction;
-        //cameraNudge_St = new Vector3(direction.x, direction.y, 0f) * force;
-        nudged_St = true;
+    public static void CameraNudge_St(Vector3 directionNorm, float force) {
+        if (allowNudging_St) {
+            nudgeForce_St = force;
+            nudgeDirection_St = directionNorm;
+            //cameraNudge_St = new Vector3(direction.x, direction.y, 0f) * force;
+            nudged_St = true;
+        }
     }
 }

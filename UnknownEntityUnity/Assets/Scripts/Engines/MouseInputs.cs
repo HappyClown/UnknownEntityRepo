@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 //[DefaultExecutionOrder(-50)]
 public class MouseInputs : MonoBehaviour
 {
+    public bool cursorOff;
     public Camera cam;
     public Vector3 mousePos;
     public Vector3 mousePosWorld;
@@ -29,6 +30,7 @@ public class MouseInputs : MonoBehaviour
     public bool weaponSwapPressed;
     public bool interactPressed;
     public bool confirmPressed;
+    public bool movementSkillPressed;
 
     void Awake() {
         inputMaster = new InputMaster();
@@ -38,7 +40,7 @@ public class MouseInputs : MonoBehaviour
         //inputMaster.Player.Attack.Enable();
         //inputMaster.Player.MousePosition.Enable();
         //inputMaster.Player.InputMovement.Enable();
-        // Cursor.visible = false;
+        if (cursorOff) { Cursor.visible = false; }
     }
 
     void Start()
@@ -87,7 +89,7 @@ public class MouseInputs : MonoBehaviour
             mouseLeftClicked = true;
         }
 
-        // Swap weapon.
+        // Swap weapon key pressed. Also checks if grace frames are on.
         if (weaponSwapPressed) {
             // Grace period counted in Update() frames.
             if (graceUsesFrames) {
@@ -110,16 +112,22 @@ public class MouseInputs : MonoBehaviour
             weaponSwapPressed = true;
         }
 
-        // Used to interact with object, or pick up weapons.
+        // Interact key pressed. Used to interact with object, or pick up weapons.
         interactPressed = false;
         if (inputMaster.Player.Interact.triggered) {
             interactPressed = true;
         }
         
-        // Confirm pressed.
+        // Confirm key pressed.
         confirmPressed = false;
         if (inputMaster.Player.Confirm.triggered) {
             confirmPressed = true;
+        }
+
+        // Movement skill key pressed.
+        movementSkillPressed = false;
+        if (inputMaster.Player.MovementSkill.triggered) {
+            movementSkillPressed = true;
         }
 
         // Check if the mouse moved.

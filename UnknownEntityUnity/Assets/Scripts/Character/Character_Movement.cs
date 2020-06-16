@@ -19,6 +19,7 @@ public class Character_Movement : MonoBehaviour
     public float moveDirX, moveDirY;
     private bool lookLeft, lookRight, moveLeft, moveRight;
     private bool running;
+    public Vector3 normalizedMovement;
     [Header("Animation Test")]
     //
     public Sprite idleSprite;
@@ -61,11 +62,12 @@ public class Character_Movement : MonoBehaviour
         if (moIn.mouseMoved && charCanFlip) {
           FlipSpriteMouseBased();
         }
+        // An int system could be used to determine if canInputMove is true/instead of it. int canInputMove=0, canInputMove++, if (canInputMove == 0) { The player can move.}
         if (canInputMove) {
             // Detect Player Character movement.
             //Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f);
             //Vector3 normalizedMovement = movement.normalized;
-            Vector3 normalizedMovement = new Vector3(moIn.x, moIn.y, 0f);
+            normalizedMovement = new Vector3(moIn.x, moIn.y, 0f);
             normMagMovement = normalizedMovement.magnitude;
             // moveDirX = Input.GetAxis("Horizontal");
             // moveDirY = Input.GetAxis("Vertical");

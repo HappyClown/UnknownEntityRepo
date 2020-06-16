@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalDuration: 0.75
   stopOnStun: 1
-  collider: {fileID: 8439487225676276712, guid: 3ab819451ee93e147ae069fb2873fa35,
+  collider: {fileID: 6841409416684675371, guid: e535e837fec552841a83269c5fb6ad72,
     type: 3}
   colStart: 0.35
   colEnd: 0.75
