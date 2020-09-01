@@ -17,6 +17,7 @@ MonoBehaviour:
   collider: {fileID: 0}
   colStart: 0
   colEnd: 0
+  soImpactFX: {fileID: 0}
   sprites:
   - {fileID: -8965360289296917107, guid: 36a562e39ddc87e48bf414a81b0f9b86, type: 3}
   - {fileID: 2343035483349928335, guid: 36a562e39ddc87e48bf414a81b0f9b86, type: 3}
@@ -43,8 +44,8 @@ MonoBehaviour:
   - 0.41
   - 0.451
   - 0.492
-  spawnDistance: 0.1
-  moveDistance: 0.4
+  spawnDistance: 0.15
+  moveDistance: 0.5
   moveDelay: 0
   setupBeforeDelay: 0
   moveAnimCurve:

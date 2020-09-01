@@ -15,7 +15,7 @@ public class Character_CollisionDetection : MonoBehaviour
     Vector2[] rayStartPoints = new Vector2[0];
     float gizmosMoveDist, gizmosMoveDistX, gizmosMoveDistY;
     Vector3 myCurPos, myNewPos;
-    float halfColX, halfColY;
+    float halfColX, halfColY, colOffsetX, colOffsetY;
 
     public Vector3 CollisionCheck(Vector3 normMoveDir, Vector3 newPos, Vector3 curPos) {
         hitDetected = false;
@@ -65,11 +65,13 @@ public class Character_CollisionDetection : MonoBehaviour
         // To be moved to a setup phase function (something like start but when this enemy is aggroed).
         halfColX = boxCol.size.x/2;
         halfColY = boxCol.size.y/2;
+        colOffsetX = boxCol.offset.x;
+        colOffsetY = boxCol.offset.y;
         //
-        float colBoundMinX = myCurPos.x - halfColX;
-        float colBoundMaxX = myCurPos.x + halfColX;
-        float colBoundMinY = myCurPos.y - halfColY;
-        float colBoundMaxY = myCurPos.y + halfColY;
+        float colBoundMinX = (myCurPos.x + colOffsetX) - halfColX;
+        float colBoundMaxX = (myCurPos.x + colOffsetX) + halfColX;
+        float colBoundMinY = (myCurPos.y + colOffsetY) - halfColY;
+        float colBoundMaxY = (myCurPos.y + colOffsetY) + halfColY;
 
         RaycastHit2D rayHit;
         if (rayStartPoints.Length != raysPerSeg+2) {
