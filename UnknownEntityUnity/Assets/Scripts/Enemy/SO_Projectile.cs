@@ -14,9 +14,11 @@ public class SO_Projectile : ScriptableObject
     }    
     public float duration;
     public float speed;
-
+    [Header("Projectile Animation")]
     public bool animated;
+    public float animTotalDuration;
     public Sprite[] animSprites;
+    public float[] animTimings;
     public AnimationClip animClip; 
 
     public Sprite sprite;

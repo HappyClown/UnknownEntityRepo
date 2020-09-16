@@ -30,4 +30,14 @@ public class FlipObjectX : MonoBehaviour
             transToFlip.localScale = new Vector3(1, transToFlip.localScale.y, transToFlip.localScale.z);
         }
     }
+    public void FlipTowards(Vector2 curPos, Vector2 targetPos) {
+        // Target to the left
+        if (curPos.x > targetPos.x) {
+            transToFlip.localScale = new Vector3(-1, transToFlip.localScale.y, transToFlip.localScale.z);
+        }
+        // Target to the right
+        else if (curPos.x < targetPos.x) {
+            transToFlip.localScale = new Vector3(1, transToFlip.localScale.y, transToFlip.localScale.z);
+        }
+    }
 }

@@ -30,6 +30,7 @@ public class Character_Attack : MonoBehaviour
     public Character_AttackFX atkFX;
     public bool atkDirectionChanges;
     public bool atkFXFlip;
+    public int atkFXFlipScale;
 
     void Update() {
         // If I clicked and can attack.
@@ -58,8 +59,15 @@ public class Character_Attack : MonoBehaviour
                 // Request an attack FX from the attack FX pool, the attack FX contains a Sprite Renderer and a PolygonalCollider2D.
                 atkFX = atkFXPool.RequestAttackFX();
                 // Flip the attack FX Sprite if needed. (So far, for alternating Slash motions)
-                if (atkDirectionChanges) { atkFX.spriteR.flipX = atkFXFlip; } else { atkFX.spriteR.flipX = false; }
-                atkDirectionChanges = false;
+               // if (atkDirectionChanges) { atkFX.spriteR.flipX = atkFXFlip; } else { atkFX.spriteR.flipX = false; }
+                // Try flipping the attack fx's local x scale instead.
+                if (atkDirectionChanges) { 
+                    atkFXFlipScale = (atkFXFlip) ? -1 : 1;
+                    atkFX.transform.localScale = new Vector2(atkFXFlipScale, atkFX.transform.localScale.y); 
+                    }
+                else {
+                    atkFX.transform.localScale = new Vector2(1, atkFX.transform.localScale.y);
+                }
                 // Moves the attack effect over the course of the attack.
                 atkMovement.StartCoroutine(atkMovement.AttackMovement(sO_AttackFX, atkFX.transform));
                 // Enables and changes the attack effect over the course of the attack and dictates if the atkFX pool object is inUse then not.
@@ -71,6 +79,8 @@ public class Character_Attack : MonoBehaviour
                 if (sO_AttackFX.collider != null) {
                     atkDetection.StartCoroutine(atkDetection.AttackCollider(WeapAtkChain, sO_AttackFX, atkFX.col));
                 }
+                // Turn the atk direction change back to false. This is done at the end because colliders will also be flipped by checking this variable. Now flipping the attack FX pool object's x scale instead of just the sprite.
+                atkDirectionChanges = false;
             }
         }
     }

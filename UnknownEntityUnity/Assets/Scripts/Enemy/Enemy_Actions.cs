@@ -26,5 +26,7 @@ public abstract class Enemy_Actions : MonoBehaviour
     public FSM brain;
     public abstract void StartChecks();
     public abstract void StopActions();
+    public abstract void StopStateUpdates();
+    public abstract void ResumeStateUpdates();
     //public abstract void CustomUpdate();
 }

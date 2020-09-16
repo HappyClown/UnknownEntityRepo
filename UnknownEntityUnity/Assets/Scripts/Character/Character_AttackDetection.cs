@@ -17,6 +17,7 @@ public class Character_AttackDetection : MonoBehaviour
         float thisColStart = sO_AttackFX.colStart;
         float thisColEnd = sO_AttackFX.colEnd;
         atkFXCol.points = sO_AttackFX.collider.points;
+        atkFXCol.offset = sO_AttackFX.collider.offset;
         SO_ImpactFX sO_ImpactFX = sO_AttackFX.soImpactFX;
         // ImpactFX impactFX;
         // Set other variables.

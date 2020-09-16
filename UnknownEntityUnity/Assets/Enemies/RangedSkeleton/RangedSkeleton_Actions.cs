@@ -17,6 +17,7 @@ public class RangedSkeleton_Actions : Enemy_Actions
 
     [Header ("Read Only")]
     public string curState;
+    public bool updateState = true;
     float minRunAwayDistSqr;
     bool stateStarted = false;
 
@@ -32,7 +33,17 @@ public class RangedSkeleton_Actions : Enemy_Actions
 
     public override void StopActions() {
         throwProj.StopAllCoroutines();
-        throwProj.enabled = false;
+        throwProj.rsBow.StopAllCoroutines();
+        //throwProj.enabled = false;
+    }
+    public override void StopStateUpdates () {
+        brain.SetActiveState(Neutral);
+        updateState = false;
+    }
+    public override void ResumeStateUpdates () {
+        eRefs.eFollowPath.allowPathUpdate = true;
+        updateState = true;
+        brain.SetActiveState(Neutral);
     }
 
     // --- ACTIVE STATE FUNCTION (RUN AWAY) ---
@@ -123,18 +134,19 @@ public class RangedSkeleton_Actions : Enemy_Actions
     
     public void Update() {
         // This can be switched to from ANY state.
-        // If the player is within attack range.
-        if (throwProj.CheckThrowProj() && brain.activeState != ThrowProjectile) {
-            if (debugs) print("ANYSTATE: Switching state to: ThrowProjectile.");
-            brain.SetActiveState(ThrowProjectile);
-            stateStarted = false;
-            return;
-        }
-        // This will run the active state. (Function)
-        brain.FSMUpdate();
-        if (debugs && brain.activeState != null) {
-            curState = brain.activeState.Method.ToString();
+        if (updateState) {
+            // If the player is within attack range.
+            if (throwProj.CheckThrowProj() && brain.activeState != ThrowProjectile) {
+                if (debugs) print("ANYSTATE: Switching state to: ThrowProjectile.");
+                brain.SetActiveState(ThrowProjectile);
+                stateStarted = false;
+                return;
+            }
+            // This will run the active state. (Function)
+            brain.FSMUpdate();
+            if (debugs && brain.activeState != null) {
+                curState = brain.activeState.Method.ToString();
+            }
         }
     }
-
 }

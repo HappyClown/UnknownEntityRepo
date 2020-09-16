@@ -19,6 +19,7 @@ public class ShieldSkeleton_Actions : Enemy_Actions
 
     [Header ("Read Only")]
     public string curState;
+    public bool updateState = true;
     public bool isShieldUp;
     public float ChaseDistanceSqr {
         get {
@@ -48,8 +49,15 @@ public class ShieldSkeleton_Actions : Enemy_Actions
     public override void StopActions() {
         shieldBash.StopAction();
     }
+    public override void StopStateUpdates () {
+        brain.SetActiveState(Neutral);
+        updateState = false;
+    }
+    public override void ResumeStateUpdates () {
+        eRefs.eFollowPath.allowPathUpdate = true;
+        updateState = true;
+    }
     
-
     // --- ACTIVE STATE FUNCTION (DEFEND ALLY) ---
     public void DefendAlly() {
         // -- ENTER STATE --

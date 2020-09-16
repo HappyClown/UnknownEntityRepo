@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6841409416684675370}
   - component: {fileID: 6841409416684675371}
   m_Layer: 0
-  m_Name: AttackCol_SimpleSpear01
+  m_Name: SimpleSpear Stab 01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -180174802169907368, guid: f1784868994d03443aa4da9348a106f9,
+  m_Sprite: {fileID: 6800848836270166556, guid: 7f695e342a0df0a4bb492a3f383ef372,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -99,7 +99,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.484375, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.6, y: 1.6}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -107,6 +107,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0.42}
-      - {x: -0.25, y: -0.03}
-      - {x: 0.25, y: -0.03}
+    - - {x: 0, y: 0.61}
+      - {x: -0.377, y: -0.12}
+      - {x: -0.377, y: -0.693}
+      - {x: 0.377, y: -0.693}
+      - {x: 0.377, y: -0.12}

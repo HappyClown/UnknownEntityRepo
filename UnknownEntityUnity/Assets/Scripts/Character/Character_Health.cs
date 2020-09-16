@@ -60,7 +60,7 @@ public class Character_Health : MonoBehaviour
         spriteNumber++;
         while (timer < getHitDuration) {
             //print("Should be changing sprite to getting hit in the face sprite.");
-            timer += Time.deltaTime/getHitDuration;
+            timer += Time.deltaTime/* /getHitDuration */;
             if (spriteNumber < hitSprites.Length && timer > hitSpriteTimings[spriteNumber]) {
                 spriteR.sprite = hitSprites[spriteNumber];
                 spriteNumber++;

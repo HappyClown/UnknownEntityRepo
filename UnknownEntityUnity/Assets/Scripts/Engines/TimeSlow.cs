@@ -20,7 +20,7 @@ public class TimeSlow : MonoBehaviour
     void Start() {
         allowTimeSlow_St = allowTimeSlow;
     }
-    
+
     void Update() {
         if (slowTimeOn_St) {
             if (slowTimeticks_St >= slowTimeTotalFrames_St) {
@@ -37,6 +37,7 @@ public class TimeSlow : MonoBehaviour
             //print("TimeScale value: "+Time.timeScale);
         }
     }
+
     public static void StartTimeSlow(int frames, float timeScale) {
         if (allowTimeSlow_St) {
             slowTimeticks_St = 0;

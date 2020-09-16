@@ -5,23 +5,29 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public bool inUse;
-    float timer;
+    float projDurationTimer, projDuration;
     SO_Projectile projSO;
     public SpriteRenderer mySpriteR;
     public Collider2D myCol;
+    [Header("Projectile Animation")]
+    float animTotalDuration;
     Sprite[] animSprites;
+    float[] animTimings;
     //ContactFilter2D contactFilter;
     List<Collider2D> collidedList = new List<Collider2D>(1);
     //Vector2 direction;
 
     public void LaunchProjectile(SO_Projectile _projSO, Vector2 _direction, Vector2 startPos) {
         inUse = true;
-        timer = 0f;
+        projDurationTimer = 0f;
         projSO = _projSO;
+        projDuration = projSO.duration;
         //contactFilter = projSO.contactFilter;
         //direction = _direction;
         this.transform.position = new Vector3(startPos.x, startPos.y, this.transform.position.z);
         this.transform.up = _direction;
+        // Activating the game object here in case the animation coroutine needs to be, 
+        this.gameObject.SetActive(true);
         // Check if the sprite is animated, if yes start animation coroutine? Else just take the single sprite.
         if (!projSO.animated) {
             mySpriteR.sprite = projSO.sprite;
@@ -29,16 +35,19 @@ public class Projectile : MonoBehaviour
         else {
             // Setup animation.
             animSprites = projSO.animSprites;
+            animTimings = projSO.animTimings;
+            animTotalDuration = projSO.animTotalDuration;
+            mySpriteR.sprite = animSprites[0];
+            StartCoroutine(AnimateProjectile());
         }
         // Assign collider.
         //myCol = projSO.col;
-        this.gameObject.SetActive(true);
         StartCoroutine(MoveProjectile());
     }
 
     IEnumerator MoveProjectile() {
-        while (timer < projSO.duration) {
-            timer += Time.deltaTime;
+        while (projDurationTimer < projDuration) {
+            projDurationTimer += Time.deltaTime;
             // Move the projectile.
             transform.Translate(Vector2.up * projSO.speed * Time.deltaTime);
             // Check collisions.
@@ -50,6 +59,26 @@ public class Projectile : MonoBehaviour
         }
         inUse = false;
         this.gameObject.SetActive(false);
+        yield return null;
+    }
+
+    IEnumerator AnimateProjectile() {
+        int thisSpriteIndex = 0;
+        float timer = 0f;
+        while (projDurationTimer < projDuration) {
+            timer += Time.deltaTime;
+            if (timer >= animTimings[thisSpriteIndex]) {
+                mySpriteR.sprite = animSprites[thisSpriteIndex];
+                if (thisSpriteIndex < animTimings.Length -1) {
+                    thisSpriteIndex++;
+                }
+            }
+            if (timer >= animTotalDuration) {
+                thisSpriteIndex = 0;
+                timer = 0f;
+            }
+            yield return null;
+        }
         yield return null;
     }
 
