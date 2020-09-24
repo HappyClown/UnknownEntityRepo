@@ -32,9 +32,10 @@ public class RangedSkeleton_Actions : Enemy_Actions
     }
 
     public override void StopActions() {
-        throwProj.StopAllCoroutines();
-        throwProj.rsBow.StopAllCoroutines();
-        //throwProj.enabled = false;
+        // Stop the bow attack happening. Starting an attack cooldown and not allowing path update.
+        throwProj.ProjectileAttackDone(false);
+        throwProj.rsBow.StopAndReset();
+        throwProj.rsBow.bowSpriteR.sprite = null;
     }
     public override void StopStateUpdates () {
         brain.SetActiveState(Neutral);
@@ -44,6 +45,8 @@ public class RangedSkeleton_Actions : Enemy_Actions
         eRefs.eFollowPath.allowPathUpdate = true;
         updateState = true;
         brain.SetActiveState(Neutral);
+        // Not really state related but fits here the best.
+        throwProj.rsBow.bowSpriteR.sprite = throwProj.rsBow.defaultBowSprite;
     }
 
     // --- ACTIVE STATE FUNCTION (RUN AWAY) ---
@@ -135,7 +138,7 @@ public class RangedSkeleton_Actions : Enemy_Actions
     public void Update() {
         // This can be switched to from ANY state.
         if (updateState) {
-            // If the player is within attack range.
+            // If the player is within attack range. Make this check occur less then once per frame.
             if (throwProj.CheckThrowProj() && brain.activeState != ThrowProjectile) {
                 if (debugs) print("ANYSTATE: Switching state to: ThrowProjectile.");
                 brain.SetActiveState(ThrowProjectile);

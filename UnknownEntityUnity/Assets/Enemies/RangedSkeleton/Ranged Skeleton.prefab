@@ -622,7 +622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eRefs: {fileID: 3690657262318137120}
-  cycleDuration: 0.5
+  cycleDuration: 0.4
   speedAdjustment: 1
 --- !u!114 &1990586592331264952
 MonoBehaviour:
@@ -830,7 +830,7 @@ GameObject:
   - component: {fileID: 3690657262389814611}
   m_Layer: 11
   m_Name: HitBox
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -891,16 +891,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eRefs: {fileID: 3690657262318137120}
   healthBar: {fileID: 6914958667853755047}
-  maxHealth: 15
-  curHealth: 15
+  maxHealth: 50
+  curHealth: 50
   damageModifier: 1
-  hitTotalDuration: 2
+  hitTotalDuration: 0.5
   hitSprites:
   - {fileID: 8449458792096274713, guid: 0f3f487b3b9f51140b5720f06283b162, type: 3}
   - {fileID: 7157408709644741907, guid: 0f3f487b3b9f51140b5720f06283b162, type: 3}
   hitTimings:
   - 0
-  - 1
+  - 0.25
+  canBeStunned: 1
 --- !u!114 &6914958667853755047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -931,6 +932,14 @@ MonoBehaviour:
   eRefs: {fileID: 3690657262318137120}
   deadSprite: {fileID: 21300000, guid: a1d9b0b3caf774446be7c6abd74d20ea, type: 3}
   isDead: 0
+  objectsToTurnOff:
+  - {fileID: 3690657262389814623}
+  - {fileID: 3690657260872760061}
+  - {fileID: 3690657260970495835}
+  - {fileID: 1836831469}
+  - {fileID: 567680612}
+  - {fileID: 3690657262318137121}
+  - {fileID: 1025629147}
 --- !u!1 &3690657262526239117
 GameObject:
   m_ObjectHideFlags: 0

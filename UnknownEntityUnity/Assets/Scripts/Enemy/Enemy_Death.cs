@@ -8,6 +8,7 @@ public class Enemy_Death : MonoBehaviour
     // Death sprite anim to be put in a scriptable object or in animation form.
     public Sprite deadSprite;
     public bool isDead = false;
+    public GameObject[] objectsToTurnOff;
 
     // Or just destroy the game object now and instatiate a sprite for the death anim. Destroying the game object will need to be done at some point.
     public void DeathSequence() {
@@ -16,6 +17,10 @@ public class Enemy_Death : MonoBehaviour
         eRefs.eAction.StopActions();
         eRefs.eAction.enabled = false;
         StopEnemyCoroutines();
+        // Turn off everyobject that is not needed by the death animation.
+        foreach(GameObject obj in objectsToTurnOff) {
+            obj.SetActive(false);
+        }
         // Play death animation.
         eRefs.eSpriteR.sprite = deadSprite;
         isDead = true;

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShieldSkeletonTest
   m_EditorClassIdentifier: 
   name: Shield Skeleton
-  maximumLife: 20
+  maximumLife: 15
   minDamage: 3
   maxDamage: 4
   attackCooldown: 0.5

@@ -7,6 +7,7 @@ TagManager:
   - Engines
   - Hittable
   - Destructible
+  - Enemy
   layers:
   - Default
   - TransparentFX

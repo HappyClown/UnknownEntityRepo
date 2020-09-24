@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RangedSkeletonTest
   m_EditorClassIdentifier: 
   name: Ranged Skeleton
-  maximumLife: 12
+  maximumLife: 15
   minDamage: 5
   maxDamage: 6
   attackCooldown: 2

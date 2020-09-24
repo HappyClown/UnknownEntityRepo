@@ -37,12 +37,22 @@ public class RangedSkeleton_Bow : MonoBehaviour
     private Vector2 projDirNorm;
     // public Transform projOriginTrans; // projOriginTrans = the same as the arrow charge game object transform
 
-    void Update()
+    void Info()
     {
         //flip sprite to face target during rotation
         //smooth rotate bow arms towards target as the animation winds up
         //use event to stop the rotation following the player and the sprite flip, used to put a delay between the shot fired and the enemy aiming at the player so that the aim is slightly delayed (easy to dodge just by walking)
         //try to make a second anim loop for the arrow charge up then turn it off and spawn the projectile at the same location/orientation
+    }
+
+    public void StopAndReset () {
+        // Stops all coroutines.
+        this.StopAllCoroutines();
+        // Restore walking bow. Sprite and rotation.
+        bowSpriteR.sprite = defaultBowSprite;
+        bowGameObject.transform.eulerAngles = Vector3.zero;
+        // Turn off charging projectile.
+        arrowSpriteR.sprite = null;
     }
 
     public void SetupProjectile() { // transfer into the bow anim script

@@ -45,11 +45,12 @@ public class RangedSkeleton_ThrowProjectile : MonoBehaviour
         return false;
     
     }
+
     public void StartProjectileThrow() {
         inProjThrow = true;
         throwProjReady = false;
         //StartCoroutine(ThrowProjectileAction()); // replace with the bow animation coroutine
-        StartCoroutine(rsBow.BowAnimation());
+        rsBow.StartCoroutine(rsBow.BowAnimation());
     }
 
     // IEnumerator ThrowProjectileAction() { // take out as it is now in the bow anim script
@@ -81,12 +82,12 @@ public class RangedSkeleton_ThrowProjectile : MonoBehaviour
     //     yield return null;
     // }    
 
-    public void ProjectileAttackDone() {
+    public void ProjectileAttackDone(bool allowPathUpdate = true) {
         StartCoroutine(Cooldown());
         inProjThrow = false;
         // Request movement type (run away, chase, idle if in atk range, etc), in this case it should be walking away from the player.
         //rsActions.RunAway();
-        eRefs.eFollowPath.allowPathUpdate = true;
+        if (allowPathUpdate) eRefs.eFollowPath.allowPathUpdate = true;
         //eRefs.unit.allowPathUpdate = true;
     }
 

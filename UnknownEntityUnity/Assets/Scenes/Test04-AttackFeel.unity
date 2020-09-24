@@ -2479,7 +2479,7 @@ PrefabInstance:
     - target: {fileID: 3690657261588590760, guid: 1668f9eae00ce7b4abf0633e08ffb888,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3690657261588590761, guid: 1668f9eae00ce7b4abf0633e08ffb888,
         type: 3}
@@ -6025,6 +6025,11 @@ PrefabInstance:
       propertyPath: impactFXPool
       value: 
       objectReference: {fileID: 1673301330}
+    - target: {fileID: 3651932565041545237, guid: 17191f42f3a871b4a83450ce0b9bcb4a,
+        type: 3}
+      propertyPath: hitLayers.layerMask.m_Bits
+      value: 133120
+      objectReference: {fileID: 0}
     - target: {fileID: 2656337685487112101, guid: 17191f42f3a871b4a83450ce0b9bcb4a,
         type: 3}
       propertyPath: deathSequence
@@ -6077,6 +6082,14 @@ PrefabInstance:
     - target: {fileID: 96031778, guid: 17191f42f3a871b4a83450ce0b9bcb4a, type: 3}
       propertyPath: m_Size.y
       value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 96031779, guid: 17191f42f3a871b4a83450ce0b9bcb4a, type: 3}
+      propertyPath: maximumHealth
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 96031779, guid: 17191f42f3a871b4a83450ce0b9bcb4a, type: 3}
+      propertyPath: currentHealth
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17191f42f3a871b4a83450ce0b9bcb4a, type: 3}
@@ -13423,7 +13436,7 @@ PrefabInstance:
     - target: {fileID: 764420644618864627, guid: 7d675c4d252fd7d44a82ce26571ae166,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 764420644618864626, guid: 7d675c4d252fd7d44a82ce26571ae166,
         type: 3}
@@ -13495,6 +13508,16 @@ PrefabInstance:
       propertyPath: atkContactFilter.layerMask.m_Bits
       value: 32768
       objectReference: {fileID: 0}
+    - target: {fileID: 9012920482796434023, guid: 7d675c4d252fd7d44a82ce26571ae166,
+        type: 3}
+      propertyPath: alliesToDefend.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9012920482796434023, guid: 7d675c4d252fd7d44a82ce26571ae166,
+        type: 3}
+      propertyPath: alliesToDefend.Array.data[0]
+      value: 
+      objectReference: {fileID: 337093059}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d675c4d252fd7d44a82ce26571ae166, type: 3}
 --- !u!1 &1963787518
@@ -15000,11 +15023,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shield Skeleton
       objectReference: {fileID: 0}
-    - target: {fileID: 764420644618864627, guid: 7d675c4d252fd7d44a82ce26571ae166,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 764420644618864626, guid: 7d675c4d252fd7d44a82ce26571ae166,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15636,11 +15654,6 @@ PrefabInstance:
       propertyPath: brain
       value: 
       objectReference: {fileID: 1703893329}
-    - target: {fileID: 3690657262318137126, guid: 1668f9eae00ce7b4abf0633e08ffb888,
-        type: 3}
-      propertyPath: debugs
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1990586592331264952, guid: 1668f9eae00ce7b4abf0633e08ffb888,
         type: 3}
       propertyPath: target
@@ -15651,16 +15664,6 @@ PrefabInstance:
       propertyPath: projPool
       value: 
       objectReference: {fileID: 1454959477}
-    - target: {fileID: 3690657262389814610, guid: 1668f9eae00ce7b4abf0633e08ffb888,
-        type: 3}
-      propertyPath: maxHealth
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 3690657262389814610, guid: 1668f9eae00ce7b4abf0633e08ffb888,
-        type: 3}
-      propertyPath: curHealth
-      value: 50
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1668f9eae00ce7b4abf0633e08ffb888, type: 3}
 --- !u!1001 &7003874198078031868

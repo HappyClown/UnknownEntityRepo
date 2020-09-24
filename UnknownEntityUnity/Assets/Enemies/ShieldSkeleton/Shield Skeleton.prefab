@@ -28,7 +28,7 @@ Transform:
   m_LocalPosition: {x: -0.425, y: -0.325, z: -0.9}
   m_LocalScale: {x: 4.25, y: 0.25, z: 1}
   m_Children: []
-  m_Father: {fileID: 764420645824505557}
+  m_Father: {fileID: 764420645428285963}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &65464887
@@ -188,7 +188,7 @@ Transform:
   m_LocalPosition: {x: -0.4250001, y: -0.324, z: -0.89}
   m_LocalScale: {x: 4.25, y: 0.25, z: 1}
   m_Children: []
-  m_Father: {fileID: 764420645824505557}
+  m_Father: {fileID: 764420645428285963}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1120722450
@@ -269,7 +269,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 764420645824505557}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &764420643784936868
 SpriteRenderer:
@@ -349,7 +349,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 764420645824505557}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &764420644226168838
 BoxCollider2D:
@@ -426,7 +426,7 @@ GameObject:
   - component: {fileID: 899193333}
   m_Layer: 11
   m_Name: HitBox & Health
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -441,9 +441,11 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 65464886}
+  - {fileID: 1120722449}
   m_Father: {fileID: 764420645824505557}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &764420645428285962
 BoxCollider2D:
@@ -488,9 +490,14 @@ MonoBehaviour:
   maxHealth: 15
   curHealth: 15
   damageModifier: 1
-  hitTotalDuration: 0.1
-  hitSprites: []
-  hitTimings: []
+  hitTotalDuration: 0.5
+  hitSprites:
+  - {fileID: -7980002119140704339, guid: 33a74e341b9f6b441a8cd42bf788aefa, type: 3}
+  - {fileID: -225545470487569909, guid: 33a74e341b9f6b441a8cd42bf788aefa, type: 3}
+  hitTimings:
+  - 0
+  - 0.25
+  canBeStunned: 1
 --- !u!114 &764420645428285960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,6 +513,16 @@ MonoBehaviour:
   eRefs: {fileID: 764420645499934723}
   deadSprite: {fileID: 21300000, guid: 6b90daf213d92f5458ff2f2a4c8273cd, type: 3}
   isDead: 0
+  objectsToTurnOff:
+  - {fileID: 65464885}
+  - {fileID: 1120722448}
+  - {fileID: 764420645428285956}
+  - {fileID: 764420645729004495}
+  - {fileID: 764420643784936870}
+  - {fileID: 764420644226168832}
+  - {fileID: 764420645499934842}
+  - {fileID: 4653745868195490033}
+  - {fileID: 339229295}
 --- !u!114 &899193333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -759,7 +776,7 @@ MonoBehaviour:
   maxAtkDamage: 4
   sO_ImpactFX: {fileID: 11400000, guid: ee52250fe04d09a4c9e94699de25cdd5, type: 2}
   inBash: 0
-  cooldown: 0.1
+  cooldown: 0.5
   totalDuration: 2
   sprites:
   - {fileID: -971581040735938531, guid: 200c7920b21d6a14480867eef84fbed7, type: 3}
@@ -860,7 +877,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 764420645824505557}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &764420645729004493
 SpriteRenderer:
@@ -940,8 +957,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 65464886}
-  - {fileID: 1120722449}
   - {fileID: 764420645428285963}
   - {fileID: 764420645729004494}
   - {fileID: 764420643784936869}

@@ -60,8 +60,15 @@ public class Character_AttackDetection : MonoBehaviour
                         // Slow time. Duration to be set by weapon damage, slow to be adjusted (animation curve) by TimeSlow script.
                         TimeSlow.StartTimeSlow(6, 0f);
                         //StartCoroutine(TimeSlow.SlowTimeScale(6, 0f));
-                        // Apply damage.
-                        col.GetComponent<Enemy_Health>().ReceiveDamage(WeapAtkChain.DamageRoll);
+
+                        // If this is an enemy, apply damage.
+                        if (col.gameObject.CompareTag("Enemy")) {
+                            col.GetComponent<Enemy_Health>().ReceiveDamage(WeapAtkChain.DamageRoll);
+                        }
+                        else if (col.gameObject.CompareTag("Destructible")) {
+                            col.GetComponent<Clutter_Health>().ReceiveDamage(WeapAtkChain.DamageRoll);
+                        }
+                        
                         //Debug.Log("Collider: " + col.gameObject.name + " was hit! Hit hit, hurraay!");
                     }
                 }

@@ -34,6 +34,7 @@ public class ShieldSkeleton_ShieldUp : MonoBehaviour
     void ShieldUp() {
         // Slow down movement speed, reduce damage taken, change walking anim.
         shieldIsUp = true;
+        eRefs.eHealth.canBeStunned = false;
         //eRefs.walkingSprite = shieldUpSprite;
         shieldSpriteR.enabled = true;
         eRefs.eFollowPath.speedModifier *= shieldUpSpeedMod;
@@ -62,6 +63,7 @@ public class ShieldSkeleton_ShieldUp : MonoBehaviour
     void ShieldDown() {
         // Reverse movement slow down, reverse damage reduction, change walking anim.
         shieldIsUp = false;
+        eRefs.eHealth.canBeStunned = true;
         //eRefs.walkingSprite = eRefs.eSO.walkingSprite;
         shieldSpriteR.enabled = false;
         eRefs.eFollowPath.speedModifier /= shieldUpSpeedMod;

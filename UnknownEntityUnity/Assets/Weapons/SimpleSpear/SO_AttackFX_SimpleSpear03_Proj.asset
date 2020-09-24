@@ -34,7 +34,7 @@ MonoBehaviour:
   - 0.59
   - 0.64
   spawnDistance: 1
-  moveDistance: 2
+  moveDistance: 3.5
   moveDelay: 0.39
   setupBeforeDelay: 0
   moveAnimCurve:

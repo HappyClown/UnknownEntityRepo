@@ -47,15 +47,21 @@ public class ShieldSkeleton_Actions : Enemy_Actions
     }
 
     public override void StopActions() {
-        shieldBash.StopAction();
+        // For the Shield Skeleton, it should only trigger the hit reaction if the skeleton is not reducing damage during shield up or his attack.
+        if (!shieldUp.shieldIsUp) {
+            shieldBash.StopAction();
+        }
     }
     public override void StopStateUpdates () {
-        brain.SetActiveState(Neutral);
-        updateState = false;
+        if (!shieldUp.shieldIsUp) {
+            brain.SetActiveState(Neutral);
+            updateState = false;
+        }
     }
     public override void ResumeStateUpdates () {
         eRefs.eFollowPath.allowPathUpdate = true;
         updateState = true;
+        shieldBash.StartCoroutine(shieldBash.Cooldown());
     }
     
     // --- ACTIVE STATE FUNCTION (DEFEND ALLY) ---
@@ -245,20 +251,22 @@ public class ShieldSkeleton_Actions : Enemy_Actions
     
     public void Update() {
         // This can be switched to from ANY state.
-        // If the player is within attack range.
-        if (shieldBash.CheckToBash() && brain.activeState != BashTarget) {
-            if (debugs) print("ANYSTATE: Switching state to: BashTarget.");
-            //brain.prevState = brain.activeState;
-            brain.SetActiveState(BashTarget);
-            stateStarted = false;
-            return;
-        }
-        // This will run the active state. (Function)
-        brain.FSMUpdate();
-        // Show what function is being run.
-        if (debugs && brain.activeState != null) {
-            curState = brain.activeState.Method.ToString();
-            isShieldUp = shieldUp.shieldIsUp;
+        if (updateState) {
+            // If the player is within attack range.
+            if (shieldBash.CheckToBash() && brain.activeState != BashTarget) {
+                if (debugs) print("ANYSTATE: Switching state to: BashTarget.");
+                //brain.prevState = brain.activeState;
+                brain.SetActiveState(BashTarget);
+                stateStarted = false;
+                return;
+            }
+            // This will run the active state. (Function)
+            brain.FSMUpdate();
+            // Show what function is being run.
+            if (debugs && brain.activeState != null) {
+                curState = brain.activeState.Method.ToString();
+                isShieldUp = shieldUp.shieldIsUp;
+            }
         }
     }
 }
