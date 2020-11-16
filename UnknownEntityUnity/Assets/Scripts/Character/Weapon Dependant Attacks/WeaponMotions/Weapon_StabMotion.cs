@@ -52,7 +52,7 @@ public class Weapon_StabMotion : Weapon_Motion
         }
     }
 
-    void SetupNextMotion() {
+    public override void SetupNextMotion() {
         curMotion++;
         // At what motion can the player start his next attack and swap his weapon.
         if (curMotion >= sOWeaponMotionStab.allowAttackAndSwap) {

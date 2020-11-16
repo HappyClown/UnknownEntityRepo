@@ -25,34 +25,31 @@ public class Weapon_SlashMotion : Weapon_Motion
     AnimationCurve curAnimCurve;
     float moveTimer;
     bool weapMotionOn;
-    //
     private bool camNudged;
+    private bool dontReset;
 
-    void Update() {      
-        // Rotate charAtk.weapon back to its reset position.
-        if (resetWeapOn) {
+    IEnumerator ResetWeapon() {
+        while (moveTimer < 1f) {
+            curRot = Mathf.Lerp(startRot, endRot, curAnimCurve.Evaluate(moveTimer));
+            weaponTrans.localRotation = Quaternion.Euler(weaponTrans.localEulerAngles.x, weaponTrans.localEulerAngles.y, curRot);
             moveTimer += Time.deltaTime / sOWeaponMotionSlash.resetRotDuration;
-            // Lerp.
-            curRot = Mathf.Lerp(startRot, endRot, curAnimCurve.Evaluate(moveTimer));
-            if (moveTimer >= 1f) {
-                resetWeapOn = false;
-                moveTimer = 0f;
-                curRot = endRot;
-            }
-            weaponTrans.localRotation = Quaternion.Euler(weaponTrans.localEulerAngles.x, weaponTrans.localEulerAngles.y, curRot);
+            yield return null;
         }
-        // Go through all the weapon motions in the current attack.
-        if (weapMotionOn) {
+        resetWeapOn = false;
+        moveTimer = 0f;
+        curRot = endRot;
+    }
+    IEnumerator WeaponMotionOn() {
+        while (moveTimer < 1f) {
+            curRot = Mathf.Lerp(startRot, endRot, curAnimCurve.Evaluate(moveTimer));
+            weaponTrans.localRotation = Quaternion.Euler(weaponTrans.localEulerAngles.x, weaponTrans.localEulerAngles.y, curRot);
             moveTimer += Time.deltaTime / curMotionDur;
-            curRot = Mathf.Lerp(startRot, endRot, curAnimCurve.Evaluate(moveTimer));
-            if (moveTimer >= 1f) {
-                SetupNextMotion();
-            }
-            weaponTrans.localRotation = Quaternion.Euler(weaponTrans.localEulerAngles.x, weaponTrans.localEulerAngles.y, curRot);
+            yield return null;
         }
+        SetupNextMotion();
     }
 
-    void SetupNextMotion() {
+    public override void SetupNextMotion() {
         curMotion++;
         // At what motion can the player start his next attack and swap his weapon.
         if (curMotion >= sOWeaponMotionSlash.allowAttackAndSwap) {
@@ -67,6 +64,8 @@ public class Weapon_SlashMotion : Weapon_Motion
         }
         // If there are no more attack motions.
         if (curMotion == motionDurations.Length) {
+            StopAllCoroutines();
+            if (!dontReset) { StartCoroutine(ResetWeapon()); }
             weapMotionOn = false;
             resetWeapOn = true;
             curRot = endRot;
@@ -85,6 +84,8 @@ public class Weapon_SlashMotion : Weapon_Motion
         endRot = rotations[curMotion];
         curAnimCurve = animCurves[curMotion];
         moveTimer = 0f;
+        StopAllCoroutines();
+        StartCoroutine(WeaponMotionOn());
     }
 
     public override void WeaponMotionSetup(Character_Attack _charAtk, Transform _weaponTrans, SpriteRenderer _weaponSpriteR) {
@@ -109,17 +110,19 @@ public class Weapon_SlashMotion : Weapon_Motion
 
         curMotionDur = motionDurations[curMotion];
         curAnimCurve = animCurves[curMotion];
-        moveTimer = 0f;
         camNudged = false;
         // Enable motion.
+        StopAllCoroutines();
+        StartCoroutine(WeaponMotionOn());
         resetWeapOn = false;
         weapMotionOn = true;
+        moveTimer = 0f;
         if (sOWeaponMotionSlash.useDirectionChange) { 
             sOWeaponMotionSlash.clockwise = !sOWeaponMotionSlash.clockwise;
         }
         //
-        weaponTrans.localPosition = sOWeaponMotionSlash.restingPosition;
-        weaponTrans.localRotation = Quaternion.Euler(sOWeaponMotionSlash.restingRotation);
+        //weaponTrans.localPosition = sOWeaponMotionSlash.restingPosition;
+        //weaponTrans.localRotation = Quaternion.Euler(sOWeaponMotionSlash.restingRotation);
     }
     // If the weapon and attack FX need to change direction between attacks.
     void DirectionChange() {
@@ -138,6 +141,7 @@ public class Weapon_SlashMotion : Weapon_Motion
     public override void StopMotions() {
         resetWeapOn = false;
         weapMotionOn = false;
+        StopAllCoroutines();
         moveTimer = 0f;
         weaponTrans.localPosition = sOWeaponMotionSlash.restingPosition;
         weaponTrans.localRotation = Quaternion.Euler(sOWeaponMotionSlash.restingRotation);

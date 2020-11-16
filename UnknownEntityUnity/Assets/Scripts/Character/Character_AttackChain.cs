@@ -5,9 +5,9 @@ using UnityEngine;
 public class Character_AttackChain : MonoBehaviour
 {
     [Header("Script References")]
-    public MouseInputs moIn;
+    //public MouseInputs moIn;
     public Character_Attack charAtk;
-    public Character_AttackWeaponMotion atkWeaMotion;
+    //public Character_AttackWeaponMotion atkWeaMotion;
     [Header("To set variables")]
     public float chainResetDelay;
     [Header("Read Only")]

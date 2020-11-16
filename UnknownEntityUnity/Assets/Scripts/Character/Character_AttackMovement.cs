@@ -5,6 +5,8 @@ using UnityEngine;
 public class Character_AttackMovement : MonoBehaviour
 {
     public Transform weapOrigTrans;
+    // Weapon height.
+    public Transform weapSpriteTrans;
 
     public IEnumerator AttackMovement(SO_AttackFX sO_AttackFX, Transform atkFXTrans)
     {
@@ -52,10 +54,20 @@ public class Character_AttackMovement : MonoBehaviour
         float moveDuration = totalDuration - moveDelay;
 
         // Move the attack a certain distance over attack length period using a lerp.
-        while (timer < 1) {
-            timer += Time.deltaTime / moveDuration;
-            atkFXTrans.position = Vector3.Lerp(startPos, targetPos, moveAnimCurve.Evaluate(timer));
-            yield return null;
+        if (moveDistance > 0f) {
+            while (timer < 1f) {
+                timer += Time.deltaTime / moveDuration;
+                atkFXTrans.position = Vector3.Lerp(startPos, targetPos, moveAnimCurve.Evaluate(timer));
+                yield return null;
+            }
+        }
+        else if (sO_AttackFX.followWeapon) {
+            while (timer < 1f) {
+                timer += Time.deltaTime / totalDuration;
+                atkFXTrans.position = weapSpriteTrans.position + (weapOrigTrans.up * sO_AttackFX.followWeaponHeight);
+                atkFXTrans.rotation = weapOrigTrans.rotation;
+                yield return null;
+            }
         }
         // Reset its position to 999,999 in order to avoid having the collider spawn for a frame at its last used postion, interacting where it should not.
         // atkFXTrans.position = new Vector3(999, 999, atkFXTrans.position.z);

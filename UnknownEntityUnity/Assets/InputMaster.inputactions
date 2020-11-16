@@ -6,9 +6,17 @@
             "id": "a13003c2-4cc8-4fbc-8869-ba77e43fa401",
             "actions": [
                 {
-                    "name": "Attack",
+                    "name": "AttackPressed",
                     "type": "Button",
                     "id": "e4b79122-3395-47b7-9c9c-849bfd763600",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "AttackReleased",
+                    "type": "Button",
+                    "id": "0f02382a-30a1-490c-8749-9f867ac89aa2",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -67,10 +75,10 @@
                     "name": "",
                     "id": "f6163277-646a-491c-b887-4ef6fd251a08",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
+                    "action": "AttackPressed",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -192,6 +200,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "MovementSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "366bc05f-ca5e-4e1c-8ab7-d8bed196a8f2",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttackReleased",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -10,6 +10,7 @@ public class SO_CharAtk_Motion : ScriptableObject
     public bool[] lockInputMovement;
     public bool[] lockCharacterAndWeapon;
     public float[] slowDownRunSpeed;
+    public bool[] chargeAttack;
     // Would require some changes but is possible.
     //public Vector2[] postions;
     //public AnimationCurve[] animCurves;

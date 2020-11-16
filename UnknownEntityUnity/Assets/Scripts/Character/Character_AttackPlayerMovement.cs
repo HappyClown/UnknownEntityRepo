@@ -14,6 +14,7 @@ public class Character_AttackPlayerMovement : MonoBehaviour
     private bool[] lockInputMovement;
     private bool[] lockCharacterAndWeapon;
     private float[] slowDownRunSpeed;
+    private bool[] chargeAttack;
     // Current motion variables.
     private int curMotion;
     private float curDistance;
@@ -26,16 +27,15 @@ public class Character_AttackPlayerMovement : MonoBehaviour
     public bool charAtkMotionOn;
     private float moveTimer;
 
-    void Update() {
-        if (charAtkMotionOn) {
-            moveTimer += Time.deltaTime/curDuration;
-            if (moveTimer >= 1f) {
-                SetupNextMotion();
-            }
+    IEnumerator CharAttackMotionTimer () {
+        while (moveTimer < 1) {
             curPosition = this.transform.position;
             newPosition = curPosition + (curDirection*curSpeed*Time.deltaTime);
             charMov.MoveThePlayer(curDirection, newPosition, curPosition);
+            moveTimer += Time.deltaTime/curDuration;
+            yield return null;
         }
+        SetupNextMotion();
     }
 
     void SetupNextMotion() {
@@ -60,6 +60,7 @@ public class Character_AttackPlayerMovement : MonoBehaviour
         curDistance = distances[curMotion];
         curDuration = durations[curMotion];
         curSpeed = Mathf.Abs(curDistance/curDuration);
+        if (curDistance < 0) { curSpeed *= -1; }
         curPosition = this.transform.position;
         curSlow = slowDownRunSpeed[curMotion];
         // Set initial locks and slowdown.
@@ -70,6 +71,9 @@ public class Character_AttackPlayerMovement : MonoBehaviour
         // Apply the new slowdown.
         charMov.ReduceSpeed(curSlow);
         moveTimer = 0f;
+        if (!chargeAttack[curMotion]) {
+            StartCoroutine(CharAttackMotionTimer());
+        }
     }
 
     public void SetupPlayerAttackMotions(SO_CharAtk_Motion sOCharAtkMotion) {
@@ -80,12 +84,15 @@ public class Character_AttackPlayerMovement : MonoBehaviour
         lockInputMovement = sOCharAtkMotion.lockInputMovement;
         lockCharacterAndWeapon = sOCharAtkMotion.lockCharacterAndWeapon;
         slowDownRunSpeed = sOCharAtkMotion.slowDownRunSpeed;
-        // Assign the current values for the first motion.
+        chargeAttack = sOCharAtkMotion.chargeAttack;
+        // Assign the current values for the first motion. 
+        // *Could run SetupNextMotionNow with a few changes?
         curMotion = 0;
         curDistance = distances[curMotion];
         curDuration = durations[curMotion];
         curDirection = weapOrigTrans.up;
         curSpeed = Mathf.Abs(curDistance/curDuration);
+        if (curDistance < 0) { curSpeed *= -1; }
         curPosition = weapOrigTrans.position;
         curSlow = slowDownRunSpeed[curMotion];
         // Set initial locks and slowdown.
@@ -99,7 +106,10 @@ public class Character_AttackPlayerMovement : MonoBehaviour
         charMov.ReduceSpeed(curSlow);
 
         moveTimer = 0f;
-        charAtkMotionOn = true;
+        if (!chargeAttack[curMotion]) {
+            this.StopAllCoroutines();
+            this.StartCoroutine(CharAttackMotionTimer());
+        }
     }
 
     IEnumerator InputMoveSlowDown(float speedReduceOnOne, float slowDuration) {
@@ -110,10 +120,6 @@ public class Character_AttackPlayerMovement : MonoBehaviour
     }
 
     public void StopPlayerMotion() {
-        if (charAtkMotionOn) {
-            charMov.ReduceSpeed(-curSlow);
-            curSlow = 0f;
-            charAtkMotionOn = false;
-        }
+        this.StopAllCoroutines();
     }
 }

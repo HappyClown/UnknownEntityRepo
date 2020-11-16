@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b48fe51a6829a45bd4301a0818c750, type: 3}
+  m_Name: Main_NimbleSpear
+  m_EditorClassIdentifier: 
+  weaponName: NimbleSpear
+  weaponSprite: {fileID: 21300000, guid: 89b331cd8ed0e534aa6904b2812f08fc, type: 3}
+  chainResetDelay: 0
+  restingRotation: {x: 0, y: 0, z: 0}
+  restingPosition: {x: 0, y: 0, z: 0}
+  attackChains:
+  - sO_Weapon_Motion: {fileID: 11400000, guid: d609280dc082e524b9e808e3d32b03dc, type: 2}
+    sO_CharAtk_Motion: {fileID: 11400000, guid: ba50da0b20bbf024bbd99079aff1d1bc,
+      type: 2}
+    sO_AttackFXs:
+    - {fileID: 11400000, guid: 954a272b6bc475f4dbdd0d5f9f21bb98, type: 2}
+    minDamage: 5
+    maxDamage: 7
+    chargeable: 0
+    sO_ChargeAttack: {fileID: 0}
+  - sO_Weapon_Motion: {fileID: 11400000, guid: e901dfa1e69948a48b29e1f4864858db, type: 2}
+    sO_CharAtk_Motion: {fileID: 11400000, guid: e88b0a92dae2ff343ad39dfb8014ff09,
+      type: 2}
+    sO_AttackFXs:
+    - {fileID: 11400000, guid: e9e7f6dc057652041888e16828c088ea, type: 2}
+    minDamage: 4
+    maxDamage: 6
+    chargeable: 0
+    sO_ChargeAttack: {fileID: 0}
+  - sO_Weapon_Motion: {fileID: 11400000, guid: 3e0659be3f8ffcf479202570873b549e, type: 2}
+    sO_CharAtk_Motion: {fileID: 11400000, guid: 266f4d83bb2b3734d926b6f6bf567e61,
+      type: 2}
+    sO_AttackFXs:
+    - {fileID: 11400000, guid: d10037f34488ce1408127fb8615eb69a, type: 2}
+    - {fileID: 11400000, guid: 6f1def151e891184e941fdbacdba983d, type: 2}
+    minDamage: 8
+    maxDamage: 10
+    chargeable: 0
+    sO_ChargeAttack: {fileID: 0}

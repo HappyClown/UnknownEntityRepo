@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Character_AttackWeaponMotion : MonoBehaviour
 {
-    [Header("Script References")]
-    public Character_AttackChain atkChain;
-    public Character_Attack charAtk;
-    //[Header("To set Values")]
-    [Header("Read Only")]
-    public bool resetWeapRot;
-    public Transform weaponTran;
-    public SpriteRenderer weaponSpriteR;
-    //private bool clockwise = true;
-    private float waitingForResetAngle, restingAngle;
-    private float startAngle, curZAngle, rotTimer, endAngle;
-    private bool atkWeapRot, passByZero;
-    private float weapRotDur;
-    private AnimationCurve atkRotAnimCurve;
+    // [Header("Script References")]
+    // public Character_AttackChain atkChain;
+    // public Character_Attack charAtk;
+    // //[Header("To set Values")]
+    // [Header("Read Only")]
+    // public bool resetWeapRot;
+    // public Transform weaponTran;
+    // public SpriteRenderer weaponSpriteR;
+    // //private bool clockwise = true;
+    // private float waitingForResetAngle, restingAngle;
+    // private float startAngle, curZAngle, rotTimer, endAngle;
+    // private bool atkWeapRot, passByZero;
+    // private float weapRotDur;
+    // private AnimationCurve atkRotAnimCurve;
 
     // void Update() {
     //     // Rotate charAtk.weapon back to its reset position.

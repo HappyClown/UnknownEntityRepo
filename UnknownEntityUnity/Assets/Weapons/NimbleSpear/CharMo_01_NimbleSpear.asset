@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ed52f2d8475cf47a802e2b9766f9e1, type: 3}
+  m_Name: CharMo_01_NimbleSpear
+  m_EditorClassIdentifier: 
+  durations:
+  - 0.25
+  - 0.1
+  - 0.2
+  distances:
+  - 0
+  - 1.5
+  - 0
+  lockInputMovement: 000100
+  lockCharacterAndWeapon: 010100
+  slowDownRunSpeed:
+  - 0.75
+  - 0
+  - 0.75
+  chargeAttack: 000000

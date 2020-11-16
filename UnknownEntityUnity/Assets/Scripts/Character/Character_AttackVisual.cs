@@ -4,16 +4,7 @@ using UnityEngine;
 
 public class Character_AttackVisual : MonoBehaviour
 {
-    // Variables are created in the coroutine to be allow starting multiple coroutines simultaneously with different variable references.
-
-    // public SO_AttackFX sO_AttackFX;
-    // private SpriteRenderer atkSpriteR;
-    // private Sprite[] atkSprites;
-    // private float[] atkSpriteChangeTimes;
-    // private float totalDuration;
-    // private float timer = 0f;
-    // private int thisSpriteIndex = 0;
-
+    // Variables are created in the coroutine to allow starting multiple coroutines simultaneously with different variable references.
     public IEnumerator AttackAnimation(SO_AttackFX sO_AttackFX, Character_AttackFX atkFX) {
         // References from the AttackFX object from the CharacterAttackFX Pool.
         atkFX.inUse = true;
@@ -42,6 +33,9 @@ public class Character_AttackVisual : MonoBehaviour
                     thisSpriteIndex++;
                 }
             }
+            yield return null;
+        }
+        while (atkFX.holdLastSprite) {
             yield return null;
         }
         atkSpriteR.sprite = null;

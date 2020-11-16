@@ -654,6 +654,7 @@ GameObject:
   - component: {fileID: 301151599677730761}
   - component: {fileID: 301151599677730762}
   - component: {fileID: 301151599677730763}
+  - component: {fileID: 1264184054}
   m_Layer: 0
   m_Name: Inputs
   m_TagString: Untagged
@@ -693,14 +694,17 @@ MonoBehaviour:
   mousePosWorld: {x: 0, y: 0, z: 0}
   mousePosWorld2D: {x: 0, y: 0}
   lastMousePosWorld2D: {x: 0, y: 0}
-  mouseLeftClicked: 0
+  attackButtonPressed: 0
+  attackButtonHeld: 0
   mouseMoved: 0
-  graceUsesFrames: 1
-  attackGraceDuration: 0.08
-  attackGraceFrames: 5
+  attackButtonActions: {fileID: 1264184054}
   inputMovementValues: {x: 0, y: 0}
   x: 0
   y: 0
+  graceUsesFrames: 1
+  attackGraceDuration: 0.08
+  attackGraceFrames: 5
+  attackButtonTapInGrace: 0
   weaponSwapGraceDuration: 0.08
   weaponSwapGraceFrames: 5
   weaponSwapPressed: 0
@@ -719,6 +723,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b374e1ca10d902744b2f80f9e61ace3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1264184054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301151599677730760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707f7f25f2e5710479c7f6dd462399b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charAttack: {fileID: 0}
+  graceUsesFrames: 1
+  attackGraceDuration: 0.08
+  attackGraceFrames: 5
+  attackButtonTapInGrace: 0
+  heldTimer: 0
+  pressed: 0
+  chargeAttackReady: 0
 --- !u!1 &301151599679802802
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,7 +990,7 @@ Transform:
   m_GameObject: {fileID: 301151600431379911}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.29}
-  m_LocalScale: {x: 40, y: 30, z: 1}
+  m_LocalScale: {x: 160, y: 120, z: 1}
   m_Children: []
   m_Father: {fileID: 301151598855432955}
   m_RootOrder: 0

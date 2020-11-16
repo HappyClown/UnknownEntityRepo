@@ -23,5 +23,7 @@ public class SO_Weapon : ScriptableObject
              get{ return Random.Range(minDamage, maxDamage); }
          }
          // ////////////////////////////////////////////////////////////////////
+         public bool chargeable;
+         public SO_ChargeAttack sO_ChargeAttack;
     }
 }

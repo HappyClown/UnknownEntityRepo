@@ -18,5 +18,7 @@ public class SO_AttackFX : ScriptableObject {
     public float moveDistance; // Currently moveDistance - spawnDistance for the actual movement.
     public float moveDelay; // Currently unused.
     public bool setupBeforeDelay;
+    public bool followWeapon;
+    public float followWeaponHeight;
     public AnimationCurve moveAnimCurve;
 }
