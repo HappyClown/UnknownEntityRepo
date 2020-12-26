@@ -23,7 +23,7 @@ public class AttackButtonActions : MonoBehaviour
     // Attack button tapped. (regular attacks)
     public void AttackButtonPressedChecks() {
         // Check if the attack is ready > check if the attack is chargeable > no, do regular attack > yes, start hold counter
-        print("pressed");
+        //print("pressed");
         if (charAttack.atkChain.ready) {
             if (charAttack.WeapAtkChain.chargeable) {
                 print("attack is chargeable starting timer.");
@@ -68,7 +68,7 @@ public class AttackButtonActions : MonoBehaviour
             charAttack.Attack();
             print("releasing charged attack");
         }
-        print("released");
+        //print("released");
         if (attackButtonCurrentlyHeldCoroutine != null) {StopCoroutine(attackButtonCurrentlyHeldCoroutine);}
     }
 

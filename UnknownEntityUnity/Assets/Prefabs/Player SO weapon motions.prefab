@@ -461,6 +461,19 @@ MonoBehaviour:
   moveDirX: 0
   moveDirY: 0
   normalizedMovement: {x: 0, y: 0, z: 0}
+  runFXFrequency: 0.5
+  dustFXSpriteR: {fileID: 0}
+  dustTotDur: 0.75
+  dustSprites:
+  - {fileID: 4390762821660205938, guid: 36a562e39ddc87e48bf414a81b0f9b86, type: 3}
+  - {fileID: -7118877861532279547, guid: 36a562e39ddc87e48bf414a81b0f9b86, type: 3}
+  - {fileID: 4826949375575679989, guid: 36a562e39ddc87e48bf414a81b0f9b86, type: 3}
+  - {fileID: -8419686661867421750, guid: 36a562e39ddc87e48bf414a81b0f9b86, type: 3}
+  dustTimings:
+  - 0
+  - 0.18
+  - 0.36
+  - 0.54
   idleSprite: {fileID: 21300000, guid: dd10e113d8ae0464e925085ebf7b14cf, type: 3}
   startRunForward:
   - {fileID: 1998722831069807661, guid: 197b3d4992560fa41b3e009511381faa, type: 3}

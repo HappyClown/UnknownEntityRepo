@@ -20,8 +20,15 @@ public class Character_Movement : MonoBehaviour
     private bool lookLeft, lookRight, moveLeft, moveRight;
     private bool running;
     public Vector3 normalizedMovement;
+    [Header("Run FX")]
+    public float runFXFrequency;
+    // Could hold most of the sprite animation values in a ScriptableObject.
+    public Character_MotionFXPool charMotionFXPool;
+    public float dustTotDur;
+    public Sprite[] dustSprites;
+    public float[] dustTimings;
+    private float timeRunning;
     [Header("Animation Test")]
-    //
     public Sprite idleSprite;
     private Sprite[] curSprites;
     // Hand sprite animations test
@@ -88,6 +95,12 @@ public class Character_Movement : MonoBehaviour
                     moveRight = lookRight;
                     moveLeft = lookLeft;
                 }
+                // Add up the time.deltaTime every frame the player is moving. The same concept could be used for more but at least to know when to spawn running dust.
+                timeRunning += Time.deltaTime;
+                if (timeRunning >= runFXFrequency) {
+                    timeRunning = 0f;
+                    SetupRunFX();
+                }
                 // Check if sprite need to be flipped based on the character's movement axis values.
                 // FlipSprite();
             }
@@ -113,6 +126,32 @@ public class Character_Movement : MonoBehaviour
             MoveThePlayer(normalizedMovement, newPosition, curPosition);
             //this.transform.position = curPosition + normalizedMovement * runSpeed * Time.deltaTime;
         }
+    }
+
+    void SetupRunFX() {
+        Character_MotionFX charMo = charMotionFXPool.RequestMotionFX();
+        charMo.inUse = true;
+        charMo.transform.position = this.transform.position;
+        charMo.gameObject.SetActive(true);
+        StartCoroutine(SpawnRunFX(charMo, dustTotDur, dustSprites, dustTimings));
+    }
+
+    IEnumerator SpawnRunFX(Character_MotionFX charMo, float totalDuration, Sprite[] sprites, float[] timings) {
+        float timer = 0f;
+        int count = 0;
+        while (timer < totalDuration) {
+            timer += Time.deltaTime;
+            if (timer > timings[count]) {
+                charMo.spriteR.sprite = sprites[count];
+                if (count < timings.Length-1) {
+                    count++;
+                }
+            }
+            yield return null;
+        }
+        charMo.inUse = false;
+        charMo.spriteR.sprite = null;
+        charMo.gameObject.SetActive(false);
     }
 
     public void FlipSpriteMouseBased () {

@@ -31,6 +31,7 @@ public class Character_AttackPlayerMovement : MonoBehaviour
         while (moveTimer < 1) {
             curPosition = this.transform.position;
             newPosition = curPosition + (curDirection*curSpeed*Time.deltaTime);
+            //print("direction: "+curDirection+" newposition: "+newPosition+" curposition: "+curPosition);
             charMov.MoveThePlayer(curDirection, newPosition, curPosition);
             moveTimer += Time.deltaTime/curDuration;
             yield return null;
@@ -60,7 +61,7 @@ public class Character_AttackPlayerMovement : MonoBehaviour
         curDistance = distances[curMotion];
         curDuration = durations[curMotion];
         curSpeed = Mathf.Abs(curDistance/curDuration);
-        if (curDistance < 0) { curSpeed *= -1; }
+        if (curDistance < 0) { curDirection *= -1; }
         curPosition = this.transform.position;
         curSlow = slowDownRunSpeed[curMotion];
         // Set initial locks and slowdown.
@@ -92,7 +93,7 @@ public class Character_AttackPlayerMovement : MonoBehaviour
         curDuration = durations[curMotion];
         curDirection = weapOrigTrans.up;
         curSpeed = Mathf.Abs(curDistance/curDuration);
-        if (curDistance < 0) { curSpeed *= -1; }
+        if (curDistance < 0) { curDirection *= -1; }
         curPosition = weapOrigTrans.position;
         curSlow = slowDownRunSpeed[curMotion];
         // Set initial locks and slowdown.
