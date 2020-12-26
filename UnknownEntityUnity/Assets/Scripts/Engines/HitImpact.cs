@@ -17,33 +17,17 @@ public class HitImpact : MonoBehaviour
         // Request an ImpactFX script(attached to a GameObject) from an ImpactFX pool.
         impactFX_St = impactFXPool_St.RequestImpactFX();
         // Calculate and apply the direction from the hittingCollider to the receivingCollider.
-        Vector2 dirToEnemy = receivingColliderPos - hittingColliderPos;
+        Vector2 dirToEnemy = (Vector2)receivingCollider.bounds.center - hittingColliderPos;
         impactFX_St.transform.up = dirToEnemy;
-
         // Fire a raycast from the hittingCollider to the receivingCollider to get a "hit" position, in order to place the impactFX close the the receiver.
-//
-        //receivingCollider.Raycast(dirToEnemy,);
-        // Vector3 testhitcolpos = new Vector3(hittingColliderPos.x, hittingColliderPos.y, receivingCollider.gameObject.transform.position.z);
-        // Vector3 testdirtoenemy = new Vector3(dirToEnemy.x, dirToEnemy.y, receivingCollider.gameObject.transform.position.z);
-        // Ray ray = new Ray(testhitcolpos, testdirtoenemy);
-        // float dist;
-        // if (receivingCollider.bounds.IntersectRay(ray, out dist)) {
-        //     print (dist);
-        // }
-        // Vector2 impactPoint = dirToEnemy.normalized * dist;
-//
-        // RaycastHit2D[] hits = Physics2D.RaycastAll(hittingColliderPos, dirToEnemy, dirToEnemy.magnitude, hitLayerMask);
-        // print(hits.Length);
+        Debug.DrawRay(hittingColliderPos, dirToEnemy, Color.white, 1f);
         foreach(RaycastHit2D hit in Physics2D.RaycastAll(hittingColliderPos, dirToEnemy, dirToEnemy.magnitude, hitLayerMask)) {
             if (hit.collider == receivingCollider) {
                 impactFX_St.transform.position = new Vector3(hit.point.x, hit.point.y, impactFX_St.transform.position.z);
+                print(hit.transform.position);
                 break;
             }
         }
-//
-        //Vector2 impactPoint = Physics2D.Raycast(hittingColliderPos, dirToEnemy, dirToEnemy.magnitude, hitLayerMask).point;
-        //impactFX_St.transform.position = new Vector3(impactPoint.x, impactPoint.y, impactFX_St.transform.position.z);
-//
         // Start the impactFX sprite animation.
         impactFX_St.StartImpactFX(sOImpactFX);
     }

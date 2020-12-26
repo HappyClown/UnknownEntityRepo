@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalDuration: 0.56
   stopOnStun: 1
-  collider: {fileID: 6841409416684675371, guid: e535e837fec552841a83269c5fb6ad72,
+  collider: {fileID: 8939317785436719242, guid: 91c6f2fea35555543bcd831e0022e287,
     type: 3}
   colStart: 0.28
   colEnd: 0.78
@@ -37,6 +37,8 @@ MonoBehaviour:
   moveDistance: 2.2
   moveDelay: 0.25
   setupBeforeDelay: 0
+  followWeapon: 0
+  followWeaponHeight: 0
   moveAnimCurve:
     serializedVersion: 2
     m_Curve:

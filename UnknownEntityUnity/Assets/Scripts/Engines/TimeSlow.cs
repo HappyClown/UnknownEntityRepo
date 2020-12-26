@@ -50,6 +50,7 @@ public class TimeSlow : MonoBehaviour
             oneTickPercent_St = (1f / slowTimeTotalFrames_St);
             oneTickPercent_St = oneTickPercent_St + ((1f / slowTimeTotalFrames_St) / (slowTimeTotalFrames_St-1f));
             //print("Tick percentage increase: "+oneTickPercent_St);
+            //Find a way to trigger a coroutine/method from a static method to avoid using an Update
             slowTimeOn_St = true;
         }
     }

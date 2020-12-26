@@ -461,19 +461,19 @@ MonoBehaviour:
   moveDirX: 0
   moveDirY: 0
   normalizedMovement: {x: 0, y: 0, z: 0}
-  runFXFrequency: 0.5
-  dustFXSpriteR: {fileID: 0}
-  dustTotDur: 0.75
+  runFXFrequency: 0.35
+  charMotionFXPool: {fileID: 0}
+  dustTotDur: 0.6
   dustSprites:
-  - {fileID: 4390762821660205938, guid: 36a562e39ddc87e48bf414a81b0f9b86, type: 3}
-  - {fileID: -7118877861532279547, guid: 36a562e39ddc87e48bf414a81b0f9b86, type: 3}
-  - {fileID: 4826949375575679989, guid: 36a562e39ddc87e48bf414a81b0f9b86, type: 3}
-  - {fileID: -8419686661867421750, guid: 36a562e39ddc87e48bf414a81b0f9b86, type: 3}
+  - {fileID: -3065989444100885543, guid: a6418945afa07e543bdd560304a6f93c, type: 3}
+  - {fileID: 4246826389138144402, guid: a6418945afa07e543bdd560304a6f93c, type: 3}
+  - {fileID: -9024900040309567365, guid: a6418945afa07e543bdd560304a6f93c, type: 3}
+  - {fileID: -617800632230595246, guid: a6418945afa07e543bdd560304a6f93c, type: 3}
   dustTimings:
   - 0
-  - 0.18
-  - 0.36
-  - 0.54
+  - 0.15
+  - 0.3
+  - 0.45
   idleSprite: {fileID: 21300000, guid: dd10e113d8ae0464e925085ebf7b14cf, type: 3}
   startRunForward:
   - {fileID: 1998722831069807661, guid: 197b3d4992560fa41b3e009511381faa, type: 3}
@@ -533,7 +533,7 @@ MonoBehaviour:
   raysPerSeg: 3
   colMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 65792
 --- !u!114 &3651932565041545236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,7 +608,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e404b732ade4f4d938fff1ddefd58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactFXPool: {fileID: 0}
   hitLayers:
     useTriggers: 0
     useLayerMask: 1
@@ -618,7 +617,7 @@ MonoBehaviour:
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 133120
+      m_Bits: 198656
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
