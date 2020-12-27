@@ -16,12 +16,16 @@ public class Character_CollisionDetection : MonoBehaviour
     float gizmosMoveDist, gizmosMoveDistX, gizmosMoveDistY;
     Vector3 myCurPos, myNewPos;
     float halfColX, halfColY, colOffsetX, colOffsetY;
+    //float diagonalSkinWidth = 0f;
 
     public Vector3 CollisionCheck(Vector3 normMoveDir, Vector3 newPos, Vector3 curPos) {
         hitDetected = false;
         gizmosMoveDir = normMoveDir;
         myCurPos = curPos;
         myNewPos = newPos;
+        // if (diagonalSkinWidth == 0f) {
+        //     diagonalSkinWidth = Mathf.Sqrt((skinWidth*skinWidth)*2);
+        // }
         //print("BOX COLLIDER POSITION: "+boxCol.transform.position);
         //print("CURRENT POS: "+"("+curPos.x+", "+curPos.y+", "+curPos.z+")");
         float moveDist = (newPos - curPos).magnitude;
@@ -32,7 +36,7 @@ public class Character_CollisionDetection : MonoBehaviour
         float adjustedY = 0f;
         gizmosMoveDist = moveDist;
         (adjustedX, adjustedY) = MovementRaycasts(normMoveDir, moveDist);
-        //print ("ADJUSTED X: "+adjustedX+", ADJUSTED Y: "+adjustedY);
+        // print ("ADJUSTED X: "+adjustedX+", ADJUSTED Y: "+adjustedY);
         // float finalX = normMoveDir.x * adjustedX;
         // float finalY = normMoveDir.y * adjustedY;
         // print ("FINAL X: "+finalX+", FINAL Y: "+finalY);
@@ -52,8 +56,6 @@ public class Character_CollisionDetection : MonoBehaviour
     (float, float) MovementRaycasts(Vector3 normMoveDir, float moveDist) {
         float shortestHitX = 999f;
         float shortestHitY = 999f;
-        //bool xHit = false;
-        //bool yHit = false;
         bool leftHit = false;
         bool rightHit = false;
         bool topHit = false; 
@@ -83,6 +85,10 @@ public class Character_CollisionDetection : MonoBehaviour
             rayStartPoints = new Vector2[raysPerSeg+2];
         }
 
+        print(normMoveDir);
+        print("X move dist: "+xMoveDist);
+        print("Y move dist: "+yMoveDist);
+
         // Fire rays into x and y directions seperately based on moveDir.
         // X rays:
         if (normMoveDir.x != 0) {
@@ -101,11 +107,10 @@ public class Character_CollisionDetection : MonoBehaviour
                 }
 
                 foreach(Vector2 rayStartPoint in rayStartPoints) {
-                    rayHit = Physics2D.Raycast(rayStartPoint, Vector2.right, xMoveDist+skinWidth, colMask);
-                    Debug.DrawLine(rayStartPoint, rayStartPoint+(Vector2.right*(xMoveDist+skinWidth)), Color.white, Time.deltaTime);
+                    rayHit = Physics2D.Raycast(rayStartPoint, normMoveDir, (moveDist+skinWidth), colMask);
+                    Debug.DrawRay(rayStartPoint, normMoveDir*(moveDist+skinWidth), Color.white, Time.deltaTime);
                     if (rayHit) {
                         hitDetected = true;
-                        //xHit = true;
                         leftHit = true;
                         if (Mathf.Abs((rayHit.point - rayStartPoint).x) < Mathf.Abs(shortestHitX)) {
                             shortestHitX = (rayHit.point - rayStartPoint).x;
@@ -128,11 +133,10 @@ public class Character_CollisionDetection : MonoBehaviour
                 }
 
                 foreach(Vector2 rayStartPoint in rayStartPoints) {
-                    rayHit = Physics2D.Raycast(rayStartPoint, Vector2.right, xMoveDist+skinWidth, colMask);
-                    Debug.DrawLine(rayStartPoint, rayStartPoint+(Vector2.right*(xMoveDist+skinWidth)), Color.white, Time.deltaTime);
+                    rayHit = Physics2D.Raycast(rayStartPoint, normMoveDir, moveDist+skinWidth, colMask);
+                    Debug.DrawRay(rayStartPoint, normMoveDir*(moveDist+skinWidth), Color.white, Time.deltaTime);
                     if (rayHit) {
                         hitDetected = true;
-                        //xHit = true;
                         rightHit = true;
                         if (Mathf.Abs((rayHit.point - rayStartPoint).x) < Mathf.Abs(shortestHitX)) {
                             shortestHitX = (rayHit.point - rayStartPoint).x;
@@ -158,11 +162,10 @@ public class Character_CollisionDetection : MonoBehaviour
                 }
 
                 foreach(Vector2 rayStartPoint in rayStartPoints) {
-                    rayHit = Physics2D.Raycast(rayStartPoint, Vector2.up, yMoveDist+skinWidth, colMask);
-                    Debug.DrawLine(rayStartPoint, rayStartPoint+(Vector2.up*(yMoveDist+skinWidth)), Color.white, Time.deltaTime);
+                    rayHit = Physics2D.Raycast(rayStartPoint, normMoveDir, moveDist+skinWidth, colMask);
+                    Debug.DrawRay(rayStartPoint, normMoveDir*(moveDist+skinWidth), Color.white, Time.deltaTime);
                     if (rayHit) {
                         hitDetected = true;
-                        //yHit = true;
                         topHit = true;
                         if (Mathf.Abs((rayHit.point - rayStartPoint).y) < Mathf.Abs(shortestHitY)) {
                             shortestHitY = (rayHit.point - rayStartPoint).y;
@@ -185,11 +188,10 @@ public class Character_CollisionDetection : MonoBehaviour
                 }
 
                 foreach(Vector2 rayStartPoint in rayStartPoints) {
-                    rayHit = Physics2D.Raycast(rayStartPoint, Vector2.up, yMoveDist+skinWidth, colMask);
-                    Debug.DrawLine(rayStartPoint, rayStartPoint+(Vector2.up*(yMoveDist+skinWidth)), Color.white, Time.deltaTime);
+                    rayHit = Physics2D.Raycast(rayStartPoint, normMoveDir, (moveDist+skinWidth), colMask);
+                    Debug.DrawRay(rayStartPoint, normMoveDir*(moveDist+skinWidth), Color.white, Time.deltaTime);
                     if (rayHit) {
                         hitDetected = true;
-                        //yHit = true;
                         botHit = true;
                         if (Mathf.Abs((rayHit.point - rayStartPoint).y) < Mathf.Abs(shortestHitY)) {
                             shortestHitY = (rayHit.point - rayStartPoint).y;
@@ -200,14 +202,20 @@ public class Character_CollisionDetection : MonoBehaviour
             // // Check diagonals.
             // // Top Left.
             // if (normMoveDir.x < 0 && normMoveDir.y > 0) {
-            //     float diagonalMoveDist = xMoveDist+yMoveDist/2;
-            //     float diagonalSkinWidth = Mathf.Sqrt((skinWidth*skinWidth)*2);
-                
             //     Vector2 colDiagonalTopLeft = new Vector2(colBoundMinX+skinWidth, colBoundMaxY-skinWidth);
-                
-            //     rayHit = Physics2D.Raycast(colDiagonalTopLeft, new Vector2(-1, 1), diagonalMoveDist+diagonalSkinWidth, colMask);
-                
-            //     //Debug.DrawLine(colDiagonalTopLeft, colDiagonalTopLeft+(new Vector2(-1, 1)*1), Color.white, 100f);
+            //     rayHit = Physics2D.Raycast(colDiagonalTopLeft, new Vector2(normMoveDir.x, normMoveDir.y), moveDist+skinWidth, colMask);
+            //     //Debug.DrawRay(colDiagonalTopLeft, new Vector2(normMoveDir.x, normMoveDir.y)*(moveDist+diagonalSkinWidth), Color.white, Time.deltaTime);
+            //     if (rayHit) {
+            //         hitDetected = true;
+            //         topHit = true;
+            //         leftHit = true;
+            //         if (Mathf.Abs(rayHit.point.x-colDiagonalTopLeft.x) < Mathf.Abs(shortestHitX)) {
+            //             shortestHitX = rayHit.point.x - colDiagonalTopLeft.x;
+            //         }
+            //         if (Mathf.Abs(rayHit.point.y - colDiagonalTopLeft.y) < Mathf.Abs(shortestHitY)) {
+            //             shortestHitY = rayHit.point.y - colDiagonalTopLeft.y;
+            //         }
+            //     }
             // }
             // // Top Right.
             // else if (normMoveDir.x > 0 && normMoveDir.y > 0) {
@@ -225,7 +233,6 @@ public class Character_CollisionDetection : MonoBehaviour
         }
         float modSkinWidthX = skinWidth;
         float modSkinWidthY = skinWidth;
-        //float diagonalSkinWidths = Mathf.Sqrt((skinWidth*skinWidth)*2);
         float finalMoveDistX = 0f;
         float finalMoveDistY = 0f;
 
@@ -250,39 +257,6 @@ public class Character_CollisionDetection : MonoBehaviour
             finalMoveDistY = yMoveDist;
         }
         return (finalMoveDistX, finalMoveDistY);
-
-        // if (!xHit && !yHit) {
-        //     return (xMoveDist, yMoveDist);
-        // }
-        // else if (xHit && yHit) {
-        //     if (shortestHitX > 0) { modSkinWidthX *= (-1f); }
-        //     else if (shortestHitX == 0) { modSkinWidthX = 0; }
-        //     if (shortestHitY > 0) { modSkinWidthY *= (-1f); }
-        //     else if (shortestHitY == 0) { modSkinWidthY = 0; }
-        //     print("Result on the XY: " + shortestHitX+modSkinWidthX + " " + shortestHitY+modSkinWidthY);
-        //     //print(new Vector2(shortestHitX, shortestHitY));
-        //     return (shortestHitX+modSkinWidthX, shortestHitY+modSkinWidthY);
-        // }
-        // else if (xHit && !yHit) { 
-        //     // Hitting a collision on the right side. Substract the skinwidth.
-        //     if (shortestHitX > 0) { modSkinWidthX *= (-1f); } 
-        //     else if (shortestHitX == 0) { modSkinWidthX = 0; }
-        //     print("Result on the X: " + shortestHitX+modSkinWidthX);
-        //     //print(new Vector2(shortestHitX/* +modSkinWidthX */, yMoveDist));
-        //     //print(new Vector2(shortestHitX+modSkinWidthX, yMoveDist));
-        //     return (shortestHitX+modSkinWidthX, yMoveDist);
-        // }
-        // else if (!xHit && yHit) {
-        //     if (shortestHitY > 0) { modSkinWidthY *= (-1f); }
-        //     else if (shortestHitY == 0) { modSkinWidthY = 0; }
-        //     print("Result on the Y: " + shortestHitY+modSkinWidthY);
-        //     //print("ONLY Y HIT: "+(shortestHitY+modSkinWidthX)+", shortest hit on Y.");
-        //     return (xMoveDist, shortestHitY+modSkinWidthY);
-        // }
-        // else {
-        //     //print("Returned else. Not sure when this happens...");
-        //     return (xMoveDist, yMoveDist);
-        // }
     }
 
     /*void OnDrawGizmos() {

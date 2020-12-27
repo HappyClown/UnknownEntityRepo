@@ -103,6 +103,10 @@ public class Character_Movement : MonoBehaviour
                 }
                 // Check if sprite need to be flipped based on the character's movement axis values.
                 // FlipSprite();
+                // Check for collisions.
+                Vector3 curPosition = this.transform.position;
+                Vector3 newPosition = curPosition + normalizedMovement * moddedRunSpeed * Time.deltaTime;
+                MoveThePlayer(normalizedMovement, newPosition, curPosition);
             }
             else {
                 running = false;
@@ -120,11 +124,7 @@ public class Character_Movement : MonoBehaviour
             else {
                 spriteRend.sprite = idleSprite;
             }
-            // Check for collisions.
-            Vector3 curPosition = this.transform.position;
-            Vector3 newPosition = curPosition + normalizedMovement * moddedRunSpeed * Time.deltaTime;
-            MoveThePlayer(normalizedMovement, newPosition, curPosition);
-            //this.transform.position = curPosition + normalizedMovement * runSpeed * Time.deltaTime;
+            
         }
     }
 
