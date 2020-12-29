@@ -135,7 +135,7 @@ public class RangedSkeleton_Actions : Enemy_Actions
         }
     }
     
-    public void Update() {
+    public void LateUpdate() {
         // This can be switched to from ANY state.
         if (updateState) {
             // If the player is within attack range. Make this check occur less then once per frame.

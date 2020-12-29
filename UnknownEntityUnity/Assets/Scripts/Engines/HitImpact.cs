@@ -24,7 +24,6 @@ public class HitImpact : MonoBehaviour
         foreach(RaycastHit2D hit in Physics2D.RaycastAll(hittingColliderPos, dirToEnemy, dirToEnemy.magnitude, hitLayerMask)) {
             if (hit.collider == receivingCollider) {
                 impactFX_St.transform.position = new Vector3(hit.point.x, hit.point.y, impactFX_St.transform.position.z);
-                print(hit.transform.position);
                 break;
             }
         }

@@ -33,8 +33,8 @@ MonoBehaviour:
   - 0.69
   - 0.72
   - 0.75
-  spawnDistance: 1
-  moveDistance: 2
+  spawnDistance: 0.5
+  moveDistance: 2.5
   moveDelay: 0.55
   setupBeforeDelay: 0
   followWeapon: 0
