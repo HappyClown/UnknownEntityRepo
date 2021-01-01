@@ -76,7 +76,7 @@ public class Character_CollisionDetection : MonoBehaviour
 
         // Fire rays into x and y directions seperately based on moveDir.
         // X rays:
-        if (normMoveDir.x != 0) {
+        if (Mathf.Abs(normMoveDir.x) >= 0.001f) {
             // Rays to the left.
             if (normMoveDir.x < 0) {
                 Vector2 colTopLeft = new Vector2(colBoundMinX+skinWidth, colBoundMaxY-skinWidth);
@@ -133,7 +133,7 @@ public class Character_CollisionDetection : MonoBehaviour
             }
         }
         // Y rays:
-        if (normMoveDir.y != 0) {
+        if (Mathf.Abs(normMoveDir.y) >= 0.001f) {
             // Rays to the top.
             if (normMoveDir.y > 0) {
                 Vector2 colTopLeft = new Vector2(colBoundMinX+skinWidth, colBoundMaxY-skinWidth);
@@ -333,9 +333,11 @@ public class Character_CollisionDetection : MonoBehaviour
             rayStartPoints = new Vector2[raysPerSeg+2];
         }
 
+        print("In Slide Collision Method normMoveDir.x: "+normMoveDir.x);
+
         // Fire rays into x and y directions seperately based on moveDir.
         // X rays:
-        if (normMoveDir.x != 0) {
+        if (Mathf.Abs(normMoveDir.x) >= 0.001f) {
             // Rays to the left.
             if (normMoveDir.x < 0) {
                 Vector2 colTopLeft = new Vector2(colBoundMinX+skinWidth, colBoundMaxY-skinWidth);
@@ -392,7 +394,7 @@ public class Character_CollisionDetection : MonoBehaviour
             }
         }
         // Y rays:
-        if (normMoveDir.y != 0) {
+        if (Mathf.Abs(normMoveDir.y) >= 0.001f) {
             // Rays to the top.
             if (normMoveDir.y > 0) {
                 Vector2 colTopLeft = new Vector2(colBoundMinX+skinWidth, colBoundMaxY-skinWidth);
