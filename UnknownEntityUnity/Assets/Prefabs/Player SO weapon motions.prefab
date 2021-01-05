@@ -1114,7 +1114,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moIn: {fileID: 0}
+  pointerArrow: {fileID: 0}
   lookAtEnabled: 1
+  lookAtPointerArrow: 1
 --- !u!1 &3940980238649695403
 GameObject:
   m_ObjectHideFlags: 0

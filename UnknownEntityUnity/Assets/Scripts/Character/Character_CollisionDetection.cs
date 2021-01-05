@@ -33,7 +33,7 @@ public class Character_CollisionDetection : MonoBehaviour
         (adjustedX, adjustedY) = MovementRaycasts(normMoveDir, moveDist);
 
         if (hitDetected) {
-            print("Hitdetected");
+            //print("Hitdetected");
             Vector3 adjustedPos = new Vector3 (curPos.x + adjustedX, curPos.y + adjustedY, curPos.z);
             return adjustedPos;
         } 
@@ -218,15 +218,15 @@ public class Character_CollisionDetection : MonoBehaviour
         // SLIDING CHECK //
         float slideMoveDistX = 0f;
         float slideMoveDistY = 0f; 
-        print(slideChecked);
+        //print(slideChecked);
         if (hitDetected && !slideChecked) {
             slideChecked = true;
-            print("Before slide check final move distances X: "+finalMoveDistX+" and Y: "+finalMoveDistY);
+            //print("Before slide check final move distances X: "+finalMoveDistX+" and Y: "+finalMoveDistY);
             if (Mathf.Abs(finalMoveDistX) <= 0.0049f || Mathf.Abs(finalMoveDistY) <= 0.0049f) {
                 // CALCULATE SLIDE VALUES //
                 // This should be done if the returned final value is 0 (or less then 0.0001).
-                print("Final Move Dist X: "+finalMoveDistX);
-                print("Final Move Dist Y: "+finalMoveDistY);
+                //print("Final Move Dist X: "+finalMoveDistX);
+                //print("Final Move Dist Y: "+finalMoveDistY);
                 // Get the shortest hit's collision surface normal.
                 Vector2 surfaceNormal;
                 if (shortestHitX <= shortestHitY) {
@@ -235,7 +235,7 @@ public class Character_CollisionDetection : MonoBehaviour
                 else {
                     surfaceNormal = surfaceNormalY;
                 }
-                print("Surface Normal: "+surfaceNormal);
+                //print("Surface Normal: "+surfaceNormal);
                 if (surfaceNormal == ((Vector2)normMoveDir*-1)) {
                     //print("The hit surface normal counters the players movement perfectionado.");
                     // Stop here.
@@ -250,23 +250,23 @@ public class Character_CollisionDetection : MonoBehaviour
                 Vector2 surfaceVectorCounterClockwise;
                 // Clockwise rotation of the surface normal to find the surface vector.
                 surfaceVectorClockwise = new Vector2(surfaceNormal.y, surfaceNormal.x*-1);
-                print("Surface Vector clockwise: "+ surfaceVectorClockwise);
+                //print("Surface Vector clockwise: "+ surfaceVectorClockwise);
                 // Counter-Clockwise.
                 surfaceVectorCounterClockwise = new Vector2(surfaceNormal.y * -1, surfaceNormal.x);
-                print("Surface Vector counter-clockwise: "+ surfaceVectorCounterClockwise);
+                //print("Surface Vector counter-clockwise: "+ surfaceVectorCounterClockwise);
 
                 // Chose the one with the smallest angle between the normMoveDir's reflection and the clockwise or counterclockwise vectors.
                 // Reflection vector from the move direction and the surface normal.
                 Vector2 surfaceReflect;
                 surfaceReflect = Vector2.Reflect(normMoveDir, surfaceNormal);
-                print("Surface Reflection: "+surfaceReflect);
+                //print("Surface Reflection: "+surfaceReflect);
 
                 float angleClockwise;
                 float angleCounterClockwise;
                 angleClockwise = Vector2.Angle(surfaceReflect, surfaceVectorClockwise);
                 angleCounterClockwise = Vector2.Angle(surfaceReflect, surfaceVectorCounterClockwise);
-                print("Angle between reflection and clockwise: "+angleClockwise);
-                print("Angle between reflection and counter-clockwise: "+angleCounterClockwise);
+                //print("Angle between reflection and clockwise: "+angleClockwise);
+                //print("Angle between reflection and counter-clockwise: "+angleCounterClockwise);
                 Vector2 slideDirection;
                 if (angleClockwise < angleCounterClockwise) {
                     slideDirection = surfaceVectorClockwise;
@@ -274,22 +274,22 @@ public class Character_CollisionDetection : MonoBehaviour
                 else {
                     slideDirection = surfaceVectorCounterClockwise;
                 }
-                print("Chosen slide direction vector: "+slideDirection);
+                //print("Chosen slide direction vector: "+slideDirection);
                 // Calculate the loss of speed based on the angle between the move direction normal and the surface normal on 90.
                 float angleMoveDir;
                 float speedAdjustment;
                 angleMoveDir = Vector2.Angle(normMoveDir*-1, surfaceNormal);
-                print("Angle between move direction and surface normal: "+angleMoveDir);
+                //print("Angle between move direction and surface normal: "+angleMoveDir);
                 speedAdjustment = 1-((90-angleMoveDir) / 90);
-                print("Speed adjustment multiplier: "+speedAdjustment);
+                //print("Speed adjustment multiplier: "+speedAdjustment);
 
                 float slideMoveDist = moveDist*speedAdjustment;
-                print("Slide move distance: "+slideMoveDist);
+                //print("Slide move distance: "+slideMoveDist);
                 // Fire the rays again in the new direction to see if sliding is possible.
                 Vector2 newSlidePos = (Vector2)myCurPos + (slideDirection*slideMoveDist);
                 //CollisionCheck(slideDirection, newSlidePos, myCurPos);
                 (slideMoveDistX, slideMoveDistY) = MovementSlideRaycasts(slideDirection, slideMoveDist, newSlidePos, new Vector2(finalMoveDistX, finalMoveDistY));
-                print("Slide move XY distances; slideMoveDistX: "+slideMoveDistX+" then; slideMoveDistY: "+slideMoveDistY);
+                //print("Slide move XY distances; slideMoveDistX: "+slideMoveDistX+" then; slideMoveDistY: "+slideMoveDistY);
                 // RAYS FIRE AGAIN //
             }
         }
@@ -333,7 +333,7 @@ public class Character_CollisionDetection : MonoBehaviour
             rayStartPoints = new Vector2[raysPerSeg+2];
         }
 
-        print("In Slide Collision Method normMoveDir.x: "+normMoveDir.x);
+        //print("In Slide Collision Method normMoveDir.x: "+normMoveDir.x);
 
         // Fire rays into x and y directions seperately based on moveDir.
         // X rays:
@@ -455,7 +455,7 @@ public class Character_CollisionDetection : MonoBehaviour
         float modSkinWidthY = skinWidth;
         float finalMoveDistX = 0f;
         float finalMoveDistY = 0f;
-        print("In Slide Collision method, Hit Left: "+leftHit+" Hit Right: "+rightHit);
+        //print("In Slide Collision method, Hit Left: "+leftHit+" Hit Right: "+rightHit);
 
         if (leftHit) {
             finalMoveDistX = shortestHitX+modSkinWidthX;
@@ -477,7 +477,7 @@ public class Character_CollisionDetection : MonoBehaviour
         else {
             finalMoveDistY = yMoveDist;
         }
-        print("In Slide Collision method final slide move distances X: "+finalMoveDistX+" and Y: "+finalMoveDistY);
+        //print("In Slide Collision method final slide move distances X: "+finalMoveDistX+" and Y: "+finalMoveDistY);
         return (finalMoveDistX, finalMoveDistY);
     }
 }

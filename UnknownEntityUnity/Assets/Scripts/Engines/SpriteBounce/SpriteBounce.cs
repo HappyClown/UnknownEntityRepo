@@ -4,33 +4,36 @@ using UnityEngine;
 
 public class SpriteBounce : MonoBehaviour
 {
-    [Header("To set per object part")]
-    public int bounces;
-    public int minBounces, maxBounces;
-    public float bounceHeight;
-    private float minBounceHeight, maxBounceHeight;
-    public float heightLossMult;
-    public AnimationCurve bounceCurve;
-    public float moveDist;
-    public float slidePercentOfDist;
-    public float startSpeed;
-    public float radius;
-    public ContactFilter2D contactFilter;
-    public float rotation;
-    [Header("Comes from outside.")]
+    [Header("To set")]
+    public SpriteRenderer spriteR;
     public Transform spriteToMoveTrans, spriteToBounceTrans;
-    public Vector2 direction;
-    [Header("Nothing For Now")]
-    public ScriptableObject sOSpriteBounce;
     public float testReduce = 0.01f;
+    [Header("Comes from outside")]
+    public bool inUse;
+    public Vector2 direction;
+    //public ScriptableObject sOSpriteBounce;
     private float curSpeed = 1f;
 
-    public void StartBounce() {
-
+    public void StartBounce(SO_SpriteBounce sBSO) {
+        inUse = true;
+        spriteR.sprite = sBSO.sprite;
+        direction = new Vector2(Random.Range(-1f,1f), Random.Range(-1f,1f));
+        this.gameObject.SetActive(true);
+        StartCoroutine(BouncingSpriteLerp(sBSO));
     }
 
-    IEnumerator BouncingSpriteLerp () {
-        yield return new WaitForSeconds(1f);
+    IEnumerator BouncingSpriteLerp (SO_SpriteBounce sBSO) {
+        // Grab the variables and values from the sprite bounce Scriptable Object.
+        float moveDist = sBSO.MoveDist;
+        float radius = sBSO.radius;
+        ContactFilter2D contactFilter = sBSO.contactFilter;
+        float startSpeed = sBSO.StartSpeed;
+        float slidePercentOfDist = sBSO.slidePercentOfDist;
+        int bounces = sBSO.Bounces;
+        float bounceHeight = sBSO.BounceHeight;
+        AnimationCurve bounceCurve = sBSO.bounceCurve;
+        float heightLossMult = sBSO.heightLossMult;
+        float targetZRotation = sBSO.Rotation;
         // Movement Variables.
         Vector2 curMainPos = spriteToMoveTrans.position;
         Vector2 startPos = spriteToMoveTrans.position;
@@ -78,18 +81,11 @@ public class SpriteBounce : MonoBehaviour
         bool movementDone = false;
         int curTarget = 0;
         curSpeed = startSpeed;
-
-        // // Set bounce landings distances.
-        // List<float> bounceDistances = new List<float>();
-        // float bounceLength = moveDist / bounces;
-        // for (int i = 1; i < bounces; i++) {
-        //     bounceDistances.Add(bounceLength*1);
-        // }
         // Bounce variables.
         int bounceCount = 0;
         float bounceTimer = 0f;
         float slideDist = slidePercentOfDist*moveDist;
-        print(slideDist);
+        //print(slideDist);
         float bounceSegDur = ((moveDist-slideDist)/bounces)/curSpeed;
         float yPos = 0f;
         float baseYPos = spriteToBounceTrans.localPosition.y;
@@ -97,6 +93,13 @@ public class SpriteBounce : MonoBehaviour
         float curBounceHeight = bounceHeight;
         float endY = curBounceHeight;
         bool bouncing = true;
+        // Rotation variables.
+        bool rotating = true;
+        float moveDuration = (moveDist-(slideDist*0.5f))/curSpeed;
+        float rotationDelta = targetZRotation/moveDuration;
+        Vector3 targetRotation = new Vector3(spriteToBounceTrans.eulerAngles.x, spriteToBounceTrans.eulerAngles.y, targetZRotation);
+        float zRotation;
+        //float rotationDelta = 
         // Move the object.
         while (!movementDone) {
             spriteToMoveTrans.position = Vector2.MoveTowards(spriteToMoveTrans.position, hitPositions[curTarget], curSpeed*Time.deltaTime);
@@ -127,6 +130,12 @@ public class SpriteBounce : MonoBehaviour
                 }
                 spriteToBounceTrans.localPosition = new Vector3(spriteToBounceTrans.localPosition.x, baseYPos+yPos, spriteToBounceTrans.localPosition.z);
             }
+            // Rotate the object.
+            if (rotating) {
+                zRotation = Mathf.MoveTowards(spriteToBounceTrans.eulerAngles.z, targetZRotation, rotationDelta*Time.deltaTime);
+                spriteToBounceTrans.eulerAngles = new Vector3(0f, 0f, zRotation);
+            }
+
             yield return null;
         }
     }

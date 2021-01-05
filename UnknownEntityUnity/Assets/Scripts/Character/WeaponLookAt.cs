@@ -5,16 +5,28 @@ using UnityEngine;
 public class WeaponLookAt : MonoBehaviour
 {
     public MouseInputs moIn;
+    public Transform pointerArrow;
     public bool lookAtEnabled = true;
+    public bool lookAtPointerArrow = true;
 
     void Update()
     {
         if (lookAtEnabled) {
-            this.transform.up = moIn.mousePosWorld2D - new Vector2(this.transform.position.x,this.transform.position.y);
+            if (lookAtPointerArrow) {
+                this.transform.up = pointerArrow.up;
+            }
+            else {
+                this.transform.up = moIn.mousePosWorld2D - new Vector2(this.transform.position.x,this.transform.position.y);
+            }
         }
     }
 
     public void ForceLookAtUpdate() {
-        this.transform.up = moIn.mousePosWorld2D - new Vector2(this.transform.position.x,this.transform.position.y);
+        if (lookAtPointerArrow) {
+            this.transform.up = pointerArrow.up;
+        }
+        else {
+            this.transform.up = moIn.mousePosWorld2D - new Vector2(this.transform.position.x,this.transform.position.y);
+        }
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1379459573666467777}
   - component: {fileID: 4125067177463298305}
   - component: {fileID: 728421919}
-  m_Layer: 8
+  m_Layer: 16
   m_Name: Barrel_13x16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,8 +159,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d7309375a56c174fbd7c1a90c786802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainSpriteR: {fileID: 4125067177463298305}
   hitColliderObj: {fileID: 2402366052101951815}
+  shadowObj: {fileID: 3534254947185923724}
+  obstacleCollider: {fileID: 728421919}
   clutterHealthSO: {fileID: 11400000, guid: 3e4779b290eff77409d3c566ebefcb81, type: 2}
+  barrelDestructionSO: {fileID: 11400000, guid: bdd63df2deedad345ac4d363d11499b3,
+    type: 2}
+  spriteBouncePool: {fileID: 0}
   currentDamage: 0
 --- !u!1 &3534254947185923724
 GameObject:

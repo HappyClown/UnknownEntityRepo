@@ -10,16 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5db72fb3a2b0c9c4b9b6e73baff81903, type: 3}
-  m_Name: SpriteBounce
+  m_Name: BarrelBit_04
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 542de6d573d32b64495578125bff8dd1, type: 3}
-  minMoveDist: 0.75
-  maxMoveDist: 1.5
+  sprite: {fileID: 21300000, guid: 7e4233deea7862c4c8a2e283c61390e9, type: 3}
+  minMoveDist: 1
+  maxMoveDist: 2
   slidePercentOfDist: 0.2
-  minStartSpeed: 0.75
-  maxStartSpeed: 1
-  minBounces: 2
+  minStartSpeed: 2.5
+  maxStartSpeed: 3.5
+  minBounces: 1
   maxBounces: 3
+  minBounceHeight: 0.1
+  maxBounceHeight: 0.2
   heightLossMult: 0.6
   bounceCurve:
     serializedVersion: 2
@@ -54,7 +56,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  radius: 0.2
+  radius: 0.05
   minRotation: 45
   maxRotation: 180
   contactFilter:
