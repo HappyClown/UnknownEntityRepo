@@ -264,7 +264,7 @@ MonoBehaviour:
   shadowObj: {fileID: 2459262383245923868}
   obstacleCollider: {fileID: 541878964}
   clutterHealthSO: {fileID: 11400000, guid: 5be2455770fb4624599652fa3569fdce, type: 2}
-  barrelDestructionSO: {fileID: 11400000, guid: f456b4ff33fc8634e90f8dbcf26d4f39,
+  clutterDestructionSO: {fileID: 11400000, guid: f456b4ff33fc8634e90f8dbcf26d4f39,
     type: 2}
   spriteBouncePool: {fileID: 0}
   currentDamage: 0

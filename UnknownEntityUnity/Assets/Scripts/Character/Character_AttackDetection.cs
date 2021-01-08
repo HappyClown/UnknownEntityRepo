@@ -56,7 +56,7 @@ public class Character_AttackDetection : MonoBehaviour
                             col.GetComponent<Enemy_Health>().ReceiveDamage(WeapAtkChain.DamageRoll);
                         }
                         else if (col.gameObject.CompareTag("Destructible")) {
-                            col.GetComponent<Clutter_Health>().ReceiveDamage(WeapAtkChain.DamageRoll);
+                            col.GetComponent<Clutter_Health>().ReceiveDamage(WeapAtkChain.DamageRoll, atkFXCol.transform.position, col.bounds.center);
                         }
                         //Debug.Log("Collider: " + col.gameObject.name + " was hit! Hit hit, hurraay!");
                     }

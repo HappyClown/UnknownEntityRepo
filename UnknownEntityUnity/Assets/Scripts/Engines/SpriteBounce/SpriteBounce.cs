@@ -14,10 +14,10 @@ public class SpriteBounce : MonoBehaviour
     //public ScriptableObject sOSpriteBounce;
     private float curSpeed = 1f;
 
-    public void StartBounce(SO_SpriteBounce sBSO) {
+    public void StartBounce(SO_SpriteBounce sBSO, Vector2 clutterHitDir) {
         inUse = true;
         spriteR.sprite = sBSO.sprite;
-        direction = new Vector2(Random.Range(-1f,1f), Random.Range(-1f,1f));
+        direction = (new Vector2(Random.Range(-1f,1f), Random.Range(-1f,1f))+clutterHitDir).normalized;
         this.gameObject.SetActive(true);
         StartCoroutine(BouncingSpriteLerp(sBSO));
     }

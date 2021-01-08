@@ -9,30 +9,33 @@ public class Clutter_Health : MonoBehaviour
     public GameObject shadowObj;
     public Collider2D obstacleCollider;
     public SO_Clutter_Health clutterHealthSO;
-    public SO_ObjectDestructionSpawner barrelDestructionSO;
+    public SO_ObjectDestructionSpawner clutterDestructionSO;
     public SpriteBouncePool spriteBouncePool;
 
     [Header("Read Only")]
     public float currentDamage;
-    public void ReceiveDamage(float damageTaken) {
+    public void ReceiveDamage(float damageTaken, Vector2 hittingColliderPos, Vector2 receivingColliderPos) {
         // Add the damage received to check if you are destroyed.
         currentDamage += damageTaken;
+        mainSpriteR.sprite = clutterDestructionSO.crackingSprite;
         if (currentDamage >= clutterHealthSO.totalHealth) {
-            StartCoroutine(ClutterDestruction());
+            StartCoroutine(ClutterDestruction(hittingColliderPos, receivingColliderPos));
         } 
     }
 
-    public IEnumerator ClutterDestruction() {
+    public IEnumerator ClutterDestruction(Vector2 hittingColliderPos, Vector2 receivingColliderPos) {
         // Turn off hit collider, change the sprite for the destroyed version, animate what needs animated.
         obstacleCollider.enabled = false;
-        mainSpriteR.sprite = barrelDestructionSO.crackingSprite;
+        mainSpriteR.sprite = clutterDestructionSO.crackingSprite;
         shadowObj.SetActive(false);
-        yield return new WaitForSeconds(barrelDestructionSO.crackedDur);
+        yield return new WaitForSeconds(clutterDestructionSO.crackedDur);
+        // To apply clutter movement based on an impact severity, normalize the direction vector and multiply it by the severity value.
+        Vector2 clutterHitDir = ((Vector2)receivingColliderPos - hittingColliderPos).normalized;
         SpriteBounce spriteBounce;
-        for (int i = 0; i < barrelDestructionSO.bouncingSpritesSO.Length; i++) {
+        for (int i = 0; i < clutterDestructionSO.bouncingSpritesSO.Length; i++) {
             spriteBounce = spriteBouncePool.RequestSpriteBounce();
-            spriteBounce.transform.position = (Vector2)this.transform.position + barrelDestructionSO.spawnPositions[i];
-            spriteBounce.StartBounce(barrelDestructionSO.bouncingSpritesSO[i]);
+            spriteBounce.transform.position = (Vector2)this.transform.position + clutterDestructionSO.spawnPositions[i];
+            spriteBounce.StartBounce(clutterDestructionSO.bouncingSpritesSO[i], clutterHitDir);
             yield return null;
         }
         mainSpriteR.sprite = null;
