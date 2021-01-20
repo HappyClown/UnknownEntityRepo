@@ -45,6 +45,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -125,6 +127,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -205,6 +209,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -285,6 +291,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -516,13 +524,20 @@ MonoBehaviour:
   objectsToTurnOff:
   - {fileID: 65464885}
   - {fileID: 1120722448}
-  - {fileID: 764420645428285956}
   - {fileID: 764420645729004495}
   - {fileID: 764420643784936870}
   - {fileID: 764420644226168832}
   - {fileID: 764420645499934842}
   - {fileID: 4653745868195490033}
   - {fileID: 339229295}
+  myHitCol: {fileID: 764420645428285962}
+  sODestructionSpawners:
+  - {fileID: 11400000, guid: 0c948ac9aa8f00d4091a11ef0035aaa7, type: 2}
+  - {fileID: 11400000, guid: d71e404067acf744eb73d01fad7f6b41, type: 2}
+  - {fileID: 11400000, guid: e731c33b43051234ab9bb5ae5ad73f74, type: 2}
+  spriteBouncePool: {fileID: 0}
+  amountToSpawn: 030000000100000001000000
+  random: 
 --- !u!114 &899193333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -873,7 +888,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 764420645729004495}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.01}
+  m_LocalPosition: {x: 0, y: 0.85, z: -0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 764420645824505557}
@@ -893,6 +908,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -978,6 +995,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

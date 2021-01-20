@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bf3e62b6c4c4f84abd5c24f16337f5e, type: 3}
+  m_Name: SkeletonBowBits_01
+  m_EditorClassIdentifier: 
+  crackingSprite: {fileID: 8449458792096274713, guid: 0f3f487b3b9f51140b5720f06283b162,
+    type: 3}
+  crackedDur: 0.03
+  destroyedSprite: {fileID: 0}
+  bouncingSpritesSO:
+  - {fileID: 11400000, guid: 1fa271935dea5d34db4c52e5eb1ae158, type: 2}
+  - {fileID: 11400000, guid: 082f1c88273d9dd4aaec7e6af9eb5ac8, type: 2}
+  - {fileID: 11400000, guid: 50ba4cb52106b204e9f7ba3d1f92e34b, type: 2}
+  spawnPositions:
+  - {x: 0.1, y: 0.5}
+  - {x: 0.1, y: 0.5}
+  - {x: 0.1, y: 0.5}

@@ -25,21 +25,30 @@ public class Enemy_Health : MonoBehaviour
         curHealth = maxHealth;
     }
     
-    public void ReceiveDamage(float damage) {
+    public void ReceiveDamage(float damage, Vector2 hittingColliderPos, Vector2 receivingColliderPos) {
         if (!alreadyDead) {
             curHealth -= damage * damageModifier;
             healthBar.AdjustHealthBar(maxHealth, curHealth);
+            Vector2 hitDir = ((Vector2)receivingColliderPos - hittingColliderPos).normalized;
             // Apply a 'stun' meaning, stop walking, stop attacking.
             if (canBeStunned) {
                 Stunned();
+                if (curHealth <= 0) {
+                    if (inHitReaction) {
+                        StopCoroutine(hitReactionCoroutine);
+                    }
+                    eRefs.eDeath.DeathSequence(hitDir);
+                    return;
+                    //alreadyDead = true;
+                }
                 // Get hit reaction. Sprite Animation and movement.
                 if (inHitReaction) {
                     // If you get hit while already in a hit reaction, stop the current one and start the new one.
                     StopCoroutine(hitReactionCoroutine);
-                    hitReactionCoroutine = StartCoroutine(HitReaction());
+                    hitReactionCoroutine = StartCoroutine(HitReaction(hitDir));
                 }
                 else {
-                    hitReactionCoroutine = StartCoroutine(HitReaction());
+                    hitReactionCoroutine = StartCoroutine(HitReaction(hitDir));
                 }
                 // If your health is 0, flag it in order to avoid entering a new hit reaction.
                 if (curHealth <= 0) {
@@ -48,7 +57,7 @@ public class Enemy_Health : MonoBehaviour
             }
             // If you cant be stunned and your health is 0, die immediately.
             else if (curHealth <= 0f) {
-                eRefs.eDeath.DeathSequence();
+                eRefs.eDeath.DeathSequence(hitDir);
             }
         }
     }
@@ -63,7 +72,7 @@ public class Enemy_Health : MonoBehaviour
         // to resume movement - eRefs.eFollowPath.allowPathUpdate = true;
     }
     
-    IEnumerator HitReaction() {
+    IEnumerator HitReaction(Vector2 hitDir) {
         inHitReaction = true;
         // Arbitrary list of objects to disable during hit reaction, Ex: bow for Ranged Skeletons
         //foreach(GameObject obj in objectsToDisable) { obj.SetActive(false); }
@@ -82,7 +91,7 @@ public class Enemy_Health : MonoBehaviour
         //foreach(GameObject obj in objectsToDisable) { obj.SetActive(true); }
         // Am I dead or do I resume my states.
         if (curHealth <= 0f) {
-            eRefs.eDeath.DeathSequence();
+            eRefs.eDeath.DeathSequence(hitDir);
         }
         else {
             eRefs.eAction.ResumeStateUpdates();

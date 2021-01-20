@@ -40,6 +40,6 @@ public class Clutter_Health : MonoBehaviour
         }
         mainSpriteR.sprite = null;
         hitColliderObj.SetActive(false);
-        print("Clutter destroyed, good job, you did it. You are just the best. Never give up.");
+        //print("Clutter destroyed, good job, you did it. You are just the best. Never give up.");
     }
 }

@@ -1,0 +1,469 @@
+Using pre-set license
+Built from '2020.2/release' branch; Version is '2020.2.1f1 (270dd8c3da1c) revision 2559448'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10  (10.0.0) 64bit' Language: 'en' Physical Memory: 16326 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2020.2.1f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+F:/_GAME PROTOTYPES/UnknownEntityRepo/UnknownEntityUnity
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+65350
+Successfully changed project path to: F:/_GAME PROTOTYPES/UnknownEntityRepo/UnknownEntityUnity
+F:/_GAME PROTOTYPES/UnknownEntityRepo/UnknownEntityUnity
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 58.36 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.2.1f1 (270dd8c3da1c)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path F:/_GAME PROTOTYPES/UnknownEntityRepo/UnknownEntityUnity/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1070 Ti (ID=0x1b82)
+    Vendor:   
+    VRAM:     8079 MB
+    Driver:   27.21.14.5730
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56932
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001736 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 63.67 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.888 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.001025 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 61.78 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.167 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.10 seconds
+Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2869 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 127.9 MB.
+System memory in use after: 128.1 MB.
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 3316.
+Total: 2.382200 ms (FindLiveObjects: 0.260600 ms CreateObjectMapping: 0.135400 ms MarkObjects: 1.923600 ms  DeleteObjects: 0.061700 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Sprites/Character_Knight
+  artifactKey: Guid(adb5a6341aaa8e8468a955f9bc431c41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight using Guid(adb5a6341aaa8e8468a955f9bc431c41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dba0120df865db576da27769f007fd7e') in 0.034590 seconds
+  Import took 0.039559 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 15.578235 seconds.
+  path: Assets/Sprites/Character_Knight/Running
+  artifactKey: Guid(1df39470e1c39c94db1a694170a2a5b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Running using Guid(1df39470e1c39c94db1a694170a2a5b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdf73210e86c78e08916fdfdf78fc8cd') in 0.008417 seconds
+  Import took 0.013753 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.025525 seconds.
+  path: Assets/Sprites/Character_Knight/Running
+  artifactKey: Guid(1df39470e1c39c94db1a694170a2a5b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Running using Guid(1df39470e1c39c94db1a694170a2a5b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdf73210e86c78e08916fdfdf78fc8cd') in 0.002454 seconds
+  Import took 0.009615 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 70.819020 seconds.
+  path: Assets/Sprites/Character_Knight/Knight_RunCycle_BackwardLoop.png
+  artifactKey: Guid(bb85ca5a93dc44840aa9c1ff0504abaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Knight_RunCycle_BackwardLoop.png using Guid(bb85ca5a93dc44840aa9c1ff0504abaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df9dc6555cea9b74e6f273684ab9b7ca') in 0.178167 seconds
+  Import took 0.184809 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.304632 seconds.
+  path: Assets/Sprites/Character_Knight/Knight_RunCycle_ForwardLoop.png
+  artifactKey: Guid(7f2b9e40db1ebc94e837f8af148ea043) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Knight_RunCycle_ForwardLoop.png using Guid(7f2b9e40db1ebc94e837f8af148ea043) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f830426c3f921c0b5307957eb9441203') in 0.020080 seconds
+  Import took 0.026394 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009495 seconds.
+  path: Assets/Sprites/Character_Knight/Knight_RunCycle_ForwardLoop.png
+  artifactKey: Guid(7f2b9e40db1ebc94e837f8af148ea043) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Knight_RunCycle_ForwardLoop.png using Guid(7f2b9e40db1ebc94e837f8af148ea043) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f830426c3f921c0b5307957eb9441203') in 0.010075 seconds
+  Import took 0.015444 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 14.537038 seconds.
+  path: Assets/Sprites/Character_Knight/Running/Knight_RunCycle_ForwardLoop.png
+  artifactKey: Guid(7f2b9e40db1ebc94e837f8af148ea043) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Running/Knight_RunCycle_ForwardLoop.png using Guid(7f2b9e40db1ebc94e837f8af148ea043) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d157c5bf410873d3e09b9aeaa36cca6') in 0.012333 seconds
+  Import took 0.018689 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.022480 seconds.
+  path: Assets/Sprites/Character_Knight/Running/Knight_RunCycle_ForwardLoop.png
+  artifactKey: Guid(7f2b9e40db1ebc94e837f8af148ea043) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Running/Knight_RunCycle_ForwardLoop.png using Guid(7f2b9e40db1ebc94e837f8af148ea043) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d157c5bf410873d3e09b9aeaa36cca6') in 0.007666 seconds
+  Import took 0.013294 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 92.382569 seconds.
+  path: Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardStart.png
+  artifactKey: Guid(0832ac2ab03c37a4baceee1fa08f37df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardStart.png using Guid(0832ac2ab03c37a4baceee1fa08f37df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b275b02fe537126bd0ffaa474bddbb0') in 0.019320 seconds
+  Import took 0.026242 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.003175 seconds.
+  path: Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardStart.png
+  artifactKey: Guid(0832ac2ab03c37a4baceee1fa08f37df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardStart.png using Guid(0832ac2ab03c37a4baceee1fa08f37df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b275b02fe537126bd0ffaa474bddbb0') in 0.028090 seconds
+  Import took 0.034791 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.692426 seconds.
+  path: Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardLoop.png
+  artifactKey: Guid(bb85ca5a93dc44840aa9c1ff0504abaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardLoop.png using Guid(bb85ca5a93dc44840aa9c1ff0504abaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a4d92ef52962d3f771d3895929490039') in 0.012425 seconds
+  Import took 0.018971 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.005540 seconds.
+  path: Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardLoop.png
+  artifactKey: Guid(bb85ca5a93dc44840aa9c1ff0504abaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardLoop.png using Guid(bb85ca5a93dc44840aa9c1ff0504abaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a4d92ef52962d3f771d3895929490039') in 0.008108 seconds
+  Import took 0.014935 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 48.204654 seconds.
+  path: Assets/Sprites/Character_Knight/RunCycles
+  artifactKey: Guid(9dc0f5af152a4474ba2b07955534a7b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/RunCycles using Guid(9dc0f5af152a4474ba2b07955534a7b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62cdc3fb51c49e4c32e18c5319aae322') in 0.007100 seconds
+  Import took 0.013127 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001818 seconds.
+  path: Assets/Sprites/Character_Knight/RunCycles
+  artifactKey: Guid(9dc0f5af152a4474ba2b07955534a7b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/RunCycles using Guid(9dc0f5af152a4474ba2b07955534a7b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62cdc3fb51c49e4c32e18c5319aae322') in 0.002518 seconds
+  Import took 0.008788 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 18.125971 seconds.
+  path: Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardLoop.png
+  artifactKey: Guid(bb85ca5a93dc44840aa9c1ff0504abaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardLoop.png using Guid(bb85ca5a93dc44840aa9c1ff0504abaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f6c193d60d67d55141fe95fdcd099cf') in 0.030553 seconds
+  Import took 0.035887 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001066 seconds.
+  path: Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardLoop.png
+  artifactKey: Guid(bb85ca5a93dc44840aa9c1ff0504abaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardLoop.png using Guid(bb85ca5a93dc44840aa9c1ff0504abaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f6c193d60d67d55141fe95fdcd099cf') in 0.017890 seconds
+  Import took 0.023185 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 32.201372 seconds.
+  path: Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardLoop.png
+  artifactKey: Guid(bb85ca5a93dc44840aa9c1ff0504abaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardLoop.png using Guid(bb85ca5a93dc44840aa9c1ff0504abaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f6ccecc35a05f070693cd59976aa3f04') in 0.021395 seconds
+  Import took 0.028688 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001959 seconds.
+  path: Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardLoop.png
+  artifactKey: Guid(bb85ca5a93dc44840aa9c1ff0504abaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardLoop.png using Guid(bb85ca5a93dc44840aa9c1ff0504abaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f6ccecc35a05f070693cd59976aa3f04') in 0.019275 seconds
+  Import took 0.025402 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 34.574273 seconds.
+  path: Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardStart.png
+  artifactKey: Guid(0832ac2ab03c37a4baceee1fa08f37df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardStart.png using Guid(0832ac2ab03c37a4baceee1fa08f37df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a1d7c151179195421949d7addd88040') in 0.017499 seconds
+  Import took 0.023056 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.024856 seconds.
+  path: Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardStart.png
+  artifactKey: Guid(0832ac2ab03c37a4baceee1fa08f37df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardStart.png using Guid(0832ac2ab03c37a4baceee1fa08f37df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a1d7c151179195421949d7addd88040') in 0.023663 seconds
+  Import took 0.029456 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.346659 seconds.
+  path: Assets/Sprites/Character_Knight/Running/Knight_RunCycle_ForwardStart.png
+  artifactKey: Guid(a948050ae311104499678dfa992ce82e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Running/Knight_RunCycle_ForwardStart.png using Guid(a948050ae311104499678dfa992ce82e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1530e4ab45ae8f8ba0a239046bb75f75') in 0.024191 seconds
+  Import took 0.030174 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000951 seconds.
+  path: Assets/Sprites/Character_Knight/Running/Knight_RunCycle_ForwardStart.png
+  artifactKey: Guid(a948050ae311104499678dfa992ce82e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Running/Knight_RunCycle_ForwardStart.png using Guid(a948050ae311104499678dfa992ce82e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1530e4ab45ae8f8ba0a239046bb75f75') in 0.006992 seconds
+  Import took 0.013320 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 26.126688 seconds.
+  path: Assets/Sprites/Character_Knight/Running/Knight_RunCycle_ForwardLoop.png
+  artifactKey: Guid(7f2b9e40db1ebc94e837f8af148ea043) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Running/Knight_RunCycle_ForwardLoop.png using Guid(7f2b9e40db1ebc94e837f8af148ea043) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b934239b574ac61da7833ace2d747128') in 0.024764 seconds
+  Import took 0.031165 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 14.008085 seconds.
+  path: Assets/Sprites/Character_Knight/Running/Knight_RunCycle_ForwardStart.png
+  artifactKey: Guid(a948050ae311104499678dfa992ce82e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Running/Knight_RunCycle_ForwardStart.png using Guid(a948050ae311104499678dfa992ce82e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df36306945c955b804d215f41006d3d6') in 0.016392 seconds
+  Import took 0.022066 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.007762 seconds.
+  path: Assets/Sprites/Character_Knight/Running/Knight_RunCycle_ForwardStart.png
+  artifactKey: Guid(a948050ae311104499678dfa992ce82e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Running/Knight_RunCycle_ForwardStart.png using Guid(a948050ae311104499678dfa992ce82e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df36306945c955b804d215f41006d3d6') in 0.010840 seconds
+  Import took 0.017138 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001365 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.69 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.104 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.68 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2760 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 125.5 MB.
+System memory in use after: 125.8 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3327.
+Total: 2.942200 ms (FindLiveObjects: 0.289800 ms CreateObjectMapping: 0.151600 ms MarkObjects: 2.478700 ms  DeleteObjects: 0.020700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001310 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.62 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.100 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2760 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.5 MB.
+System memory in use after: 126.7 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3329.
+Total: 4.202700 ms (FindLiveObjects: 0.743500 ms CreateObjectMapping: 0.379000 ms MarkObjects: 3.050400 ms  DeleteObjects: 0.028100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001161 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.032 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.60 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2760 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.6 MB.
+System memory in use after: 126.8 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3331.
+Total: 4.327700 ms (FindLiveObjects: 0.379500 ms CreateObjectMapping: 0.293500 ms MarkObjects: 3.629700 ms  DeleteObjects: 0.023500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001185 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.79 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.009 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.58 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2760 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.6 MB.
+System memory in use after: 126.9 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3333.
+Total: 4.254900 ms (FindLiveObjects: 0.876700 ms CreateObjectMapping: 0.411700 ms MarkObjects: 2.946500 ms  DeleteObjects: 0.018700 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 750.064046 seconds.
+  path: Assets/Sprites/Character_Knight/Running/Knight_RunCycle_ForwardLoop.png
+  artifactKey: Guid(7f2b9e40db1ebc94e837f8af148ea043) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Running/Knight_RunCycle_ForwardLoop.png using Guid(7f2b9e40db1ebc94e837f8af148ea043) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '356f4962a33ff713f173e43cd120f21b') in 0.058342 seconds
+  Import took 0.063703 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 9.153150 seconds.
+  path: Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardStart.png
+  artifactKey: Guid(0832ac2ab03c37a4baceee1fa08f37df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardStart.png using Guid(0832ac2ab03c37a4baceee1fa08f37df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cccbc3657cc2dbedfd8fc50be2fb9784') in 0.022304 seconds
+  Import took 0.028502 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.003311 seconds.
+  path: Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardStart.png
+  artifactKey: Guid(0832ac2ab03c37a4baceee1fa08f37df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardStart.png using Guid(0832ac2ab03c37a4baceee1fa08f37df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cccbc3657cc2dbedfd8fc50be2fb9784') in 0.013983 seconds
+  Import took 0.019870 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.601336 seconds.
+  path: Assets/Sprites/Character_Knight/Running/Knight_RunCycle_ForwardStart.png
+  artifactKey: Guid(a948050ae311104499678dfa992ce82e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Running/Knight_RunCycle_ForwardStart.png using Guid(a948050ae311104499678dfa992ce82e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1fecae445383ff6f4b828bad46f13136') in 0.017533 seconds
+  Import took 0.024696 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.004646 seconds.
+  path: Assets/Sprites/Character_Knight/Running/Knight_RunCycle_ForwardStart.png
+  artifactKey: Guid(a948050ae311104499678dfa992ce82e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Running/Knight_RunCycle_ForwardStart.png using Guid(a948050ae311104499678dfa992ce82e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1fecae445383ff6f4b828bad46f13136') in 0.014738 seconds
+  Import took 0.024402 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001561 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.208 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.60 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2760 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.5 MB.
+System memory in use after: 126.7 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3336.
+Total: 3.183200 ms (FindLiveObjects: 0.505200 ms CreateObjectMapping: 0.307500 ms MarkObjects: 2.353100 ms  DeleteObjects: 0.016000 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 41.467802 seconds.
+  path: Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardStart.png
+  artifactKey: Guid(0832ac2ab03c37a4baceee1fa08f37df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Character_Knight/Running/Knight_RunCycle_BackwardStart.png using Guid(0832ac2ab03c37a4baceee1fa08f37df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '343512d15f66ccf84f34ce60b6222b52') in 0.099767 seconds
+  Import took 0.113846 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001825 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.62 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.010 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.61 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2760 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.7 MB.
+System memory in use after: 126.9 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3339.
+Total: 3.282800 ms (FindLiveObjects: 0.402200 ms CreateObjectMapping: 0.306400 ms MarkObjects: 2.527600 ms  DeleteObjects: 0.045400 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

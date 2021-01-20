@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3deac6fe91c2e044abba8e3f625cbbb, type: 3}
+  m_Name: Firefly01_AnimValues
+  m_EditorClassIdentifier: 
+  totalDuration: 2
+  sprites:
+  - {fileID: -8451752369490405339, guid: 07a21c858fc76b84d88ea86a1c266b5a, type: 3}
+  - {fileID: -2036352711901840686, guid: 07a21c858fc76b84d88ea86a1c266b5a, type: 3}
+  - {fileID: -4562118610380826609, guid: 07a21c858fc76b84d88ea86a1c266b5a, type: 3}
+  - {fileID: 5593410667545163955, guid: 07a21c858fc76b84d88ea86a1c266b5a, type: 3}
+  - {fileID: 2592971266680790034, guid: 07a21c858fc76b84d88ea86a1c266b5a, type: 3}
+  - {fileID: 3632607211995183130, guid: 07a21c858fc76b84d88ea86a1c266b5a, type: 3}
+  - {fileID: 211852121629497288, guid: 07a21c858fc76b84d88ea86a1c266b5a, type: 3}
+  - {fileID: -8998636335124874292, guid: 07a21c858fc76b84d88ea86a1c266b5a, type: 3}
+  - {fileID: 2304333876060377619, guid: 07a21c858fc76b84d88ea86a1c266b5a, type: 3}
+  - {fileID: -2821137263900594111, guid: 07a21c858fc76b84d88ea86a1c266b5a, type: 3}
+  - {fileID: 8836236451393248014, guid: 07a21c858fc76b84d88ea86a1c266b5a, type: 3}
+  - {fileID: -5225837933338027680, guid: 07a21c858fc76b84d88ea86a1c266b5a, type: 3}
+  - {fileID: -5367845784885533278, guid: 07a21c858fc76b84d88ea86a1c266b5a, type: 3}
+  - {fileID: 2915143411994634752, guid: 07a21c858fc76b84d88ea86a1c266b5a, type: 3}
+  - {fileID: 3938315614083734923, guid: 07a21c858fc76b84d88ea86a1c266b5a, type: 3}
+  - {fileID: 5624406837842495983, guid: 07a21c858fc76b84d88ea86a1c266b5a, type: 3}
+  - {fileID: -2829016753437943362, guid: 07a21c858fc76b84d88ea86a1c266b5a, type: 3}
+  - {fileID: -6676562334562475568, guid: 07a21c858fc76b84d88ea86a1c266b5a, type: 3}
+  changeSprites:
+  - 0
+  - 0.11
+  - 0.22
+  - 0.33
+  - 0.44
+  - 0.55
+  - 0.66
+  - 0.77
+  - 0.88
+  - 0.99
+  - 1.1
+  - 1.21
+  - 1.32
+  - 1.43
+  - 1.54
+  - 1.65
+  - 1.76
+  - 1.87
+  loop: 0
+  loopAmnt: 0

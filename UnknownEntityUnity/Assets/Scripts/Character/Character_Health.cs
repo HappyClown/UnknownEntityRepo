@@ -11,6 +11,7 @@ public class Character_Health : MonoBehaviour
     public HealthBar healthBar;
     public float maximumHealth;
     public  float currentHealth;
+    public float takeHitCamNudge = 0.05f;
     // Not sure if this is gonna stay here, hit sprites.
     [Header("Get Hit Animation")]
     public SpriteRenderer spriteR;
@@ -37,9 +38,9 @@ public class Character_Health : MonoBehaviour
         // Hit FX.
         //HitEffect();
         // Slow down time.
-        TimeSlow.StartTimeSlow(5, 0f);
+        TimeSlow.StartTimeSlow(10, 0f);
         // Set camera nudge backwards from the hit.
-        CameraFollow.CameraNudge_St(normHitDirection, 0.15f);
+        CameraFollow.CameraNudge_St(normHitDirection, takeHitCamNudge);
         //StartCoroutine(TimeSlow.SlowTimeScale(5, 0));
         // Can be transfered to the update.
         // Switch this for an Interumpt/Stun, stop all input, attacks, etc. Can also add variables for knockback and stun duration, based on damage received, buffs, damage immunity, etc.

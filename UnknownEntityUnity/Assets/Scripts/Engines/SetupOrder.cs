@@ -17,20 +17,21 @@ public class SetupOrder : MonoBehaviour
     }
 
     void Update() {
-        if (Input.GetKeyDown("c")) {
-            walkerRoomGen.SetupCreateLevel();
-            aGrid.SetupCreateGrid();
-        }
-        if (Input.GetKeyDown("v")) {
-            premadeRoomLvlGen.SetupCreateLevel();
-            aGrid.SetupCreateGrid();
-        }
-        if (Input.GetKeyDown("b")) {
-            StartCoroutine(SetupThree());
-        }
-        if (Input.GetKeyDown("n")) {
-            aGrid.SetupCreateGrid();
-        }
+        // Cant have both this input type and the newer one together anymore.
+        // if (Input.GetKeyDown("c")) {
+        //     walkerRoomGen.SetupCreateLevel();
+        //     aGrid.SetupCreateGrid();
+        // }
+        // if (Input.GetKeyDown("v")) {
+        //     premadeRoomLvlGen.SetupCreateLevel();
+        //     aGrid.SetupCreateGrid();
+        // }
+        // if (Input.GetKeyDown("b")) {
+        //     StartCoroutine(SetupThree());
+        // }
+        // if (Input.GetKeyDown("n")) {
+        //     aGrid.SetupCreateGrid();
+        // }
     }
     IEnumerator SetupThree() {
         lvlGrid.CreateLevel();
