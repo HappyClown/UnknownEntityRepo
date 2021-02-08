@@ -80,7 +80,7 @@ public class RangedSkeleton_Actions : Enemy_Actions
         if (debugs) print("ChaseTarget: In state.");
         // -- EXIT CONDITION --
         // If the player is too close.
-        if (eRefs.SqrDistToTarget(this.transform.position, eRefs.PlayerPos) < minRunAwayDistSqr){
+        if (eRefs.SqrDistToTarget(this.transform.position, eRefs.PlayerShadowPos) < minRunAwayDistSqr){
             if (debugs) print("ChaseTarget: Switching state to: RunAway");
             brain.SetActiveState(RunAway);
             stateStarted = false;

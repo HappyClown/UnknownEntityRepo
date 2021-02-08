@@ -66,7 +66,7 @@ public class ShieldSkeleton : Enemy_Specific
             // Minimum amount of time spent with shield up.
             if (timer > minShieldUpTime) {
                 // Check if the target is within ShieldUp range.
-                if (eRefs.SqrDistToTarget(this.transform.position, eRefs.PlayerPos) > shieldUpRangeSqr) {
+                if (eRefs.SqrDistToTarget(this.transform.position, eRefs.PlayerShadowPos) > shieldUpRangeSqr) {
                     ShieldDown();
                     break;
                 }

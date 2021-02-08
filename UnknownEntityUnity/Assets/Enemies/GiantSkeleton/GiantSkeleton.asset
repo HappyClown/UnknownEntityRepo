@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd75fb4af43a6ee429f7b6952032c406, type: 3}
+  m_Name: GiantSkeleton
+  m_EditorClassIdentifier: 
+  name: Giant Skeleton
+  maximumLife: 60
+  minDamage: 10
+  maxDamage: 12
+  attackCooldown: 2
+  sprite: {fileID: 4115683936894623653, guid: c9bb8344f2fe5a8408d1e5128eb1273b, type: 3}
+  atkRange: 1.75
+  aggroRange: 20
+  walkingSprite: {fileID: 4115683936894623653, guid: c9bb8344f2fe5a8408d1e5128eb1273b,
+    type: 3}
+  walkingSprites:
+  - {fileID: 7164892864010224627, guid: c9bb8344f2fe5a8408d1e5128eb1273b, type: 3}
+  - {fileID: 30000139738644894, guid: c9bb8344f2fe5a8408d1e5128eb1273b, type: 3}
+  - {fileID: 4115683936894623653, guid: c9bb8344f2fe5a8408d1e5128eb1273b, type: 3}
+  - {fileID: 883888833924414315, guid: c9bb8344f2fe5a8408d1e5128eb1273b, type: 3}
+  - {fileID: 5082551990243362152, guid: c9bb8344f2fe5a8408d1e5128eb1273b, type: 3}
+  - {fileID: -6127114797479788072, guid: c9bb8344f2fe5a8408d1e5128eb1273b, type: 3}
+  lerpTurnRotations: 1
+  moveSpeed: 1
+  turnSpeed: 5
+  turnDst: 0
+  slowDown: 1
+  slowDownDist: 1
+  intelligence: 1
+  animSprites: []
+  animEvents: []
+  atkCol: {fileID: 0}
+  colTimingIndex: 0
+  events: []

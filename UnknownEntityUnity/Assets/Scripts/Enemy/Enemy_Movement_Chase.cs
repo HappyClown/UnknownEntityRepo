@@ -9,8 +9,8 @@ public class Enemy_Movement_Chase : MonoBehaviour
 
     // Set movement target to Player.
     public void AssignChaseTarget() {
-        if (eRefs.eFollowPath.target != eRefs.plyrTrans) {
-            eRefs.eFollowPath.target = eRefs.plyrTrans;
+        if (eRefs.eFollowPath.target != eRefs.playerShadow) {
+            eRefs.eFollowPath.target = eRefs.playerShadow;
         }
     }
 }

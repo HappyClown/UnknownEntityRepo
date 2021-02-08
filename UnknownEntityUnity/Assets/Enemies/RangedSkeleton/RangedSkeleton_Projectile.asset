@@ -15,7 +15,9 @@ MonoBehaviour:
   minDamage: 3
   maxDamage: 4
   duration: 4
-  speed: 8
+  speed: 10
+  spawnDistance: 0
+  destroyOnContact: 0
   animated: 1
   animTotalDuration: 0.3
   animSprites:
@@ -33,8 +35,10 @@ MonoBehaviour:
   - 0.2
   - 0.25
   animClip: {fileID: 0}
+  colStartTime: 0
+  colEndTime: 99
   sprite: {fileID: -1485791937876538584, guid: e5039b92be0c3664c885aea11427f502, type: 3}
-  col: {fileID: 8841350935378987668, guid: ba60550c58049894c8b74ffe6f3d6a15, type: 3}
+  col: {fileID: 1417505356, guid: ba60550c58049894c8b74ffe6f3d6a15, type: 3}
   contactFilter:
     useTriggers: 0
     useLayerMask: 1
@@ -44,7 +48,7 @@ MonoBehaviour:
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 229632
+      m_Bits: 231680
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0

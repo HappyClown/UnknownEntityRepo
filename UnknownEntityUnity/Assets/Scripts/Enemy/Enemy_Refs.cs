@@ -7,7 +7,8 @@ public class Enemy_Refs : MonoBehaviour
     [Header("Variables States")]
     public Sprite walkingSprite;
     [Header("General Enemy Refs")]
-    public Transform plyrTrans;
+    public Transform playerShadow;
+    public Transform playerCenter;
     public SpriteRenderer eSpriteR;
     public LayerMask losLayerMask;
     [Header("Enemy Scripts")]
@@ -19,9 +20,14 @@ public class Enemy_Refs : MonoBehaviour
     public Enemy_Health eHealth;
     public Enemy_Death eDeath;
     public SO_EnemyBase eSO;
-    public Vector3 PlayerPos {
+    public Vector3 PlayerShadowPos {
         get{
-            return plyrTrans.position;
+            return playerShadow.position;
+        }
+    }
+    public Vector3 PlayerCenterPos {
+        get{
+            return playerCenter.position;
         }
     }
 

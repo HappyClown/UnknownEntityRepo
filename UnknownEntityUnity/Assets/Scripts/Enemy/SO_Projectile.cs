@@ -11,9 +11,11 @@ public class SO_Projectile : ScriptableObject
         get {
             return Random.Range(minDamage, maxDamage);
         }
-    }    
+    }
     public float duration;
     public float speed;
+    public float spawnDistance;
+    public bool destroyOnContact;
     [Header("Projectile Animation")]
     public bool animated;
     public float animTotalDuration;
@@ -21,8 +23,12 @@ public class SO_Projectile : ScriptableObject
     public float[] animTimings;
     public AnimationClip animClip; 
 
+    [Header("Collider")]
+    //public bool activeOnStart;
+    public float colStartTime = 0f; 
+    public float colEndTime = 99f;
     public Sprite sprite;
-    public Collider2D col;
+    public PolygonCollider2D col;
     public ContactFilter2D contactFilter;
     public SO_ImpactFX sO_ImpactFX;
 

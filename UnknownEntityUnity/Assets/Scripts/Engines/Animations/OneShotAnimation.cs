@@ -5,6 +5,21 @@ using UnityEngine;
 public class OneShotAnimation : MonoBehaviour
 {
     public SpriteRenderer spriteR;
+    [Header("Assign Only For Tests")]
+    public bool startOnAwake = true;
+    public SO_AnimationValues sOAnimTemp;
+    public InputMaster input;
+
+    void Awake() {
+            input = new InputMaster();
+            input.Player.Enable();
+            if (startOnAwake) { StartAnimation(sOAnimTemp); }
+    }
+    void Update() {
+        if (input.Player.Interact.triggered) {
+            StartAnimation(sOAnimTemp);
+        }
+    }
 
     public void StartAnimation(SO_AnimationValues sOAnimValues) {
         StartCoroutine(PlayAnimation(sOAnimValues));
@@ -15,6 +30,8 @@ public class OneShotAnimation : MonoBehaviour
         int spriteCount = 0;
         int loopCount = 0;
         bool playing = true;
+        spriteR.color = sOAV.color;
+        yield return new WaitForSeconds(sOAV.Cooldown);
         while (playing) {
             timer += Time.deltaTime;
             if (timer > sOAV.changeSprites[spriteCount]) {
@@ -28,15 +45,24 @@ public class OneShotAnimation : MonoBehaviour
                     if (sOAV.loopAmnt > 0 ) {
                         loopCount++;
                         if (loopCount >= sOAV.loopAmnt) {
+                            spriteR.sprite = null;
                             playing = false;
                         }
                     }
-                    else {
-                        timer = 0f;
-                        spriteCount = 0;
+                    timer = 0f;
+                    spriteCount = 0;
+                    if (sOAV.maxCooldown > 0) {
+                        if (sOAV.spriteOnCooldown) {
+                            spriteR.sprite = sOAV.cooldownSprite;
+                        }
+                        else {
+                            spriteR.sprite = null;
+                        }
+                        yield return new WaitForSeconds(sOAV.Cooldown);
                     }
                 }
                 else {
+                    spriteR.sprite = null;
                     playing = false;
                 }
             }

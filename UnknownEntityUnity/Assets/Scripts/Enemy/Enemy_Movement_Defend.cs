@@ -65,7 +65,7 @@ public class Enemy_Movement_Defend : MonoBehaviour
 
     // If the player is closer to the allyToDefend, start chasing the player directly.
     public bool PlayerCloserToAlly() {
-        if (eRefs.SqrDistToTarget(allyTrans.position, eRefs.PlayerPos) < eRefs.SqrDistToTarget(allyTrans.position, this.transform.position)) {
+        if (eRefs.SqrDistToTarget(allyTrans.position, eRefs.PlayerShadowPos) < eRefs.SqrDistToTarget(allyTrans.position, this.transform.position)) {
             return true;
         }
         return false;
@@ -76,16 +76,16 @@ public class Enemy_Movement_Defend : MonoBehaviour
         // Get the defense position based on allyToDefend and player positions.
         defensePosTokenTrans.position = GetDefensePositionCircleCast();
         float updateDistDeltaSqr = updateDistDelta*updateDistDelta;
-        Vector3 plyrOldPos = eRefs.PlayerPos;
+        Vector3 plyrOldPos = eRefs.PlayerShadowPos;
         Vector3 allyOldPos = allyTrans.position;
         yield return null;
         // If the player and the allyToDefend together moved more then the update distance, request a new position.
         while(true) {
-            if (eRefs.SqrDistToTarget(plyrOldPos, eRefs.PlayerPos) + (allyTrans.position - allyOldPos).sqrMagnitude > updateDistDeltaSqr) {
+            if (eRefs.SqrDistToTarget(plyrOldPos, eRefs.PlayerShadowPos) + (allyTrans.position - allyOldPos).sqrMagnitude > updateDistDeltaSqr) {
                 defensePosTokenTrans.position = GetDefensePositionCircleCast();
                 //print(defensePosTokenTrans.position);
                 // Set the position when a position was last requested.
-                plyrOldPos = eRefs.PlayerPos;
+                plyrOldPos = eRefs.PlayerShadowPos;
                 allyOldPos = allyTrans.position;
             }
             yield return new WaitForSeconds(updateFrequency);
@@ -94,7 +94,7 @@ public class Enemy_Movement_Defend : MonoBehaviour
 
     // CircleCast from the allyToDefend towards the player with a distance of the defense tightness. If it hits an obstacle adjust the position to x distance from the obstacle hit.
     Vector3 GetDefensePositionCircleCast() {
-        Vector2 dirToPlyr = eRefs.NormDirToTargetV2(allyTrans.position, eRefs.PlayerPos);
+        Vector2 dirToPlyr = eRefs.NormDirToTargetV2(allyTrans.position, eRefs.PlayerShadowPos);
         RaycastHit2D hit = Physics2D.CircleCast(allyTrans.position, 0.25f, dirToPlyr, distFromAlly, eRefs.losLayerMask);
         if (hit) {
             // If it hits something get the position from the ally along a pth towards the player.
@@ -109,12 +109,12 @@ public class Enemy_Movement_Defend : MonoBehaviour
     // Unused.
     Vector3 GetDistPositionFromPath() {
         // Get the position on the path from the allyToDefend towards the player, at a certain distance from the allyToDefend.
-        return Pathfinding.GetDistAlongPath(allyTrans.position, eRefs.PlayerPos, distFromAlly, eRefs.eSO.intelligence);
+        return Pathfinding.GetDistAlongPath(allyTrans.position, eRefs.PlayerShadowPos, distFromAlly, eRefs.eSO.intelligence);
     }
 
     void GoToDefensePosition() {
         // Request a path to the position of the distance along a path from the allyToDefend to the player.
-        newTokenPos = Pathfinding.GetDistAlongPath(allyTrans.position, eRefs.PlayerPos, distFromAlly, eRefs.eSO.intelligence);
+        newTokenPos = Pathfinding.GetDistAlongPath(allyTrans.position, eRefs.PlayerShadowPos, distFromAlly, eRefs.eSO.intelligence);
         eRefs.eFollowPath.CustomPathRequest(newTokenPos);
     }
 }

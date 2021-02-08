@@ -33,11 +33,11 @@ public class Enemy_Attack : MonoBehaviour
             // Check if im not already attacking. Set back to true in the coroutine.
             if (!attacking) {
                 // Check if the target is within attack range.
-                float distToTargetSqr = (eRefs.PlayerPos - this.transform.position).sqrMagnitude;
+                float distToTargetSqr = (eRefs.PlayerCenterPos - this.transform.position).sqrMagnitude;
                 float sqrAtkRange = eRefs.eSO.atkRange * eRefs.eSO.atkRange;
                 if (distToTargetSqr <= sqrAtkRange) {
                     // Check to see if there are obstacles in the way.
-                    if (!Physics2D.Raycast(this.transform.position, eRefs.PlayerPos - this.transform.position, eRefs.eSO.atkRange, blockLOSLayers)) {
+                    if (!Physics2D.Raycast(this.transform.position, eRefs.PlayerCenterPos - this.transform.position, eRefs.eSO.atkRange, blockLOSLayers)) {
                         // Trigger Attack coroutine.
                         StartCoroutine(Attack());
                     }
@@ -56,7 +56,7 @@ public class Enemy_Attack : MonoBehaviour
         float timer = 0f;
         int animIndex = 0;
         // Get the attack direction as soon as the attack is triggered.
-        attackDir = eRefs.NormDirToTargetV2(atkOrigin.position, eRefs.PlayerPos);
+        attackDir = eRefs.NormDirToTargetV2(atkOrigin.position, eRefs.PlayerCenterPos);
         //Debug.DrawLine(target.position, this.transform.position, Color.magenta, enemy.animTimings[enemy.animSprites.Length-1]);
         // Timer based attack loop.
         while (attacking) {

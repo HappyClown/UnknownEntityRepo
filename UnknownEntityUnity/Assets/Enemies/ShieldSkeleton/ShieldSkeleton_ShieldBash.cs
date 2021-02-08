@@ -16,6 +16,7 @@ public class ShieldSkeleton_ShieldBash : MonoBehaviour
     public float moveDist, moveDur;
     public float minAtkDamage, maxAtkDamage;
     public SO_ImpactFX sO_ImpactFX;
+    public Transform attackDirPoint;
     Vector2 atkDirNorm;
     //Vector2 startPos, endPos;
     Vector2 startMovePos, endMovePos;
@@ -57,9 +58,9 @@ public class ShieldSkeleton_ShieldBash : MonoBehaviour
         // Check if im currently attacking and if its off cooldown.
         if (!inBash && cdTimer >= cooldown) {
             // Check if the target is within attack range.
-            if (eRefs.SqrDistToTarget(eRefs.PlayerPos, this.transform.position) <= sqrAtkRange) {
+            if (eRefs.SqrDistToTarget(eRefs.PlayerCenterPos, attackDirPoint.position) <= sqrAtkRange) {
                 // Check to see if there are obstacles in the way.
-                if (!Physics2D.Raycast(this.transform.position, (Vector2)eRefs.PlayerPos - (Vector2)this.transform.position, eRefs.DistToTarget(this.transform.position, eRefs.PlayerPos), eRefs.losLayerMask)) {
+                if (!Physics2D.Raycast(attackDirPoint.position, (Vector2)eRefs.PlayerCenterPos - (Vector2)attackDirPoint.position, eRefs.DistToTarget(attackDirPoint.position, eRefs.PlayerCenterPos), eRefs.losLayerMask)) {
                     return true;
                 }
             }
@@ -77,8 +78,8 @@ public class ShieldSkeleton_ShieldBash : MonoBehaviour
         float timer = 0f;
         int spriteStep = 0;
         int eventStep = 0;
-        eRefs.eFollowPath.flip.PredictFlip(this.transform.position, eRefs.PlayerPos);
-        attackDir = eRefs.NormDirToTargetV2(this.transform.position, eRefs.PlayerPos);
+        eRefs.eFollowPath.flip.PredictFlip(this.transform.position, eRefs.PlayerShadowPos);
+        attackDir = eRefs.NormDirToTargetV2(attackDirPoint.position, eRefs.PlayerCenterPos);
         while (timer < totalDuration) {
             timer += Time.deltaTime;
             if (spriteStep < spriteChanges.Length && timer > spriteChanges[spriteStep]) {
@@ -94,7 +95,7 @@ public class ShieldSkeleton_ShieldBash : MonoBehaviour
             yield return null;
         }
         StartCoroutine(Cooldown());
-        eRefs.eFollowPath.allowPathUpdate = true;
+        //eRefs.eFollowPath.allowPathUpdate = true;
         inBash = false;
     }
 
@@ -162,6 +163,7 @@ public class ShieldSkeleton_ShieldBash : MonoBehaviour
                     hitTransforms.Add(col.transform);
                 }
                 else if (col.CompareTag("Destructible")) {
+                    col.GetComponent<Clutter_Health>().ReceiveDamage(Damage, atkCol.transform.position, col.bounds.center);
                     hitTransforms.Add(col.transform);
                     // Get destructible script and apply damage to the object.
                 }

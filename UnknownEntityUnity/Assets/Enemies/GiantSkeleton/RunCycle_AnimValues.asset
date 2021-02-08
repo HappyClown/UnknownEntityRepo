@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3deac6fe91c2e044abba8e3f625cbbb, type: 3}
+  m_Name: RunCycle_AnimValues
+  m_EditorClassIdentifier: 
+  loop: 1
+  loopAmnt: 0
+  spriteOnCooldown: 1
+  cooldownSprite: {fileID: 4115683936894623653, guid: c9bb8344f2fe5a8408d1e5128eb1273b,
+    type: 3}
+  minCooldown: 2
+  maxCooldown: 2
+  color: {r: 1, g: 1, b: 1, a: 1}
+  totalDuration: 1
+  sprites:
+  - {fileID: 7164892864010224627, guid: c9bb8344f2fe5a8408d1e5128eb1273b, type: 3}
+  - {fileID: 30000139738644894, guid: c9bb8344f2fe5a8408d1e5128eb1273b, type: 3}
+  - {fileID: 4115683936894623653, guid: c9bb8344f2fe5a8408d1e5128eb1273b, type: 3}
+  - {fileID: 883888833924414315, guid: c9bb8344f2fe5a8408d1e5128eb1273b, type: 3}
+  - {fileID: 5082551990243362152, guid: c9bb8344f2fe5a8408d1e5128eb1273b, type: 3}
+  - {fileID: -6127114797479788072, guid: c9bb8344f2fe5a8408d1e5128eb1273b, type: 3}
+  changeSprites:
+  - 0
+  - 0.14
+  - 0.28
+  - 0.5
+  - 0.66
+  - 0.78

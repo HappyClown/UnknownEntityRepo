@@ -66,7 +66,7 @@ public class RangedSkeleton_Bow : MonoBehaviour
         //the bow transform.up = the normdirtotargetV2
         //make the initial rotation smooth? sometimes things too smooth make them more confusing
         // Vector direction from the bow's origin to the target
-        bowDirToTarget = eRefs.NormDirToTargetV2(bowGameObject.transform.position, eRefs.PlayerPos);
+        bowDirToTarget = eRefs.NormDirToTargetV2(bowGameObject.transform.position, eRefs.PlayerCenterPos);
         bowGameObject.transform.up = bowDirToTarget;
     }
 
@@ -100,7 +100,7 @@ public class RangedSkeleton_Bow : MonoBehaviour
             //could put an active events section, which would mean things that need to occur every frame of this animation or for a portion of time based on a bool check, could set up both the recurring method and the bool to check against using an inspector system as mentionned in the steps to make the script generic.
             if (rotateBow) {
                 AdjustBowOrientation();
-                flip.FlipTowards(this.transform.position, eRefs.PlayerPos);
+                flip.FlipTowards(this.transform.position, eRefs.PlayerShadowPos);
             }
             yield return null;
         }

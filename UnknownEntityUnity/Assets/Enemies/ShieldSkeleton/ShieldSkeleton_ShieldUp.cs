@@ -7,7 +7,7 @@ public class ShieldSkeleton_ShieldUp : MonoBehaviour
     public Enemy_Refs eRefs;
     [Header("ShieldUp Special")]
     public Sprite shieldUpSprite;
-    public SpriteRenderer shieldSpriteR;
+    //public SpriteRenderer shieldSpriteR;
     [Range(0,1)]
     public float shieldUpSpeedMod = 0.5f;
     [Range(0,1)]
@@ -26,7 +26,7 @@ public class ShieldSkeleton_ShieldUp : MonoBehaviour
 
     void Update() { // This could be in a Coroutine.
         // Check if the target is within ShieldUp range.
-        if (!onCooldown && !shieldIsUp && !forceShieldDown && eRefs.SqrDistToTarget(this.transform.position, eRefs.PlayerPos) <= shieldUpRangeSqr ) {
+        if (!onCooldown && !shieldIsUp && !forceShieldDown && eRefs.SqrDistToTarget(this.transform.position, eRefs.PlayerShadowPos) <= shieldUpRangeSqr ) {
             ShieldUp();
         }
     }
@@ -36,7 +36,7 @@ public class ShieldSkeleton_ShieldUp : MonoBehaviour
         shieldIsUp = true;
         eRefs.eHealth.canBeStunned = false;
         //eRefs.walkingSprite = shieldUpSprite;
-        shieldSpriteR.enabled = true;
+        //shieldSpriteR.enabled = true;
         eRefs.eFollowPath.speedModifier *= shieldUpSpeedMod;
         eRefs.eHealth.damageModifier *= shieldUpDamageMod;
         // Change the walking sprite array to the shield up sprites.
@@ -50,7 +50,7 @@ public class ShieldSkeleton_ShieldUp : MonoBehaviour
             // Minimum amount of time spent with shield up.
             if (timer > minShieldUpTime) {
                 // Check if the target is within ShieldUp range.
-                if (eRefs.SqrDistToTarget(this.transform.position, eRefs.PlayerPos) > shieldUpRangeSqr) {
+                if (eRefs.SqrDistToTarget(this.transform.position, eRefs.PlayerShadowPos) > shieldUpRangeSqr) {
                     ShieldDown();
                     break;
                 }
@@ -65,7 +65,7 @@ public class ShieldSkeleton_ShieldUp : MonoBehaviour
         shieldIsUp = false;
         eRefs.eHealth.canBeStunned = true;
         //eRefs.walkingSprite = eRefs.eSO.walkingSprite;
-        shieldSpriteR.enabled = false;
+        //shieldSpriteR.enabled = false;
         eRefs.eFollowPath.speedModifier /= shieldUpSpeedMod;
         eRefs.eHealth.damageModifier /= shieldUpDamageMod;
         // Set the walk cycle back to the shield down walk cycle.

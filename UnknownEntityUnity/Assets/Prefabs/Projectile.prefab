@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3602225322644098705}
   - component: {fileID: 3602225322644098704}
-  - component: {fileID: 3602225322644098706}
+  - component: {fileID: 4796666435722800295}
   - component: {fileID: 3602225322644098707}
   m_Layer: 0
   m_Name: Projectile
@@ -47,9 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inUse: 0
   mySpriteR: {fileID: 3602225322644098707}
-  myCol: {fileID: 3602225322644098706}
---- !u!58 &3602225322644098706
-CircleCollider2D:
+  myCol: {fileID: 4796666435722800295}
+--- !u!60 &4796666435722800295
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -62,8 +62,20 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.156
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0, y: 1}
+      - {x: -0.95105654, y: 0.30901697}
+      - {x: -0.5877852, y: -0.80901706}
 --- !u!212 &3602225322644098707
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -78,6 +90,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

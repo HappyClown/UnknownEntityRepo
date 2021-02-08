@@ -21,6 +21,7 @@ public class ShieldSkeleton_Actions : Enemy_Actions
     public string curState;
     public bool updateState = true;
     public bool isShieldUp;
+    bool stateStarted = false;
     public float ChaseDistanceSqr {
         get {
             return chaseDistance * chaseDistance;
@@ -36,7 +37,6 @@ public class ShieldSkeleton_Actions : Enemy_Actions
             return farFromDefensePoint * farFromDefensePoint;
             }
     }
-    bool stateStarted = false;
 
     public override void StartChecks() {
         // Create a new state machine for this enemy. 
@@ -180,6 +180,7 @@ public class ShieldSkeleton_Actions : Enemy_Actions
         // If the player is no longer bashing.
         if (!shieldBash.inBash){
             if (debugs) print("BashTarget: Exiting state.");
+            eRefs.eFollowPath.allowPathUpdate = true;
             brain.SetActiveState(Neutral);
             stateStarted = false;
             return;
@@ -221,14 +222,14 @@ public class ShieldSkeleton_Actions : Enemy_Actions
     
     
     public bool PlayerFartherFromAlly() {
-        if (eRefs.SqrDistToTarget(movement_Defend.allyTrans.position, eRefs.PlayerPos) > eRefs.SqrDistToTarget(movement_Defend.allyTrans.position, this.transform.position)) {
+        if (eRefs.SqrDistToTarget(movement_Defend.allyTrans.position, eRefs.PlayerShadowPos) > eRefs.SqrDistToTarget(movement_Defend.allyTrans.position, this.transform.position)) {
             //if (debugs) print("Player is farther them me from ally, can chill.");
             return true;
         }
         return false;
     }
     public bool PlayerWithinChaseRange() {
-        if (eRefs.SqrDistToTarget(this.transform.position, eRefs.PlayerPos) < ChaseDistanceSqr) {
+        if (eRefs.SqrDistToTarget(this.transform.position, eRefs.PlayerShadowPos) < ChaseDistanceSqr) {
             //if (debugs) print("Player is within chase range, letsa goooooo!");
             return true;
         }

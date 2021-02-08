@@ -172,7 +172,7 @@ Transform:
   m_LocalScale: {x: 5.25, y: 0.75, z: 1}
   m_Children: []
   m_Father: {fileID: 3651932565309937596}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &101568787
 SpriteRenderer:
@@ -255,6 +255,36 @@ Transform:
   m_Father: {fileID: 3651932565548517000}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &632207023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 632207024}
+  m_Layer: 0
+  m_Name: Player Center Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &632207024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632207023}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.55, z: 0.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3651932565309937596}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1701453884
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,10 +311,10 @@ Transform:
   m_GameObject: {fileID: 1701453884}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.525, y: -0.35, z: 1}
-  m_LocalScale: {x: 5.25, y: 0.75, z: 1}
+  m_LocalScale: {x: 5.2499, y: 0.7499, z: 1}
   m_Children: []
   m_Father: {fileID: 3651932565309937596}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1701453886
 SpriteRenderer:
@@ -337,6 +367,78 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1754289308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1754289310}
+  - component: {fileID: 1754289309}
+  m_Layer: 0
+  m_Name: Point Light 2D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1754289310
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754289308}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.018999577, y: -0.010000009, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3651932565041545238}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1754289309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754289308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.875
+  m_Color: {r: 1, g: 0.9575472, b: 0.9575472, a: 1}
+  m_Intensity: 0.05
+  m_LightVolumeOpacity: 1
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_UseNormalMap: 0
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_ShadowIntensity: 0
+  m_ShadowVolumeIntensity: 0
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0.25
+  m_PointLightOuterRadius: 4
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &3651932564347373513
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,6 +541,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3651932565309937596}
+  - {fileID: 1754289310}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -456,7 +559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moIn: {fileID: 0}
   colDetect: {fileID: 505351514}
-  baseRunSpeed: 4.5
+  baseRunSpeed: 5
   spriteRend: {fileID: 3651932565309937599}
   animator: {fileID: 0}
   canInputMove: 1
@@ -478,33 +581,35 @@ MonoBehaviour:
   - 0.15
   - 0.3
   - 0.45
-  idleSprite: {fileID: 21300000, guid: dd10e113d8ae0464e925085ebf7b14cf, type: 3}
+  idleSprite: {fileID: 21300000, guid: 551c2d12986bd29408e96608503e5dee, type: 3}
   startRunForward:
-  - {fileID: 1998722831069807661, guid: 197b3d4992560fa41b3e009511381faa, type: 3}
-  - {fileID: -8611851377246610682, guid: 197b3d4992560fa41b3e009511381faa, type: 3}
+  - {fileID: 7241544699270919520, guid: a948050ae311104499678dfa992ce82e, type: 3}
+  - {fileID: 2832074420061012711, guid: a948050ae311104499678dfa992ce82e, type: 3}
   startRunBackwards:
-  - {fileID: -8885879321885336429, guid: b0b631498c5841f44bf49f53a25a253e, type: 3}
-  - {fileID: 8179826414360145740, guid: b0b631498c5841f44bf49f53a25a253e, type: 3}
+  - {fileID: -3845281219701943638, guid: 0832ac2ab03c37a4baceee1fa08f37df, type: 3}
+  - {fileID: -6629683931026172978, guid: 0832ac2ab03c37a4baceee1fa08f37df, type: 3}
   runForward:
-  - {fileID: 5910345099180687473, guid: 7defa417490b37b46a8e7279c6077840, type: 3}
-  - {fileID: 8488370025889342141, guid: 7defa417490b37b46a8e7279c6077840, type: 3}
-  - {fileID: 7464115963452560755, guid: 7defa417490b37b46a8e7279c6077840, type: 3}
-  - {fileID: 1872745443088650752, guid: 7defa417490b37b46a8e7279c6077840, type: 3}
-  - {fileID: 5014043024216986173, guid: 7defa417490b37b46a8e7279c6077840, type: 3}
-  - {fileID: 5297172296646368640, guid: 7defa417490b37b46a8e7279c6077840, type: 3}
+  - {fileID: 1515584605743201119, guid: 7f2b9e40db1ebc94e837f8af148ea043, type: 3}
+  - {fileID: 3166076077332618980, guid: 7f2b9e40db1ebc94e837f8af148ea043, type: 3}
+  - {fileID: -7487522848947841810, guid: 7f2b9e40db1ebc94e837f8af148ea043, type: 3}
+  - {fileID: 5251366527880101646, guid: 7f2b9e40db1ebc94e837f8af148ea043, type: 3}
+  - {fileID: -5215819576440097761, guid: 7f2b9e40db1ebc94e837f8af148ea043, type: 3}
+  - {fileID: 7769704327806311807, guid: 7f2b9e40db1ebc94e837f8af148ea043, type: 3}
   runbackwards:
-  - {fileID: 4775365554253568235, guid: 4cb02bf74df88b74baef29d03fea05bb, type: 3}
-  - {fileID: 8521397749658069267, guid: 4cb02bf74df88b74baef29d03fea05bb, type: 3}
-  - {fileID: -1951667246519038795, guid: 4cb02bf74df88b74baef29d03fea05bb, type: 3}
-  - {fileID: 2342204432374494647, guid: 4cb02bf74df88b74baef29d03fea05bb, type: 3}
-  - {fileID: -220663478125031305, guid: 4cb02bf74df88b74baef29d03fea05bb, type: 3}
-  - {fileID: -234811987861939720, guid: 4cb02bf74df88b74baef29d03fea05bb, type: 3}
+  - {fileID: -2052091198557844943, guid: bb85ca5a93dc44840aa9c1ff0504abaa, type: 3}
+  - {fileID: 8772092320674428477, guid: bb85ca5a93dc44840aa9c1ff0504abaa, type: 3}
+  - {fileID: 1587402699302873652, guid: bb85ca5a93dc44840aa9c1ff0504abaa, type: 3}
+  - {fileID: -8929410586240417202, guid: bb85ca5a93dc44840aa9c1ff0504abaa, type: 3}
+  - {fileID: -1614248500023893508, guid: bb85ca5a93dc44840aa9c1ff0504abaa, type: 3}
+  - {fileID: 6556141677919063061, guid: bb85ca5a93dc44840aa9c1ff0504abaa, type: 3}
   startRunForwardTimings:
   - 0
   - 0.1
+  - 0.2
   startRunBackwardsTimings:
   - 0
   - 0.1
+  - 0.2
   runForwardTimings:
   - 0
   - 0.1
@@ -512,13 +617,36 @@ MonoBehaviour:
   - 0.3
   - 0.4
   - 0.5
+  - 0.6
   runBackwardsTimings:
+  - 0
   - 0.1
   - 0.2
   - 0.3
   - 0.4
   - 0.5
   - 0.6
+  idleOne:
+  - {fileID: -3858063850402955622, guid: fa7720f98e4475842916ee9f2d2a02da, type: 3}
+  - {fileID: 4327642080381475721, guid: fa7720f98e4475842916ee9f2d2a02da, type: 3}
+  - {fileID: -5663030001535758309, guid: fa7720f98e4475842916ee9f2d2a02da, type: 3}
+  - {fileID: 2668040235456949442, guid: fa7720f98e4475842916ee9f2d2a02da, type: 3}
+  - {fileID: -1072064108119391870, guid: fa7720f98e4475842916ee9f2d2a02da, type: 3}
+  idleTwo:
+  - {fileID: -4204854722392359775, guid: 0b6f7c187cdf8ad4c90eb3c7d41589c1, type: 3}
+  - {fileID: 476004600327253480, guid: 0b6f7c187cdf8ad4c90eb3c7d41589c1, type: 3}
+  idleOneTimings:
+  - 0
+  - 0.15
+  - 0.3
+  - 0.7
+  - 0.85
+  - 1
+  idleTwoTimings:
+  - 0
+  - 0.1
+  - 0.7
+  idleCooldownDur: 0.5
   animRunSpeedMult: 1.25
 --- !u!114 &505351514
 MonoBehaviour:
@@ -621,7 +749,7 @@ MonoBehaviour:
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 198656
+      m_Bits: 215040
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
@@ -728,7 +856,7 @@ MonoBehaviour:
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 16384
+      m_Bits: 262144
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
@@ -805,6 +933,7 @@ Transform:
   - {fileID: 9203858671286982863}
   - {fileID: 2960686741271553}
   - {fileID: 3651932565723185217}
+  - {fileID: 632207024}
   - {fileID: 101568786}
   - {fileID: 1701453885}
   - {fileID: 7847637287177695944}
@@ -852,12 +981,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dd10e113d8ae0464e925085ebf7b14cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 551c2d12986bd29408e96608503e5dee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1213,7 +1342,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3651932565309937596}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9011637384277872018
 GameObject:
@@ -1243,5 +1372,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3651932565309937596}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

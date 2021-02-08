@@ -26,7 +26,7 @@ public class Enemy_Movement_RunAway : MonoBehaviour
         if (runAwayDebugs) sw.Start();
         Vector2 targetPos = Vector2.zero;
         Vector2 prevDir = Vector2.zero;
-        Vector2 plyrPos = eRefs.PlayerPos;
+        Vector2 plyrPos = eRefs.PlayerShadowPos;
         Vector2 oppositeDirNorm = (plyrPos - (Vector2)this.transform.position).normalized * -1;
         RaycastHit2D hit, lastHit;
 
@@ -48,7 +48,7 @@ public class Enemy_Movement_RunAway : MonoBehaviour
                 cWiseTestPos = targetPos + cWisePerpenDir;
                 counterCWiseTestPos = targetPos + counterCWisePerpenDir;
                 // Try clockwise.
-                if (eRefs.DistToTarget(cWiseTestPos, eRefs.PlayerPos) > eRefs.DistToTarget(counterCWiseTestPos, eRefs.PlayerPos) && !Physics2D.Raycast(targetPos, cWisePerpenDir, aGridNodeDiam, eRefs.losLayerMask)) {
+                if (eRefs.DistToTarget(cWiseTestPos, eRefs.PlayerShadowPos) > eRefs.DistToTarget(counterCWiseTestPos, eRefs.PlayerShadowPos) && !Physics2D.Raycast(targetPos, cWisePerpenDir, aGridNodeDiam, eRefs.losLayerMask)) {
                     if (runAwayDebugs) { UnityEngine.Debug.DrawRay(targetPos, cWisePerpenDir*aGridNodeDiam, Color.cyan, 5f); print("Chose to shoot clockwise."); }
                     loopHit = Physics2D.Raycast(targetPos, cWisePerpenDir, distLeft, eRefs.losLayerMask);
                     prevDir = cWisePerpenDir;

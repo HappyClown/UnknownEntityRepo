@@ -6,7 +6,7 @@ public class Enemy_WalkAnim : MonoBehaviour
 {
     public Enemy_Refs eRefs;
     public float cycleDuration;
-    public float speedAdjustment = 1f;
+    public float animSpeedMult = 1f;
     private float spriteDuration;
     private float timer;
     private int spriteNumber = 0;
@@ -50,7 +50,7 @@ public class Enemy_WalkAnim : MonoBehaviour
 
     public void UpdateWalkCycleAnim() {            
         // Cycle through the run cycle sprites.
-        timer += Time.deltaTime /* / cycleDuration  */* speedAdjustment;
+        timer += Time.deltaTime /* / cycleDuration  */* animSpeedMult;
         if (timer > spriteDuration) {
             // Next sprite
             spriteR.sprite = currentWalkCycle[spriteNumber];

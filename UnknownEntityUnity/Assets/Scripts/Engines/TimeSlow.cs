@@ -65,7 +65,8 @@ public class TimeSlow : MonoBehaviour
         }
     }
     public void StartCoroutineSlow(){
-        StartCoroutine(DoTimeSlow());
+        //StartCoroutine(DoTimeSlow());
+        StartCoroutine(SlowTimeScale(slowTimeTotalFrames_St, 0f));
     }
 
     public IEnumerator DoTimeSlow() {

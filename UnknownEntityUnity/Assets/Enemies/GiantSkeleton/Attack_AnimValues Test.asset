@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3deac6fe91c2e044abba8e3f625cbbb, type: 3}
+  m_Name: Attack_AnimValues Test
+  m_EditorClassIdentifier: 
+  loop: 1
+  loopAmnt: 0
+  spriteOnCooldown: 1
+  cooldownSprite: {fileID: 4115683936894623653, guid: c9bb8344f2fe5a8408d1e5128eb1273b,
+    type: 3}
+  minCooldown: 1
+  maxCooldown: 1
+  color: {r: 1, g: 1, b: 1, a: 1}
+  totalDuration: 2
+  sprites:
+  - {fileID: -5055722879427976020, guid: 0fb540cf2d1a9be4986dcfe3024b5bca, type: 3}
+  - {fileID: -3626015399007773515, guid: 0fb540cf2d1a9be4986dcfe3024b5bca, type: 3}
+  - {fileID: 5336928501207700834, guid: 0fb540cf2d1a9be4986dcfe3024b5bca, type: 3}
+  - {fileID: 1493051093568426196, guid: 0fb540cf2d1a9be4986dcfe3024b5bca, type: 3}
+  - {fileID: -171220541324832775, guid: 0fb540cf2d1a9be4986dcfe3024b5bca, type: 3}
+  - {fileID: -2492382500778131530, guid: 0fb540cf2d1a9be4986dcfe3024b5bca, type: 3}
+  - {fileID: 201934589221696424, guid: 0fb540cf2d1a9be4986dcfe3024b5bca, type: 3}
+  - {fileID: -8173629002521092697, guid: 0fb540cf2d1a9be4986dcfe3024b5bca, type: 3}
+  changeSprites:
+  - 0
+  - 0.25
+  - 0.5
+  - 0.75
+  - 1
+  - 1.25
+  - 1.5
+  - 1.75
+  eventTriggers: []

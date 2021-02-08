@@ -8,6 +8,7 @@ public class RangedSkeleton_ThrowProjectile : MonoBehaviour
     // public RangedSkeleton_Actions rsActions;
     public RangedSkeleton_Bow rsBow;
     public LayerMask blockLOSLayers;
+    public Transform attackDirPoint;
     // public SO_Projectile projSO;
     // public ProjectilePool projPool;
     // Projectile proj;
@@ -35,9 +36,9 @@ public class RangedSkeleton_ThrowProjectile : MonoBehaviour
     public bool CheckThrowProj() {
         if (!inProjThrow && throwProjReady) {
             // Check if the target is within attack range.
-            if (eRefs.SqrDistToTarget(eRefs.PlayerPos, this.transform.position) <= sqrAtkRange) {
+            if (eRefs.SqrDistToTarget(eRefs.PlayerCenterPos, this.transform.position) <= sqrAtkRange) {
             // Check to see if there are obstacles in the way. // Maybe switch to circle cas to make sure there is space to fire the projectile.
-                if (!Physics2D.Raycast(this.transform.position, eRefs.PlayerPos - this.transform.position, eRefs.DistToTarget(this.transform.position, eRefs.PlayerPos), blockLOSLayers)) {
+                if (!Physics2D.Raycast(attackDirPoint.position, eRefs.PlayerCenterPos - attackDirPoint.position, eRefs.DistToTarget(attackDirPoint.position, eRefs.PlayerCenterPos), blockLOSLayers)) {
                     return true;
                 }
             }
