@@ -626,7 +626,7 @@ MonoBehaviour:
   stopRangeToTarget: 0.9
   target: {fileID: 0}
   thisEnemyTrans: {fileID: 3690657262526239118}
-  speedModifier: 2
+  speedModifier: 1
   directlyMovingtoTarget: 0
   followingPath: 0
   allowPathUpdate: 1
@@ -645,7 +645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eRefs: {fileID: 3690657262318137120}
   cycleDuration: 0.4
-  animSpeedMult: 1
+  animSpeedMult: 0.75
 --- !u!114 &596742917071586177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -788,7 +788,7 @@ MonoBehaviour:
   bowSpriteR: {fileID: 567680614}
   defaultBowSprite: {fileID: 8585406184177666538, guid: c8143bc23278c1b419fc00bf755cfc7c,
     type: 3}
-  bowTotalDuration: 1.5
+  bowTotalDuration: 1.2
   bowSprites:
   - {fileID: -3161560148445707501, guid: c68ba39e4c32dca4b839b431b6d1cc00, type: 3}
   - {fileID: -131684039814633777, guid: c68ba39e4c32dca4b839b431b6d1cc00, type: 3}
@@ -798,15 +798,15 @@ MonoBehaviour:
   - {fileID: 6140453162527593087, guid: c68ba39e4c32dca4b839b431b6d1cc00, type: 3}
   bowSpriteChanges:
   - 0
-  - 0.15
+  - 0.1
+  - 0.2
   - 0.3
   - 0.45
-  - 0.65
-  - 1.2
+  - 1.05
   bowEvents:
-  - 0.45
-  - 0.45
-  - 1.2
+  - 0.3
+  - 0.3
+  - 1.05
   arrowSpriteR: {fileID: 1120582127}
   arrowGameObject: {fileID: 1120582125}
   arrowTotalDuration: 0.75
@@ -819,11 +819,11 @@ MonoBehaviour:
   - {fileID: -1631089918800672595, guid: 1860de2737f014849a6e323d0f89af40, type: 3}
   arrowSpriteChanges:
   - 0
-  - 0.125
-  - 0.25
-  - 0.375
-  - 0.5
-  - 0.625
+  - 0.15
+  - 0.27
+  - 0.39
+  - 0.51
+  - 0.63
   arrowEvents: []
   projSO: {fileID: 11400000, guid: 68dcb3e1b943bc541a7aeceb5d1715d6, type: 2}
   projPool: {fileID: 0}
@@ -840,8 +840,9 @@ GameObject:
   - component: {fileID: 3690657262389814610}
   - component: {fileID: 6914958667853755047}
   - component: {fileID: 3690657262389814611}
+  - component: {fileID: 852195860}
   m_Layer: 14
-  m_Name: HitBox
+  m_Name: HitBox Health Death
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -961,6 +962,20 @@ MonoBehaviour:
   spriteBouncePool: {fileID: 0}
   amountToSpawn: 010000000300000001000000
   random: 
+  enemySpecificDeath: {fileID: 852195860}
+--- !u!114 &852195860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3690657262389814623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f90b649d0ec6f5e49a25aa471843c3b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eAllyToDef: {fileID: 911921966}
 --- !u!1 &3690657262526239117
 GameObject:
   m_ObjectHideFlags: 0

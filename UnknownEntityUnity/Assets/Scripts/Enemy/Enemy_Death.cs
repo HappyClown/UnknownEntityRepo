@@ -15,6 +15,7 @@ public class Enemy_Death : MonoBehaviour
     public SpriteBouncePool spriteBouncePool;
     public int[] amountToSpawn;
     public bool[] random;
+    public Enemy_SpecificDeath enemySpecificDeath;
 
     // Or just destroy the game object now and instatiate a sprite for the death anim. Destroying the game object will need to be done at some point.
     public void DeathSequence(Vector2 hitDir) {
@@ -29,6 +30,10 @@ public class Enemy_Death : MonoBehaviour
         // Turn off everyobject that is not needed by the death animation.
         foreach(GameObject obj in objectsToTurnOff) {
             obj.SetActive(false);
+        }
+        // Run enemy specific on death methods.
+        if (enemySpecificDeath != null) {
+            enemySpecificDeath.PlayOnDeath();
         }
         // Play death animation.
         isDead = true;

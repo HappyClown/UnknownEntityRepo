@@ -277,7 +277,7 @@ MonoBehaviour:
   stopRangeToTarget: 0.7
   target: {fileID: 0}
   thisEnemyTrans: {fileID: 6264118744310853074}
-  speedModifier: 2
+  speedModifier: 1
   directlyMovingtoTarget: 0
   followingPath: 0
   allowPathUpdate: 1
@@ -296,7 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eRefs: {fileID: 6264118744248117210}
   cycleDuration: 0.5
-  animSpeedMult: 1
+  animSpeedMult: 0.75
 --- !u!114 &7799897352561013228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,7 +358,7 @@ MonoBehaviour:
   eRefs: {fileID: 6264118744248117210}
   movement_Chase: {fileID: 7799897352561013228}
   giantSkel_SlashAtk: {fileID: 1491418249}
-  debugs: 1
+  debugs: 0
   chaseDistance: 0
   curState: 
   updateState: 1
@@ -376,6 +376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eRefs: {fileID: 6264118744248117210}
   inAtk: 0
+  inCooldown: 0
   aV: {fileID: 11400000, guid: 46aa34db6bf0303429670b5e2112def3, type: 2}
   pV: {fileID: 11400000, guid: 143aec14a9e1d1340be8044357494cda, type: 2}
   attackDirPoint: {fileID: 7171370008164914717}
@@ -429,7 +430,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.035, y: 0.525}
+  m_Offset: {x: -0.035, y: 1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.4375, y: 0.5}
@@ -440,7 +441,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 1.05}
+  m_Size: {x: 0.4, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &6264118744310853072
 MonoBehaviour:
@@ -466,7 +467,7 @@ MonoBehaviour:
   hitTimings:
   - 0
   - 0.25
-  canBeStunned: 1
+  canBeStunned: 0
 --- !u!114 &6264118744310853073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,6 +496,7 @@ MonoBehaviour:
   spriteBouncePool: {fileID: 0}
   amountToSpawn: 0300000001000000
   random: 
+  enemySpecificDeath: {fileID: 0}
 --- !u!114 &6662330497531733548
 MonoBehaviour:
   m_ObjectHideFlags: 0

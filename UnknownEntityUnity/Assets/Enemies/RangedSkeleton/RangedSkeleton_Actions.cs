@@ -80,12 +80,12 @@ public class RangedSkeleton_Actions : Enemy_Actions
         if (debugs) print("ChaseTarget: In state.");
         // -- EXIT CONDITION --
         // If the player is too close.
-        if (eRefs.SqrDistToTarget(this.transform.position, eRefs.PlayerShadowPos) < minRunAwayDistSqr){
-            if (debugs) print("ChaseTarget: Switching state to: RunAway");
-            brain.SetActiveState(RunAway);
-            stateStarted = false;
-            return;
-        }
+        // if (eRefs.SqrDistToTarget(this.transform.position, eRefs.PlayerShadowPos) < minRunAwayDistSqr){
+        //     if (debugs) print("ChaseTarget: Switching state to: RunAway");
+        //     brain.SetActiveState(RunAway);
+        //     stateStarted = false;
+        //     return;
+        // }
     }
 
     // --- ACTIVE STATE FUNCTION (THROW PROJECTILE) ---
@@ -126,7 +126,7 @@ public class RangedSkeleton_Actions : Enemy_Actions
             stateStarted = false;
             return;
         }
-        // If the player is too close.
+        // If my projectile attack is not ready, run away from the player.
         if (!throwProj.throwProjReady){
             if (debugs) print("Neutral: Switching state to: RunAway.");
             brain.SetActiveState(RunAway);

@@ -104,6 +104,10 @@ public class Character_Movement : MonoBehaviour
                 Vector3 curPosition = this.transform.position;
                 Vector3 newPosition = curPosition + normalizedMovement * moddedRunSpeed * Time.deltaTime;
                 MoveThePlayer(normalizedMovement, newPosition, curPosition);
+                print("TimedeltaTime: "+Time.deltaTime);
+                print("Norm Dir: "+normalizedMovement+", ModdedRunSpeed: "+moddedRunSpeed);
+                float moveMag = (newPosition-curPosition).magnitude;
+                print("Move Distance: "+moveMag);
             }
             else {
                 running = false;

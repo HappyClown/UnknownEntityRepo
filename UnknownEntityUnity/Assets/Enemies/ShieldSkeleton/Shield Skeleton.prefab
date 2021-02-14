@@ -567,6 +567,7 @@ MonoBehaviour:
   spriteBouncePool: {fileID: 0}
   amountToSpawn: 030000000100000001000000
   random: 
+  enemySpecificDeath: {fileID: 0}
 --- !u!114 &899193333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -642,7 +643,7 @@ MonoBehaviour:
   eSpriteR: {fileID: 764420645824505556}
   losLayerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 16640
   eFollowPath: {fileID: 3094976223254943911}
   eWalkAnim: {fileID: 764420645499934841}
   eAggro: {fileID: 6363887862280098711}

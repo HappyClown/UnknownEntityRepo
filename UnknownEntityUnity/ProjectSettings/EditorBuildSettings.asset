@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Test01-AstarEnemyMovement.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Test04-AttackFeel.unity
+    guid: c9b2e4cefd74d174fa297a59655bdf92
   m_configObjects: {}

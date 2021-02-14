@@ -30,7 +30,7 @@ MonoBehaviour:
   - {fileID: 5082551990243362152, guid: c9bb8344f2fe5a8408d1e5128eb1273b, type: 3}
   - {fileID: -6127114797479788072, guid: c9bb8344f2fe5a8408d1e5128eb1273b, type: 3}
   lerpTurnRotations: 1
-  moveSpeed: 1
+  moveSpeed: 2
   turnSpeed: 5
   turnDst: 0
   slowDown: 1

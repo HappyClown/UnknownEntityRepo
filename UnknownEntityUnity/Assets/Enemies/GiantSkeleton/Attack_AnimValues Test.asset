@@ -20,7 +20,7 @@ MonoBehaviour:
   minCooldown: 1
   maxCooldown: 1
   color: {r: 1, g: 1, b: 1, a: 1}
-  totalDuration: 2
+  totalDuration: 1
   sprites:
   - {fileID: -5055722879427976020, guid: 0fb540cf2d1a9be4986dcfe3024b5bca, type: 3}
   - {fileID: -3626015399007773515, guid: 0fb540cf2d1a9be4986dcfe3024b5bca, type: 3}
