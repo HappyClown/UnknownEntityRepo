@@ -706,6 +706,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eRefs: {fileID: 764420645499934723}
+  minDuration: 0
+  maxDuration: 0
+  inChase: 0
 --- !u!114 &9012920482796434023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -724,9 +727,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   defensePosTokenTrans: {fileID: 339229296}
-  distFromAlly: 3
-  updateDistDelta: 0.5
-  updateFrequency: 1
+  distFromAlly: 2.5
+  updateDistDelta: 0.1
+  updateFrequency: 0.1
   allyToDefend: {fileID: 0}
   allyTrans: {fileID: 0}
 --- !u!114 &5184445261597915791

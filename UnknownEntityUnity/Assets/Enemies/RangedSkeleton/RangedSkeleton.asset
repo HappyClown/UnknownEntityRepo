@@ -10,17 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd75fb4af43a6ee429f7b6952032c406, type: 3}
-  m_Name: RangedSkeletonTest
+  m_Name: RangedSkeleton
   m_EditorClassIdentifier: 
   name: Ranged Skeleton
   maximumLife: 15
   minDamage: 5
   maxDamage: 6
   attackCooldown: 2
-  sprite: {fileID: 21300000, guid: dd10e113d8ae0464e925085ebf7b14cf, type: 3}
-  atkRange: 4.6
+  sprite: {fileID: -1584749412573856627, guid: ec6f443e0d14c1942bacb5cb551e1eee, type: 3}
+  spriteIdle: {fileID: -1584749412573856627, guid: ec6f443e0d14c1942bacb5cb551e1eee,
+    type: 3}
+  atkRange: 5.5
   aggroRange: 20
-  walkingSprite: {fileID: 21300000, guid: 46be00cc7cb7dae488eaa8fcbdeab919, type: 3}
+  walkingSprite: {fileID: -1584749412573856627, guid: ec6f443e0d14c1942bacb5cb551e1eee,
+    type: 3}
   walkingSprites:
   - {fileID: -7321690256107723682, guid: ec6f443e0d14c1942bacb5cb551e1eee, type: 3}
   - {fileID: 7565053521220211563, guid: ec6f443e0d14c1942bacb5cb551e1eee, type: 3}

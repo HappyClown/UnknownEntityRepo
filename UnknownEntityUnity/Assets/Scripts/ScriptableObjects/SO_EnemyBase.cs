@@ -11,6 +11,7 @@ public class SO_EnemyBase : ScriptableObject
     public float minDamage, maxDamage;
     public float attackCooldown;
     public Sprite sprite;
+    public Sprite spriteIdle;
     public float atkRange;
     public float aggroRange;
     [Header("Movement")]

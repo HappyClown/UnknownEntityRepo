@@ -14,6 +14,7 @@ public class Enemy_WalkAnim : MonoBehaviour
     private SO_EnemyBase eSO;
     private SpriteRenderer spriteR;
     private Sprite[] currentWalkCycle;
+    Vector2 curPos, lastPos;
 
     void Start() {
         // Set references, to be transfered out of Start() into a function triggered when the enemy is setup.
@@ -46,6 +47,30 @@ public class Enemy_WalkAnim : MonoBehaviour
         //         spriteNumber = 0;
         //     }
         // }
+    // }
+
+    // void Update() {
+    //     curPos = this.transform.position;
+    //     //print(curPos);
+    //     if (curPos != lastPos) {
+    //         timer += Time.deltaTime * animSpeedMult;
+    //         if (timer > spriteDuration) {
+    //             // Next sprite
+    //             spriteR.sprite = currentWalkCycle[spriteNumber];
+    //             spriteNumber++;
+    //             if (spriteNumber >= spriteCount) {
+    //                 spriteNumber = 0;
+    //             }
+    //             timer = 0f;
+    //         }
+    //     }
+    //     else {
+    //         //timer = 0f;
+    //     }
+    // }
+    // void LateUpdate() {
+    //     lastPos = this.transform.position;
+    //     //print(lastPos);
     // }
 
     public void UpdateWalkCycleAnim() {            

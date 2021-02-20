@@ -12,7 +12,7 @@ public class Enemy_Movement_RunAway : MonoBehaviour
     public float circleCastRadius;
     public float aGridNodeDiam = 0.5f;
     public int maxLoops;
-    public Transform runAwayToken;
+    public Transform movementToken;
     public bool runAwayDebugs;
     public float distToUpdatePath;
 
@@ -77,14 +77,14 @@ public class Enemy_Movement_RunAway : MonoBehaviour
         else {
             targetPos = (Vector2)this.transform.position + oppositeDirNorm*distLeft;
         }
-        runAwayToken.position = targetPos;
-        eRefs.eFollowPath.target = runAwayToken;
+        movementToken.position = targetPos;
+        eRefs.eFollowPath.target = movementToken;
         if (runAwayDebugs) { sw.Stop(); print("The run away target postion took: "+sw.ElapsedMilliseconds+"ms to determine."); }
     }
 
     public bool UpdateTargetPosCondition() {
         // If I reach my run away position.
-        //if (eRefs.SqrDistToTarget(runAwayToken.position, this.transform.position) < )
+        //if (eRefs.SqrDistToTarget(movementToken.position, this.transform.position) < )
         return false;
     }
 }

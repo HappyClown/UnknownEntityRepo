@@ -26,6 +26,8 @@ public class Enemy_FollowPath : MonoBehaviour
     Vector3 directTargetPos;
     Path path;
     bool freePathTrigger = false;
+    Coroutine followingPathCoroutine;
+    Coroutine directMoveCoroutine;
 
     void Start() {
         if (followOnStart) {
@@ -36,8 +38,10 @@ public class Enemy_FollowPath : MonoBehaviour
     public void OnPathFound(Vector3[] waypoints, bool pathSuccessful) {
         if (pathSuccessful && allowPathUpdate || pathSuccessful && customPathRequested) {
             path = new Path(waypoints, transform.position, enemy.turnDst, enemy.slowDownDist);
-            StopCoroutine("FollowPath");
-            StartCoroutine("FollowPath");
+            if (followingPathCoroutine != null) {
+                StopCoroutine(followingPathCoroutine);
+            }
+            followingPathCoroutine = StartCoroutine("FollowPath");
         }
     }
     // When to request a new path.
@@ -65,19 +69,28 @@ public class Enemy_FollowPath : MonoBehaviour
                     // Check to see if a direct line of sight exists to the target. (Ignores Movement slowdown fields)
                     if (CheckDirectMoveToTarget()) {
                         //print ("Direct line of sight available, do not request path, walk directly towards target.");
-                        StopCoroutine(FollowPath());
+                        if (followingPathCoroutine != null) {
+                            StopCoroutine(followingPathCoroutine);
+                        }
                         followingPath = false;
-                        StopCoroutine(DirectMoveToTarget());
+                        if (directMoveCoroutine != null) {
+                            StopCoroutine(directMoveCoroutine);
+                        }
+                        if (directMoveCoroutine != null) {
+                            StopCoroutine(directMoveCoroutine);
+                        }
                         directlyMovingtoTarget = false;
                         yield return null;
                         if (!allowPathUpdate) {
                             print("This is probably whe nthe problem happenes. Yep. Right here, yo.");
                         }
-                        StartCoroutine(DirectMoveToTarget());
+                        directMoveCoroutine = StartCoroutine(DirectMoveToTarget());
                         targetPosOld = target.position;
                         continue;
                     }
-                    StopCoroutine("DirectMoveToTarget");
+                    if (directMoveCoroutine != null) {
+                        StopCoroutine(directMoveCoroutine);
+                    }
                     directlyMovingtoTarget = false;
                     // Request a path.
                     PathRequestManager.RequestPath(transform.position, target.position, enemy.intelligence, OnPathFound);
@@ -106,8 +119,10 @@ public class Enemy_FollowPath : MonoBehaviour
             transform.Translate(Vector3.forward * Time.deltaTime * enemy.moveSpeed * speedModifier, Space.Self);
             flip.Flip();
             eRefs.eWalkAnim.UpdateWalkCycleAnim();
+            //eRefs.eSpriteR.sprite = eRefs.eSO.spriteIdle;
             yield return null;
         }
+        //eRefs.eSpriteR.sprite = eRefs.eSO.spriteIdle;
         directlyMovingtoTarget = false;
     }
     
@@ -171,8 +186,12 @@ public class Enemy_FollowPath : MonoBehaviour
     }
 
     public void StopAllMovementCoroutines() {
-        StopCoroutine("FollowPath");
-        StopCoroutine("DirectMoveToTarget");
+        if (followingPathCoroutine != null) {
+            StopCoroutine(followingPathCoroutine);
+        }
+        if (directMoveCoroutine != null) {
+            StopCoroutine(directMoveCoroutine);
+        }
         followingPath = false;
         directlyMovingtoTarget = false;
         allowPathUpdate = false;

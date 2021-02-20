@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1025629148}
   m_Layer: 0
-  m_Name: Run Away Token
+  m_Name: Movement Token
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -549,6 +549,8 @@ GameObject:
   - component: {fileID: 3690657262318137124}
   - component: {fileID: 596742917071586177}
   - component: {fileID: 7591618669351008184}
+  - component: {fileID: 4065487854308405367}
+  - component: {fileID: 5530644441078631035}
   - component: {fileID: 4828088488615937271}
   - component: {fileID: 911921966}
   - component: {fileID: 3690657262318137147}
@@ -659,6 +661,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eRefs: {fileID: 3690657262318137120}
+  minDuration: 3
+  maxDuration: 4
+  inChase: 0
 --- !u!114 &7591618669351008184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,9 +680,45 @@ MonoBehaviour:
   circleCastRadius: 0.25
   aGridNodeDiam: 0.5
   maxLoops: 3
-  runAwayToken: {fileID: 1025629148}
+  movementToken: {fileID: 0}
   runAwayDebugs: 0
   distToUpdatePath: 0
+--- !u!114 &4065487854308405367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3690657262318137121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abaa408824384b745b739215970c4323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eRefs: {fileID: 3690657262318137120}
+  movementToken: {fileID: 1025629148}
+  minDistance: 0.5
+  maxDistance: 2
+  radius: 0.25
+  minDuration: 2
+  maxDuration: 3
+  inRandomMovement: 0
+--- !u!114 &5530644441078631035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3690657262318137121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b82390184d27fb4bbf6fcc2c0e4a272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eRefs: {fileID: 3690657262318137120}
+  minDuration: 1
+  maxDuration: 2
+  inWait: 0
 --- !u!114 &4828088488615937271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -741,6 +782,8 @@ MonoBehaviour:
   throwProj: {fileID: 3690657262318137125}
   enemy_RunAway: {fileID: 7591618669351008184}
   enemy_Chase: {fileID: 596742917071586177}
+  enemy_Random: {fileID: 4065487854308405367}
+  enemy_Wait: {fileID: 5530644441078631035}
   eRefs: {fileID: 3690657262318137120}
   debugs: 0
   minRunAwayDist: 1.5

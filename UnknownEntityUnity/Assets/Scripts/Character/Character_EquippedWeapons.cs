@@ -19,6 +19,7 @@ public class Character_EquippedWeapons : MonoBehaviour
     }
 
     void Update() {
+        // TRANSFER TO AN: OTHER BUTTON ACTIONS SCRIPT IN THE Inputs GameObject
         // Weapon swap if two weapons are equipped.
         if (canSwapWeapon && moIn.weaponSwapPressed) {
             moIn.weaponSwapPressed = false;

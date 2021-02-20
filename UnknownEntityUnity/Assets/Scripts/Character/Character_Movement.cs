@@ -46,6 +46,9 @@ public class Character_Movement : MonoBehaviour
     //
     private bool lastLookLeft, lastLookRight, lastMoveLeft, lastMoveRight;
 
+
+    private Vector2 testposcurpos;
+
     // Positive values to lower speed by % (0 to 1), negative values to return lowered speed.
     public void ReduceSpeed (float percentOnOne) {
         lessSpeedModifier += percentOnOne;
@@ -104,10 +107,11 @@ public class Character_Movement : MonoBehaviour
                 Vector3 curPosition = this.transform.position;
                 Vector3 newPosition = curPosition + normalizedMovement * moddedRunSpeed * Time.deltaTime;
                 MoveThePlayer(normalizedMovement, newPosition, curPosition);
-                print("TimedeltaTime: "+Time.deltaTime);
-                print("Norm Dir: "+normalizedMovement+", ModdedRunSpeed: "+moddedRunSpeed);
+                // print("TimedeltaTime: "+Time.deltaTime);
+                // print("Norm Dir: "+normalizedMovement+", ModdedRunSpeed: "+moddedRunSpeed);
                 float moveMag = (newPosition-curPosition).magnitude;
-                print("Move Distance: "+moveMag);
+                testposcurpos = curPosition;
+                //print("newPosX"+(newPosition.x-curPosition.x)+"   Y: "+(newPosition.y-curPosition.y));
             }
             else {
                 running = false;
@@ -353,5 +357,6 @@ public class Character_Movement : MonoBehaviour
 
     public void MoveThePlayer(Vector3 _normMoveDir, Vector3 _newPosition, Vector3 _curPosition) {
         this.transform.position = colDetect.CollisionCheck(_normMoveDir, _newPosition, _curPosition);
+        //print(" REAL    PosX"+(this.transform.position.x-testposcurpos.x)+"   Y: "+(this.transform.position.y-testposcurpos.y));
     }
 }

@@ -1,0 +1,1419 @@
+Using pre-set license
+Built from '2020.2/release' branch; Version is '2020.2.1f1 (270dd8c3da1c) revision 2559448'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10  (10.0.0) 64bit' Language: 'en' Physical Memory: 16326 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2020.2.1f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+F:/_GAME PROTOTYPES/UnknownEntityRepo/UnknownEntityUnity
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+55137
+Successfully changed project path to: F:/_GAME PROTOTYPES/UnknownEntityRepo/UnknownEntityUnity
+F:/_GAME PROTOTYPES/UnknownEntityRepo/UnknownEntityUnity
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 67.78 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.2.1f1 (270dd8c3da1c)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path F:/_GAME PROTOTYPES/UnknownEntityRepo/UnknownEntityUnity/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1070 Ti (ID=0x1b82)
+    Vendor:   
+    VRAM:     8079 MB
+    Driver:   27.21.14.5730
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56588
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001919 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 60.16 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.922 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.001252 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 68.46 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.255 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.11 seconds
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2875 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 128.3 MB.
+System memory in use after: 128.5 MB.
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 3323.
+Total: 2.596700 ms (FindLiveObjects: 0.311600 ms CreateObjectMapping: 0.140000 ms MarkObjects: 2.062300 ms  DeleteObjects: 0.081700 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Sprites/UI
+  artifactKey: Guid(f5cca7b67ee5ddf4a939faca4c2860ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI using Guid(f5cca7b67ee5ddf4a939faca4c2860ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e6dbcbd23709e4431fd8a4c898f3ef03') in 0.022772 seconds
+  Import took 0.057929 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 25.830812 seconds.
+  path: Assets/Sprites/UI/HUD
+  artifactKey: Guid(abfe64ad24adf2644a6b5325c2235b65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/HUD using Guid(abfe64ad24adf2644a6b5325c2235b65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ecbc236036edb2b98413e79e30fd89ed') in 0.006423 seconds
+  Import took 0.020271 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 202.353553 seconds.
+  path: Assets/Sprites/UI/HUD/StartButtonText.png
+  artifactKey: Guid(caf87f05b9b36554faf44867e34de130) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/HUD/StartButtonText.png using Guid(caf87f05b9b36554faf44867e34de130) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a364c39b4549baffb5441450d957dc7f') in 0.216130 seconds
+  Import took 0.232090 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.427001 seconds.
+  path: Assets/Sprites/UI/HUD/MenuSelection.png
+  artifactKey: Guid(ad5d9bc836f18d548bd03ef78634f2dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/HUD/MenuSelection.png using Guid(ad5d9bc836f18d548bd03ef78634f2dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bcf13b08f18d9a8467c7e233e6768408') in 0.039298 seconds
+  Import took 0.063899 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.254554 seconds.
+  path: Assets/Sprites/UI/HUD/MenuSelection.png
+  artifactKey: Guid(ad5d9bc836f18d548bd03ef78634f2dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/HUD/MenuSelection.png using Guid(ad5d9bc836f18d548bd03ef78634f2dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '138a620d603c5b284c7fac2c7a0640b1') in 0.010058 seconds
+  Import took 0.017586 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.293042 seconds.
+  path: Assets/Sprites/UI/HUD/MovementSkillChargeHUD.png
+  artifactKey: Guid(1d1286d2fc9213f4da71dd0c306c65b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/HUD/MovementSkillChargeHUD.png using Guid(1d1286d2fc9213f4da71dd0c306c65b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '02866b774abb75a4a42f29a06eb2b4d5') in 0.026256 seconds
+  Import took 0.058875 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.677455 seconds.
+  path: Assets/Sprites/UI/HUD/MovementSkillUsedChargeHUD.png
+  artifactKey: Guid(b3932693a12d74b41859b560ebf171dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/HUD/MovementSkillUsedChargeHUD.png using Guid(b3932693a12d74b41859b560ebf171dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de2bb0e1ddbbd9bb9b9fd120e7b143d5') in 0.022044 seconds
+  Import took 0.039492 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 26.969354 seconds.
+  path: Assets/Sprites/UI/old
+  artifactKey: Guid(e90dbda2112cedd49a70891dfae5c138) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/old using Guid(e90dbda2112cedd49a70891dfae5c138) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'db45c03da384bbd00a3a30cd20a8d63f') in 0.007437 seconds
+  Import took 0.031728 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.265205 seconds.
+  path: Assets/Sprites/UI/HUD/LifeBarCadreHUD.png
+  artifactKey: Guid(500c3f13c1b76f948bcba134905210e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/HUD/LifeBarCadreHUD.png using Guid(500c3f13c1b76f948bcba134905210e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '514f9a50fa32c96550217502554a902c') in 0.018878 seconds
+  Import took 0.055750 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.759985 seconds.
+  path: Assets/Sprites/UI/HUD/MenuCadre.png
+  artifactKey: Guid(745099cfac653654c987fe650d4f1b53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/HUD/MenuCadre.png using Guid(745099cfac653654c987fe650d4f1b53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fac3abaf34c7b2ba12b756278fd89d5c') in 0.036120 seconds
+  Import took 0.062496 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.557658 seconds.
+  path: Assets/Sprites/UI/HUD/ExitButtonText.png
+  artifactKey: Guid(76e789ba874d8774c8c70eb896207667) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/HUD/ExitButtonText.png using Guid(76e789ba874d8774c8c70eb896207667) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc0316380149b0b868ef45daf6e2717a') in 0.020726 seconds
+  Import took 0.051195 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001291 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.032 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 125.8 MB.
+System memory in use after: 126.1 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3343.
+Total: 3.088200 ms (FindLiveObjects: 0.354700 ms CreateObjectMapping: 0.285600 ms MarkObjects: 2.419600 ms  DeleteObjects: 0.026700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001131 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.027 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.9 MB.
+System memory in use after: 127.1 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3345.
+Total: 2.847600 ms (FindLiveObjects: 0.437500 ms CreateObjectMapping: 0.137400 ms MarkObjects: 2.253700 ms  DeleteObjects: 0.018000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001898 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.094 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.61 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.8 MB.
+System memory in use after: 127.0 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3347.
+Total: 4.322200 ms (FindLiveObjects: 0.481700 ms CreateObjectMapping: 0.312800 ms MarkObjects: 3.494900 ms  DeleteObjects: 0.031200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001252 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.62 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.155 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 127.0 MB.
+System memory in use after: 127.2 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3349.
+Total: 4.104800 ms (FindLiveObjects: 1.019500 ms CreateObjectMapping: 0.419300 ms MarkObjects: 2.644400 ms  DeleteObjects: 0.018800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001111 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.61 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.995 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 127.0 MB.
+System memory in use after: 127.2 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3351.
+Total: 2.432500 ms (FindLiveObjects: 0.274500 ms CreateObjectMapping: 0.130100 ms MarkObjects: 2.002200 ms  DeleteObjects: 0.024800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001297 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.58 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.015 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.58 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.9 MB.
+System memory in use after: 127.1 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3353.
+Total: 3.405900 ms (FindLiveObjects: 0.423500 ms CreateObjectMapping: 0.306200 ms MarkObjects: 2.650900 ms  DeleteObjects: 0.023500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001257 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.67 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.007 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 127.0 MB.
+System memory in use after: 127.2 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3355.
+Total: 2.798500 ms (FindLiveObjects: 0.299300 ms CreateObjectMapping: 0.147100 ms MarkObjects: 2.325900 ms  DeleteObjects: 0.025000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001979 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.61 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.999 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.60 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 127.0 MB.
+System memory in use after: 127.2 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3357.
+Total: 3.664100 ms (FindLiveObjects: 0.373500 ms CreateObjectMapping: 0.311200 ms MarkObjects: 2.939100 ms  DeleteObjects: 0.039300 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001155 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.54 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.045 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.54 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 127.0 MB.
+System memory in use after: 127.2 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3359.
+Total: 2.554800 ms (FindLiveObjects: 0.276600 ms CreateObjectMapping: 0.130500 ms MarkObjects: 2.120000 ms  DeleteObjects: 0.026600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001179 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.63 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.066 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.66 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.8 MB.
+System memory in use after: 127.0 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3361.
+Total: 3.441400 ms (FindLiveObjects: 0.556000 ms CreateObjectMapping: 0.322500 ms MarkObjects: 2.542200 ms  DeleteObjects: 0.019300 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001222 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.61 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.025 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.61 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 127.0 MB.
+System memory in use after: 127.3 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3363.
+Total: 3.545900 ms (FindLiveObjects: 0.397200 ms CreateObjectMapping: 0.299100 ms MarkObjects: 2.820000 ms  DeleteObjects: 0.028200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001211 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.54 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.010 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 127.0 MB.
+System memory in use after: 127.2 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3365.
+Total: 2.913000 ms (FindLiveObjects: 0.329000 ms CreateObjectMapping: 0.136700 ms MarkObjects: 2.428100 ms  DeleteObjects: 0.018100 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 2266.879692 seconds.
+  path: Assets/Sprites/UI/HUD/LifeBarBackgroundHUD.png
+  artifactKey: Guid(c7e7f429703314f40919a0a54d7e14bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/HUD/LifeBarBackgroundHUD.png using Guid(c7e7f429703314f40919a0a54d7e14bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9f3caadff345510436922a60b798d70') in 0.073875 seconds
+  Import took 0.096820 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001146 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.029 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.58 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.9 MB.
+System memory in use after: 127.2 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3370.
+Total: 3.910000 ms (FindLiveObjects: 0.455000 ms CreateObjectMapping: 0.351800 ms MarkObjects: 3.083600 ms  DeleteObjects: 0.017900 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 122.924399 seconds.
+  path: Assets/Sprites/UI/HUD/LifeBarFillerHUD.png
+  artifactKey: Guid(5e25ab422d865484d98072d3cc25f2dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/HUD/LifeBarFillerHUD.png using Guid(5e25ab422d865484d98072d3cc25f2dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53fd4b3ce2150e91af9a0aeb59a3417c') in 0.063834 seconds
+  Import took 0.083272 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 102.618619 seconds.
+  path: Assets/Sprites/UI/HUD/LifeBarFillerHUD.png
+  artifactKey: Guid(5e25ab422d865484d98072d3cc25f2dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/HUD/LifeBarFillerHUD.png using Guid(5e25ab422d865484d98072d3cc25f2dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '453f138eb2a81c775255b412e4f64bb7') in 0.009840 seconds
+  Import took 0.015869 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 45.552534 seconds.
+  path: Assets/Sprites/UI/HUD/LifeBarFillerHUD.png
+  artifactKey: Guid(5e25ab422d865484d98072d3cc25f2dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/HUD/LifeBarFillerHUD.png using Guid(5e25ab422d865484d98072d3cc25f2dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b75a44507743a5b31be84ca22bc79db') in 0.014461 seconds
+  Import took 0.032262 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001284 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.058 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 127.1 MB.
+System memory in use after: 127.3 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3375.
+Total: 2.700600 ms (FindLiveObjects: 0.291100 ms CreateObjectMapping: 0.130900 ms MarkObjects: 2.250600 ms  DeleteObjects: 0.026900 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001697 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.01 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.437 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.88 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 127.1 MB.
+System memory in use after: 127.3 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3377.
+Total: 6.538100 ms (FindLiveObjects: 0.942000 ms CreateObjectMapping: 0.568500 ms MarkObjects: 4.984100 ms  DeleteObjects: 0.040100 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 805.161787 seconds.
+  path: Assets/Sprites/UI/HUD/ActiveWeaponHUD.png
+  artifactKey: Guid(46ffc69e65d91e544bcd50278a33d4cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/HUD/ActiveWeaponHUD.png using Guid(46ffc69e65d91e544bcd50278a33d4cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '512a82feb47e11bea80595ff542736f5') in 0.066635 seconds
+  Import took 0.073514 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 66.983868 seconds.
+  path: Assets/Sprites/UI/HUD/InactiveWeaponHUD.png
+  artifactKey: Guid(d017c306e9633104193168ba0ac53a98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/HUD/InactiveWeaponHUD.png using Guid(d017c306e9633104193168ba0ac53a98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e79ddb5c22f547a9b8ebf79047cbba3') in 0.029434 seconds
+  Import took 0.049164 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001143 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.61 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.082 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.71 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 127.1 MB.
+System memory in use after: 127.3 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3384.
+Total: 3.200000 ms (FindLiveObjects: 0.400000 ms CreateObjectMapping: 0.162800 ms MarkObjects: 2.616100 ms  DeleteObjects: 0.019900 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001258 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.63 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.148 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.61 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.8 MB.
+System memory in use after: 127.0 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3386.
+Total: 2.610000 ms (FindLiveObjects: 0.310600 ms CreateObjectMapping: 0.148200 ms MarkObjects: 2.119300 ms  DeleteObjects: 0.030700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001242 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.65 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.417 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.75 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 127.0 MB.
+System memory in use after: 127.3 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3388.
+Total: 4.645600 ms (FindLiveObjects: 0.442600 ms CreateObjectMapping: 0.325000 ms MarkObjects: 3.850500 ms  DeleteObjects: 0.025200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001248 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.059 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.61 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 127.1 MB.
+System memory in use after: 127.3 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3390.
+Total: 4.170700 ms (FindLiveObjects: 0.498800 ms CreateObjectMapping: 0.306400 ms MarkObjects: 3.344600 ms  DeleteObjects: 0.019500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001204 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.63 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.027 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.9 MB.
+System memory in use after: 127.2 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3392.
+Total: 2.529100 ms (FindLiveObjects: 0.288100 ms CreateObjectMapping: 0.135200 ms MarkObjects: 2.080100 ms  DeleteObjects: 0.024700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001333 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.66 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.356 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.62 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 127.1 MB.
+System memory in use after: 127.3 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3394.
+Total: 3.639000 ms (FindLiveObjects: 0.421200 ms CreateObjectMapping: 0.316900 ms MarkObjects: 2.877300 ms  DeleteObjects: 0.021500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001530 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.70 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.900 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.65 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 127.1 MB.
+System memory in use after: 127.4 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3396.
+Total: 3.579500 ms (FindLiveObjects: 0.421500 ms CreateObjectMapping: 0.315700 ms MarkObjects: 2.819300 ms  DeleteObjects: 0.021200 ms)
+
+========================================================================
+Received Prepare
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 1.30 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 72.6 MB.
+System memory in use after: 72.8 MB.
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 3396.
+Total: 9.743000 ms (FindLiveObjects: 0.825500 ms CreateObjectMapping: 0.536700 ms MarkObjects: 8.291600 ms  DeleteObjects: 0.085100 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 790.990961 seconds.
+  path: Assets/Sprites/Environments/DarkForest/DarkForest_Atlas.spriteatlas
+  artifactKey: Guid(608f58c782446d946a7f1161331cc501) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Environments/DarkForest/DarkForest_Atlas.spriteatlas using Guid(608f58c782446d946a7f1161331cc501) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_0. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_1. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_2. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_3. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_4. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_5. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_6. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_7. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_8. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_9. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_10. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_11. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_12. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_13. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_14. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_15. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_16. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_17. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_18. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_19. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_20. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_21. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_22. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_23. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_24. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_25. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_26. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_27. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_28. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_29. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_30. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_31. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_32. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_33. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_34. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_35. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_36. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_37. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_38. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_39. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_40. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_41. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_42. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_43. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_44. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_45. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_46. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_47. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_48. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_49. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_50. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_51. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_52. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_53. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_54. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_55. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_56. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_57. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_58. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_59. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_60. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_61. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_62. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_63. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_64. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_65. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_66. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_67. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_68. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_69. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_70. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_71. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_72. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_73. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_74. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_75. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_76. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_77. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_78. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_79. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_80. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_81. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_82. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_83. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_84. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_85. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_86. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_87. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_88. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_89. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_90. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_91. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_92. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_93. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_94. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_95. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_96. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_97. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_98. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_99. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_100. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_101. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_102. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_103. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_104. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_105. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_106. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_107. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_108. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_109. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_110. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_111. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_112. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_113. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_114. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_115. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_116. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_117. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_118. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_119. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_120. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_121. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_122. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_123. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_124. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_125. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_126. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_127. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_128. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_129. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_130. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_131. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_132. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_133. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_134. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_135. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_136. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_137. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_138. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_139. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_140. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_141. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_142. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_143. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_144. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_145. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_146. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_147. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_148. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_149. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_150. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_151. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_152. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_153. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_154. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite DarkForest_TileMap_155. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Barrel_13x16. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Barrel_13x16_Shadow. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Barrel_BrokenPiece_01. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Barrel_BrokenPiece_02. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Barrel_BrokenPiece_03. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Barrel_BrokenPiece_04. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Barrel_BrokenPiece_05. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite BarrelCracked_13x16. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite BoneBits01. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite BoneBits02. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite BoneBits03. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Candle01_0. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Candle01_1. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Candle01_2. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Candle01_3. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Candle02_0. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Candle02_1. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Candle02_2. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Candle02_3. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Candle03_0. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Candle03_1. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Candle03_2. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Candle03_3. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Crate_15x19. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Crate_15x19_Shadow. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Crate_BrokenPiece_01. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Crate_BrokenPiece_02. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Crate_BrokenPiece_03. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Crate_BrokenPiece_04. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Crate_BrokenPiece_05. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite CrateAngled_21x23. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite CrateCracked_15x19. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Firefly_0. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Firefly_1. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Firefly_2. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Firefly_3. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Firefly_4. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Firefly_5. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Firefly_6. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Firefly_7. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Firefly_8. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Firefly_9. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Firefly_10. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Firefly_11. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Firefly_12. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Firefly_13. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Firefly_14. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Firefly_15. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Firefly_16. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Firefly_17. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Ornament01. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Ornament02. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite Ornament03. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite PurpleGrassTuft01. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite PurpleGrassTuft02. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite PurpleGrassTuft03. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite PurpleGrassTuft04. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite PurpleTree_Simple. Please repack all your sprite atlases.
+
+Invalid sprite atlas asset encountered when matching atlas for sprite PurpleTree_Simple_Shadow. Please repack all your sprite atlases.
+
+ -> (artifact id: '569adfa1eb758b4a5e033395ad0a0ff9') in 0.060695 seconds
+  Import took 0.079190 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001505 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.88 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.323 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.63 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 127.7 MB.
+System memory in use after: 128.0 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3398.
+Total: 4.860500 ms (FindLiveObjects: 0.625500 ms CreateObjectMapping: 0.402100 ms MarkObjects: 3.799400 ms  DeleteObjects: 0.031200 ms)
+
+========================================================================
+Received Prepare
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 1.14 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 73.2 MB.
+System memory in use after: 73.4 MB.
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 3398.
+Total: 3.479800 ms (FindLiveObjects: 0.408000 ms CreateObjectMapping: 0.309500 ms MarkObjects: 2.731800 ms  DeleteObjects: 0.020700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001567 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.82 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.029 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 127.7 MB.
+System memory in use after: 127.9 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3400.
+Total: 3.007200 ms (FindLiveObjects: 0.359800 ms CreateObjectMapping: 0.286000 ms MarkObjects: 2.317900 ms  DeleteObjects: 0.042400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001826 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.54 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.052 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.54 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 127.4 MB.
+System memory in use after: 127.7 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3402.
+Total: 4.671500 ms (FindLiveObjects: 0.696300 ms CreateObjectMapping: 0.480100 ms MarkObjects: 3.447500 ms  DeleteObjects: 0.045700 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 833.311374 seconds.
+  path: Assets/Sprites/UI/StartButtonText.png
+  artifactKey: Guid(caf87f05b9b36554faf44867e34de130) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/StartButtonText.png using Guid(caf87f05b9b36554faf44867e34de130) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a05e348d60822f023f204f054120fa1e') in 0.068372 seconds
+  Import took 0.110024 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.003984 seconds.
+  path: Assets/Sprites/UI/StartButtonText.png
+  artifactKey: Guid(caf87f05b9b36554faf44867e34de130) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/StartButtonText.png using Guid(caf87f05b9b36554faf44867e34de130) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a05e348d60822f023f204f054120fa1e') in 0.011324 seconds
+  Import took 0.017341 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.847850 seconds.
+  path: Assets/Sprites/UI/OptionsButtonText.png
+  artifactKey: Guid(b8376d01dc274be488cc1fdaa9a166d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/OptionsButtonText.png using Guid(b8376d01dc274be488cc1fdaa9a166d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d719f5014333c61d837c64b6694471f') in 0.036097 seconds
+  Import took 0.070717 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.396231 seconds.
+  path: Assets/Sprites/UI/old/GameOverText_PressEnter_125x21.png
+  artifactKey: Guid(5d6c3a6913af0bc449e0f6ab24e45a7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/old/GameOverText_PressEnter_125x21.png using Guid(5d6c3a6913af0bc449e0f6ab24e45a7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '839d530c51c5e74610a4db29beabb629') in 0.020096 seconds
+  Import took 0.041117 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000183 seconds.
+  path: Assets/Sprites/UI/old/GameOverText_TryAgain_165x39.png
+  artifactKey: Guid(8b15594de835d8241af82f3fbf5ac81b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/old/GameOverText_TryAgain_165x39.png using Guid(8b15594de835d8241af82f3fbf5ac81b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '906d7d5cb2a518edca66c59e7e62235e') in 0.026760 seconds
+  Import took 0.051698 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.274241 seconds.
+  path: Assets/Sprites/UI/old/4x4PixelsWhiteSquare.png
+  artifactKey: Guid(91b99ef027e513d4fb463e3a7cdc0a50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/old/4x4PixelsWhiteSquare.png using Guid(91b99ef027e513d4fb463e3a7cdc0a50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '022de19ce60b5b75927873a1b817cd71') in 0.017573 seconds
+  Import took 0.050522 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001212 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.089 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.58 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 127.7 MB.
+System memory in use after: 127.9 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3413.
+Total: 2.658900 ms (FindLiveObjects: 0.321700 ms CreateObjectMapping: 0.155500 ms MarkObjects: 2.163100 ms  DeleteObjects: 0.017400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001228 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.96 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.461 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.93 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 127.7 MB.
+System memory in use after: 127.9 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3415.
+Total: 3.149900 ms (FindLiveObjects: 0.350500 ms CreateObjectMapping: 0.170100 ms MarkObjects: 2.608600 ms  DeleteObjects: 0.019600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001440 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.58 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.090 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 1.12 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 127.6 MB.
+System memory in use after: 127.8 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3417.
+Total: 3.483400 ms (FindLiveObjects: 0.383500 ms CreateObjectMapping: 0.298200 ms MarkObjects: 2.766400 ms  DeleteObjects: 0.033900 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001534 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.082 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2766 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 127.7 MB.
+System memory in use after: 128.0 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3419.
+Total: 2.967000 ms (FindLiveObjects: 0.349500 ms CreateObjectMapping: 0.132800 ms MarkObjects: 2.453700 ms  DeleteObjects: 0.028700 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

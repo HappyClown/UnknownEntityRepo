@@ -8,7 +8,7 @@ public class Character_Health : MonoBehaviour
     public Character_Movement charMov;
     public Character_Death charDeath;
     public WeaponLookAt weapLookAt;
-    public HealthBar healthBar;
+    public HUD_Manager HUDManager;
     public float maximumHealth;
     public  float currentHealth;
     public float takeHitCamNudge = 0.05f;
@@ -82,7 +82,7 @@ public class Character_Health : MonoBehaviour
 
     public void TakeDamage(float damage, Vector2 normHitDirection_) {
         currentHealth -= damage;
-        healthBar.AdjustHealthBar(maximumHealth, currentHealth);
+        HUDManager.playerLifeBar.AdjustHealthBar(maximumHealth, currentHealth);
         // Normalized hit direction from the hittingCollider to the playerCollider.
         normHitDirection = new Vector3(normHitDirection_.x, normHitDirection_.y, charMov.transform.position.z);
         //hitPosition = hitPos;
