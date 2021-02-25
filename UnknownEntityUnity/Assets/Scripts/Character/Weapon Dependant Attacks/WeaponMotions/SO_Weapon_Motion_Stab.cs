@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SO_Weapon_Motion_Stab", menuName = "SOWeaponMotions/SO_Weapon_Motion_Stab", order = 0)]
+[CreateAssetMenu(fileName = "SO_Weapon_Motion_Stab", menuName = "SO_WeaponStuff/SO_WeaponMotions/Weapon_Motion_Stab", order = 0)]
 public class SO_Weapon_Motion_Stab : SO_Weapon_Motion
 {
     //public float restingYPosition;

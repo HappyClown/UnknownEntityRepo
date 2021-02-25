@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Room", menuName = "Room")]
+[CreateAssetMenu(fileName = "New Room", menuName = "SO_LevelCreationStuff/Room")]
 public class SO_RoomBase : ScriptableObject
 {
     public GameObject roomPrefab;

@@ -34,9 +34,9 @@ public class OneShotAnimation : MonoBehaviour
         yield return new WaitForSeconds(sOAV.Cooldown);
         while (playing) {
             timer += Time.deltaTime;
-            if (timer > sOAV.changeSprites[spriteCount]) {
+            if (timer > sOAV.spriteTimings[spriteCount]) {
                 spriteR.sprite = sOAV.sprites[spriteCount];
-                if (spriteCount < sOAV.changeSprites.Length-1) {
+                if (spriteCount < sOAV.spriteTimings.Length-1) {
                     spriteCount++;
                 }
             }

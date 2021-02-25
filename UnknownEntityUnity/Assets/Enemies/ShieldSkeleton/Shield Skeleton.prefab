@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 65464885}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.425, y: -0.325, z: -0.9}
-  m_LocalScale: {x: 4.25, y: 0.25, z: 1}
+  m_LocalScale: {x: 4.25, y: 0, z: 1}
   m_Children: []
   m_Father: {fileID: 764420645428285963}
   m_RootOrder: 0
@@ -190,7 +190,7 @@ Transform:
   m_GameObject: {fileID: 1120722448}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.4250001, y: -0.324, z: -0.89}
-  m_LocalScale: {x: 4.25, y: 0.25, z: 1}
+  m_LocalScale: {x: 4.25, y: 0, z: 1}
   m_Children: []
   m_Father: {fileID: 764420645428285963}
   m_RootOrder: 1
@@ -643,7 +643,7 @@ MonoBehaviour:
   eSpriteR: {fileID: 764420645824505556}
   losLayerMask:
     serializedVersion: 2
-    m_Bits: 16640
+    m_Bits: 256
   eFollowPath: {fileID: 3094976223254943911}
   eWalkAnim: {fileID: 764420645499934841}
   eAggro: {fileID: 6363887862280098711}

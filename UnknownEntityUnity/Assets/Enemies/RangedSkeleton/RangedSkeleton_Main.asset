@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd75fb4af43a6ee429f7b6952032c406, type: 3}
+  m_Name: RangedSkeleton_Main
+  m_EditorClassIdentifier: 
+  name: Ranged Skeleton
+  maximumLife: 15
+  minDamage: 5
+  maxDamage: 6
+  attackCooldown: 2
+  sprite: {fileID: -1584749412573856627, guid: ec6f443e0d14c1942bacb5cb551e1eee, type: 3}
+  spriteIdle: {fileID: -1584749412573856627, guid: ec6f443e0d14c1942bacb5cb551e1eee,
+    type: 3}
+  atkRange: 5.5
+  aggroRange: 20
+  walkingSprite: {fileID: -1584749412573856627, guid: ec6f443e0d14c1942bacb5cb551e1eee,
+    type: 3}
+  walkingSprites:
+  - {fileID: -7321690256107723682, guid: ec6f443e0d14c1942bacb5cb551e1eee, type: 3}
+  - {fileID: 7565053521220211563, guid: ec6f443e0d14c1942bacb5cb551e1eee, type: 3}
+  - {fileID: 1966213018842842748, guid: ec6f443e0d14c1942bacb5cb551e1eee, type: 3}
+  - {fileID: -4484343225766554615, guid: ec6f443e0d14c1942bacb5cb551e1eee, type: 3}
+  - {fileID: 521615387984974874, guid: ec6f443e0d14c1942bacb5cb551e1eee, type: 3}
+  - {fileID: -1584749412573856627, guid: ec6f443e0d14c1942bacb5cb551e1eee, type: 3}
+  lerpTurnRotations: 1
+  moveSpeed: 2.5
+  turnSpeed: 5
+  turnDst: 0
+  slowDown: 1
+  slowDownDist: 1
+  intelligence: 1
+  animSprites:
+  - {fileID: 21300000, guid: b23c15767abbac347a592cab42cf3cb7, type: 3}
+  - {fileID: 21300000, guid: bc42f0c307eca8a4e8e47f07cb148e88, type: 3}
+  - {fileID: 21300000, guid: b1199e49672d7d247aa091203ebd6c40, type: 3}
+  - {fileID: 21300000, guid: b1199e49672d7d247aa091203ebd6c40, type: 3}
+  animEvents:
+  - 0
+  - 0.3
+  - 0.4
+  - 1.5
+  atkCol: {fileID: 2144531492564248647, guid: 3fcd7a7716ed24148afb822bfde1dde7, type: 3}
+  colTimingIndex: 1
+  events: []

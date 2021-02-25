@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "New Projectile", menuName = "Projectile")]
+[CreateAssetMenu(fileName = "New Projectile", menuName = "SO_EnemyStuff/Projectile")]
 public class SO_Projectile : ScriptableObject
 {
     public float minDamage, maxDamage;

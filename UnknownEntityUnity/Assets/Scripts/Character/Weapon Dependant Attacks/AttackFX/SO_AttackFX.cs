@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SO_AttackFX", menuName = "SOAttackFX", order = 0)]
+[CreateAssetMenu(fileName = "SO_AttackFX", menuName = "SO_WeaponStuff/SO_AttackStuff/AttackFX", order = 0)]
 public class SO_AttackFX : ScriptableObject {
     public float totalDuration;
     public bool stopOnStun;

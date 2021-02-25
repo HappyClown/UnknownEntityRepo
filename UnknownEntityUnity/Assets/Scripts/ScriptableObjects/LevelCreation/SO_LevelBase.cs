@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Level", menuName = "Level")]
+[CreateAssetMenu(fileName = "New Level", menuName = "SO_LevelCreationStuff/Level")]
 public class SO_LevelBase : ScriptableObject
 {
     public int minRoomAmnt, maxRoomAmnt;

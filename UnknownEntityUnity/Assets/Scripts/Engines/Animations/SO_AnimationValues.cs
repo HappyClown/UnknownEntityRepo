@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "AnimValues", menuName = "AnimValues")]
 public class SO_AnimationValues : ScriptableObject
@@ -20,6 +21,7 @@ public class SO_AnimationValues : ScriptableObject
     public Color color = Color.white;
     public float totalDuration;
     public Sprite[] sprites;
-    public float[] changeSprites;
+    public float[] spriteTimings;
+    public UnityEvent[] unityEvents;
     public float[] eventTriggers;
 }

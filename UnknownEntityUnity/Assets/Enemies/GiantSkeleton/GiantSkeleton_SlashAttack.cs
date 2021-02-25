@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GiantSkeleton_SlashAttack : MonoBehaviour
 {
@@ -35,14 +36,15 @@ public class GiantSkeleton_SlashAttack : MonoBehaviour
         Vector2 attackDir = eRefs.NormDirToTargetV2(attackDirPoint.position, eRefs.PlayerCenterPos);
         while (timer < aV.totalDuration) {
             timer += Time.deltaTime;
-            if (spriteStep < aV.changeSprites.Length && timer > aV.changeSprites[spriteStep]) {
+            if (spriteStep < aV.spriteTimings.Length && timer > aV.spriteTimings[spriteStep]) {
                 eRefs.eSpriteR.sprite = aV.sprites[spriteStep];
                 spriteStep++;
             }
             if (eventStep < aV.eventTriggers.Length && timer > aV.eventTriggers[eventStep]) {
                 if (eventStep == 0) {
+                    aV.unityEvents[0].Invoke();
                     // Launch slash projectile in the appropriate direction.
-                    projPool.RequestProjectile().LaunchProjectile(pV, attackDir, attackDirPoint.position);
+                    //projPool.RequestProjectile().LaunchProjectile(pV, attackDir, attackDirPoint.position);
                     // Projectile proj = projPool.RequestProjectile();
                     // proj.LaunchProjectile(pV, attackDir, attackDirPoint.position);
                 }
@@ -54,5 +56,10 @@ public class GiantSkeleton_SlashAttack : MonoBehaviour
         inCooldown = true;
         yield return new WaitForSeconds(eRefs.eSO.attackCooldown);
         inCooldown = false;
+    }
+
+    public void LaunchSlashProjectile() {
+        Debug.Log("puette puette");
+        projPool.RequestProjectile().LaunchProjectile(pV, eRefs.NormDirToTargetV2(attackDirPoint.position, eRefs.PlayerCenterPos), attackDirPoint.position);
     }
 }

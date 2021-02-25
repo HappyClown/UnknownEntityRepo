@@ -6,6 +6,7 @@ public class Character_PickupWeapon : MonoBehaviour
 {
     [Header("Script References")]
     public MouseInputs moIn;
+    public HUD_Manager HUDManager;
     public Character_Attack atk;
     public Character_EquippedWeapons equippedWeaps;
     [Header("To-set variables")]
@@ -16,6 +17,7 @@ public class Character_PickupWeapon : MonoBehaviour
     List<Collider2D> results = new List<Collider2D>();
 
     void Update() {
+        // TRANSFER TO AN: OTHER BUTTON ACTIONS SCRIPT IN THE Inputs GameObject
         if (moIn.interactPressed) {
             Physics2D.OverlapCollider(charLootCol, lootLayer, results);
             if (results.Count > 0) {
@@ -64,6 +66,8 @@ public class Character_PickupWeapon : MonoBehaviour
             weapLoot.SwapWeaponLoot(weapToDrop);
             equippedWeaps.Changes();
         }
+        // Change the HUD image of the active weapon.
+        HUDManager.playerWeapons.PickUpWeapon(equippedWeaps.firstWeap.weaponSprite);
         Debug.Log("Dropped weapon: " + weapToDrop + " and equipped: " + equippedWeaps.firstWeap);
     }
 }

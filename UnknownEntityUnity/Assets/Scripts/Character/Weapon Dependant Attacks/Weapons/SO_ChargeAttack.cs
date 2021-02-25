@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SO_ChargeAttack")]
+[CreateAssetMenu(fileName = "SO_ChargeAttack", menuName = "SO_WeaponStuff/SO_AttackStuff/ChargeAttack", order = 0)]
 public class SO_ChargeAttack : ScriptableObject
 {
     // Most likely for charged attacks with an intensity ramp up or intensity stages with variable effects, AoE, damage, etc.

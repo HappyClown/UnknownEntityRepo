@@ -5,7 +5,7 @@ using UnityEngine;
 public class HUD_Manager : MonoBehaviour
 {
     public HUD_PlayerLifeBar playerLifeBar;
-    // Ref to the Equipped weapons script
+    public HUD_PlayerWeapons playerWeapons;
     // Ref to movement skill script
     
 }

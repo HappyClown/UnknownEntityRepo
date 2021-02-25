@@ -5,7 +5,8 @@ using UnityEngine;
 public class HUD_PlayerLifeBar : MonoBehaviour
 {
     public float currentHealthPercent;
-    public float barMaxXScale;
+    // This could be grabbed automatically, usefull if the full life bar fill width changes during the game.
+    public float barMaxXScale; 
     public Transform healthBarTransform;
 
     public void AdjustHealthBar (float maxHealth, float curHealth) {

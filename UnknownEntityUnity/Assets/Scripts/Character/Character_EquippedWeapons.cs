@@ -7,6 +7,7 @@ public class Character_EquippedWeapons : MonoBehaviour
     [Header("Script References")]
     public Character_Attack charAtk;
     public MouseInputs moIn;
+    public HUD_Manager HUDManager;
     [Header("To-set Variables")]
     public SO_Weapon firstWeap;
     public SpriteRenderer weaponSpriteR;
@@ -28,6 +29,8 @@ public class Character_EquippedWeapons : MonoBehaviour
                 secondWeap = firstWeap;
                 firstWeap = tempSecondWeap;
                 Changes();
+                // HUD active weapon changes.
+                HUDManager.playerWeapons.SwapActiveWeapon();
             }
         }
     }

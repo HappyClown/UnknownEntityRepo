@@ -30,14 +30,30 @@ MonoBehaviour:
   - {fileID: -2492382500778131530, guid: 0fb540cf2d1a9be4986dcfe3024b5bca, type: 3}
   - {fileID: 201934589221696424, guid: 0fb540cf2d1a9be4986dcfe3024b5bca, type: 3}
   - {fileID: -8173629002521092697, guid: 0fb540cf2d1a9be4986dcfe3024b5bca, type: 3}
-  changeSprites:
+  spriteTimings:
   - 0
-  - 0.14
+  - 0.15
   - 0.3
-  - 0.46
-  - 0.56
-  - 0.7
-  - 0.8
-  - 0.94
+  - 0.45
+  - 0.6
+  - 0.75
+  - 0.9
+  - 0.99
+  unityEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4448700518474051722, guid: 831e490ddd4810b4abfade9e8fdcc2c0,
+          type: 3}
+        m_TargetAssemblyTypeName: GiantSkeleton_SlashAttack, Assembly-CSharp
+        m_MethodName: LaunchSlashProjectile
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: LaunchSlashProjectile
+          m_BoolArgument: 0
+        m_CallState: 1
   eventTriggers:
-  - 0.56
+  - 0.6
