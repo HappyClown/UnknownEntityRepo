@@ -110,7 +110,7 @@ public class Projectile : MonoBehaviour
                     else if (col.CompareTag("Destructible")) {
                         // Get destructible script and apply damage to the object.
                         col.GetComponent<Clutter_Health>().ReceiveDamage(projSO.Damage, myCol.transform.position, col.bounds.center);
-                        print("ARO HIT DA BOXES YA.");
+                        //print("ARO HIT DA BOXES YA.");
                     }
                     else {
                         // This should be the obstacles that just destroy the projectile nothing else.

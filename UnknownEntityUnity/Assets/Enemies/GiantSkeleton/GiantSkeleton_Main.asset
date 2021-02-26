@@ -18,7 +18,8 @@ MonoBehaviour:
   maxDamage: 12
   attackCooldown: 2
   sprite: {fileID: 4115683936894623653, guid: c9bb8344f2fe5a8408d1e5128eb1273b, type: 3}
-  spriteIdle: {fileID: 0}
+  spriteIdle: {fileID: 4115683936894623653, guid: c9bb8344f2fe5a8408d1e5128eb1273b,
+    type: 3}
   atkRange: 1.75
   aggroRange: 20
   walkingSprite: {fileID: 4115683936894623653, guid: c9bb8344f2fe5a8408d1e5128eb1273b,

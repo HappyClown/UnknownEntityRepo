@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PowerTools;
 
 public class Enemy_Refs : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class Enemy_Refs : MonoBehaviour
     public Transform playerCenter;
     public SpriteRenderer eSpriteR;
     public LayerMask losLayerMask;
+    public SpriteAnim mySpriteAnim;
+    public AnimationClip[] animClips;
     [Header("Enemy Scripts")]
     public Enemy_FollowPath eFollowPath;
     public Enemy_WalkAnim eWalkAnim;
@@ -20,6 +23,7 @@ public class Enemy_Refs : MonoBehaviour
     public Enemy_Health eHealth;
     public Enemy_Death eDeath;
     public SO_EnemyBase eSO;
+    public FlipObjectX flipX;
     public Vector3 PlayerShadowPos {
         get{
             return playerShadow.position;

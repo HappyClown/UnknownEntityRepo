@@ -114,14 +114,17 @@ public class Enemy_FollowPath : MonoBehaviour
         directlyMovingtoTarget = true;
         transform.forward = new Vector3(target.position.x - thisEnemyTrans.position.x, target.position.y - thisEnemyTrans.position.y, myZ);
         directTargetPos = target.position;
+        StartWalkAnim();
         while (directlyMovingtoTarget && eRefs.DistToTarget(thisEnemyTrans.position, directTargetPos) > stopRangeToTarget) {
             transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, myZ);
             transform.Translate(Vector3.forward * Time.deltaTime * enemy.moveSpeed * speedModifier, Space.Self);
             flip.Flip();
-            eRefs.eWalkAnim.UpdateWalkCycleAnim();
+            //eRefs.eWalkAnim.UpdateWalkCycleAnim();
             //eRefs.eSpriteR.sprite = eRefs.eSO.spriteIdle;
             yield return null;
         }
+        print("just stopped moving, taking a lil break b4 more murder xD");
+        StopWalkAnim();
         //eRefs.eSpriteR.sprite = eRefs.eSO.spriteIdle;
         directlyMovingtoTarget = false;
     }
@@ -136,6 +139,7 @@ public class Enemy_FollowPath : MonoBehaviour
         // if (path.turnBoundaries.Length < pathIndex) {
         //     followingPath = false;
         // }
+        StartWalkAnim();
         while (followingPath) {
             // Check to see if the unit has reached its destination.
             Vector2 pos2D = new Vector2(transform.position.x, transform.position.y);
@@ -143,6 +147,7 @@ public class Enemy_FollowPath : MonoBehaviour
                 if (pathIndex >= path.finishLineIndex) {
                     followingPath = false;
                     pathIndex = 0;
+                    StopWalkAnim();
                     break;
                 } else {
                     pathIndex++;
@@ -167,7 +172,7 @@ public class Enemy_FollowPath : MonoBehaviour
                 // Movement.
                 transform.Translate(Vector3.forward * Time.deltaTime * enemy.moveSpeed * speedModifier * speedPercent, Space.Self);
                 flip.Flip();
-                eRefs.eWalkAnim.UpdateWalkCycleAnim();
+                //eRefs.eWalkAnim.UpdateWalkCycleAnim();
             }
             yield return null;
         }
@@ -192,6 +197,7 @@ public class Enemy_FollowPath : MonoBehaviour
         if (directMoveCoroutine != null) {
             StopCoroutine(directMoveCoroutine);
         }
+        StopWalkAnim();
         followingPath = false;
         directlyMovingtoTarget = false;
         allowPathUpdate = false;
@@ -202,5 +208,21 @@ public class Enemy_FollowPath : MonoBehaviour
         if (drawPathGizmos && path != null) {
             path.DrawWithGizmos();
         }
+    }
+
+    public void StartWalkAnim() {
+        if (eRefs.mySpriteAnim.Clip != eRefs.animClips[0]) {
+            eRefs.mySpriteAnim.Play(eRefs.animClips[0]);
+        }
+        else if (!eRefs.mySpriteAnim.Playing) {
+            eRefs.mySpriteAnim.Play(eRefs.animClips[0]);
+        }
+    }
+    public void StopWalkAnim() {
+        if (eRefs.mySpriteAnim.Clip == eRefs.animClips[0]) {
+            eRefs.mySpriteAnim.Stop();
+        }
+        // This may create issues, set the sprite to idle.
+        eRefs.eSpriteR.sprite = eRefs.eSO.spriteIdle;
     }
 }

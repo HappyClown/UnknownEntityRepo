@@ -23,5 +23,6 @@ public class SO_AnimationValues : ScriptableObject
     public Sprite[] sprites;
     public float[] spriteTimings;
     public UnityEvent[] unityEvents;
+    public string[] eventMessages;
     public float[] eventTriggers;
 }

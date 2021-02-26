@@ -7,6 +7,7 @@ public class CopyXYZTransform : MonoBehaviour
     public Transform target;
 
     void LateUpdate() {
-        this.transform.position = new Vector3(target.position.x, target.position.y, target.position.z);    
+        this.transform.position = target.position; 
+        //this.transform.position = new Vector3(target.position.x, target.position.y, target.position.z);    
     }
 }

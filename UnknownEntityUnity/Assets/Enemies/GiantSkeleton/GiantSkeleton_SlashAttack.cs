@@ -12,6 +12,7 @@ public class GiantSkeleton_SlashAttack : MonoBehaviour
     public SO_Projectile pV;
     public Transform attackDirPoint;
     public ProjectilePool projPool;
+    private Vector2 slashProjDirection;
 
     public bool CheckToSlash() {
         // Check the distance to the player, slash
@@ -24,7 +25,9 @@ public class GiantSkeleton_SlashAttack : MonoBehaviour
     public void StartSlashAttack() {
         // attack direction
         inAtk = true;
-        StartCoroutine(SlashAttack());
+        eRefs.mySpriteAnim.Play(eRefs.animClips[1]);
+        //eRefs.mySpriteAnim.SetSpeed(2);
+        //StartCoroutine(SlashAttack());
     }
 
     IEnumerator SlashAttack() {
@@ -41,13 +44,14 @@ public class GiantSkeleton_SlashAttack : MonoBehaviour
                 spriteStep++;
             }
             if (eventStep < aV.eventTriggers.Length && timer > aV.eventTriggers[eventStep]) {
-                if (eventStep == 0) {
-                    aV.unityEvents[0].Invoke();
+                this.SendMessageUpwards(aV.eventMessages[eventStep]);
+                //if (eventStep == 0) {
+                    // aV.unityEvents[0].Invoke();
                     // Launch slash projectile in the appropriate direction.
                     //projPool.RequestProjectile().LaunchProjectile(pV, attackDir, attackDirPoint.position);
                     // Projectile proj = projPool.RequestProjectile();
                     // proj.LaunchProjectile(pV, attackDir, attackDirPoint.position);
-                }
+                //}
                 eventStep++;
             }
             yield return null;
@@ -58,8 +62,40 @@ public class GiantSkeleton_SlashAttack : MonoBehaviour
         inCooldown = false;
     }
 
-    public void LaunchSlashProjectile() {
-        Debug.Log("puette puette");
-        projPool.RequestProjectile().LaunchProjectile(pV, eRefs.NormDirToTargetV2(attackDirPoint.position, eRefs.PlayerCenterPos), attackDirPoint.position);
+    public void AnimLaunchSlashProjectile() {
+        projPool.RequestProjectile().LaunchProjectile(pV, slashProjDirection, attackDirPoint.position);
+    }
+
+    public void AnimStartSlashCooldown() {
+        eRefs.mySpriteAnim.Stop();
+        StartCoroutine(SlashCooldown());
+    }
+
+    public void AnimFlipTowardsPlayer() {
+        eRefs.flipX.FlipTowards(attackDirPoint.position, eRefs.PlayerShadowPos);
+    }
+
+    public void AnimGetDirToPlayer() {
+        slashProjDirection = eRefs.NormDirToTargetV2(attackDirPoint.position, eRefs.PlayerCenterPos);
+    }
+
+    IEnumerator SlashCooldown() {
+        inAtk = false;
+        inCooldown = true;
+        yield return new WaitForSeconds(eRefs.eSO.attackCooldown);
+        inCooldown = false;
+    }
+
+    public void StopSlashAttack() {
+        // One of the next two to stop the anim clip if it is the slash one playing now.
+        // AnimationClip curClip = eRefs.mySpriteAnim.GetCurrentAnimation();
+        // if (curClip = eRefs.animClips[1]) {
+        //     eRefs.mySpriteAnim.Stop();
+        // }
+        if (eRefs.mySpriteAnim.Clip == eRefs.animClips[1]) {
+            eRefs.mySpriteAnim.Stop();
+        }
+        this.StopAllCoroutines();
+
     }
 }
