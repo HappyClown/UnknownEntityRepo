@@ -13,9 +13,11 @@ public class SO_Projectile : ScriptableObject
         }
     }
     public float duration;
-    public float speed;
+    public float maxSpeed;
     public float spawnDistance;
     public bool destroyOnContact;
+    public bool useSpeedCurve;
+    public AnimationCurve speedCurve;
     [Header("Projectile Animation")]
     public bool animated;
     public float animTotalDuration;

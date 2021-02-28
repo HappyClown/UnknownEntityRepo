@@ -15,9 +15,33 @@ MonoBehaviour:
   minDamage: 3
   maxDamage: 4
   duration: 4
-  speed: 10
+  maxSpeed: 0
   spawnDistance: 0
   destroyOnContact: 0
+  speedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   animated: 1
   animTotalDuration: 0.3
   animSprites:

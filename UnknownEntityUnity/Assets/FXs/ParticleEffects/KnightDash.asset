@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb6ae6fcc240eb74da35de1bb5af4fdb, type: 3}
+  m_Name: KnightDash
+  m_EditorClassIdentifier: 
+  particleSystem: {fileID: 1347009741297295663, guid: 1e2457cb476a1914aa7991072a720175,
+    type: 3}
+  inUseDuration: 0.15
+  sprite: {fileID: 7769704327806311807, guid: 7f2b9e40db1ebc94e837f8af148ea043, type: 3}

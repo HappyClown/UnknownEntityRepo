@@ -199,6 +199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 958681501220435872}
   - component: {fileID: 1203715507877199406}
+  - component: {fileID: 463057788}
   m_Layer: 0
   m_Name: Scripts with Anim Events
   m_TagString: Untagged
@@ -240,6 +241,22 @@ MonoBehaviour:
   pV: {fileID: 11400000, guid: 143aec14a9e1d1340be8044357494cda, type: 2}
   attackDirPoint: {fileID: 7171370008164914717}
   projPool: {fileID: 0}
+--- !u!114 &463057788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6211065382984170234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd12fde1e7f1ed49bd9df41bfb3b117, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eRefs: {fileID: 6264118744248117210}
+  minusSpeed: 0
+  speedMult: 0.15
+  duration: 0.2258
 --- !u!1 &6264118744248117155
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +346,7 @@ MonoBehaviour:
   followOnStart: 0
   drawPathGizmos: 0
   myZ: -0.1
-  stopRangeToTarget: 0.7
+  stopRangeToTarget: 1
   target: {fileID: 0}
   thisEnemyTrans: {fileID: 6264118744310853074}
   speedModifier: 1

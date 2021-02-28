@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PowerTools;
 
 public class Projectile : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Projectile : MonoBehaviour
     SO_Projectile projSO;
     public SpriteRenderer mySpriteR;
     public PolygonCollider2D myCol;
+    public SpriteAnim mySpriteAnim;
     [Header("Projectile Animation")]
     float animTotalDuration;
     Sprite[] animSprites;
@@ -17,6 +19,10 @@ public class Projectile : MonoBehaviour
     List<Collider2D> collidedList = new List<Collider2D>(1);
     List<Collider2D> collidersDamaged = new List<Collider2D>();
     bool colStarted, colEnded;
+    AnimationCurve speedCurve;
+    float curveTimer;
+    float curveTimerAdjustment;
+    float curProjSpeed;
     //Vector2 direction;
 
     public void LaunchProjectile(SO_Projectile _projSO, Vector2 _direction, Vector2 startPos) {
@@ -24,6 +30,13 @@ public class Projectile : MonoBehaviour
         projDurationTimer = 0f;
         projSO = _projSO;
         projDuration = projSO.duration;
+        curProjSpeed = projSO.maxSpeed;
+        // If projectile uses a speed curve.
+        if (projSO.useSpeedCurve) {
+            curveTimer = 0f;
+            curveTimerAdjustment = 1 / projDuration;
+            speedCurve = projSO.speedCurve;
+        }
         //contactFilter = projSO.contactFilter;
         //direction = _direction;
         this.transform.position = new Vector3(startPos.x, startPos.y, this.transform.position.z);
@@ -37,11 +50,16 @@ public class Projectile : MonoBehaviour
         }
         else {
             // Setup animation.
-            animSprites = projSO.animSprites;
-            animTimings = projSO.animTimings;
-            animTotalDuration = projSO.animTotalDuration;
-            mySpriteR.sprite = animSprites[0];
-            StartCoroutine(AnimateProjectile());
+            // animSprites = projSO.animSprites;
+            // animTimings = projSO.animTimings;
+            // animTotalDuration = projSO.animTotalDuration;
+            // mySpriteR.sprite = animSprites[0];
+            // StartCoroutine(AnimateProjectile());
+            // With PowerSpriteAnimator.
+            if (projDuration < projSO.animClip.length) {
+                Debug.Log("Hello, be careful, a projectile that was just started has a duration that is shorter then its animation clip's lenght(duration). This means that the animation clip will not fully play once.");
+            }
+            mySpriteAnim.Play(projSO.animClip);
         }
         // Assign collider.
         myCol.points = projSO.col.points;
@@ -61,8 +79,13 @@ public class Projectile : MonoBehaviour
                 myCol.enabled = false;
                 colEnded = true;
             }
+            // If projectile uses a speed curve.
+            if (projSO.useSpeedCurve) {
+                curveTimer+=Time.deltaTime*curveTimerAdjustment;
+                curProjSpeed = speedCurve.Evaluate(curveTimer) * projSO.maxSpeed;
+            }
             // Move the projectile.
-            transform.Translate(Vector2.up * projSO.speed * Time.deltaTime);
+            transform.Translate(Vector2.up * curProjSpeed * Time.deltaTime);
             // Check collisions.
             if (myCol.OverlapCollider(projSO.contactFilter, collidedList) > 0) {
                 //print("Should check colliders");
@@ -131,6 +154,7 @@ public class Projectile : MonoBehaviour
         colEnded = false;
         collidersDamaged.Clear();
         myCol.enabled = false;
+        mySpriteAnim.Stop();
         this.gameObject.SetActive(false);
     }
 }

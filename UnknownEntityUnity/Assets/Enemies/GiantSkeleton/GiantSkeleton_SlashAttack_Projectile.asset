@@ -13,11 +13,36 @@ MonoBehaviour:
   m_Name: GiantSkeleton_SlashAttack_Projectile
   m_EditorClassIdentifier: 
   minDamage: 10
-  maxDamage: 12
+  maxDamage: 10
   duration: 0.4
-  speed: 2
+  maxSpeed: 2
   spawnDistance: 0.75
   destroyOnContact: 0
+  useSpeedCurve: 1
+  speedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -2.270109
+      outSlope: -2.270109
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.054945048
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.02151663
+      outSlope: -0.02151663
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.29984307
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   animated: 1
   animTotalDuration: 0.4
   animSprites:
@@ -32,7 +57,7 @@ MonoBehaviour:
   - 0.23
   - 0.29
   - 0.35
-  animClip: {fileID: 0}
+  animClip: {fileID: 7400000, guid: 12e043377700e8542ac149135a80617f, type: 2}
   colStartTime: 0
   colEndTime: 0.3
   sprite: {fileID: -5696415690592143733, guid: efcc52ec15d204b4182df718fd73291f, type: 3}

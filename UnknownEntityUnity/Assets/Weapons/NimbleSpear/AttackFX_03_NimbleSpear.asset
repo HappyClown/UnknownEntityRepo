@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AttackFX_03_NimbleSpear
   m_EditorClassIdentifier: 
   totalDuration: 0.78
-  stopOnStun: 1
+  stopOnStun: 0
   collider: {fileID: 2499665363079990395, guid: e4dadb3ec98b46948bbd1f09651f4d66,
     type: 3}
   colStart: 0.55
