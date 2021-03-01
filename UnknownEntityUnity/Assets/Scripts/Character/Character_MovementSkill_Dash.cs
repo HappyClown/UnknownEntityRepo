@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PowerTools;
 
 public class Character_MovementSkill_Dash : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class Character_MovementSkill_Dash : MonoBehaviour
     [Header("VFX")]
     public Character_MotionFXPool charMotionFXPool;
     public AfterImageEffect afterImageEffect;
+    public SpriteAnim spriteAnim;
+    public AnimationClip dashDustFX;
     //public ParticleSystem partSys;
     //public ParticleEffectPool partEffectPool;
     //public SO_ParticleEffect sOPartEffect;
@@ -61,6 +64,8 @@ public class Character_MovementSkill_Dash : MonoBehaviour
         //partEffectObject = partEffectPool.RequestParticleEffect();
         // partEffectObject.StartParticleEffect(sOPartEffect, this.transform, true, dashDuration, charMove.spriteRend.sprite);
         //AfterImagePartSys();
+        spriteAnim.gameObject.transform.position = this.transform.position;
+        spriteAnim.Play(dashDustFX);
         afterImageEffect.StartAfterImage(charMove.spriteRend.sprite, charMove.spriteRend.flipX, dashDuration, charMove.transform);
         StartCoroutine(Dashing());
     }
