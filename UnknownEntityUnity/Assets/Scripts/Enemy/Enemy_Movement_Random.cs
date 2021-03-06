@@ -24,7 +24,7 @@ public class Enemy_Movement_Random : MonoBehaviour
         Vector2 targetPos;
         // Get a random direction.
         Vector2 randomDir = Random.insideUnitCircle.normalized;
-        print(randomDir);
+        //print(randomDir);
         RaycastHit2D hit = Physics2D.CircleCast(this.transform.position, radius, randomDir, moveDistance, eRefs.losLayerMask);
         if (hit) {
             targetPos = hit.centroid;

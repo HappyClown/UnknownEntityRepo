@@ -15,9 +15,10 @@ MonoBehaviour:
   minDamage: 3
   maxDamage: 4
   duration: 4
-  maxSpeed: 0
+  maxSpeed: 8
   spawnDistance: 0
-  destroyOnContact: 0
+  destroyOnContact: 1
+  useSpeedCurve: 0
   speedCurve:
     serializedVersion: 2
     m_Curve:
@@ -58,7 +59,7 @@ MonoBehaviour:
   - 0.15
   - 0.2
   - 0.25
-  animClip: {fileID: 0}
+  animClip: {fileID: 7400000, guid: a3571e9e2c9afb4448cac9aa9595524c, type: 2}
   colStartTime: 0
   colEndTime: 99
   sprite: {fileID: -1485791937876538584, guid: e5039b92be0c3664c885aea11427f502, type: 3}

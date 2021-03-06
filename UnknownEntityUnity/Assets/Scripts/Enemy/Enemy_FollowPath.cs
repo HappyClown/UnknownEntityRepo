@@ -123,7 +123,7 @@ public class Enemy_FollowPath : MonoBehaviour
             //eRefs.eSpriteR.sprite = eRefs.eSO.spriteIdle;
             yield return null;
         }
-        print("just stopped moving, taking a lil break b4 more murder xD");
+        //print("just stopped moving, taking a lil break b4 more murder xD");
         StopWalkAnim();
         //eRefs.eSpriteR.sprite = eRefs.eSO.spriteIdle;
         directlyMovingtoTarget = false;

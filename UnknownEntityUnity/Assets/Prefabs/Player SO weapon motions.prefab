@@ -505,7 +505,6 @@ GameObject:
   - component: {fileID: 3507419587604336638}
   - component: {fileID: 396231391011437111}
   - component: {fileID: 1731692030}
-  - component: {fileID: 1981829694}
   m_Layer: 0
   m_Name: Player SO weapon motions
   m_TagString: Untagged
@@ -867,30 +866,6 @@ MonoBehaviour:
   drawUpToXRange: 5
   fromColor: {r: 1, g: 1, b: 1, a: 1}
   toColor: {r: 1, g: 0, b: 0, a: 1}
---- !u!114 &1981829694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3651932565041545233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 161cbdc8e7379274687b8541fd9c3d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moIn: {fileID: 0}
-  charMove: {fileID: 3651932565041545239}
-  charAttack: {fileID: 3651932565041545236}
-  HUDManager: {fileID: 0}
-  dashing: 0
-  dashDuration: 0.15
-  dashDistance: 2
-  maxCharges: 3
-  curCharges: 3
-  chargeCooldown: 2.5
-  charMotionFXPool: {fileID: 0}
-  afterImageEffect: {fileID: 0}
 --- !u!1 &3651932565309937593
 GameObject:
   m_ObjectHideFlags: 0

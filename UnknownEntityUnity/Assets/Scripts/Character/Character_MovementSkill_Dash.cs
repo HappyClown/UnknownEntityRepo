@@ -25,16 +25,10 @@ public class Character_MovementSkill_Dash : MonoBehaviour
     int chargesOnCooldown;
     Coroutine chargeCooldownCoroutine;
     [Header("VFX")]
-    public Character_MotionFXPool charMotionFXPool;
+    public SpriteAnimPool spriteAnimPool;
     public AfterImageEffect afterImageEffect;
-    public SpriteAnim spriteAnim;
-    public AnimationClip dashDustFX;
-    //public ParticleSystem partSys;
-    //public ParticleEffectPool partEffectPool;
-    //public SO_ParticleEffect sOPartEffect;
-    //ParticleEffectObject partEffectObject;
-
-    // Dust VFX + after images using the character's current sprite in a... dum Dum DUUUM, unity particle system. Make a pool for particle systems.
+    public SO_SpriteAnimObject sOSpriteAnimObject;
+    SpriteAnimObject spriteAnimObject;
 
     void Update() {
         // MOVE THIS TO THE OTHER INPUT ACTION SCRIPT
@@ -60,12 +54,13 @@ public class Character_MovementSkill_Dash : MonoBehaviour
         // Use and put a charge on cooldown, change the HUD accordingly.
         UseACharge();
         dashing = true;
-        // Start the initial particle effects.
-        //partEffectObject = partEffectPool.RequestParticleEffect();
-        // partEffectObject.StartParticleEffect(sOPartEffect, this.transform, true, dashDuration, charMove.spriteRend.sprite);
-        //AfterImagePartSys();
-        spriteAnim.gameObject.transform.position = this.transform.position;
-        spriteAnim.Play(dashDustFX);
+        // Request, adjust, and play the dash dust FX sprite animation.
+        spriteAnimObject = spriteAnimPool.RequestSpriteAnimObject();
+        spriteAnimObject.gameObject.transform.position = charMove.transform.position;
+         if (dashDirection.x < 0) spriteAnimObject.gameObject.GetComponent<SpriteRenderer>().flipX = true;
+         else spriteAnimObject.gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        spriteAnimObject.StartSpriteAnim(sOSpriteAnimObject);
+        // Start the after image FX.
         afterImageEffect.StartAfterImage(charMove.spriteRend.sprite, charMove.spriteRend.flipX, dashDuration, charMove.transform);
         StartCoroutine(Dashing());
     }
@@ -75,13 +70,11 @@ public class Character_MovementSkill_Dash : MonoBehaviour
         while (timer < dashDuration) {
         print("Hello hello hola, let the movement go dash");
             timer += Time.deltaTime;
-            curPos = this.transform.position;
+            curPos = charMove.transform.position;
             newPos = curPos + (dashDirection*dashSpeed*Time.deltaTime);
             charMove.MoveThePlayer(dashDirection, newPos, curPos);
             yield return null;
         }
-        // Activate gameobject.
-        //partSys.gameObject.SetActive(false);
         StopMovementSkill();
     }
 
@@ -115,18 +108,4 @@ public class Character_MovementSkill_Dash : MonoBehaviour
         }
         chargeCooldownCoroutine = null;
     }
-
-    // public void AfterImagePartSys() {
-    //     // Assign duration.
-    //     var psMain = partSys.main;
-    //     psMain.duration = dashDuration;
-    //     // Assign sprite.
-    //     var psTexSheetAnim = partSys.textureSheetAnimation;
-    //     psTexSheetAnim.SetSprite(0, charMove.spriteRend.sprite);
-    //     // Set X scale to the same as the player.
-        
-    //     // Activate gameobject.
-    //     partSys.gameObject.SetActive(true);
-    //     partSys.Play();
-    // }
 }

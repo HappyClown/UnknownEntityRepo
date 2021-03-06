@@ -20,6 +20,7 @@ public class Character_Health : MonoBehaviour
     public float getHitDuration;
     float timer;
     int spriteNumber;
+    public AnimationClip clipHit;
     // Same as animation, they could be ported somewhere else, or not.
     [Header("Get Hit Movement")]
     public bool charHitMoveOn;
@@ -38,7 +39,7 @@ public class Character_Health : MonoBehaviour
         // Hit FX.
         //HitEffect();
         // Slow down time.
-        TimeSlow.StartTimeSlow(10, 0f);
+        TimeSlow.StartTimeSlow(0.25f);
         // Set camera nudge backwards from the hit.
         CameraFollow.CameraNudge_St(normHitDirection, takeHitCamNudge);
         //StartCoroutine(TimeSlow.SlowTimeScale(5, 0));
@@ -80,13 +81,44 @@ public class Character_Health : MonoBehaviour
         }
     }
 
+    public void StartTakeHit() {
+        // Slow down time.
+        TimeSlow.StartTimeSlow(0.25f);
+        // Set camera nudge backwards from the hit.
+        CameraFollow.CameraNudge_St(normHitDirection, takeHitCamNudge);
+        charMov.StopInputMove();
+        // Player cannot flip.
+        charMov.charCanFlip = false;
+        charMov.FlipSpriteDirectionBased(normHitDirection);
+        // Stops; player attack movement, attack FXs that are stopped on stun, weapon attack motion.
+        charAtk.StopAttack();
+        // Player weapon does not follow cursor.
+        weapLookAt.lookAtEnabled = false;
+        charMov.mySpriteAnim.Play(clipHit);
+    }
+    public void StopTakeHit () {
+        // If health reaches 0, iniate death sequence.
+        if (currentHealth <= 0f) {
+            charDeath.CharacterDies();
+        }
+        else {
+            charMov.canInputMove = true;
+            charAtk.atkChain.ready = true;
+            weapLookAt.lookAtEnabled = true;
+            charMov.charCanFlip = true;
+            charMov.ResetMoveCheckValues();
+        }
+    }
+
     public void TakeDamage(float damage, Vector2 normHitDirection_) {
         currentHealth -= damage;
         HUDManager.playerLifeBar.AdjustHealthBar(maximumHealth, currentHealth);
         // Normalized hit direction from the hittingCollider to the playerCollider.
         normHitDirection = new Vector3(normHitDirection_.x, normHitDirection_.y, charMov.transform.position.z);
         //hitPosition = hitPos;
-        StartCoroutine(TakeHitAnimation());
+
+        //StartCoroutine(TakeHitAnimation());
+        StartTakeHit();
         HitTakenMovement();
     }
 

@@ -6,6 +6,8 @@ public class RangedSkeleton_Death : Enemy_SpecificDeath
 {
     public Enemy_AllyToDefend eAllyToDef;
     public override void PlayOnDeath() {
-        eAllyToDef.FreeUpDefender();
+        if (eAllyToDef) {
+            eAllyToDef.FreeUpDefender();
+        }
     }
 }

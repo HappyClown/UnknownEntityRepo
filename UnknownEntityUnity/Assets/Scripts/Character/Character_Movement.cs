@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PowerTools;
 
 public class Character_Movement : MonoBehaviour
 {
@@ -43,6 +44,10 @@ public class Character_Movement : MonoBehaviour
     private float animTimer;
     private int tick;
     public float animRunSpeedMult = 1f;
+    // SpriteAnim
+    public SpriteAnim mySpriteAnim;
+    public AnimationClip forwardStart, backStart, forwardLoop, backLoop;
+    public AnimationClip idle;
     //
     private bool lastLookLeft, lastLookRight, lastMoveLeft, lastMoveRight;
 
@@ -123,11 +128,13 @@ public class Character_Movement : MonoBehaviour
                 // Check if direction is different from last update.
                 ShouldRunAnimChange();
                 // Animate based on current sprites and bools.
-                RunAnim();
+                //RunAnim();
             }
             else {
                 if (runningLastFrame) {
-                    StartIdleAnimation();
+                    ResetMoveCheckValues();
+                    //mySpriteAnim.Play(idle);
+                    //StartIdleAnimation();
                     runningLastFrame = false;
                 }
                 IdleAnim();
@@ -140,7 +147,15 @@ public class Character_Movement : MonoBehaviour
         }
     }
 
-    void SetupRunFX() {
+    public void ResetMoveCheckValues() {
+        moveLeft = false;
+        moveRight = false;
+        lastMoveLeft = true;
+        lastMoveRight = true;
+        mySpriteAnim.Play(idle);
+    }
+
+    public void SetupRunFX() {
         Character_MotionFX charMo = charMotionFXPool.RequestMotionFX();
         charMo.inUse = true;
         charMo.transform.position = this.transform.position;
@@ -250,15 +265,19 @@ public class Character_Movement : MonoBehaviour
         // Check to see if the character should run forward or backwards based on its move and look direcrtions.
         if (moveLeft && lookLeft) {
             startRunForwardBool = true;
+            mySpriteAnim.Play(forwardStart);
         }
         else if (moveLeft && lookRight) {
             startRunBackwardsBool = true;
+            mySpriteAnim.Play(backStart);
         }
         else if (moveRight && lookRight) {
             startRunForwardBool = true;
+            mySpriteAnim.Play(forwardStart);
         }
         else if (moveRight && lookLeft) {
             startRunBackwardsBool = true;
+            mySpriteAnim.Play(backStart);
         }
         else {
             startRunForwardBool = false;

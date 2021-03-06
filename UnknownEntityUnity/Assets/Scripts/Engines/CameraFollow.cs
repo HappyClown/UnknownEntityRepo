@@ -67,7 +67,8 @@ public class CameraFollow : MonoBehaviour
             adjustedVector = dirVectorNorm * (camPlayerToMouse * dirVectorMag);
             targetPos = new Vector3(playerTran.position.x, playerTran.position.y, 0f) + new Vector3(adjustedVector.x, adjustedVector.y, this.transform.position.z);
 
-            this.transform.position = Vector3.SmoothDamp(this.transform.position, targetPos, ref refVelocity, smoothTime);
+            //this.transform.position = Vector3.SmoothDamp(this.transform.position, targetPos, ref refVelocity, smoothTime);
+            this.transform.position = targetPos;
             this.transform.position += cameraNudge_St;
         }
     }

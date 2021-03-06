@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4243094996786927581}
   - component: {fileID: 4243094996786927580}
+  - component: {fileID: 8350820978516455894}
   m_Layer: 0
   m_Name: Skill Dash AfterImage Effect
   m_TagString: Untagged
@@ -24,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4243094996786927582}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.62, y: 3.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -50,6 +51,31 @@ MonoBehaviour:
   - {fileID: 4243094996278003148}
   imageSpawnRate: 0.05
   imageFadeTime: 0.25
+--- !u!114 &8350820978516455894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4243094996786927582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 161cbdc8e7379274687b8541fd9c3d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moIn: {fileID: 0}
+  charMove: {fileID: 0}
+  charAttack: {fileID: 0}
+  HUDManager: {fileID: 0}
+  dashing: 0
+  dashDuration: 0.15
+  dashDistance: 3
+  maxCharges: 3
+  curCharges: 3
+  chargeCooldown: 1
+  spriteAnimPool: {fileID: 0}
+  afterImageEffect: {fileID: 4243094996786927580}
+  sOSpriteAnimObject: {fileID: 11400000, guid: 59d88d2dd09e43f46a9b1cc601a7df31, type: 2}
 --- !u!1001 &1501859351603541136
 PrefabInstance:
   m_ObjectHideFlags: 0

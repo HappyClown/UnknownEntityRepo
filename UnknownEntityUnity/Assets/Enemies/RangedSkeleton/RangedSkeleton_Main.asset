@@ -16,7 +16,7 @@ MonoBehaviour:
   maximumLife: 15
   minDamage: 5
   maxDamage: 6
-  attackCooldown: 2
+  attackCooldown: 1
   sprite: {fileID: -1584749412573856627, guid: ec6f443e0d14c1942bacb5cb551e1eee, type: 3}
   spriteIdle: {fileID: -1584749412573856627, guid: ec6f443e0d14c1942bacb5cb551e1eee,
     type: 3}

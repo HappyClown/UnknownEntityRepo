@@ -23,11 +23,17 @@ public class Projectile : MonoBehaviour
     float curveTimer;
     float curveTimerAdjustment;
     float curProjSpeed;
+
+    // Particle System To Turn Off
+    ParticleSystem partSys;
+    Transform partSysParent;
     //Vector2 direction;
 
-    public void LaunchProjectile(SO_Projectile _projSO, Vector2 _direction, Vector2 startPos) {
+    public void LaunchProjectile(SO_Projectile _projSO, Vector2 _direction, Vector2 startPos/* , ParticleSystem _partSys = null, Transform _partSysParent = null */) {
         inUse = true;
         projDurationTimer = 0f;
+        // partSys = _partSys;
+        // partSysParent = _partSysParent;
         projSO = _projSO;
         projDuration = projSO.duration;
         curProjSpeed = projSO.maxSpeed;
@@ -155,6 +161,14 @@ public class Projectile : MonoBehaviour
         collidersDamaged.Clear();
         myCol.enabled = false;
         mySpriteAnim.Stop();
+        // if (partSys != null) { 
+        //     partSys.Stop(); 
+        // }
+        // if (partSysParent != null) {
+        //     partSys.transform.parent = partSysParent; 
+        // }
+        // partSys = null;
+        // partSysParent = null;
         this.gameObject.SetActive(false);
     }
 }
