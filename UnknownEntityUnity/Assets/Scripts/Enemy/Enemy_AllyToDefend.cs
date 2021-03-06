@@ -8,17 +8,9 @@ public class Enemy_AllyToDefend : MonoBehaviour
     public bool defended;
     public Enemy_Defender defender;
 
-    // void Update()
-    // {
-    //     if (eRefs.eDeath.isDead) {
-    //         if (defender) {
-    //             defender.canDefend = false;
-    //         }
-    //         this.enabled = false;
-    //     }
-    // }
-
     public void FreeUpDefender() {
-        defender.canDefend = false;
+        if (defender != null) {
+            defender.canDefend = false;
+        }
     }
 }
