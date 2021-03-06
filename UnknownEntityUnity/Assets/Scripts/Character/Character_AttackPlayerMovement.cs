@@ -109,6 +109,7 @@ public class Character_AttackPlayerMovement : MonoBehaviour
         moveTimer = 0f;
         if (!chargeAttack[curMotion]) {
             this.StopAllCoroutines();
+            charAtkMotionOn = true;
             this.StartCoroutine(CharAttackMotionTimer());
         }
     }
@@ -121,6 +122,15 @@ public class Character_AttackPlayerMovement : MonoBehaviour
     }
 
     public void StopPlayerMotion() {
+        //charMov.canInputMove = true;
+        //charMov.charCanFlip = true;
+        charMov.ReduceSpeed(-curSlow);
+        curSlow = 0f;
+        charMov.FlipSpriteMouseBased();
+        weaponLookAt.lookAtEnabled = true;
+        curMotion = 0;
+        charAtkMotionOn = false;
+        moveTimer = 0f;
         this.StopAllCoroutines();
     }
 }

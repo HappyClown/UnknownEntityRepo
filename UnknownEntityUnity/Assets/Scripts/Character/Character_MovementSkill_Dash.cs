@@ -81,6 +81,8 @@ public class Character_MovementSkill_Dash : MonoBehaviour
     public void StopMovementSkill() {
         dashing = false;
         charMove.canInputMove = true;
+        charMove.charCanFlip = true;
+        charAttack.readyToAtk = true;
     }
 
     void UseACharge() {

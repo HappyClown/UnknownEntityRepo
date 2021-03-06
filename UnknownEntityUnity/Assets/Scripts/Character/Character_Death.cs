@@ -12,6 +12,7 @@ public class Character_Death : MonoBehaviour
     public SpriteRenderer weaponSpriteR;
     public GameObject shadow;
     [Header("Animation")]
+    public AnimationClip ClipDeath;
     public Sprite[] deathAnimSprites;
     public float[] deathAnimTimings;
     public SpriteRenderer spriteR;
@@ -21,10 +22,10 @@ public class Character_Death : MonoBehaviour
     int totalTicks;
 
     public void CharacterDies() {
-        totalDuration = deathAnimTimings[deathAnimTimings.Length-1];
-        totalTicks = deathAnimTimings.Length-1;
-        tick = 0;
-        timer = 0f;
+        // totalDuration = deathAnimTimings[deathAnimTimings.Length-1];
+        // totalTicks = deathAnimTimings.Length-1;
+        // tick = 0;
+        // timer = 0f;
         // Stop all scripts that need to be stopped.
         // Turn off hit collider.
         hitCol.enabled = false;
@@ -42,8 +43,10 @@ public class Character_Death : MonoBehaviour
         shadow.SetActive(false);
         // Stop checking for character flip.
         // Turn off mouse pointer?
-
-        StartCoroutine(DeathAnimation());
+        charMov.mySpriteAnim.Play(ClipDeath);
+        deathSequence.StartCoroutine(deathSequence.DeathUI());
+        Time.timeScale = 0.33f;
+        //StartCoroutine(DeathAnimation());
     }
 
     public IEnumerator DeathAnimation() {

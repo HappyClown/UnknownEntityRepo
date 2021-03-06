@@ -132,7 +132,7 @@ public class Character_Movement : MonoBehaviour
             }
             else {
                 if (runningLastFrame) {
-                    ResetMoveCheckValues();
+                    StartIdling();
                     //mySpriteAnim.Play(idle);
                     //StartIdleAnimation();
                     runningLastFrame = false;
@@ -147,7 +147,7 @@ public class Character_Movement : MonoBehaviour
         }
     }
 
-    public void ResetMoveCheckValues() {
+    public void StartIdling() {
         moveLeft = false;
         moveRight = false;
         lastMoveLeft = true;
@@ -367,8 +367,11 @@ public class Character_Movement : MonoBehaviour
     public void StopInputMove() {
         canInputMove = false;
         running = false;
+        lastMoveLeft = true;
+        lastMoveRight = true;
         moveLeft = false;
         moveRight = false;
+        mySpriteAnim.Stop();
         spriteRend.sprite = idleSprite;
         //animator.SetBool("Running", false);
         //SetRunAnimation();

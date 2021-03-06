@@ -79,6 +79,9 @@ public class Character_Attack : MonoBehaviour
             }
             // Turn the atk direction change back to false. This is done at the end because colliders will also be flipped by checking this variable. Now flipping the attack FX pool object's x scale instead of just the sprite.
             atkDirectionChanges = false;
+            // Player sripte to idle and stop animations
+            // charMov.mySpriteAnim.Stop();
+            // charMov.spriteRend.sprite = charMov.idleSprite;
         }
     }
     // When you want to stop the current attack.
@@ -100,8 +103,11 @@ public class Character_Attack : MonoBehaviour
         if (atkPlyrMove.charAtkMotionOn) {
             atkPlyrMove.StopPlayerMotion();
         }
+        
         //atkVisual.StopAllCoroutines();
     }
+
+
     // If I want to check only when a new weapon is equipped, call this from the Character_EquippedWeapons.Change(). (every attack chain with the same motion)
     public void AdjustMotionList() {
         curWeaponMotion = weaponMotionController.CheckMotionList(weaponMotion);

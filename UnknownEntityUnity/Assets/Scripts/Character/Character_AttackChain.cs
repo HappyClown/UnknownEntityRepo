@@ -11,7 +11,7 @@ public class Character_AttackChain : MonoBehaviour
     [Header("To set variables")]
     public float chainResetDelay;
     [Header("Read Only")]
-    public bool ready = true;
+    //public bool ready = true;
     public int curChain;
     private int nextChain;
     private float chainResetTimer;
@@ -34,7 +34,7 @@ public class Character_AttackChain : MonoBehaviour
 
     public void ChainAttacks() {
         charAtk.readyToAtk = false;
-        ready = false;
+        //ready = false;
         // This attack is the last in the chain. Code based on that can be added here.
         if (nextChain >= charAtk.weapon.attackChains.Length) {
             nextChain = 0;
@@ -63,6 +63,6 @@ public class Character_AttackChain : MonoBehaviour
         // nextChain = 0;
         // curChain = 0;
         charAtk.readyToAtk = true;
-        ready = true;
+        //ready = true;
     }
 }

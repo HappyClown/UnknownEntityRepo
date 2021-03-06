@@ -77,7 +77,6 @@ public class TimeSlow : MonoBehaviour
         while (timer < 1f) {
             //timer = Time.time - startTime;
             timer += Time.unscaledDeltaTime/slowTimeTotalTime_St;
-            print(timer);
             Time.timeScale = slowTimeAnimCurve.Evaluate(timer);
             yield return null;
         }

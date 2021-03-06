@@ -75,7 +75,7 @@ public class Character_Health : MonoBehaviour
         }
         else {
             charMov.canInputMove = true;
-            charAtk.atkChain.ready = true;
+            //charAtk.atkChain.ready = true;
             weapLookAt.lookAtEnabled = true;
             charMov.charCanFlip = true;
         }
@@ -103,10 +103,11 @@ public class Character_Health : MonoBehaviour
         }
         else {
             charMov.canInputMove = true;
-            charAtk.atkChain.ready = true;
+            //charAtk.atkChain.ready = true;
+            charAtk.readyToAtk = true;
             weapLookAt.lookAtEnabled = true;
             charMov.charCanFlip = true;
-            charMov.ResetMoveCheckValues();
+            charMov.StartIdling();
         }
     }
 

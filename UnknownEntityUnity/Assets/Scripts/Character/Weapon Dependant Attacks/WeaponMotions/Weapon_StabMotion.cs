@@ -57,7 +57,7 @@ public class Weapon_StabMotion : Weapon_Motion
         // At what motion can the player start his next attack and swap his weapon.
         if (curMotion >= sOWeaponMotionStab.allowAttackAndSwap) {
             charAtk.readyToAtk = true;
-            charAtk.atkChain.ready = true;
+            //charAtk.atkChain.ready = true;
             charAtk.equippedWeapons.canSwapWeapon = true;
         }
         // At what motion will the camera nudge.
