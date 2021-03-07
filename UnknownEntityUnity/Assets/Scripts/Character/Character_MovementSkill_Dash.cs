@@ -37,8 +37,8 @@ public class Character_MovementSkill_Dash : MonoBehaviour
         }
     }
     public void CanIUseMovementSkill() {
-        if (!dashing && curCharges > 0) {
-            // and player is input moving
+        if (!dashing && curCharges > 0 && charMove.running && charAttack.CanInterruptAttackCheck()) {
+            // Either the player needs to be running or it dashes in the towards/away from where the player is pointing.
             StartMovementSkill();
         }
     }
@@ -68,7 +68,7 @@ public class Character_MovementSkill_Dash : MonoBehaviour
     IEnumerator Dashing() {
         float timer = 0f;
         while (timer < dashDuration) {
-        print("Hello hello hola, let the movement go dash");
+        //print("Hello hello hola, let the movement go dash");
             timer += Time.deltaTime;
             curPos = charMove.transform.position;
             newPos = curPos + (dashDirection*dashSpeed*Time.deltaTime);

@@ -33,6 +33,18 @@ public class Character_AttackVisual : MonoBehaviour
                     thisSpriteIndex++;
                 }
             }
+            // During this time the player will not be able to voluntarily interrupt his attack, for example they will not be able to use their dash skill.
+            if (timer > sO_AttackFX.cantInterrupStart && timer < sO_AttackFX.cantInterrupEnd) {
+                atkFX.canInterrupt = false;
+            }
+            else {
+                atkFX.canInterrupt = true;
+            }
+            // Alternative to not have any point uninterruptable during the attack, have a point durring the attack where it will cancel the attack fx (projectile or not), for example if the player dashes before the nimble spear attack 01's projectile is fully formed it will make it disappear. Basically a point in the attack where the attack is either cancelled or continues.
+            // Cancel Point, before this point the attack FX (visual, movement, collision) will be cancelled by things like getting hit aka stunned.
+            if (timer > sO_AttackFX.cancelPoint) {
+                atkFX.involuntaryCancel = false;
+            }
             yield return null;
         }
         while (atkFX.holdLastSprite) {
@@ -41,6 +53,7 @@ public class Character_AttackVisual : MonoBehaviour
         atkSpriteR.sprite = null;
         atkFX.gameObject.SetActive(false);
         atkFX.stopOnStun = false;
+        atkFX.involuntaryCancel = true;
         atkFX.inUse = false;
     }
 }

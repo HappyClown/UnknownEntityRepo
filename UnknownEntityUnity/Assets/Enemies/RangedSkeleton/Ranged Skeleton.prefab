@@ -5530,6 +5530,7 @@ MonoBehaviour:
   enemy: {fileID: 11400000, guid: a0d0f8b4e0debe940b80ae28dd837868, type: 2}
   flip: {fileID: 3690657262318137147}
   eRefs: {fileID: 3690657262318137120}
+  useOldAnimSystem: 0
   followOnStart: 0
   drawPathGizmos: 0
   myZ: -0.1

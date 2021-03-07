@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalDuration: 0.38
   stopOnStun: 0
+  cantInterrupStart: 0
+  cantInterrupEnd: 0.32
+  cancelPoint: 0.21
   collider: {fileID: 5298593161510228955, guid: 0cf057d1b5ea3b44aa6add6394769618,
     type: 3}
   colStart: 0.21

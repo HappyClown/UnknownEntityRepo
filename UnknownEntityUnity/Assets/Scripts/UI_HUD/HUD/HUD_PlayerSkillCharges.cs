@@ -14,7 +14,7 @@ public class HUD_PlayerSkillCharges : MonoBehaviour
             if (chargeImages[i].sprite == readyCharge) {
                 chargeImages[i].sprite = usedCharge;
                 chargeImages[i].SetNativeSize();
-                break;
+                return;
             }
         }
         Debug.Log("Wow wow wow la!! A skill charge was supposed to be used but nothing was found, you should investigate this.");
@@ -24,7 +24,7 @@ public class HUD_PlayerSkillCharges : MonoBehaviour
             if (chargeImages[i].sprite == usedCharge) {
                 chargeImages[i].sprite = readyCharge;
                 chargeImages[i].SetNativeSize();
-                break;
+                return;
             }
         }
         Debug.Log("Hey! Hey you!! A skill charge was supposed to be refilled but nothing was found, you should investigate this.");

@@ -31,6 +31,7 @@ public class Character_Attack : MonoBehaviour
     public bool atkDirectionChanges;
     public bool atkFXFlip;
     public int atkFXFlipScale;
+    private List<Character_AttackFX> atkFXsInUse = new List<Character_AttackFX>();
 
     public void Attack() {
         // If the attack is triggered, make sure that the grace period is set back to false since it is used.
@@ -52,6 +53,8 @@ public class Character_Attack : MonoBehaviour
         curWeaponMotion.WeaponMotionSetup(this, weaponTrans, weaponSpriteR);
         // Handles moving the player, slowing him down, etc., during the attack. (Player motion)
         atkPlyrMove.SetupPlayerAttackMotions(WeapAtkChain.sO_CharAtk_Motion);
+        // Clear the character_attackFX list.
+        atkFXsInUse.Clear();
         // Activate all this attack's FX's.
         foreach (SO_AttackFX sO_AttackFX in ChainAttackFXs) {
             // Request an attack FX from the attack FX pool, the attack FX contains a Sprite Renderer and a PolygonalCollider2D.
@@ -66,12 +69,12 @@ public class Character_Attack : MonoBehaviour
             else {
                 atkFX.transform.localScale = new Vector2(1, atkFX.transform.localScale.y);
             }
-            // Moves the attack effect over the course of the attack.
-            atkMovement.StartCoroutine(atkMovement.AttackMovement(sO_AttackFX, atkFX.transform));
-            // Enables and changes the attack effect over the course of the attack and dictates if the atkFX pool object is inUse then not.
-            // Start the coroutine ON the pool object script, not the script holding the coroutine logic.
             // The gameObject needs to be turned on before starting the coroutine on it.
             atkFX.gameObject.SetActive(true);
+            // Moves the attack effect over the course of the attack.
+            atkFX.StartCoroutine(atkMovement.AttackMovement(sO_AttackFX, atkFX.transform));
+            // Enables and changes the attack effect over the course of the attack and dictates if the atkFX pool object is inUse then not.
+            // Start the coroutine ON the pool object script, not the script holding the coroutine logic.
             atkFX.StartCoroutine(atkVisual.AttackAnimation(sO_AttackFX, atkFX));
             // Enables and disables the attack's collider during the "animation" and detects colliders it can hit, once, if it has one assigned.
             if (sO_AttackFX.collider != null) {
@@ -82,6 +85,8 @@ public class Character_Attack : MonoBehaviour
             // Player sripte to idle and stop animations
             // charMov.mySpriteAnim.Stop();
             // charMov.spriteRend.sprite = charMov.idleSprite;
+            // Add the character_attackFXs used to a list to better keep track of them.
+            atkFXsInUse.Add(atkFX);
         }
     }
     // When you want to stop the current attack.
@@ -89,15 +94,25 @@ public class Character_Attack : MonoBehaviour
         if (curWeaponMotion) {
             curWeaponMotion.StopMotions();
         }
-        foreach (Character_AttackFX poolAtkFX in atkFXPool.atkFXs) {
-            if (poolAtkFX.stopOnStun) {
-                poolAtkFX.StopAllCoroutines();
-                poolAtkFX.spriteR.sprite = null;
-                poolAtkFX.col.enabled = false;
-                poolAtkFX.gameObject.SetActive(false);
-                //poolAtkFX.transform.position = new Vector3(999, 999, poolAtkFX.transform.position.z);
-                poolAtkFX.stopOnStun = false;
-                poolAtkFX.inUse = false;
+        // foreach (Character_AttackFX poolAtkFX in atkFXPool.atkFXs) {
+        //     if (poolAtkFX.stopOnStun) {
+        //         poolAtkFX.StopAllCoroutines();
+        //         poolAtkFX.spriteR.sprite = null;
+        //         poolAtkFX.col.enabled = false;
+        //         poolAtkFX.gameObject.SetActive(false);
+        //         //poolAtkFX.transform.position = new Vector3(999, 999, poolAtkFX.transform.position.z);
+        //         poolAtkFX.stopOnStun = false;
+        //         poolAtkFX.inUse = false;
+        //     }
+        // }
+        foreach (Character_AttackFX curAtkFX in atkFXsInUse) {
+            if (curAtkFX.involuntaryCancel) {
+                curAtkFX.StopAllCoroutines();
+                curAtkFX.spriteR.sprite = null;
+                curAtkFX.col.enabled = false;
+                curAtkFX.gameObject.SetActive(false);
+                curAtkFX.stopOnStun = false;
+                curAtkFX.inUse = false;
             }
         }
         if (atkPlyrMove.charAtkMotionOn) {
@@ -105,6 +120,15 @@ public class Character_Attack : MonoBehaviour
         }
         
         //atkVisual.StopAllCoroutines();
+    }
+
+    public bool CanInterruptAttackCheck() {
+        foreach (Character_AttackFX poolAtkFX in atkFXPool.atkFXs) {
+            if (!poolAtkFX.canInterrupt) {
+                return false;
+            }
+        }
+        return true;
     }
 
 

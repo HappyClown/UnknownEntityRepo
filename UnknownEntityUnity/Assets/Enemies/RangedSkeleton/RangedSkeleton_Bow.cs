@@ -45,6 +45,8 @@ public class RangedSkeleton_Bow : MonoBehaviour
     public void StopAndReset () {
         // Stops all coroutines.
         this.StopAllCoroutines();
+        // Stop bow and arrow attack animation.
+        bowSpriteAnim.Stop();
         // Restore walking bow. Sprite and rotation.
         bowSpriteR.sprite = defaultBowSprite;
         bowAndArrowGameObject.transform.eulerAngles = Vector3.zero;

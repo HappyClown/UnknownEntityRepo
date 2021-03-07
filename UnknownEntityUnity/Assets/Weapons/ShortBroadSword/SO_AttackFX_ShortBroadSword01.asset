@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalDuration: 0.5
   stopOnStun: 1
+  cantInterrupStart: 0
+  cantInterrupEnd: 0.24
+  cancelPoint: 0.24
   collider: {fileID: 6730313490488880281, guid: 264935880256aaf409acbf44debed5b3,
     type: 3}
-  colStart: 0.2
+  colStart: 0.24
   colEnd: 0.5
   soImpactFX: {fileID: 11400000, guid: ee52250fe04d09a4c9e94699de25cdd5, type: 2}
   sprites:
@@ -37,6 +40,8 @@ MonoBehaviour:
   moveDistance: 0
   moveDelay: 0.2
   setupBeforeDelay: 0
+  followWeapon: 0
+  followWeaponHeight: 0
   moveAnimCurve:
     serializedVersion: 2
     m_Curve:

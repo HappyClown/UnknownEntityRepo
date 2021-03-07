@@ -34,8 +34,8 @@ public class RangedSkeleton_Actions : Enemy_Actions
     }
 
     public override void StopActions() {
-        // Stop the bow attack happening. Starting an attack cooldown and not allowing path update.
-        throwProj.ProjectileAttackDone(false);
+        // Stop the bow attack happening. Starting an attack cooldown.
+        throwProj.ProjectileAttackDone(false); // Starts a cooldown and allows path updates again.
         throwProj.rsBow.StopAndReset();
         throwProj.rsBow.bowSpriteR.sprite = null;
     }
@@ -85,7 +85,7 @@ public class RangedSkeleton_Actions : Enemy_Actions
             brain.SetActiveState(Wait);
             stateStarted = false;
         }
-        // If my projectile attack is ready start chasing the player.
+        // If my projectile attack is ready nad im within range, attack.
         if (throwProj.CheckThrowProj()){
             if (debugs) print("ChaseTarget: Switching state to: ThrowProjectile");
             brain.SetActiveState(ThrowProjectile);

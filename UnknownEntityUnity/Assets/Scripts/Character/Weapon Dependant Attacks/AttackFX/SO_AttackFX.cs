@@ -6,6 +6,8 @@ using UnityEngine;
 public class SO_AttackFX : ScriptableObject {
     public float totalDuration;
     public bool stopOnStun;
+    public float cantInterrupStart, cantInterrupEnd;
+    public float cancelPoint; // 
     [Header("Collision")]
     public PolygonCollider2D collider; // Maybe need more then one in the future.
     public float colStart, colEnd;

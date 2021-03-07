@@ -9,6 +9,7 @@ public class Enemy_FollowPath : MonoBehaviour
     public FlipObjectX flip;
     public Enemy_Refs eRefs;
     [Header ("To-set Variables")]
+    public bool useOldAnimSystem;
     public bool followOnStart;
     public bool drawPathGizmos;
     public float myZ;
@@ -83,6 +84,7 @@ public class Enemy_FollowPath : MonoBehaviour
                         yield return null;
                         if (!allowPathUpdate) {
                             print("This is probably whe nthe problem happenes. Yep. Right here, yo.");
+                            continue;
                         }
                         directMoveCoroutine = StartCoroutine(DirectMoveToTarget());
                         targetPosOld = target.position;
@@ -114,18 +116,18 @@ public class Enemy_FollowPath : MonoBehaviour
         directlyMovingtoTarget = true;
         transform.forward = new Vector3(target.position.x - thisEnemyTrans.position.x, target.position.y - thisEnemyTrans.position.y, myZ);
         directTargetPos = target.position;
-        StartWalkAnim();
+        if (!useOldAnimSystem) StartWalkAnim();
         while (directlyMovingtoTarget && eRefs.DistToTarget(thisEnemyTrans.position, directTargetPos) > stopRangeToTarget) {
             transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, myZ);
             transform.Translate(Vector3.forward * Time.deltaTime * enemy.moveSpeed * speedModifier, Space.Self);
             flip.Flip();
-            //eRefs.eWalkAnim.UpdateWalkCycleAnim();
+            if (useOldAnimSystem) eRefs.eWalkAnim.UpdateWalkCycleAnim();
             //eRefs.eSpriteR.sprite = eRefs.eSO.spriteIdle;
             yield return null;
         }
         //print("just stopped moving, taking a lil break b4 more murder xD");
-        StopWalkAnim();
-        //eRefs.eSpriteR.sprite = eRefs.eSO.spriteIdle;
+        if (!useOldAnimSystem) StopWalkAnim();
+        if (useOldAnimSystem) eRefs.eSpriteR.sprite = eRefs.eSO.spriteIdle;
         directlyMovingtoTarget = false;
     }
     
@@ -139,7 +141,7 @@ public class Enemy_FollowPath : MonoBehaviour
         // if (path.turnBoundaries.Length < pathIndex) {
         //     followingPath = false;
         // }
-        StartWalkAnim();
+        if (!useOldAnimSystem) StartWalkAnim();
         while (followingPath) {
             // Check to see if the unit has reached its destination.
             Vector2 pos2D = new Vector2(transform.position.x, transform.position.y);
@@ -147,7 +149,7 @@ public class Enemy_FollowPath : MonoBehaviour
                 if (pathIndex >= path.finishLineIndex) {
                     followingPath = false;
                     pathIndex = 0;
-                    StopWalkAnim();
+                    if (!useOldAnimSystem) StopWalkAnim();
                     break;
                 } else {
                     pathIndex++;
@@ -172,7 +174,7 @@ public class Enemy_FollowPath : MonoBehaviour
                 // Movement.
                 transform.Translate(Vector3.forward * Time.deltaTime * enemy.moveSpeed * speedModifier * speedPercent, Space.Self);
                 flip.Flip();
-                //eRefs.eWalkAnim.UpdateWalkCycleAnim();
+                if (useOldAnimSystem) eRefs.eWalkAnim.UpdateWalkCycleAnim();
             }
             yield return null;
         }
@@ -197,7 +199,7 @@ public class Enemy_FollowPath : MonoBehaviour
         if (directMoveCoroutine != null) {
             StopCoroutine(directMoveCoroutine);
         }
-        StopWalkAnim();
+        if (!useOldAnimSystem) StopWalkAnim();
         followingPath = false;
         directlyMovingtoTarget = false;
         allowPathUpdate = false;

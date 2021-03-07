@@ -19,7 +19,8 @@ public class Character_Movement : MonoBehaviour
     public float normMagMovement;
     public float moveDirX, moveDirY;
     private bool lookLeft, lookRight, moveLeft, moveRight;
-    private bool running, runningLastFrame;
+    private bool runningLastFrame;
+    public bool running;
     public Vector3 normalizedMovement;
     [Header("Run FX")]
     public float runFXFrequency;

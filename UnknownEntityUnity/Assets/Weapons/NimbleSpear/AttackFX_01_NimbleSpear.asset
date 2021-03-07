@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalDuration: 0.56
   stopOnStun: 0
+  cantInterrupStart: 0
+  cantInterrupEnd: 0.37
+  cancelPoint: 0.33
   collider: {fileID: 8939317785436719242, guid: 91c6f2fea35555543bcd831e0022e287,
     type: 3}
-  colStart: 0.25
+  colStart: 0.33
   colEnd: 0.56
   soImpactFX: {fileID: 11400000, guid: 92847d8334ad62e4fb58d43334968c38, type: 2}
   sprites:
