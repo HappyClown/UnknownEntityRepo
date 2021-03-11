@@ -133,6 +133,7 @@ public class Character_Movement : MonoBehaviour
             }
             else {
                 if (runningLastFrame) {
+                    timeRunning = 0f;
                     StartIdling();
                     //mySpriteAnim.Play(idle);
                     //StartIdleAnimation();

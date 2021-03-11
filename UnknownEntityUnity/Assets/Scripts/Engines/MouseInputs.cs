@@ -12,19 +12,21 @@ public class MouseInputs : MonoBehaviour
     public Vector3 mousePosWorld;
     public Vector2 mousePosWorld2D, lastMousePosWorld2D;
     public bool attackButtonPressed, attackButtonHeld, mouseMoved;
-    [Header("Attack Actions")]
+    [Header("Actions")]
     public AttackButtonActions attackButtonActions;
+    public OtherButtonActions otherButtonActions;
     [Header("Input Management")]
     public Vector2 inputMovementValues;
     public float x, y;
     public InputMaster inputMaster;
+    public InputAction moveSkillAction;
     [Header("Grace Period")]
     public bool graceUsesFrames;
-    public float attackGraceDuration;
-    public int attackGraceFrames;
-    private float attackGraceTimer;
-    private int attackGraceFrameCount;
-    public bool attackButtonTapInGrace;
+    // public float attackGraceDuration;
+    // public int attackGraceFrames;
+    // private float attackGraceTimer;
+    // private int attackGraceFrameCount;
+    // public bool attackButtonTapInGrace;
     [Header("Other Inputs")]
     public float weaponSwapGraceDuration;
     public int weaponSwapGraceFrames;
@@ -42,6 +44,7 @@ public class MouseInputs : MonoBehaviour
         inputMaster.Player.InputMovement.canceled += ctx => inputMovementValues = Vector2.zero;
         inputMaster.Player.AttackPressed.performed += ctx => attackButtonActions.AttackButtonPressedChecks();
         inputMaster.Player.AttackReleased.performed += ctx => attackButtonActions.AttackButtonReleasedChecks();
+        inputMaster.Player.MovementSkill.performed += ctx => otherButtonActions.MoveSkillButtonPressedChecks();
         if (cursorOff) { Cursor.visible = false; }
     }
 
@@ -88,10 +91,10 @@ public class MouseInputs : MonoBehaviour
         }
 
         // Movement skill key pressed.
-        movementSkillPressed = false;
-        if (inputMaster.Player.MovementSkill.triggered) {
-            movementSkillPressed = true;
-        }
+        // movementSkillPressed = false;
+        // if (inputMaster.Player.MovementSkill.triggered) {
+        //     movementSkillPressed = true;
+        // }
 
         // Check if the mouse moved.
         // mousePos = UnityEngine.Input.mousePosition;

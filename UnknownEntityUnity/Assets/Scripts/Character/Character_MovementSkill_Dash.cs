@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PowerTools;
 
-public class Character_MovementSkill_Dash : MonoBehaviour
+public class Character_MovementSkill_Dash : Character_MovementSkills
 {
     [Header("Scripts")]
     public MouseInputs moIn;
@@ -30,17 +30,19 @@ public class Character_MovementSkill_Dash : MonoBehaviour
     public SO_SpriteAnimObject sOSpriteAnimObject;
     SpriteAnimObject spriteAnimObject;
 
-    void Update() {
-        // MOVE THIS TO THE OTHER INPUT ACTION SCRIPT
-        if (moIn.movementSkillPressed) {
-            CanIUseMovementSkill();
-        }
-    }
-    public void CanIUseMovementSkill() {
+    // void Update() {
+    //     // MOVE THIS TO THE OTHER INPUT ACTION SCRIPT
+    //     if (moIn.movementSkillPressed) {
+    //         CanIUseMovementSkill();
+    //     }
+    // }
+    public override bool CanIUseMovementSkill() {
         if (!dashing && curCharges > 0 && charMove.running && charAttack.CanInterruptAttackCheck()) {
             // Either the player needs to be running or it dashes in the towards/away from where the player is pointing.
             StartMovementSkill();
+            return true;
         }
+        return false;
     }
 
     public void StartMovementSkill() {

@@ -29,7 +29,9 @@ public class AttackButtonActions : MonoBehaviour
                 print("attack is chargeable starting timer.");
                 pressed = true;
                 heldTimer = 0f;
-                if (attackButtonCurrentlyHeldCoroutine != null) {StopCoroutine(attackButtonCurrentlyHeldCoroutine);}
+                if (attackButtonCurrentlyHeldCoroutine != null) {
+                    StopCoroutine(attackButtonCurrentlyHeldCoroutine);
+                }
                 attackButtonCurrentlyHeldCoroutine = StartCoroutine(AttackButtonCurrentlyHeld());
             }
             else {
@@ -75,23 +77,23 @@ public class AttackButtonActions : MonoBehaviour
 
     IEnumerator AttackButtonTappedGrace() {
         // Grace period counted in Update() frames.
-        if (graceUsesFrames) {
-            attackGraceFrameCount = 0;
-            while(attackGraceFrameCount < attackGraceFrames) {
-                attackGraceFrameCount++;
-                if (charAttack.readyToAtk) {
-                    charAttack.Attack();
-                    attackButtonTapInGrace = false;
-                    if (attackGraceCoroutine != null) {StopCoroutine(attackGraceCoroutine);}
-                }
-                yield return null;
-            }
-            attackButtonTapInGrace = false;
-            attackGraceCoroutine = null;
-            yield break;
-        }
+        // if (graceUsesFrames) {
+        //     attackGraceFrameCount = 0;
+        //     while(attackGraceFrameCount < attackGraceFrames) {
+        //         attackGraceFrameCount++;
+        //         if (charAttack.readyToAtk) {
+        //             charAttack.Attack();
+        //             attackButtonTapInGrace = false;
+        //             if (attackGraceCoroutine != null) {StopCoroutine(attackGraceCoroutine);}
+        //         }
+        //         yield return null;
+        //     }
+        //     attackButtonTapInGrace = false;
+        //     attackGraceCoroutine = null;
+        //     yield break;
+        // }
         // Grace period counted in deltaTime. (seconds)
-        else {
+        //else {
             attackGraceTimer = 0f;
             while(attackGraceTimer < attackGraceDuration) {
                 attackGraceTimer += Time.deltaTime;
@@ -105,6 +107,6 @@ public class AttackButtonActions : MonoBehaviour
             attackButtonTapInGrace = false;
             attackGraceCoroutine = null;
             yield break;
-        }
+        //}
     }
 }
