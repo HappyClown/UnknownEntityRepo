@@ -45,6 +45,8 @@ public class MouseInputs : MonoBehaviour
         inputMaster.Player.AttackPressed.performed += ctx => attackButtonActions.AttackButtonPressedChecks();
         inputMaster.Player.AttackReleased.performed += ctx => attackButtonActions.AttackButtonReleasedChecks();
         inputMaster.Player.MovementSkill.performed += ctx => otherButtonActions.MoveSkillButtonPressedChecks();
+        inputMaster.Player.Interact.performed += ctx => otherButtonActions.InteractButtonChecks();
+        inputMaster.Player.WeaponSwap.performed += ctx => otherButtonActions.WeaponSwapButtonChecks();
         if (cursorOff) { Cursor.visible = false; }
     }
 
@@ -79,10 +81,10 @@ public class MouseInputs : MonoBehaviour
         }
 
         // Interact key pressed. Used to interact with object, or pick up weapons.
-        interactPressed = false;
-        if (inputMaster.Player.Interact.triggered) {
-            interactPressed = true;
-        }
+        // interactPressed = false;
+        // if (inputMaster.Player.Interact.triggered) {
+        //     interactPressed = true;
+        // }
         
         // Confirm key pressed.
         confirmPressed = false;

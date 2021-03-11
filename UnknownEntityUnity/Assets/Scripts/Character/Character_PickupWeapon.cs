@@ -16,39 +16,37 @@ public class Character_PickupWeapon : MonoBehaviour
     [Header("Read Only")]
     List<Collider2D> results = new List<Collider2D>();
 
-    void Update() {
-        // TRANSFER TO AN: OTHER BUTTON ACTIONS SCRIPT IN THE Inputs GameObject
-        if (moIn.interactPressed) {
-            Physics2D.OverlapCollider(charLootCol, lootLayer, results);
-            if (results.Count > 0) {
-                if (results.Count > 1) {
-                    float shortestDist = 999f;
-                    Collider2D closestCol;
-                    int loopIndexCount = 0;
-                    // Swap active weapon with closest weapon loot.
-                    foreach(Collider2D result in results) {
-                        float distCheck = (result.transform.position - playerTrans.position).sqrMagnitude;
-                        if (distCheck < shortestDist) {
-                            shortestDist = distCheck;
-                            closestCol = result;
-                            if (loopIndexCount == results.Count - 1) {
-                                WeaponPickup weapLoot = closestCol.gameObject.GetComponent<WeaponPickup>();
-                                EquipWeapon(weapLoot);
-                            }
+    public void CanIPickUpWeapon() {
+        // Check if there are any weapons on the floor.
+        Physics2D.OverlapCollider(charLootCol, lootLayer, results);
+        if (results.Count > 0) {
+            if (results.Count > 1) {
+                float shortestDist = 999f;
+                Collider2D closestCol;
+                int loopIndexCount = 0;
+                // Swap active weapon with closest weapon loot.
+                foreach(Collider2D result in results) {
+                    float distCheck = (result.transform.position - playerTrans.position).sqrMagnitude;
+                    if (distCheck < shortestDist) {
+                        shortestDist = distCheck;
+                        closestCol = result;
+                        if (loopIndexCount == results.Count - 1) {
+                            WeaponPickup weapLoot = closestCol.gameObject.GetComponent<WeaponPickup>();
+                            EquipWeapon(weapLoot);
                         }
-                        loopIndexCount++;
                     }
+                    loopIndexCount++;
                 }
-                else {
-                    // Swap active weapon with weapon loot.
-                    WeaponPickup weapLoot = results[0].gameObject.GetComponent<WeaponPickup>();
-                    EquipWeapon(weapLoot);
-                }
-                // Assign old active weapon to weapon loot on floor.
             }
             else {
-                //Debug.Log("Tried to pick up a weapon, but nothing was found.");
+                // Swap active weapon with weapon loot.
+                WeaponPickup weapLoot = results[0].gameObject.GetComponent<WeaponPickup>();
+                EquipWeapon(weapLoot);
             }
+            // Assign old active weapon to weapon loot on floor.
+        }
+        else {
+            //Debug.Log("Tried to pick up a weapon, but nothing was found.");
         }
     }
     // Assign old active weapon to weapon loot on floor.

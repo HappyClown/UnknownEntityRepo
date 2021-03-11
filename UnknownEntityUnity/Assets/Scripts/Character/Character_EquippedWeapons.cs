@@ -19,11 +19,10 @@ public class Character_EquippedWeapons : MonoBehaviour
         Changes();
     }
 
-    void Update() {
+    public bool CanISwapWeapon() {
         // TRANSFER TO AN: OTHER BUTTON ACTIONS SCRIPT IN THE Inputs GameObject
         // Weapon swap if two weapons are equipped.
-        if (canSwapWeapon && moIn.weaponSwapPressed) {
-            moIn.weaponSwapPressed = false;
+        if (canSwapWeapon) {
             if (firstWeap != null && secondWeap != null) {
                 SO_Weapon tempSecondWeap = secondWeap;
                 secondWeap = firstWeap;
@@ -32,7 +31,9 @@ public class Character_EquippedWeapons : MonoBehaviour
                 // HUD active weapon changes.
                 HUDManager.playerWeapons.SwapActiveWeapon();
             }
+            return true;
         }
+        return false;
     }
 
     public void Changes() {
