@@ -9,6 +9,7 @@ public class SO_Weapon : ScriptableObject
     public Sprite weaponSprite;
     public float chainResetDelay;
     public Vector3 restingRotation, restingPosition;
+    public float durabilityDamage = 1f;
     public AttackChain[] attackChains;
     [System.Serializable]
     public class AttackChain {

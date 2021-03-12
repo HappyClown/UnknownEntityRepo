@@ -58,27 +58,27 @@ public class MouseInputs : MonoBehaviour
         lastMousePosWorld2D = mousePosWorld2D;
 
         // Swap weapon key pressed. Also checks if grace frames are on.
-        if (weaponSwapPressed) {
-            // Grace period counted in Update() frames.
-            if (graceUsesFrames) {
-                weaponSwapGraceFrameCount++;
-                if (weaponSwapGraceFrameCount >= weaponSwapGraceFrames) {
-                    weaponSwapPressed = false;
-                    weaponSwapGraceFrameCount = 0;
-                }
-            }
-            // Grace period counted in deltaTime. (seconds)
-            else {
-                weaponSwapGraceTimer += Time.deltaTime;
-                if (weaponSwapGraceTimer >= weaponSwapGraceDuration) {
-                    weaponSwapPressed = false;
-                    weaponSwapGraceTimer = 0f;
-                }
-            }
-        }
-        if (inputMaster.Player.WeaponSwap.triggered) {
-            weaponSwapPressed = true;
-        }
+        // if (weaponSwapPressed) {
+        //     // Grace period counted in Update() frames.
+        //     if (graceUsesFrames) {
+        //         weaponSwapGraceFrameCount++;
+        //         if (weaponSwapGraceFrameCount >= weaponSwapGraceFrames) {
+        //             weaponSwapPressed = false;
+        //             weaponSwapGraceFrameCount = 0;
+        //         }
+        //     }
+        //     // Grace period counted in deltaTime. (seconds)
+        //     else {
+        //         weaponSwapGraceTimer += Time.deltaTime;
+        //         if (weaponSwapGraceTimer >= weaponSwapGraceDuration) {
+        //             weaponSwapPressed = false;
+        //             weaponSwapGraceTimer = 0f;
+        //         }
+        //     }
+        // }
+        // if (inputMaster.Player.WeaponSwap.triggered) {
+        //     weaponSwapPressed = true;
+        // }
 
         // Interact key pressed. Used to interact with object, or pick up weapons.
         // interactPressed = false;

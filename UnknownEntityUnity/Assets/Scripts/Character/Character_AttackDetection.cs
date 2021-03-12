@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Character_AttackDetection : MonoBehaviour
 {
+    public Character_EquippedWeapons charEquippedWeapons;
     public ContactFilter2D hitLayers;
     public float timeSlowDur;
     // public PolygonCollider2D[] attackColliders;
@@ -27,6 +28,7 @@ public class Character_AttackDetection : MonoBehaviour
         List<Collider2D> collidersDamaged = new List<Collider2D>();
         float timer = 0f;
         bool detectCol = false;
+        bool hitAnEnemy = false;
         // Wait a frame to avoid having the collider appear for a frame at its last position, the atkFX's new position HAS to be set before the collider is enabled. (Maybe specifically for atkFX's that have the same colStart time, first sprite time and moveDelay all set to the same value)
         yield return null;
         
@@ -55,6 +57,11 @@ public class Character_AttackDetection : MonoBehaviour
                         // If this is an enemy, apply damage.
                         if (col.gameObject.CompareTag("Enemy")) {
                             col.GetComponent<Enemy_Health>().ReceiveDamage(WeapAtkChain.DamageRoll, atkFXCol.transform.position, col.bounds.center);
+                            // If at least one enemy is hit apply durability damage to the active weapon.
+                            if (!hitAnEnemy) {
+                                charEquippedWeapons.DurabilityDamage();
+                                hitAnEnemy = true;
+                            }
                         }
                         else if (col.gameObject.CompareTag("Destructible")) {
                             col.GetComponent<Clutter_Health>().ReceiveDamage(WeapAtkChain.DamageRoll, atkFXCol.transform.position, col.bounds.center);

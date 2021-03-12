@@ -12,6 +12,14 @@ public class HUD_PlayerWeapons : MonoBehaviour
     public GameObject[] activeWeapAtkChainCounters;
     bool weaponOneIsActive = true;
     Vector2 newWeapPos;
+    [Header("Durability")]
+    public Image weapOneDurabilityBarImage;
+    public Image weapTwoDurabilityBarImage;
+    public float durabilityBarMaxWidth;
+    public RectTransform durabilityBarOneTrans, durabilityBarTwoTrans;
+    //float currentDurabilityBarWidth;
+    public Color fullDurabilityColor;
+    public Color noDurabilityColor;
 
     public void SwapActiveWeapon() {
         // change active weapon highlight to the other weapon
@@ -40,6 +48,18 @@ public class HUD_PlayerWeapons : MonoBehaviour
         else {
             weapTwoImage.sprite = weapPickedUp;
             weapTwoImage.SetNativeSize();
+        }
+    }
+    public void AdjustDurabilityBar(float currentDurability) {
+        float durabilityPercent = currentDurability/100;
+        if (weaponOneIsActive) {
+            // Current durability divided by the max durability to get the current durability percentage and multiply it to the bar's max width to get the current bar width.
+            durabilityBarOneTrans.sizeDelta = new Vector2(durabilityPercent*durabilityBarMaxWidth, durabilityBarOneTrans.rect.height);
+            weapOneDurabilityBarImage.color = Color.Lerp(noDurabilityColor, fullDurabilityColor, durabilityPercent);
+        }
+        else {
+            durabilityBarTwoTrans.sizeDelta = new Vector2(durabilityPercent*durabilityBarMaxWidth, durabilityBarTwoTrans.rect.height);
+            weapTwoDurabilityBarImage.color = Color.Lerp(noDurabilityColor, fullDurabilityColor, durabilityPercent);
         }
     }
 }

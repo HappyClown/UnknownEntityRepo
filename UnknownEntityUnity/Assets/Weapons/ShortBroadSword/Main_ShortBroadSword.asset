@@ -17,6 +17,7 @@ MonoBehaviour:
   chainResetDelay: 1.5
   restingRotation: {x: 0, y: 0, z: 110}
   restingPosition: {x: 0, y: 0, z: 0}
+  durabilityDamage: 1
   attackChains:
   - sO_Weapon_Motion: {fileID: 11400000, guid: 2f59c7d987f9ce1459ac5a2f4d70c5c9, type: 2}
     sO_CharAtk_Motion: {fileID: 11400000, guid: 4fc148f62dec2d446b1a55b4b3e0728e,

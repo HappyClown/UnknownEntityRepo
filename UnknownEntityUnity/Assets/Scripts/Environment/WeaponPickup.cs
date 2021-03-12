@@ -8,6 +8,7 @@ public class WeaponPickup : MonoBehaviour
     public SO_Weapon weaponBase;
     public SpriteRenderer mySpriteR;
     public BoxCollider2D myBoxCol;
+    public float durability = 100;
 
     public void SwapWeaponLoot(SO_Weapon newWeapBase) {
         weaponBase = newWeapBase;

@@ -17,7 +17,11 @@ public class OtherButtonActions : MonoBehaviour
     public float weaponSwapGraceDuration;
     public Coroutine weaponSwapCoroutine;
     public bool weaponSwapGracePressed;
+    [Header("Confirm")]
+    // Scripts that require confirmation. 
+    public bool confirmPressed;
 
+#region Movement Skill button checks and grace period
     public void MoveSkillButtonPressedChecks() {
         if (movementSkill.CanIUseMovementSkill()) {
             // Movement skill is start in its own script if it is true.
@@ -44,13 +48,17 @@ public class OtherButtonActions : MonoBehaviour
         }
         moveGraceCoroutine = null;
         moveSkillGracePressed = false;
-    }
+    } 
+#endregion
 
+#region Interaction button checks
     public void InteractButtonChecks() {
         // Pick up weapon.
         charPickUp.CanIPickUpWeapon();
     }
+#endregion
 
+#region Weapon Swap button checks and grace period  
     public void WeaponSwapButtonChecks() {
         // Try to swap weapon.
         if (charEquippedWeapon.CanISwapWeapon()) {
@@ -77,4 +85,11 @@ public class OtherButtonActions : MonoBehaviour
         weaponSwapCoroutine = null;
         weaponSwapGracePressed = false;
     }
+#endregion
+
+#region Confirm button checks
+    public void ConfirmButtonChecks() {
+        // 
+    }
+#endregion
 }

@@ -51,21 +51,21 @@ public class Character_PickupWeapon : MonoBehaviour
     }
     // Assign old active weapon to weapon loot on floor.
     void EquipWeapon (WeaponPickup weapLoot) {
-        SO_Weapon weapToDrop = equippedWeaps.firstWeap;
-        if (equippedWeaps.secondWeap == null) {
-            equippedWeaps.secondWeap = equippedWeaps.firstWeap;
-            equippedWeaps.firstWeap = weapLoot.weaponBase;
+        SO_Weapon weapToDrop = equippedWeaps.activeWeapon;
+        if (equippedWeaps.inactiveWeapon == null) {
+            equippedWeaps.inactiveWeapon = equippedWeaps.activeWeapon;
+            equippedWeaps.activeWeapon = weapLoot.weaponBase;
             equippedWeaps.Changes();
             weapLoot.TurnOff();
         }
         else {
-            equippedWeaps.firstWeap = weapLoot.weaponBase;
+            equippedWeaps.activeWeapon = weapLoot.weaponBase;
             weapLoot.weaponBase = weapToDrop;
             weapLoot.SwapWeaponLoot(weapToDrop);
             equippedWeaps.Changes();
         }
         // Change the HUD image of the active weapon.
-        HUDManager.playerWeapons.PickUpWeapon(equippedWeaps.firstWeap.weaponSprite);
-        Debug.Log("Dropped weapon: " + weapToDrop + " and equipped: " + equippedWeaps.firstWeap);
+        HUDManager.playerWeapons.PickUpWeapon(equippedWeaps.activeWeapon.weaponSprite);
+        Debug.Log("Dropped weapon: " + weapToDrop + " and equipped: " + equippedWeaps.activeWeapon);
     }
 }
