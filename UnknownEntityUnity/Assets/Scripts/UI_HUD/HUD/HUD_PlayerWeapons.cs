@@ -36,30 +36,65 @@ public class HUD_PlayerWeapons : MonoBehaviour
         activeWeapHighlightTrans.position = newWeapPos;
         activeWeapAtkChainResetTrans.position = newWeapPos;
     }
-    public void PickUpWeapon(Sprite weapPickedUp) {
+    public void PickUpWeapon(Sprite weapPickedUp, float durability) {
         // change image to newly picked up weapon
         // turn off all chain counters
         // reset chain reset to 0
+        // Check if my inactive weapon is null, if set the active weapon to the inactive weapon slot (one to two or two to one).
+        // if (weaponOneIsActive) {
+        //     if (weapTwoImage == null) {
+        //         // Switch weapon one to weapon two slot.
+        //     }
+        // }
+
+        // If a weapon has no image switch the active weapon to the other slot (this assumes the other slot will always be the empty one at any point when this is called). May need to change this to check which is active in the EquippedWeapon script or have it call this method while telling it if it only has an empty weapon slot.
+        if (weapOneImage.sprite == null || weapTwoImage.sprite == null) {
+            SwapActiveWeapon();
+        }
         // 
         if (weaponOneIsActive) {
             weapOneImage.sprite = weapPickedUp;
             weapOneImage.SetNativeSize();
+            
+            float durabilityPercent = durability/100;
+            durabilityBarOneTrans.sizeDelta = new Vector2(Mathf.Clamp(durabilityPercent*durabilityBarMaxWidth, 0, durabilityBarMaxWidth), durabilityBarOneTrans.rect.height);
+            weapOneDurabilityBarImage.color = Color.Lerp(noDurabilityColor, fullDurabilityColor, durabilityPercent);
         }
         else {
             weapTwoImage.sprite = weapPickedUp;
             weapTwoImage.SetNativeSize();
+
+            float durabilityPercent = durability/100;
+            durabilityBarTwoTrans.sizeDelta = new Vector2(Mathf.Clamp(durabilityPercent*durabilityBarMaxWidth, 0, durabilityBarMaxWidth), durabilityBarTwoTrans.rect.height);
+            weapTwoDurabilityBarImage.color = Color.Lerp(noDurabilityColor, fullDurabilityColor, durabilityPercent);
         }
+        // Adjust durability bar to the picked up weapons durability.
+
     }
-    public void AdjustDurabilityBar(float currentDurability) {
+    public void AdjustDurabilityBar(bool damageWeaponOne, float currentDurability) {
         float durabilityPercent = currentDurability/100;
-        if (weaponOneIsActive) {
+        if (damageWeaponOne) {
             // Current durability divided by the max durability to get the current durability percentage and multiply it to the bar's max width to get the current bar width.
-            durabilityBarOneTrans.sizeDelta = new Vector2(durabilityPercent*durabilityBarMaxWidth, durabilityBarOneTrans.rect.height);
+            durabilityBarOneTrans.sizeDelta = new Vector2(Mathf.Clamp(durabilityPercent*durabilityBarMaxWidth, 0, durabilityBarMaxWidth), durabilityBarOneTrans.rect.height);
             weapOneDurabilityBarImage.color = Color.Lerp(noDurabilityColor, fullDurabilityColor, durabilityPercent);
         }
         else {
-            durabilityBarTwoTrans.sizeDelta = new Vector2(durabilityPercent*durabilityBarMaxWidth, durabilityBarTwoTrans.rect.height);
+            durabilityBarTwoTrans.sizeDelta = new Vector2(Mathf.Clamp(durabilityPercent*durabilityBarMaxWidth, 0, durabilityBarMaxWidth), durabilityBarTwoTrans.rect.height);
             weapTwoDurabilityBarImage.color = Color.Lerp(noDurabilityColor, fullDurabilityColor, durabilityPercent);
         }
+    }
+    public void RemoveBrokenWeapon() {
+        // Set sizeDelta to 0 because setting a UI image component to null leaves a white rectangle of the objects current size. This is put back to a good size without addition lines of code when SetNativeSize is called on weapon pickup.
+        if (weaponOneIsActive) {
+            weapOneImage.sprite = null;
+            weapOneImage.rectTransform.sizeDelta = Vector2.zero;
+            durabilityBarOneTrans.sizeDelta = new Vector2(0f , durabilityBarOneTrans.rect.height);
+        }
+        else {
+            weapTwoImage.sprite = null;
+            weapTwoImage.rectTransform.sizeDelta = Vector2.zero;
+            durabilityBarTwoTrans.sizeDelta = new Vector2(0f , durabilityBarTwoTrans.rect.height);
+        }
+        // sinceweapon was equipped the hud highlight should change to the other one, but this will be called in the EquippedWEapons script where it wil lcall swap active weapon
     }
 }

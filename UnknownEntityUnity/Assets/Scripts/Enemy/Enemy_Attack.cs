@@ -54,25 +54,25 @@ public class Enemy_Attack : MonoBehaviour
         // Stop following path to Player which also stops all movement.
         eRefs.eFollowPath.StopAllMovementCoroutines();
         float timer = 0f;
-        int animIndex = 0;
+        //int animIndex = 0;
         // Get the attack direction as soon as the attack is triggered.
         attackDir = eRefs.NormDirToTargetV2(atkOrigin.position, eRefs.PlayerCenterPos);
         //Debug.DrawLine(target.position, this.transform.position, Color.magenta, enemy.animTimings[enemy.animSprites.Length-1]);
         // Timer based attack loop.
         while (attacking) {
             timer += Time.deltaTime;
-            if (timer > eRefs.eSO.animEvents[animIndex]) {
+            //if (timer > eRefs.eSO.animEvents[animIndex]) {
                 // Change the enemy sprite to match the current animation, based on the animation timings.
-                eRefs.eSpriteR.sprite = eRefs.eSO.animSprites[animIndex];
+                //eRefs.eSpriteR.sprite = eRefs.eSO.animSprites[animIndex];
                 // Activate the attack collider at this enemy's position towards the player.
-                if (!colliderOn && animIndex == eRefs.eSO.colTimingIndex) {
-                    unityEvent.Invoke();
+               //if (!colliderOn && animIndex == eRefs.eSO.colTimingIndex) {
+                //    unityEvent.Invoke();
                 //     myCol.points = enemy.atkCol.points;
                 //     myCol.transform.position = this.transform.position;
                 //     myCol.transform.up = attackDir;
                 //     myCol.enabled = true;
-                    colliderOn = true;
-                }
+                //    colliderOn = true;
+                //}
                 // Check if the player is within the attack collider, apply damage.
                 // if (colliderOn) {
                 //     Collider2D[] hitCols = new Collider2D[1];
@@ -84,20 +84,20 @@ public class Enemy_Attack : MonoBehaviour
                 //         colliderOn = false;
                 //     }
                 // }
-                animIndex++;
-                if (animIndex > eRefs.eSO.animEvents.Length-1) {
-                    ExitAttackReset();
-                }
-            }
+                //animIndex++;
+                //if (animIndex > eRefs.eSO.animEvents.Length-1) {
+                //    ExitAttackReset();
+                //}
+            //}
             yield return null;
         }
     }
 
-    void ExitAttackReset() {
-        //myCol.enabled = false;
-        colliderOn = false;
-        eRefs.eFollowPath.allowPathUpdate = true;
-        attacking = false;
-        cooldownTimer = 0f;
-    }
+    // void ExitAttackReset() {
+    //     //myCol.enabled = false;
+    //     colliderOn = false;
+    //     eRefs.eFollowPath.allowPathUpdate = true;
+    //     attacking = false;
+    //     cooldownTimer = 0f;
+    // }
 }

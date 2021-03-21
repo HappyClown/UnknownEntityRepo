@@ -98,7 +98,7 @@ public class Pathfinding : MonoBehaviour
         while (currentNode != startNode) {
             path.Add(currentNode);
             if (path.Count >= 50) {
-                print("Node count in path has passed 50.");
+                //print("Node count in path has passed 50.");
                 break;
             }
             //nodeAmnt++;

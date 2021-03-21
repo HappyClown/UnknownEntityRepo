@@ -13,7 +13,7 @@ public class Character_AttackDetection : MonoBehaviour
     // public List<Collider2D> collidersHit;
     // public List<Collider2D> collidersDamaged;
 
-    public IEnumerator AttackCollider(SO_Weapon.AttackChain WeapAtkChain, SO_AttackFX sO_AttackFX, PolygonCollider2D atkFXCol) {
+    public IEnumerator AttackCollider(bool attackFromWeaponOne, SO_Weapon sOWeapon, SO_Weapon.AttackChain WeapAtkChain, SO_AttackFX sO_AttackFX, PolygonCollider2D atkFXCol) {
         // References from the SO_AttackFX.
         float thisColStart = sO_AttackFX.colStart;
         float thisColEnd = sO_AttackFX.colEnd;
@@ -56,11 +56,13 @@ public class Character_AttackDetection : MonoBehaviour
                         TimeSlow.StartTimeSlow(timeSlowDur);
                         // If this is an enemy, apply damage.
                         if (col.gameObject.CompareTag("Enemy")) {
-                            col.GetComponent<Enemy_Health>().ReceiveDamage(WeapAtkChain.DamageRoll, atkFXCol.transform.position, col.bounds.center);
+                            col.GetComponent<Enemy_Health>().ReceiveDamage(WeapAtkChain.DamageRoll, charEquippedWeapons.activeWeapon.poiseDamage, atkFXCol.transform.position, col.bounds.center);
                             // If at least one enemy is hit apply durability damage to the active weapon.
                             if (!hitAnEnemy) {
-                                charEquippedWeapons.DurabilityDamage();
                                 hitAnEnemy = true;
+                                if (sOWeapon.durabilityDamageOnHit) {
+                                    charEquippedWeapons.DurabilityDamage(attackFromWeaponOne);
+                                }
                             }
                         }
                         else if (col.gameObject.CompareTag("Destructible")) {

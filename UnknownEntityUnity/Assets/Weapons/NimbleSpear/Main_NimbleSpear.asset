@@ -17,7 +17,11 @@ MonoBehaviour:
   chainResetDelay: 0
   restingRotation: {x: 0, y: 0, z: 0}
   restingPosition: {x: 0, y: 0, z: 0}
-  durabilityDamage: 5
+  durabilityDamageOnHit: 1
+  durabilityDamage: 51
+  poiseDamage: 1
+  SO_brokenPiecesSpawner: {fileID: 11400000, guid: c1e5a24798aaecc418c2b78c295ccb9e,
+    type: 2}
   attackChains:
   - sO_Weapon_Motion: {fileID: 11400000, guid: d609280dc082e524b9e808e3d32b03dc, type: 2}
     sO_CharAtk_Motion: {fileID: 11400000, guid: ba50da0b20bbf024bbd99079aff1d1bc,

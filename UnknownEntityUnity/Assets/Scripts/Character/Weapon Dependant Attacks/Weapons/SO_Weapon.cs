@@ -9,7 +9,10 @@ public class SO_Weapon : ScriptableObject
     public Sprite weaponSprite;
     public float chainResetDelay;
     public Vector3 restingRotation, restingPosition;
+    public bool durabilityDamageOnHit = true; // Whether the durability damage is applied when an attack hits a target or just when an attack is done. (past the attack cancelation point) 
     public float durabilityDamage = 1f;
+    public float poiseDamage = 1f;
+    public SO_ObjectDestructionSpawner SO_brokenPiecesSpawner;
     public AttackChain[] attackChains;
     [System.Serializable]
     public class AttackChain {

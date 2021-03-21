@@ -8,7 +8,7 @@ public class Character_PickupWeapon : MonoBehaviour
     public MouseInputs moIn;
     public HUD_Manager HUDManager;
     public Character_Attack atk;
-    public Character_EquippedWeapons equippedWeaps;
+    public Character_EquippedWeapons charEquippedWeapons;
     [Header("To-set variables")]
     public ContactFilter2D lootLayer;
     public Collider2D charLootCol;
@@ -31,8 +31,8 @@ public class Character_PickupWeapon : MonoBehaviour
                         shortestDist = distCheck;
                         closestCol = result;
                         if (loopIndexCount == results.Count - 1) {
-                            WeaponPickup weapLoot = closestCol.gameObject.GetComponent<WeaponPickup>();
-                            EquipWeapon(weapLoot);
+                            WeaponPickup weaponOnFloor = closestCol.gameObject.GetComponent<WeaponPickup>();
+                            EquipWeapon(weaponOnFloor);
                         }
                     }
                     loopIndexCount++;
@@ -40,8 +40,8 @@ public class Character_PickupWeapon : MonoBehaviour
             }
             else {
                 // Swap active weapon with weapon loot.
-                WeaponPickup weapLoot = results[0].gameObject.GetComponent<WeaponPickup>();
-                EquipWeapon(weapLoot);
+                WeaponPickup weaponOnFloor = results[0].gameObject.GetComponent<WeaponPickup>();
+                EquipWeapon(weaponOnFloor);
             }
             // Assign old active weapon to weapon loot on floor.
         }
@@ -50,22 +50,26 @@ public class Character_PickupWeapon : MonoBehaviour
         }
     }
     // Assign old active weapon to weapon loot on floor.
-    void EquipWeapon (WeaponPickup weapLoot) {
-        SO_Weapon weapToDrop = equippedWeaps.activeWeapon;
-        if (equippedWeaps.inactiveWeapon == null) {
-            equippedWeaps.inactiveWeapon = equippedWeaps.activeWeapon;
-            equippedWeaps.activeWeapon = weapLoot.weaponBase;
-            equippedWeaps.Changes();
-            weapLoot.TurnOff();
+    void EquipWeapon (WeaponPickup weaponOnFloor) {
+        SO_Weapon weapToDrop = charEquippedWeapons.activeWeapon;
+        float weapOnFloorDurability = weaponOnFloor.durability;
+        if (charEquippedWeapons.inactiveWeapon == null) {
+            charEquippedWeapons.inactiveWeapon = charEquippedWeapons.activeWeapon;
+            charEquippedWeapons.activeWeapon = weaponOnFloor.weaponBase;
+            charEquippedWeapons.WeaponSwap(true);
+            charEquippedWeapons.SetActiveWeaponDurability(weapOnFloorDurability);
+            weaponOnFloor.TurnOff();
         }
         else {
-            equippedWeaps.activeWeapon = weapLoot.weaponBase;
-            weapLoot.weaponBase = weapToDrop;
-            weapLoot.SwapWeaponLoot(weapToDrop);
-            equippedWeaps.Changes();
+            weaponOnFloor.durability = charEquippedWeapons.GetActiveWeaponDurability();
+            charEquippedWeapons.activeWeapon = weaponOnFloor.weaponBase;
+            weaponOnFloor.weaponBase = weapToDrop;
+            weaponOnFloor.SwapWeaponLoot(weapToDrop);
+            charEquippedWeapons.WeaponSwap(false);
+            charEquippedWeapons.SetActiveWeaponDurability(weapOnFloorDurability);
         }
         // Change the HUD image of the active weapon.
-        HUDManager.playerWeapons.PickUpWeapon(equippedWeaps.activeWeapon.weaponSprite);
-        Debug.Log("Dropped weapon: " + weapToDrop + " and equipped: " + equippedWeaps.activeWeapon);
+        HUDManager.playerWeapons.PickUpWeapon(charEquippedWeapons.activeWeapon.weaponSprite, weapOnFloorDurability);
+        Debug.Log("Dropped weapon: " + weapToDrop + " and equipped: " + charEquippedWeapons.activeWeapon);
     }
 }

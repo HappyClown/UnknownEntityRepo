@@ -22,6 +22,7 @@ public class Character_Attack : MonoBehaviour
     public SpriteRenderer weaponSpriteR;
     [Header("Read Only")]
     public bool readyToAtk;
+    int readyToAttackValue;
     // The initial weapon is set inside the Character_EquippedWeapon script.
     public SO_Weapon weapon;
     public Weapon_Motion weaponMotion;
@@ -77,8 +78,10 @@ public class Character_Attack : MonoBehaviour
             // Start the coroutine ON the pool object script, not the script holding the coroutine logic.
             atkFX.StartCoroutine(atkVisual.AttackAnimation(sO_AttackFX, atkFX));
             // Enables and disables the attack's collider during the "animation" and detects colliders it can hit, once, if it has one assigned.
+            // Requires the sOWeapon because durability damage is general, if it was attack chain specific then just having the weaponAttackChain would be sufficient as it would hold the durability damage info.
+            //print("Weapon one is active on attack trigger: "+equippedWeapons.weaponOneIsActive);
             if (sO_AttackFX.collider != null) {
-                atkDetection.StartCoroutine(atkDetection.AttackCollider(WeapAtkChain, sO_AttackFX, atkFX.col));
+                atkDetection.StartCoroutine(atkDetection.AttackCollider(equippedWeapons.weaponOneIsActive, weapon, WeapAtkChain, sO_AttackFX, atkFX.col));
             }
             // Turn the atk direction change back to false. This is done at the end because colliders will also be flipped by checking this variable. Now flipping the attack FX pool object's x scale instead of just the sprite.
             atkDirectionChanges = false;
@@ -87,6 +90,29 @@ public class Character_Attack : MonoBehaviour
             // charMov.spriteRend.sprite = charMov.idleSprite;
             // Add the character_attackFXs used to a list to better keep track of them.
             atkFXsInUse.Add(atkFX);
+        }
+    }
+    public bool ReadyToAttackCheck() {
+        if (readyToAtk && equippedWeapons.WeaponEquippedCheck()) {
+            return true;
+        }
+        return false;
+    }
+    // Adjust ReadyToAttack, using this instead of directly changing the ReadyToAtk bool makes it that if multiple scripts want to set ReadyToAtk to false, the same amount of scripts will need to turn ReadyToAtk back to true in order for the bool to be true. Probably not good in all situations, could maybe have a force reset to true (0).
+    public void ReadyToAttack(bool ready) {
+        if (ready) {
+            readyToAttackValue -= 1;
+        }
+        else {
+            readyToAttackValue += 1;
+        }
+
+        if (readyToAttackValue <= 0) {
+            readyToAttackValue = 0;
+            readyToAtk = true;
+        }
+        else {
+            readyToAtk = false;
         }
     }
     // When you want to stop the current attack.
@@ -118,7 +144,7 @@ public class Character_Attack : MonoBehaviour
         if (atkPlyrMove.charAtkMotionOn) {
             atkPlyrMove.StopPlayerMotion();
         }
-        
+        ReadyToAttack(true);
         //atkVisual.StopAllCoroutines();
     }
 
@@ -130,7 +156,6 @@ public class Character_Attack : MonoBehaviour
         }
         return true;
     }
-
 
     // If I want to check only when a new weapon is equipped, call this from the Character_EquippedWeapons.Change(). (every attack chain with the same motion)
     public void AdjustMotionList() {

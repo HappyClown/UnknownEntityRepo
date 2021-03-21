@@ -51,7 +51,7 @@ public class Enemy_Death : MonoBehaviour
             if (soObjDest.crackedDur > waitTimeOnCracked) {
                 waitTimeOnCracked = soObjDest.crackedDur;
                 eRefs.eSpriteR.sprite = soObjDest.crackingSprite;
-                print(soObjDest.crackingSprite);
+                //print(soObjDest.crackingSprite);
             }
         }
         yield return new WaitForSeconds(waitTimeOnCracked);

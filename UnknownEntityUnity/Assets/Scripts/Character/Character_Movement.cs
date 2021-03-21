@@ -366,15 +366,16 @@ public class Character_Movement : MonoBehaviour
         }
     }
 
-    public void StopInputMove() {
+    public void StopInputMove(bool stopSpriteAnim = true, bool setIdlePlayerSprite = true) {
         canInputMove = false;
         running = false;
         lastMoveLeft = true;
         lastMoveRight = true;
         moveLeft = false;
         moveRight = false;
-        mySpriteAnim.Stop();
-        spriteRend.sprite = idleSprite;
+
+        if (stopSpriteAnim) mySpriteAnim.Stop();
+        if (setIdlePlayerSprite) spriteRend.sprite = idleSprite;
         //animator.SetBool("Running", false);
         //SetRunAnimation();
     }

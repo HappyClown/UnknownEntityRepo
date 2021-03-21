@@ -83,7 +83,7 @@ public class Enemy_FollowPath : MonoBehaviour
                         directlyMovingtoTarget = false;
                         yield return null;
                         if (!allowPathUpdate) {
-                            print("This is probably whe nthe problem happenes. Yep. Right here, yo.");
+                            //print("This is probably whe nthe problem happenes. Yep. Right here, yo.");
                             continue;
                         }
                         directMoveCoroutine = StartCoroutine(DirectMoveToTarget());

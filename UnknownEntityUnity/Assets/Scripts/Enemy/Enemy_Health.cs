@@ -9,6 +9,8 @@ public class Enemy_Health : MonoBehaviour
     public float maxHealth;
     public float curHealth;
     public float damageModifier = 1f;
+    public float maxPoise;
+    public float curPoise;
     [Header("Hit Reaction")]
     public float hitTotalDuration;
     public Sprite[] hitSprites;
@@ -23,42 +25,43 @@ public class Enemy_Health : MonoBehaviour
         // Relagate this to a startup function.
         maxHealth = eRefs.eSO.maximumLife;
         curHealth = maxHealth;
+        maxPoise = eRefs.eSO.maximumPoise;
+        curPoise = maxPoise;
     }
     
-    public void ReceiveDamage(float damage, Vector2 hittingColliderPos, Vector2 receivingColliderPos) {
+    public void ReceiveDamage(float healthDamage, float hitPoiseDamage, Vector2 hittingColliderPos, Vector2 receivingColliderPos) {
         if (!alreadyDead) {
-            curHealth -= damage * damageModifier;
+            curHealth -= healthDamage * damageModifier;
             healthBar.AdjustHealthBar(maxHealth, curHealth);
             Vector2 hitDir = ((Vector2)receivingColliderPos - hittingColliderPos).normalized;
-            // Apply a 'stun' meaning, stop walking, stop attacking.
-            if (canBeStunned) {
-                Stunned();
-                if (curHealth <= 0) {
-                    if (inHitReaction) {
-                        StopCoroutine(hitReactionCoroutine);
-                    }
-                    eRefs.eDeath.DeathSequence(hitDir);
-                    return;
-                    //alreadyDead = true;
-                }
-                // Get hit reaction. Sprite Animation and movement.
+            // Apply poise damage from the hit to the enemy which can lead to the enemy being stunned.
+            PoiseDamage(hitPoiseDamage, hitDir);
+            // If I die from this hit and im currently in a hit reaction, stop the hit reaction and die.
+            if (curHealth <= 0f) {
+                alreadyDead = true;
                 if (inHitReaction) {
-                    // If you get hit while already in a hit reaction, stop the current one and start the new one.
                     StopCoroutine(hitReactionCoroutine);
-                    hitReactionCoroutine = StartCoroutine(HitReaction(hitDir));
                 }
-                else {
-                    hitReactionCoroutine = StartCoroutine(HitReaction(hitDir));
-                }
-                // If your health is 0, flag it in order to avoid entering a new hit reaction.
-                if (curHealth <= 0) {
-                    alreadyDead = true;
-                }
-            }
-            // If you cant be stunned and your health is 0, die immediately.
-            else if (curHealth <= 0f) {
                 eRefs.eDeath.DeathSequence(hitDir);
+                return;
             }
+        }
+    }
+
+    public void PoiseDamage(float hitPoiseDamage, Vector2 hitDir) {
+        curPoise -= hitPoiseDamage;
+        // Apply a 'stun' meaning, stop walking, interrupt attacks and play a hit reaction animation.
+        if (curPoise <= 0f && canBeStunned) {
+            Stunned();
+            // If you get hit while already in a hit reaction, stop the current one and start the new one.
+            if (inHitReaction) {
+                StopCoroutine(hitReactionCoroutine);
+                hitReactionCoroutine = StartCoroutine(HitReaction(hitDir));
+            }
+            else {
+                hitReactionCoroutine = StartCoroutine(HitReaction(hitDir));
+            }
+            curPoise = maxPoise;
         }
     }
 

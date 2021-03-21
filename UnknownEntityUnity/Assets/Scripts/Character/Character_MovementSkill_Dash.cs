@@ -84,7 +84,8 @@ public class Character_MovementSkill_Dash : Character_MovementSkills
         dashing = false;
         charMove.canInputMove = true;
         charMove.charCanFlip = true;
-        charAttack.readyToAtk = true;
+        charAttack.ReadyToAttack(true);
+        //charAttack.readyToAtk = true;
     }
 
     void UseACharge() {

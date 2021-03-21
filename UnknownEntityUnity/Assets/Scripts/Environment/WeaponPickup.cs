@@ -5,9 +5,10 @@ using UnityEngine;
 public class WeaponPickup : MonoBehaviour
 {
     public bool amIOn;
-    public SO_Weapon weaponBase;
     public SpriteRenderer mySpriteR;
     public BoxCollider2D myBoxCol;
+    [Header("Weapon Info")]
+    public SO_Weapon weaponBase;
     public float durability = 100;
 
     public void SwapWeaponLoot(SO_Weapon newWeapBase) {

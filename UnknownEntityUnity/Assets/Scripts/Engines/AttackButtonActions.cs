@@ -24,7 +24,7 @@ public class AttackButtonActions : MonoBehaviour
     public void AttackButtonPressedChecks() {
         // Check if the attack is ready > check if the attack is chargeable > no, do regular attack > yes, start hold counter
         //print("pressed");
-        if (charAttack.readyToAtk) {
+        if (charAttack.ReadyToAttackCheck()) {
             if (charAttack.WeapAtkChain.chargeable) {
                 print("attack is chargeable starting timer.");
                 pressed = true;
@@ -97,7 +97,7 @@ public class AttackButtonActions : MonoBehaviour
             attackGraceTimer = 0f;
             while(attackGraceTimer < attackGraceDuration) {
                 attackGraceTimer += Time.deltaTime;
-                if (charAttack.readyToAtk) {
+                if (charAttack.ReadyToAttackCheck()) {
                     charAttack.Attack();
                     attackButtonTapInGrace = false;
                     if (attackGraceCoroutine != null) {StopCoroutine(attackGraceCoroutine);}

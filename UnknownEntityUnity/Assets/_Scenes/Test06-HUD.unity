@@ -2050,7 +2050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3179,7 +3179,7 @@ PrefabInstance:
     - target: {fileID: 3690657261588590760, guid: 1668f9eae00ce7b4abf0633e08ffb888,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3690657261588590761, guid: 1668f9eae00ce7b4abf0633e08ffb888,
         type: 3}
@@ -5646,6 +5646,10 @@ PrefabInstance:
       propertyPath: HUDManager
       value: 
       objectReference: {fileID: 832476479}
+    - target: {fileID: 1731692023, guid: 17191f42f3a871b4a83450ce0b9bcb4a, type: 3}
+      propertyPath: charEquippedWeapons
+      value: 
+      objectReference: {fileID: 154146969}
     - target: {fileID: 2656337685487112101, guid: 17191f42f3a871b4a83450ce0b9bcb4a,
         type: 3}
       propertyPath: ClipDeath
@@ -5680,8 +5684,13 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 3507419587604336638, guid: 17191f42f3a871b4a83450ce0b9bcb4a,
         type: 3}
+      propertyPath: spriteBouncePool
+      value: 
+      objectReference: {fileID: 301151600146892358}
+    - target: {fileID: 3507419587604336638, guid: 17191f42f3a871b4a83450ce0b9bcb4a,
+        type: 3}
       propertyPath: weaponOneIsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3651932565041545233, guid: 17191f42f3a871b4a83450ce0b9bcb4a,
         type: 3}
@@ -6943,7 +6952,7 @@ PrefabInstance:
     - target: {fileID: 6264118745648756778, guid: e0d72858378c5a143a274e9514ec9ee3,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6264118745648756779, guid: e0d72858378c5a143a274e9514ec9ee3,
         type: 3}
@@ -12023,7 +12032,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 1, b: 0.0042743683, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -12191,7 +12200,7 @@ PrefabInstance:
     - target: {fileID: 3690657261588590760, guid: 1668f9eae00ce7b4abf0633e08ffb888,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3690657261588590761, guid: 1668f9eae00ce7b4abf0633e08ffb888,
         type: 3}
@@ -14737,7 +14746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -15928,7 +15937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -16876,7 +16885,7 @@ PrefabInstance:
     - target: {fileID: 6264118745648756778, guid: e0d72858378c5a143a274e9514ec9ee3,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6264118745648756779, guid: e0d72858378c5a143a274e9514ec9ee3,
         type: 3}
@@ -17535,7 +17544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 1, b: 0.0042743683, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -19321,7 +19330,17 @@ PrefabInstance:
     - target: {fileID: 3690657262318137126, guid: 1668f9eae00ce7b4abf0633e08ffb888,
         type: 3}
       propertyPath: debugs
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690657262389814610, guid: 1668f9eae00ce7b4abf0633e08ffb888,
+        type: 3}
+      propertyPath: curHealth
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690657262389814610, guid: 1668f9eae00ce7b4abf0633e08ffb888,
+        type: 3}
+      propertyPath: maxHealth
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 3690657262389814611, guid: 1668f9eae00ce7b4abf0633e08ffb888,
         type: 3}

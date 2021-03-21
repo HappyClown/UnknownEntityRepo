@@ -27,6 +27,43 @@ public class Character_AttackPlayerMovement : MonoBehaviour
     public bool charAtkMotionOn;
     private float moveTimer;
 
+    public void SetupPlayerAttackMotions(SO_CharAtk_Motion sOCharAtkMotion) {
+        if (curSlow != 0f) { charMov.ReduceSpeed(-curSlow); }
+        // Get references from the Scriptable Object.
+        durations = sOCharAtkMotion.durations;
+        distances = sOCharAtkMotion.distances;
+        lockInputMovement = sOCharAtkMotion.lockInputMovement;
+        lockCharacterAndWeapon = sOCharAtkMotion.lockCharacterAndWeapon;
+        slowDownRunSpeed = sOCharAtkMotion.slowDownRunSpeed;
+        chargeAttack = sOCharAtkMotion.chargeAttack;
+        // Assign the current values for the first motion. 
+        // *Could run SetupNextMotionNow with a few changes?
+        curMotion = 0;
+        curDistance = distances[curMotion];
+        curDuration = durations[curMotion];
+        curDirection = weapOrigTrans.up;
+        curSpeed = Mathf.Abs(curDistance/curDuration);
+        if (curDistance < 0) { curDirection *= -1; }
+        curPosition = weapOrigTrans.position;
+        curSlow = slowDownRunSpeed[curMotion];
+        // Set initial locks and slowdown.
+        // Locks the player movement input.
+        if (lockInputMovement[curMotion]) { charMov.StopInputMove(); }
+        else { charMov.canInputMove = true; }
+        // This locks the character sprite flip and weapon rotation. (Can be seperated)
+        if (lockCharacterAndWeapon[curMotion]) { charMov.charCanFlip = false; weaponLookAt.lookAtEnabled = false; }
+        else { charMov.charCanFlip = true; weaponLookAt.lookAtEnabled = true; }
+        // Applies a slow to the player input movement speed.
+        charMov.ReduceSpeed(curSlow);
+
+        moveTimer = 0f;
+        if (!chargeAttack[curMotion]) {
+            this.StopAllCoroutines();
+            charAtkMotionOn = true;
+            this.StartCoroutine(CharAttackMotionTimer());
+        }
+    }
+
     IEnumerator CharAttackMotionTimer () {
         while (moveTimer < 1) {
             curPosition = this.transform.position;
@@ -77,50 +114,6 @@ public class Character_AttackPlayerMovement : MonoBehaviour
         }
     }
 
-    public void SetupPlayerAttackMotions(SO_CharAtk_Motion sOCharAtkMotion) {
-        if (curSlow != 0f) { charMov.ReduceSpeed(-curSlow); }
-        // Get references from the Scriptable Object.
-        durations = sOCharAtkMotion.durations;
-        distances = sOCharAtkMotion.distances;
-        lockInputMovement = sOCharAtkMotion.lockInputMovement;
-        lockCharacterAndWeapon = sOCharAtkMotion.lockCharacterAndWeapon;
-        slowDownRunSpeed = sOCharAtkMotion.slowDownRunSpeed;
-        chargeAttack = sOCharAtkMotion.chargeAttack;
-        // Assign the current values for the first motion. 
-        // *Could run SetupNextMotionNow with a few changes?
-        curMotion = 0;
-        curDistance = distances[curMotion];
-        curDuration = durations[curMotion];
-        curDirection = weapOrigTrans.up;
-        curSpeed = Mathf.Abs(curDistance/curDuration);
-        if (curDistance < 0) { curDirection *= -1; }
-        curPosition = weapOrigTrans.position;
-        curSlow = slowDownRunSpeed[curMotion];
-        // Set initial locks and slowdown.
-        // Locks the player movement input.
-        if (lockInputMovement[curMotion]) { charMov.StopInputMove(); }
-        else { charMov.canInputMove = true; }
-        // This locks the character sprite flip and weapon rotation. (Can be seperated)
-        if (lockCharacterAndWeapon[curMotion]) { charMov.charCanFlip = false; weaponLookAt.lookAtEnabled = false; }
-        else { charMov.charCanFlip = true; weaponLookAt.lookAtEnabled = true; }
-        // Applies a slow to the player input movement speed.
-        charMov.ReduceSpeed(curSlow);
-
-        moveTimer = 0f;
-        if (!chargeAttack[curMotion]) {
-            this.StopAllCoroutines();
-            charAtkMotionOn = true;
-            this.StartCoroutine(CharAttackMotionTimer());
-        }
-    }
-
-    IEnumerator InputMoveSlowDown(float speedReduceOnOne, float slowDuration) {
-        charMov.ReduceSpeed(speedReduceOnOne);
-        yield return new WaitForSeconds(slowDuration);
-        charMov.ReduceSpeed(-speedReduceOnOne);
-        yield return null;
-    }
-
     public void StopPlayerMotion() {
         //charMov.canInputMove = true;
         //charMov.charCanFlip = true;
@@ -133,4 +126,12 @@ public class Character_AttackPlayerMovement : MonoBehaviour
         moveTimer = 0f;
         this.StopAllCoroutines();
     }
+
+    IEnumerator InputMoveSlowDown(float speedReduceOnOne, float slowDuration) {
+        charMov.ReduceSpeed(speedReduceOnOne);
+        yield return new WaitForSeconds(slowDuration);
+        charMov.ReduceSpeed(-speedReduceOnOne);
+        yield return null;
+    }
+
 }

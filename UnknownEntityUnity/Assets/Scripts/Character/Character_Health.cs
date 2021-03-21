@@ -81,36 +81,6 @@ public class Character_Health : MonoBehaviour
         }
     }
 
-    public void StartTakeHit() {
-        // Slow down time.
-        TimeSlow.StartTimeSlow(0.25f);
-        // Set camera nudge backwards from the hit.
-        CameraFollow.CameraNudge_St(normHitDirection, takeHitCamNudge);
-        charMov.StopInputMove();
-        // Player cannot flip.
-        charMov.charCanFlip = false;
-        charMov.FlipSpriteDirectionBased(normHitDirection);
-        // Stops; player attack movement, attack FXs that are stopped on stun, weapon attack motion.
-        charAtk.StopAttack();
-        // Player weapon does not follow cursor.
-        weapLookAt.lookAtEnabled = false;
-        charMov.mySpriteAnim.Play(clipHit);
-    }
-    public void StopTakeHit () {
-        // If health reaches 0, iniate death sequence.
-        if (currentHealth <= 0f) {
-            charDeath.CharacterDies();
-        }
-        else {
-            charMov.canInputMove = true;
-            //charAtk.atkChain.ready = true;
-            charAtk.readyToAtk = true;
-            weapLookAt.lookAtEnabled = true;
-            charMov.charCanFlip = true;
-            charMov.StartIdling();
-        }
-    }
-
     public void TakeDamage(float damage, Vector2 normHitDirection_) {
         currentHealth -= damage;
         HUDManager.playerLifeBar.AdjustHealthBar(maximumHealth, currentHealth);
@@ -122,6 +92,25 @@ public class Character_Health : MonoBehaviour
         StartTakeHit();
         HitTakenMovement();
     }
+    public void StartTakeHit() {
+        // Slow down time.
+        TimeSlow.StartTimeSlow(0.25f);
+        // Set camera nudge backwards from the hit.
+        CameraFollow.CameraNudge_St(normHitDirection, takeHitCamNudge);
+        charMov.StopInputMove(false, false);
+        // Player cannot flip.
+        charMov.charCanFlip = false;
+        charMov.FlipSpriteDirectionBased(normHitDirection);
+        // Stops; player attack movement, attack FXs that are stopped on stun, weapon attack motion.
+        //charAtk.StopAttack();
+        // Stop the player from attacking while they are in the TakeHit animation.
+        //charAtk.atkChain.ready = false;
+        //charAtk.ReadyToAttack(false);
+        // Player weapon does not follow cursor.
+        weapLookAt.lookAtEnabled = false;
+        // Start the player getting hit animation.
+        charMov.mySpriteAnim.Play(clipHit);
+    }
 
     public void HitTakenMovement() {
         // Hard coded: 
@@ -132,12 +121,21 @@ public class Character_Health : MonoBehaviour
         moveSpeed = moveDistance / getHitDuration;
     }
 
-    // public void HitEffect() {
-    //     impactFX = impactFXPool.RequestImpactFX();
-    //     impactFX.transform.position = new Vector3(hitPosition.x, hitPosition.y, impactFX.transform.position.z);
-    //     impactFX.transform.up = normHitDirection;
-    //     impactFX.StartImpactFX(sOImpactFX);
-    // }
+    public void StopTakeHit () {
+        // If health reaches 0, iniate death sequence.
+        if (currentHealth <= 0f) {
+            charDeath.CharacterDies();
+        }
+        else {
+            charMov.canInputMove = true;
+            //charAtk.atkChain.ready = true;
+            charAtk.ReadyToAttack(true);
+            //charAtk.readyToAtk = true;
+            weapLookAt.lookAtEnabled = true;
+            charMov.charCanFlip = true;
+            charMov.StartIdling();
+        }
+    }
 
     void Update() {
         // Can be transfered to the coroutine for the animation, specially since they both rely on the same get hit duration.
@@ -153,4 +151,11 @@ public class Character_Health : MonoBehaviour
             charMov.MoveThePlayer(normHitDirection, newPosition, curPosition);
         }
     }
+    
+    // public void HitEffect() {
+    //     impactFX = impactFXPool.RequestImpactFX();
+    //     impactFX.transform.position = new Vector3(hitPosition.x, hitPosition.y, impactFX.transform.position.z);
+    //     impactFX.transform.up = normHitDirection;
+    //     impactFX.StartImpactFX(sOImpactFX);
+    // }
 }

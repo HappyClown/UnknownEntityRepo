@@ -53,7 +53,8 @@ public class Weapon_SlashMotion : Weapon_Motion
         curMotion++;
         // At what motion can the player start his next attack and swap his weapon.
         if (curMotion >= sOWeaponMotionSlash.allowAttackAndSwap) {
-            charAtk.readyToAtk = true;
+            charAtk.ReadyToAttack(true);
+            //charAtk.readyToAtk = true;
             //charAtk.atkChain.ready = true;
             charAtk.equippedWeapons.canSwapWeapon = true;
         }

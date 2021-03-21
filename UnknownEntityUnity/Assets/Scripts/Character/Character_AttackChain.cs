@@ -33,7 +33,8 @@ public class Character_AttackChain : MonoBehaviour
     }
 
     public void ChainAttacks() {
-        charAtk.readyToAtk = false;
+        charAtk.ReadyToAttack(false);
+        //charAtk.readyToAtk = false;
         //ready = false;
         // This attack is the last in the chain. Code based on that can be added here.
         if (nextChain >= charAtk.weapon.attackChains.Length) {
@@ -46,22 +47,23 @@ public class Character_AttackChain : MonoBehaviour
     }
 
     // On weapon swap.
-    public void OnWeaponSwap(SO_Weapon firstWeap, SO_Weapon secondWeap) {
+    public void OnWeaponSwap(SO_Weapon activeWeapon, SO_Weapon inactiveWeapon) {
         chainResetTimer = chainResetDelay;
         // If the next chain was higher then the max attack chains of the weapon that was just swapped, meaning that its last attack was done.
-        if (nextChain >= secondWeap.attackChains.Length) {
+        if (nextChain >= inactiveWeapon.attackChains.Length) {
             nextChain = 0;
             curChain = 0;
         }
         // This is to keep the current chain, if its over the new first weapon's max chain count: set it to the last chain.
-        if (nextChain >= firstWeap.attackChains.Length) {
-            nextChain = firstWeap.attackChains.Length-1;
+        if (nextChain >= activeWeapon.attackChains.Length) {
+            nextChain = activeWeapon.attackChains.Length-1;
             curChain = 0;
         }
         // Same as above but if its above the new first weapon's max chain count, set it to first chain.
         // This is to reset the chain.
         // nextChain = 0;
         // curChain = 0;
+        charAtk.ReadyToAttack(true);
         charAtk.readyToAtk = true;
         //ready = true;
     }
