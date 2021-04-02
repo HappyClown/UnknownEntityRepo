@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1bf3e62b6c4c4f84abd5c24f16337f5e, type: 3}
-  m_Name: SkeletonShieldBits_01
+  m_Name: SkeletonBowBitsSpawner_01
   m_EditorClassIdentifier: 
-  crackingSprite: {fileID: -7980002119140704339, guid: 33a74e341b9f6b441a8cd42bf788aefa,
+  crackingSprite: {fileID: 8449458792096274713, guid: 0f3f487b3b9f51140b5720f06283b162,
     type: 3}
   crackedDur: 0.03
   destroyedSprite: {fileID: 0}
   bouncingSpritesSO:
-  - {fileID: 11400000, guid: e337fa2d7ca530c499aff8cbb992ebae, type: 2}
-  - {fileID: 11400000, guid: e92d29aca3fffb44ca2cda6d5ae6392f, type: 2}
-  - {fileID: 11400000, guid: 343561992ef875848b8b294aed3bb8fe, type: 2}
+  - {fileID: 11400000, guid: 1fa271935dea5d34db4c52e5eb1ae158, type: 2}
+  - {fileID: 11400000, guid: 082f1c88273d9dd4aaec7e6af9eb5ac8, type: 2}
+  - {fileID: 11400000, guid: 50ba4cb52106b204e9f7ba3d1f92e34b, type: 2}
   spawnPositions:
-  - {x: -0.2, y: 0.4}
-  - {x: -0.2, y: 0.4}
-  - {x: -0.2, y: 0.4}
+  - {x: 0.1, y: 0.5}
+  - {x: 0.1, y: 0.5}
+  - {x: 0.1, y: 0.5}

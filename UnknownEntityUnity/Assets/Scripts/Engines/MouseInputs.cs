@@ -47,6 +47,7 @@ public class MouseInputs : MonoBehaviour
         inputMaster.Player.MovementSkill.performed += ctx => otherButtonActions.MoveSkillButtonPressedChecks();
         inputMaster.Player.Interact.performed += ctx => otherButtonActions.InteractButtonChecks();
         inputMaster.Player.WeaponSwap.performed += ctx => otherButtonActions.WeaponSwapButtonChecks();
+        inputMaster.Player.Pause.performed += ctx => otherButtonActions.OpenPauseMenu();
         if (cursorOff) { Cursor.visible = false; }
     }
 
@@ -110,6 +111,14 @@ public class MouseInputs : MonoBehaviour
         else {
             mouseMoved = false;
         }
+    }
 
+    public void SwapToUIInputs() {
+        inputMaster.Player.Disable();
+        inputMaster.UI.Enable();
+    }
+    public void SwapToPlayerInputs() {
+        inputMaster.Player.Enable();
+        inputMaster.UI.Disable();
     }
 }

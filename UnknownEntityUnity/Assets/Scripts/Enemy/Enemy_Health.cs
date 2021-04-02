@@ -38,6 +38,9 @@ public class Enemy_Health : MonoBehaviour
             PoiseDamage(hitPoiseDamage, hitDir);
             // If I die from this hit and im currently in a hit reaction, stop the hit reaction and die.
             if (curHealth <= 0f) {
+                if (eRefs.mySpriteAnim != null) {
+                    eRefs.mySpriteAnim.Stop();
+                }
                 alreadyDead = true;
                 if (inHitReaction) {
                     StopCoroutine(hitReactionCoroutine);

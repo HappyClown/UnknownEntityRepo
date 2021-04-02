@@ -19,6 +19,8 @@ public class OtherButtonActions : MonoBehaviour
     public bool weaponSwapGracePressed;
     [Header("Confirm")]
     // Scripts that require confirmation. 
+    [Header("PauseMenu")]
+    public UI_PauseMenu uI_PauseMenu;
     public bool confirmPressed;
 
 #region Movement Skill button checks and grace period
@@ -90,6 +92,15 @@ public class OtherButtonActions : MonoBehaviour
 #region Confirm button checks
     public void ConfirmButtonChecks() {
         // 
+    }
+#endregion
+
+#region Pause button checks
+    public void OpenPauseMenu() {
+        if (uI_PauseMenu.CanIOpenPauseMenu()) {
+            // 
+            uI_PauseMenu.OpenPauseMenu();
+        }
     }
 #endregion
 }

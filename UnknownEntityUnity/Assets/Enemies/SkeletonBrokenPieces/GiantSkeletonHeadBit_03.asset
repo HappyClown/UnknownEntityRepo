@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5db72fb3a2b0c9c4b9b6e73baff81903, type: 3}
+  m_Name: GiantSkeletonHeadBit_03
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 55243efe92452d343b2e67b6c68f30ad, type: 3}
+  minMoveDist: 1
+  maxMoveDist: 2
+  slidePercentOfDist: 0.2
+  minStartSpeed: 1.5
+  maxStartSpeed: 2
+  minBounces: 1
+  maxBounces: 3
+  minBounceHeight: 0.1
+  maxBounceHeight: 0.2
+  heightLossMult: 0.6
+  bounceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 3.938441
+      outSlope: 3.938441
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.050235473
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -4.1096764
+      outSlope: -4.1096764
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.78806925
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  radius: 0.05
+  minRotation: 45
+  maxRotation: 180
+  contactFilter:
+    useTriggers: 0
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 256
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0

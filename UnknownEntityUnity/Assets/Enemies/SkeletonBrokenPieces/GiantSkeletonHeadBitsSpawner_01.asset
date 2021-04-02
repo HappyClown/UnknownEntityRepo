@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1bf3e62b6c4c4f84abd5c24f16337f5e, type: 3}
-  m_Name: SkeletonBowBits_01
+  m_Name: GiantSkeletonHeadBitsSpawner_01
   m_EditorClassIdentifier: 
-  crackingSprite: {fileID: 8449458792096274713, guid: 0f3f487b3b9f51140b5720f06283b162,
-    type: 3}
-  crackedDur: 0.03
+  crackingSprite: {fileID: 0}
+  crackedDur: 0
   destroyedSprite: {fileID: 0}
   bouncingSpritesSO:
-  - {fileID: 11400000, guid: 1fa271935dea5d34db4c52e5eb1ae158, type: 2}
-  - {fileID: 11400000, guid: 082f1c88273d9dd4aaec7e6af9eb5ac8, type: 2}
-  - {fileID: 11400000, guid: 50ba4cb52106b204e9f7ba3d1f92e34b, type: 2}
+  - {fileID: 11400000, guid: 17bb9d753f980004cb8b4e589895623a, type: 2}
+  - {fileID: 11400000, guid: 7f5f45b1d6678d843b7755ce38d707f1, type: 2}
+  - {fileID: 11400000, guid: e8b6ac07be611b04a87977d597bcd35f, type: 2}
   spawnPositions:
-  - {x: 0.1, y: 0.5}
-  - {x: 0.1, y: 0.5}
-  - {x: 0.1, y: 0.5}
+  - {x: -0.15, y: 2.05}
+  - {x: -0.025, y: 1.65}
+  - {x: 0.125, y: 2.125}

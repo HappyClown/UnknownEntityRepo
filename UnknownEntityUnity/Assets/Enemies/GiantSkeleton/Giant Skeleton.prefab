@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 1203715507877199406}
   - component: {fileID: 463057788}
   m_Layer: 0
-  m_Name: Scripts with Anim Events
+  m_Name: Anim Events
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -343,6 +343,7 @@ MonoBehaviour:
   enemy: {fileID: 11400000, guid: 43000d9eda23cf14d9fcd4ef91800b0c, type: 2}
   flip: {fileID: 6264118744248117157}
   eRefs: {fileID: 6264118744248117210}
+  useOldAnimSystem: 0
   followOnStart: 0
   drawPathGizmos: 0
   myZ: -0.1
@@ -516,6 +517,8 @@ MonoBehaviour:
   maxHealth: 30
   curHealth: 30
   damageModifier: 1
+  maxPoise: 0
+  curPoise: 0
   hitTotalDuration: 0.5
   hitSprites:
   - {fileID: -7980002119140704339, guid: 33a74e341b9f6b441a8cd42bf788aefa, type: 3}
@@ -547,10 +550,11 @@ MonoBehaviour:
   - {fileID: 2080724034240255784}
   myHitCol: {fileID: 6264118744310853075}
   sODestructionSpawners:
-  - {fileID: 11400000, guid: 0c948ac9aa8f00d4091a11ef0035aaa7, type: 2}
-  - {fileID: 11400000, guid: d71e404067acf744eb73d01fad7f6b41, type: 2}
+  - {fileID: 11400000, guid: 627298420d2bfb54d83741a563937368, type: 2}
+  - {fileID: 11400000, guid: d4259ea8e9d590d4daa9f3e229a6cee1, type: 2}
+  - {fileID: 11400000, guid: ead085c863fb5ce468c04dcdbf296760, type: 2}
   spriteBouncePool: {fileID: 0}
-  amountToSpawn: 0300000001000000
+  amountToSpawn: 040000000100000001000000
   random: 
   enemySpecificDeath: {fileID: 0}
 --- !u!114 &6662330497531733548
@@ -679,7 +683,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6264118744442853647}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 0}
   m_CullingMode: 0

@@ -18,7 +18,7 @@ MonoBehaviour:
   restingRotation: {x: 0, y: 0, z: 0}
   restingPosition: {x: 0, y: 0, z: 0}
   durabilityDamageOnHit: 1
-  durabilityDamage: 51
+  durabilityDamage: 2
   poiseDamage: 1
   SO_brokenPiecesSpawner: {fileID: 11400000, guid: c1e5a24798aaecc418c2b78c295ccb9e,
     type: 2}
