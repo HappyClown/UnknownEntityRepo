@@ -13,29 +13,29 @@ public class Character_AttackChain : MonoBehaviour
     [Header("Read Only")]
     //public bool ready = true;
     public int curChain;
-    private int nextChain;
+    private int nextChain = 0;
     private float chainResetTimer;
+    private Coroutine atkDurCoroutine, atkCooldownCoroutine; 
 
     void Start() {
         chainResetTimer = chainResetDelay;
     }
 
     void Update() {
-        // Chain reset timer.
+        // Full attack duration timer.
+
+        // Cooldown during which player cannot attack.
+        // Chain reset timer once the player can attack again.
         if (chainResetTimer < chainResetDelay) {
             chainResetTimer += Time.deltaTime;
             if (chainResetTimer >= chainResetDelay) {
                 nextChain = 0;
                 curChain = 0;
-                //atkWeaMotion.resetWeapRot = true;
             }
         }
     }
 
     public void ChainAttacks() {
-        charAtk.ReadyToAttack(false);
-        //charAtk.readyToAtk = false;
-        //ready = false;
         // This attack is the last in the chain. Code based on that can be added here.
         if (nextChain >= charAtk.weapon.attackChains.Length) {
             nextChain = 0;
@@ -43,8 +43,21 @@ public class Character_AttackChain : MonoBehaviour
         curChain = nextChain;
         // Turn this chain reset timer to 0 after the attack is complete.
         chainResetTimer = 0f;
+        
+        charAtk.ReadyToAttack(false);
+        charAtk.equippedWeapons.canSwapWeapon = false;
+        if (atkDurCoroutine != null) StopCoroutine(atkDurCoroutine);
+        if (atkCooldownCoroutine != null) StopCoroutine(atkCooldownCoroutine);
+        atkDurCoroutine = StartCoroutine(FullAttackDuration());
+        
         nextChain++;
     }
+    // public bool NotInAnAttack() {
+    //     if (atkDurCoroutine != null) {
+    //         return false;
+    //     }
+    //     return true;
+    // }
 
     // On weapon swap.
     public void OnWeaponSwap(SO_Weapon activeWeapon, SO_Weapon inactiveWeapon) {
@@ -64,7 +77,32 @@ public class Character_AttackChain : MonoBehaviour
         // nextChain = 0;
         // curChain = 0;
         charAtk.ReadyToAttack(true);
-        charAtk.readyToAtk = true;
-        //ready = true;
+    }
+
+    IEnumerator FullAttackDuration() {
+        float timer = 0f;
+        float fullattackDuration = charAtk.weapon.attackChains[curChain].fullAttackDuration;
+        //print("Full Attack Duration: "+fullattackDuration + "  AND  This attack chain: " + curChain);
+        int currentAttackChain = curChain;
+        while (timer < fullattackDuration) {
+            timer += Time.deltaTime;
+            // Can check here when the player would be able to swap his weapon or start another attack if it can be done during an attack. Could have that the weapon swap can be done during the cooldown but not starting a new attack.
+            yield return null;
+        }
+        // Start cooldown timer before enabling ReadyToAttack.
+        atkCooldownCoroutine = StartCoroutine(CanAttackCooldown(currentAttackChain));
+        chainResetTimer = 0f;
+        atkDurCoroutine = null;
+    }
+    IEnumerator CanAttackCooldown(int currentAttackChain) {
+        float timer = 0f;
+        float canAttackCooldown = charAtk.weapon.attackChains[currentAttackChain].canAttackCooldown;
+        while (timer < canAttackCooldown) {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        charAtk.ReadyToAttack(true);
+        charAtk.equippedWeapons.canSwapWeapon = true;
+        atkCooldownCoroutine = null;
     }
 }

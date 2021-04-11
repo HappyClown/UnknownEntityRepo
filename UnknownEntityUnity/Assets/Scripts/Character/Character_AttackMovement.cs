@@ -62,10 +62,15 @@ public class Character_AttackMovement : MonoBehaviour
             }
         }
         else if (sO_AttackFX.followWeapon) {
-            while (timer < 1f) {
-                timer += Time.deltaTime / totalDuration;
+            while (timer < totalDuration) {
+                timer += Time.deltaTime;
                 atkFXTrans.position = weapSpriteTrans.position + (weapOrigTrans.up * sO_AttackFX.followWeaponHeight);
                 atkFXTrans.rotation = weapOrigTrans.rotation;
+                if (timer >= totalDuration) {
+                    if (sO_AttackFX.loopAnimation) {
+                        timer = 0f;
+                    }
+                }
                 yield return null;
             }
         }

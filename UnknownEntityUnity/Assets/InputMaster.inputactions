@@ -14,6 +14,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "AttackSpecial",
+                    "type": "Button",
+                    "id": "fc8291e7-b2e0-48b3-b6de-38c130b381d5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "AttackReleased",
                     "type": "Button",
                     "id": "0f02382a-30a1-490c-8749-9f867ac89aa2",
@@ -230,6 +238,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dcbca9d5-9968-41ef-9518-02f895c7b747",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Hold(duration=0.1,pressPoint=0.1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttackSpecial",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -47,7 +47,7 @@ public class Character_MovementSkill_Dash : Character_MovementSkills
 
     public void StartMovementSkill() {
         // Stop the player's current attack.
-        charAttack.StopAttack();
+        charAttack.StopAttack(false);
         dashDirection = charMove.normalizedMovement;
         dashSpeed = dashDistance/dashDuration;
         // This is just to avoid dividing every update. Example: Time.deltaTime/dashDuration -> Time.deltaTime*multiplierDuration.

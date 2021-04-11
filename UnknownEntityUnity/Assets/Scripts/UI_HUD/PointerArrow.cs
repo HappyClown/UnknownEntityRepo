@@ -10,16 +10,26 @@ public class PointerArrow : MonoBehaviour
     private Vector3 camLocalPos, camPos, adjustment;
     [Range(0f, 1f)]
     public float followScreenPosOrPlayerPos = 0;
+    public bool directlyOnMouse;
     
-    void Update()
+    void LateUpdate()
     {
         camLocalPos = camTran.localPosition;
         camPos = camTran.position;
         adjustment = (camPos-playerTran.position)*followScreenPosOrPlayerPos;
         // Pointer position
-        this.transform.position = new Vector3(moIn.mousePosWorld2D.x-adjustment.x, moIn.mousePosWorld2D.y-adjustment.y, this.transform.position.z);
+        if (directlyOnMouse) {
+            this.transform.position = new Vector3(moIn.mousePosWorld2D.x, moIn.mousePosWorld2D.y, this.transform.position.z);
+
+            this.transform.up = moIn.mousePosWorld2D - new Vector2(playerTran.position.x, playerTran.position.y);
+        }
+        else {
+            this.transform.position = new Vector3(moIn.mousePosWorld2D.x-adjustment.x, moIn.mousePosWorld2D.y-adjustment.y, this.transform.position.z);
+            
+            this.transform.up = (moIn.mousePosWorld2D-(Vector2)adjustment) - new Vector2(playerTran.position.x, playerTran.position.y);
+        }
         //camera pos - player pos
         // Pointer rotation
-        this.transform.up = (moIn.mousePosWorld2D-(Vector2)adjustment) - new Vector2(playerTran.position.x, playerTran.position.y);
+        //this.transform.up = (moIn.mousePosWorld2D-(Vector2)adjustment) - new Vector2(playerTran.position.x, playerTran.position.y);
     }
 }

@@ -93,7 +93,7 @@ public class Character_Attack : MonoBehaviour
         }
     }
     public bool ReadyToAttackCheck() {
-        if (readyToAtk && equippedWeapons.WeaponEquippedCheck()) {
+        if (readyToAtk && equippedWeapons.WeaponEquippedCheck() /* && atkChain.NotInAnAttack() */) {
             return true;
         }
         return false;
@@ -116,21 +116,10 @@ public class Character_Attack : MonoBehaviour
         }
     }
     // When you want to stop the current attack.
-    public void StopAttack() {
+    public void StopAttack(bool isPlayerReadyToAttack) {
         if (curWeaponMotion) {
             curWeaponMotion.StopMotions();
         }
-        // foreach (Character_AttackFX poolAtkFX in atkFXPool.atkFXs) {
-        //     if (poolAtkFX.stopOnStun) {
-        //         poolAtkFX.StopAllCoroutines();
-        //         poolAtkFX.spriteR.sprite = null;
-        //         poolAtkFX.col.enabled = false;
-        //         poolAtkFX.gameObject.SetActive(false);
-        //         //poolAtkFX.transform.position = new Vector3(999, 999, poolAtkFX.transform.position.z);
-        //         poolAtkFX.stopOnStun = false;
-        //         poolAtkFX.inUse = false;
-        //     }
-        // }
         foreach (Character_AttackFX curAtkFX in atkFXsInUse) {
             if (curAtkFX.involuntaryCancel) {
                 curAtkFX.StopAllCoroutines();
@@ -144,7 +133,7 @@ public class Character_Attack : MonoBehaviour
         if (atkPlyrMove.charAtkMotionOn) {
             atkPlyrMove.StopPlayerMotion();
         }
-        ReadyToAttack(true);
+        ReadyToAttack(isPlayerReadyToAttack);
         //atkVisual.StopAllCoroutines();
     }
 

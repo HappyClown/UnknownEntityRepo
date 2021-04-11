@@ -8,6 +8,8 @@ public class Character_AttackVisual : MonoBehaviour
     public IEnumerator AttackAnimation(SO_AttackFX sO_AttackFX, Character_AttackFX atkFX) {
         // References from the AttackFX object from the CharacterAttackFX Pool.
         atkFX.inUse = true;
+        atkFX.exitAttackAnimationFX = false;
+        atkFX.loopAnimation = sO_AttackFX.loopAnimation;
         if (sO_AttackFX.stopOnStun) {
             atkFX.stopOnStun = true;
         }
@@ -44,6 +46,17 @@ public class Character_AttackVisual : MonoBehaviour
             // Cancel Point, before this point the attack FX (visual, movement, collision) will be cancelled by things like getting hit aka stunned.
             if (timer > sO_AttackFX.cancelPoint) {
                 atkFX.involuntaryCancel = false;
+            }
+            // If my Character_AttackFX pool object is set to stopAttackNow, exit the while loop immediately.
+            if (atkFX.exitAttackAnimationFX) {
+                break;
+            }
+            // If my Character_AttackFX pool object is set to loop, restart the animation.
+            if (timer >= totalDuration) {
+                if (atkFX.loopAnimation) {
+                    timer = 0f;
+                    thisSpriteIndex = 0;
+                }
             }
             yield return null;
         }

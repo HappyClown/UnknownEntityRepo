@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: NimbleSpear
   weaponSprite: {fileID: 21300000, guid: 89b331cd8ed0e534aa6904b2812f08fc, type: 3}
-  chainResetDelay: 0
+  chainResetDelay: 0.75
   restingRotation: {x: 0, y: 0, z: 0}
   restingPosition: {x: 0, y: 0, z: 0}
   durabilityDamageOnHit: 1
@@ -30,6 +30,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 954a272b6bc475f4dbdd0d5f9f21bb98, type: 2}
     minDamage: 5
     maxDamage: 7
+    fullAttackDuration: 0.48
+    canAttackCooldown: 0.01
     chargeable: 0
     sO_ChargeAttack: {fileID: 0}
   - sO_Weapon_Motion: {fileID: 11400000, guid: e901dfa1e69948a48b29e1f4864858db, type: 2}
@@ -39,6 +41,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: e9e7f6dc057652041888e16828c088ea, type: 2}
     minDamage: 4
     maxDamage: 6
+    fullAttackDuration: 0.38
+    canAttackCooldown: 0.01
     chargeable: 0
     sO_ChargeAttack: {fileID: 0}
   - sO_Weapon_Motion: {fileID: 11400000, guid: 3e0659be3f8ffcf479202570873b549e, type: 2}
@@ -49,5 +53,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 6f1def151e891184e941fdbacdba983d, type: 2}
     minDamage: 8
     maxDamage: 10
+    fullAttackDuration: 0.72
+    canAttackCooldown: 0.5
     chargeable: 0
     sO_ChargeAttack: {fileID: 0}

@@ -20,6 +20,7 @@ public class TimeSlow : MonoBehaviour
     public static float slowTimeTotalTime_St;
     //private static float oneTickPercent_St;
     //private static float ticksPercentage_St;
+    public bool timeSlowPaused;
 
     void Start() {
         allowTimeSlow_St = allowTimeSlow;
@@ -76,12 +77,20 @@ public class TimeSlow : MonoBehaviour
         Time.timeScale = 0f;
         while (timer < 1f) {
             //timer = Time.time - startTime;
-            timer += Time.unscaledDeltaTime/slowTimeTotalTime_St;
-            Time.timeScale = slowTimeAnimCurve.Evaluate(timer);
+            if (!timeSlowPaused) {
+                timer += Time.unscaledDeltaTime/slowTimeTotalTime_St;
+                Time.timeScale = slowTimeAnimCurve.Evaluate(timer);
+            }
             yield return null;
         }
         Time.timeScale = 1f;
         slowTimeOn_St = false;
+    }
+    public void PauseTimeSlow() {
+        timeSlowPaused = true;
+    }
+    public void UnpauseTimeSlow() {
+        timeSlowPaused = false;
     }
 
     // public static IEnumerator SlowTimeScale(int frames, float timeScale) {

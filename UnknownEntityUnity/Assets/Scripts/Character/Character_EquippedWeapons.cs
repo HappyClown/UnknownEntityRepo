@@ -12,12 +12,14 @@ public class Character_EquippedWeapons : MonoBehaviour
     [Header("To-set Variables")]
     public SO_Weapon activeWeapon;
     public SpriteRenderer weaponSpriteR;
+    public float weaponSwapCooldownDur = 0.5f;
     [Header("Read Only")]
     public SO_Weapon inactiveWeapon;
     public float weaponOneDurability = 100;
     public float weaponTwoDurability = 100;
     public bool weaponOneIsActive = true;
     public bool canSwapWeapon = true;
+    public bool weaponSwapOnCooldown;
 
     void Start() {
         WeaponSwap(false);
@@ -26,13 +28,16 @@ public class Character_EquippedWeapons : MonoBehaviour
     public bool CanISwapWeapon() {
         // Weapon swap if two weapons are equipped.
         if (canSwapWeapon) {
-            if (activeWeapon != null && inactiveWeapon != null) {
+            if (activeWeapon != null && inactiveWeapon != null && !weaponSwapOnCooldown) {
                 SO_Weapon tempWeapon = inactiveWeapon;
                 inactiveWeapon = activeWeapon;
                 activeWeapon = tempWeapon;
                 WeaponSwap(true);
                 // HUD active weapon changes.
                 HUDManager.playerWeapons.SwapActiveWeapon();
+                // Swap weapon cooldown.
+                weaponSwapOnCooldown = true;
+                StartCoroutine(WeaponSwapCooldown());
             }
             return true;
         }
@@ -73,6 +78,14 @@ public class Character_EquippedWeapons : MonoBehaviour
         // Change the active weapon by reversing the bool. Used for durability.
         if (changeActiveWeapon) weaponOneIsActive = !weaponOneIsActive;
     }
+    IEnumerator WeaponSwapCooldown() {
+        float timer = 0f;
+        while(timer < weaponSwapCooldownDur) {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        weaponSwapOnCooldown = false;
+    }
     // Check if the player has an active weapon to hit with. May become obsolete if player has an unbreakable default weapon.
     public bool WeaponEquippedCheck() {
         if (activeWeapon) {
@@ -80,6 +93,7 @@ public class Character_EquippedWeapons : MonoBehaviour
         }
         return false;
     }
+
     public void DurabilityDamage(bool damageWeaponOne) {
         // Take durability off of the currently equipped weapon that just landed an attack.
         // Active weapon always starts on weapon one.
@@ -100,7 +114,6 @@ public class Character_EquippedWeapons : MonoBehaviour
             }
         }
     }
-
     public void BreakActiveWeapon() {
         // Remove from HUD with appropriate effects.
         HUDManager.playerWeapons.RemoveBrokenWeapon();

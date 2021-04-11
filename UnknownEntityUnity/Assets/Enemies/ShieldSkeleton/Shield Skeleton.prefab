@@ -161,7 +161,7 @@ SpriteRenderer:
   m_Size: {x: 0.125, y: 0.125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1120722448
@@ -528,6 +528,8 @@ MonoBehaviour:
   maxHealth: 15
   curHealth: 15
   damageModifier: 1
+  maxPoise: 0
+  curPoise: 0
   hitTotalDuration: 0.5
   hitSprites:
   - {fileID: -7980002119140704339, guid: 33a74e341b9f6b441a8cd42bf788aefa, type: 3}
@@ -644,6 +646,8 @@ MonoBehaviour:
   losLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  mySpriteAnim: {fileID: 0}
+  animClips: []
   eFollowPath: {fileID: 3094976223254943911}
   eWalkAnim: {fileID: 764420645499934841}
   eAggro: {fileID: 6363887862280098711}
@@ -652,6 +656,7 @@ MonoBehaviour:
   eHealth: {fileID: 764420645428285961}
   eDeath: {fileID: 764420645428285960}
   eSO: {fileID: 11400000, guid: 045ea6ddd98838e4d97441301425238a, type: 2}
+  flipX: {fileID: 0}
 --- !u!114 &3094976223254943911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -667,6 +672,7 @@ MonoBehaviour:
   enemy: {fileID: 11400000, guid: 045ea6ddd98838e4d97441301425238a, type: 2}
   flip: {fileID: 764420645499934844}
   eRefs: {fileID: 764420645499934723}
+  useOldAnimSystem: 1
   followOnStart: 0
   drawPathGizmos: 0
   myZ: -0.1
@@ -833,7 +839,7 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   moveDist: 2.6
-  moveDur: 0.25
+  moveDur: 0.2
   minAtkDamage: 3
   maxAtkDamage: 4
   sO_ImpactFX: {fileID: 11400000, guid: ee52250fe04d09a4c9e94699de25cdd5, type: 2}
@@ -858,6 +864,7 @@ MonoBehaviour:
   - 0.55
   - 0.65
   events:
+  - 0.4
   - 0.75
   spriteR: {fileID: 764420645824505556}
   loopingBashSprites:
@@ -866,7 +873,7 @@ MonoBehaviour:
   - {fileID: -158226102871887826, guid: c76817b9caa1cc348830a2a4e4f7707c, type: 3}
   loopSpriteDuration: 0.025
   shieldDownSprite: {fileID: 21300000, guid: 90677c209943e0a4284cc2643d6d6796, type: 3}
-  beforeShieldDownDuration: 0.2
+  beforeShieldDownDuration: 0.33
 --- !u!114 &4763131646878942770
 MonoBehaviour:
   m_ObjectHideFlags: 0

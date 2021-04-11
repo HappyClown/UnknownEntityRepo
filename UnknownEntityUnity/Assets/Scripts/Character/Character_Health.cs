@@ -50,8 +50,8 @@ public class Character_Health : MonoBehaviour
         // Player cannot flip.
         charMov.charCanFlip = false;
         charMov.FlipSpriteDirectionBased(normHitDirection);
-        // Stops; player attack movement, attack FXs that are stopped on stun, weapon attack motion.
-        charAtk.StopAttack();
+        // Stops; player attack movement, attack FXs that are stopped on stun, weapon attack motion. When stopping attack with true, player will be interupted but will immediately be able to start a new attack.
+        charAtk.StopAttack(true);
         // Player weapon does not follow cursor.
         weapLookAt.lookAtEnabled = false;
         //

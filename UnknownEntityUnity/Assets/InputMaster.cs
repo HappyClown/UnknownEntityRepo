@@ -27,6 +27,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""AttackSpecial"",
+                    ""type"": ""Button"",
+                    ""id"": ""fc8291e7-b2e0-48b3-b6de-38c130b381d5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""AttackReleased"",
                     ""type"": ""Button"",
                     ""id"": ""0f02382a-30a1-490c-8749-9f867ac89aa2"",
@@ -243,6 +251,17 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dcbca9d5-9968-41ef-9518-02f895c7b747"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Hold(duration=0.1,pressPoint=0.1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AttackSpecial"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -760,6 +779,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_AttackPressed = m_Player.FindAction("AttackPressed", throwIfNotFound: true);
+        m_Player_AttackSpecial = m_Player.FindAction("AttackSpecial", throwIfNotFound: true);
         m_Player_AttackReleased = m_Player.FindAction("AttackReleased", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_WeaponSwap = m_Player.FindAction("Weapon Swap", throwIfNotFound: true);
@@ -830,6 +850,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_AttackPressed;
+    private readonly InputAction m_Player_AttackSpecial;
     private readonly InputAction m_Player_AttackReleased;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_WeaponSwap;
@@ -843,6 +864,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         private @InputMaster m_Wrapper;
         public PlayerActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
         public InputAction @AttackPressed => m_Wrapper.m_Player_AttackPressed;
+        public InputAction @AttackSpecial => m_Wrapper.m_Player_AttackSpecial;
         public InputAction @AttackReleased => m_Wrapper.m_Player_AttackReleased;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @WeaponSwap => m_Wrapper.m_Player_WeaponSwap;
@@ -863,6 +885,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @AttackPressed.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackPressed;
                 @AttackPressed.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackPressed;
                 @AttackPressed.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackPressed;
+                @AttackSpecial.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackSpecial;
+                @AttackSpecial.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackSpecial;
+                @AttackSpecial.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackSpecial;
                 @AttackReleased.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackReleased;
                 @AttackReleased.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackReleased;
                 @AttackReleased.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackReleased;
@@ -894,6 +919,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @AttackPressed.started += instance.OnAttackPressed;
                 @AttackPressed.performed += instance.OnAttackPressed;
                 @AttackPressed.canceled += instance.OnAttackPressed;
+                @AttackSpecial.started += instance.OnAttackSpecial;
+                @AttackSpecial.performed += instance.OnAttackSpecial;
+                @AttackSpecial.canceled += instance.OnAttackSpecial;
                 @AttackReleased.started += instance.OnAttackReleased;
                 @AttackReleased.performed += instance.OnAttackReleased;
                 @AttackReleased.canceled += instance.OnAttackReleased;
@@ -1030,6 +1058,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     public interface IPlayerActions
     {
         void OnAttackPressed(InputAction.CallbackContext context);
+        void OnAttackSpecial(InputAction.CallbackContext context);
         void OnAttackReleased(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnWeaponSwap(InputAction.CallbackContext context);

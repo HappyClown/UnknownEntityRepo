@@ -78,8 +78,9 @@ public class ShieldSkeleton_ShieldBash : MonoBehaviour
         float timer = 0f;
         int spriteStep = 0;
         int eventStep = 0;
-        eRefs.eFollowPath.flip.PredictFlip(this.transform.position, eRefs.PlayerShadowPos);
-        attackDir = eRefs.NormDirToTargetV2(attackDirPoint.position, eRefs.PlayerCenterPos);
+        bool flipEnemy = true;
+        // eRefs.eFollowPath.flip.PredictFlip(this.transform.position, eRefs.PlayerShadowPos);
+        //attackDir = eRefs.NormDirToTargetV2(attackDirPoint.position, eRefs.PlayerCenterPos);
         while (timer < totalDuration) {
             timer += Time.deltaTime;
             if (spriteStep < spriteChanges.Length && timer > spriteChanges[spriteStep]) {
@@ -88,9 +89,17 @@ public class ShieldSkeleton_ShieldBash : MonoBehaviour
             }
             if (eventStep < events.Length && timer > events[eventStep]) {
                 if (eventStep == 0) {
+                    // Stop flipping the enemy to look at the player and grab the direction for the charge attack.
+                    flipEnemy = false;
+                    attackDir = eRefs.NormDirToTargetV2(attackDirPoint.position, eRefs.PlayerCenterPos);
+                }
+                else if (eventStep == 1) {
                     SetupEnemyMovement();
                 }
                 eventStep++;
+            }
+            if (flipEnemy) {
+                eRefs.eFollowPath.flip.PredictFlip(this.transform.position, eRefs.PlayerShadowPos);
             }
             yield return null;
         }
