@@ -5797,6 +5797,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: d10037f34488ce1408127fb8615eb69a,
         type: 2}
+    - target: {fileID: 1032852742220740574, guid: 17191f42f3a871b4a83450ce0b9bcb4a,
+        type: 3}
+      propertyPath: SO_HoldCharMo
+      value: 
+      objectReference: {fileID: 11400000, guid: 266f4d83bb2b3734d926b6f6bf567e61,
+        type: 2}
+    - target: {fileID: 1032852742220740574, guid: 17191f42f3a871b4a83450ce0b9bcb4a,
+        type: 3}
+      propertyPath: SO_WindupCharMo
+      value: 
+      objectReference: {fileID: 11400000, guid: 01e13396d28ab2e45831741cc6af0f11,
+        type: 2}
+    - target: {fileID: 1032852742220740574, guid: 17191f42f3a871b4a83450ce0b9bcb4a,
+        type: 3}
+      propertyPath: SO_ReleaseCharMo
+      value: 
+      objectReference: {fileID: 11400000, guid: 69fff8e4ba81aa7498222c9cb8bd24ed,
+        type: 2}
     - target: {fileID: 2656337685487112101, guid: 17191f42f3a871b4a83450ce0b9bcb4a,
         type: 3}
       propertyPath: deathSequence

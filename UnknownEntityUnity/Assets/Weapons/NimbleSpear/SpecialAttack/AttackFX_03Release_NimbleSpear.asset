@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f167f306c0b1be84d9c7f92f4bae2a58, type: 3}
-  m_Name: AttackFX_03_NimbleSpear
+  m_Name: AttackFX_03Release_NimbleSpear
   m_EditorClassIdentifier: 
   totalDuration: 0.78
   stopOnStun: 0
   cantInterrupStart: 0
   cantInterrupEnd: 0.65
   cancelPoint: 0.55
+  loopAnimation: 0
   collider: {fileID: 2499665363079990395, guid: e4dadb3ec98b46948bbd1f09651f4d66,
     type: 3}
   colStart: 0.55

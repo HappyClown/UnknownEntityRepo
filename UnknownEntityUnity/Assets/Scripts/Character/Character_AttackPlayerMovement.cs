@@ -26,6 +26,11 @@ public class Character_AttackPlayerMovement : MonoBehaviour
     // General
     public bool charAtkMotionOn;
     private float moveTimer;
+    public bool finalMotion;
+    public bool loopFinalMotion;
+    public bool exitPlayerMotion;
+    private bool[] loopMotions;
+    private SO_CharAtk_Motion curCharAtkMotion;
 
     public void SetupPlayerAttackMotions(SO_CharAtk_Motion sOCharAtkMotion) {
         if (curSlow != 0f) { charMov.ReduceSpeed(-curSlow); }
@@ -35,7 +40,9 @@ public class Character_AttackPlayerMovement : MonoBehaviour
         lockInputMovement = sOCharAtkMotion.lockInputMovement;
         lockCharacterAndWeapon = sOCharAtkMotion.lockCharacterAndWeapon;
         slowDownRunSpeed = sOCharAtkMotion.slowDownRunSpeed;
-        chargeAttack = sOCharAtkMotion.chargeAttack;
+        //chargeAttack = sOCharAtkMotion.chargeAttack;
+        loopMotions = sOCharAtkMotion.loopMotion;
+        //loopFinalMotion = sOCharAtkMotion.loopFinalMotion;
         // Assign the current values for the first motion. 
         // *Could run SetupNextMotionNow with a few changes?
         curMotion = 0;
@@ -55,13 +62,15 @@ public class Character_AttackPlayerMovement : MonoBehaviour
         else { charMov.charCanFlip = true; weaponLookAt.lookAtEnabled = true; }
         // Applies a slow to the player input movement speed.
         charMov.ReduceSpeed(curSlow);
-
+        finalMotion = false;
+        exitPlayerMotion = false;
         moveTimer = 0f;
-        if (!chargeAttack[curMotion]) {
-            this.StopAllCoroutines();
-            charAtkMotionOn = true;
-            this.StartCoroutine(CharAttackMotionTimer());
+        if (curMotion < loopMotions.Length-1 && loopMotions[curMotion]) {
+            finalMotion = true;
         }
+        this.StopAllCoroutines();
+        charAtkMotionOn = true;
+        this.StartCoroutine(CharAttackMotionTimer());
     }
 
     IEnumerator CharAttackMotionTimer () {
@@ -71,8 +80,16 @@ public class Character_AttackPlayerMovement : MonoBehaviour
             //print("direction: "+curDirection+" newposition: "+newPosition+" curposition: "+curPosition);
             charMov.MoveThePlayer(curDirection, newPosition, curPosition);
             moveTimer += Time.deltaTime/curDuration;
+            if (exitPlayerMotion) {
+                break;
+            }
+            if (finalMotion && moveTimer >= 1f) {
+                moveTimer = 0f;
+            }
             yield return null;
         }
+        exitPlayerMotion = false;
+        finalMotion = false;
         SetupNextMotion();
     }
 
@@ -109,9 +126,10 @@ public class Character_AttackPlayerMovement : MonoBehaviour
         // Apply the new slowdown.
         charMov.ReduceSpeed(curSlow);
         moveTimer = 0f;
-        if (!chargeAttack[curMotion]) {
-            StartCoroutine(CharAttackMotionTimer());
+        if (curMotion < loopMotions.Length-1 && loopMotions[curMotion]) {
+            finalMotion = true;
         }
+        StartCoroutine(CharAttackMotionTimer());
     }
 
     public void StopPlayerMotion() {

@@ -11,6 +11,10 @@ public class Character_AttackSpecial : MonoBehaviour
     public SO_AttackFX SO_WindupFX, SO_HoldFX, SO_ReleaseFX;
     public Character_AttackFX windupFX, holdFX, releaseFX;
     public Coroutine windupCoroutine, holdCoroutine, releaseCoroutine;
+    //[Header("Player Motion")]
+    public SO_CharAtk_Motion SO_WindupCharMo;/* , SO_HoldCharMo, SO_ReleaseCharMo; */
+    //public Character_AttackFX windupFX, holdFX, releaseFX;
+    //public Coroutine windupCoroutine, holdCoroutine, releaseCoroutine;
     [Header("General Variables")]
     public bool specAtkButtonDown;
     public bool inWindup, inHold, inRelease;
@@ -30,10 +34,10 @@ public class Character_AttackSpecial : MonoBehaviour
         // Allow character flip and the weapon to "look at" the mouse.
         charAtk.ForceCharFlipAndWeaponLookAt();
         // If I want to check the weapon motion every attack. (attack chains can have different motions ex; stab, slash)
+        //Handles moving the player, slowing him down, etc., during the attack. (Player motion)
+        //charAtk.atkPlyrMove.SetupPlayerAttackMotions(SO_HoldCharMo);
         //curWeaponMotion = weaponMotions[atkChain.curChain];
         //curWeaponMotion.WeaponMotionSetup(this, weaponTrans, weaponSpriteR);
-        // Handles moving the player, slowing him down, etc., during the attack. (Player motion)
-        //atkPlyrMove.SetupPlayerAttackMotions(WeapAtkChain.sO_CharAtk_Motion);
         // Clear the character_attackFX list.
         //atkFXsInUse.Clear();
         windupFX = null;
@@ -89,6 +93,7 @@ public class Character_AttackSpecial : MonoBehaviour
         if (inHold) { 
             if (releasedByPlayer) {
                 holdFX.exitAttackAnimationFX = true;
+                charAtk.atkPlyrMove.exitPlayerMotion = true;
             } 
             else {
                 //CANCELATTACK;
@@ -104,6 +109,7 @@ public class Character_AttackSpecial : MonoBehaviour
         windupFX.gameObject.SetActive(true);
         windupFX.StartCoroutine(charAtk.atkVisual.AttackAnimation(SO_WindupFX, windupFX));
         windupFX.StartCoroutine(charAtk.atkMovement.AttackMovement(SO_WindupFX, windupFX.transform));
+        charAtk.atkPlyrMove.SetupPlayerAttackMotions(SO_WindupCharMo);
         while (timer < SO_WindupFX.totalDuration) {
             timer += Time.deltaTime;
             yield return null;
@@ -116,6 +122,7 @@ public class Character_AttackSpecial : MonoBehaviour
         //holdFX.loopAnimation = true;
         holdFX.StartCoroutine(charAtk.atkVisual.AttackAnimation(SO_HoldFX, holdFX));
         holdFX.StartCoroutine(charAtk.atkMovement.AttackMovement(SO_HoldFX, holdFX.transform));
+        //charAtk.atkPlyrMove.SetupPlayerAttackMotions(SO_HoldCharMo);
         while (specAtkButtonDown) {
             yield return null;
         }
@@ -126,6 +133,7 @@ public class Character_AttackSpecial : MonoBehaviour
         releaseFX.gameObject.SetActive(true);
         releaseFX.StartCoroutine(charAtk.atkVisual.AttackAnimation(SO_ReleaseFX, releaseFX));
         releaseFX.StartCoroutine(charAtk.atkMovement.AttackMovement(SO_ReleaseFX, releaseFX.transform));
+        //charAtk.atkPlyrMove.SetupPlayerAttackMotions(SO_ReleaseCharMo);
         while (timer < SO_ReleaseFX.totalDuration) {
             timer += Time.deltaTime;
             yield return null;
