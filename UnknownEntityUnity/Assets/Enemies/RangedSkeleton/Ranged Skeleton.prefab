@@ -5495,6 +5495,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkingSprite: {fileID: -1584749412573856627, guid: ec6f443e0d14c1942bacb5cb551e1eee,
     type: 3}
+  alternateIdleSprite: {fileID: -4878908959720290813, guid: 9ba32391744736b48adc8cf99c2caaf8,
+    type: 3}
   playerShadow: {fileID: 0}
   playerCenter: {fileID: 0}
   eSpriteR: {fileID: 3690657262526239119}
@@ -5531,6 +5533,7 @@ MonoBehaviour:
   flip: {fileID: 3690657262318137147}
   eRefs: {fileID: 3690657262318137120}
   useOldAnimSystem: 0
+  useAlternateIdle: 0
   followOnStart: 0
   drawPathGizmos: 0
   myZ: -0.1
@@ -5820,9 +5823,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eRefs: {fileID: 3690657262318137120}
   healthBar: {fileID: 6914958667853755047}
-  maxHealth: 50
-  curHealth: 50
+  maxHealth: 400
+  curHealth: 400
   damageModifier: 1
+  maxPoise: 0
+  curPoise: 0
   hitTotalDuration: 0.5
   hitSprites:
   - {fileID: 8449458792096274713, guid: 0f3f487b3b9f51140b5720f06283b162, type: 3}

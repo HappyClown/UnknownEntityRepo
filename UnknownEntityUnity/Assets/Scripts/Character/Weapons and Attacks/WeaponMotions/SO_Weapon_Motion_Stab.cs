@@ -14,6 +14,7 @@ public class SO_Weapon_Motion_Stab : SO_Weapon_Motion
     public float[] motionDurations;
     public float[] yPositions;
     public AnimationCurve[] animCurves;
+    public bool[] holdMotions;
     // public float PositionDifference {
     //     get {
     //         return Mathf.Abs(restingYPosition-waitingForResetYPos);

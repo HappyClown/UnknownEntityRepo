@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b48fe51a6829a45bd4301a0818c750, type: 3}
+  m_Name: Main_ShortBroadSword02
+  m_EditorClassIdentifier: 
+  weaponName: ShortBroadSword
+  weaponSprite: {fileID: 21300000, guid: 18c61cc2554ceeb49a48cbcb49c5c950, type: 3}
+  chainResetDelay: 1
+  restingRotation: {x: 0, y: 0, z: 110}
+  restingPosition: {x: 0, y: 0, z: 0}
+  durabilityDamageOnHit: 1
+  durabilityDamage: 2
+  poiseDamage: 1
+  SO_brokenPiecesSpawner: {fileID: 11400000, guid: 372683d5f861aeb4cb629dea986970f5,
+    type: 2}
+  attackChains:
+  - sO_Weapon_Motion: {fileID: 11400000, guid: 2f59c7d987f9ce1459ac5a2f4d70c5c9, type: 2}
+    sO_CharAtk_Motion: {fileID: 11400000, guid: 4fc148f62dec2d446b1a55b4b3e0728e,
+      type: 2}
+    sO_AttackFXs:
+    - {fileID: 11400000, guid: c20a8cf01f4a6fe4bad2ca479168ff23, type: 2}
+    minDamage: 10
+    maxDamage: 12
+    fullAttackDuration: 0.5
+    canAttackCooldown: 0.01
+    chargeable: 0
+    sO_ChargeAttack: {fileID: 0}
+  - sO_Weapon_Motion: {fileID: 11400000, guid: 2f59c7d987f9ce1459ac5a2f4d70c5c9, type: 2}
+    sO_CharAtk_Motion: {fileID: 11400000, guid: 4fc148f62dec2d446b1a55b4b3e0728e,
+      type: 2}
+    sO_AttackFXs:
+    - {fileID: 11400000, guid: c20a8cf01f4a6fe4bad2ca479168ff23, type: 2}
+    minDamage: 10
+    maxDamage: 12
+    fullAttackDuration: 0.5
+    canAttackCooldown: 0.01
+    chargeable: 0
+    sO_ChargeAttack: {fileID: 0}
+  specialAttack:
+    sO_Weapon_Motion: {fileID: 11400000, guid: 6a25540bf43274548b12ac975580eccf, type: 2}
+    sO_CharAtk_Motion: {fileID: 11400000, guid: 7beefca86be6b3343b3028233c0f099a,
+      type: 2}
+    sO_AttackFXWindup:
+    - {fileID: 11400000, guid: 3dc5f4e506029824b8db515600ccdded, type: 2}
+    sO_AttackFXHold:
+    - {fileID: 11400000, guid: 207cc04b74e070b428c8b1d175c11241, type: 2}
+    sO_AttackFXRelease:
+    - {fileID: 11400000, guid: c7b09a0dfef64014a874a0afa6b9e691, type: 2}
+    - {fileID: 11400000, guid: ca9a809d1cb82e944a1a9a8b0d398f50, type: 2}
+    minDamage: 10
+    maxDamage: 12
+    fullAttackDuration: 0
+    canAttackCooldown: 0

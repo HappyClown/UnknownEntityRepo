@@ -37,7 +37,7 @@ public class Character_MovementSkill_Dash : Character_MovementSkills
     //     }
     // }
     public override bool CanIUseMovementSkill() {
-        if (!dashing && curCharges > 0 && charMove.running && charAttack.CanInterruptAttackCheck()) {
+        if (!dashing && curCharges > 0 && charMove.running && !charAttack.atkSpecial.specAtkButtonDown && charAttack.CanInterruptAttackCheck()) {
             // Either the player needs to be running or it dashes in the towards/away from where the player is pointing.
             StartMovementSkill();
             return true;

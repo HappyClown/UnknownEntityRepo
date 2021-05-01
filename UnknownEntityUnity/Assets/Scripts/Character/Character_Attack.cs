@@ -8,11 +8,11 @@ public class Character_Attack : MonoBehaviour
     public MouseInputs moIn;
     public Character_AttackChain atkChain;
     public Character_AttackDetection atkDetection;
-    //public Character_AttackWeaponMotion atkWeaMotion;
     public Character_AttackFXPool atkFXPool;
     public Character_AttackVisual atkVisual;
     public Character_AttackMovement atkMovement;
     public Character_AttackPlayerMovement atkPlyrMove;
+    public Character_AttackSpecial atkSpecial;
     public Character_EquippedWeapons equippedWeapons;
     public Character_Movement charMov;
     public WeaponLookAt weaponLookAt;

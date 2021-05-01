@@ -10,6 +10,7 @@ public class Enemy_FollowPath : MonoBehaviour
     public Enemy_Refs eRefs;
     [Header ("To-set Variables")]
     public bool useOldAnimSystem;
+    public bool useAlternateIdle;
     public bool followOnStart;
     public bool drawPathGizmos;
     public float myZ;
@@ -127,7 +128,14 @@ public class Enemy_FollowPath : MonoBehaviour
         }
         //print("just stopped moving, taking a lil break b4 more murder xD");
         if (!useOldAnimSystem) StopWalkAnim();
-        if (useOldAnimSystem) eRefs.eSpriteR.sprite = eRefs.eSO.spriteIdle;
+        if (useOldAnimSystem) {
+            if (useAlternateIdle) {
+                eRefs.eSpriteR.sprite = eRefs.alternateIdleSprite;
+            }
+            else {
+                eRefs.eSpriteR.sprite = eRefs.eSO.spriteIdle;
+            }
+        }
         directlyMovingtoTarget = false;
     }
     
@@ -225,6 +233,11 @@ public class Enemy_FollowPath : MonoBehaviour
             eRefs.mySpriteAnim.Stop();
         }
         // This may create issues, set the sprite to idle.
-        eRefs.eSpriteR.sprite = eRefs.eSO.spriteIdle;
+        if (useAlternateIdle) {
+            eRefs.eSpriteR.sprite = eRefs.alternateIdleSprite;
+        }
+        else {
+            eRefs.eSpriteR.sprite = eRefs.eSO.spriteIdle;
+        }
     }
 }

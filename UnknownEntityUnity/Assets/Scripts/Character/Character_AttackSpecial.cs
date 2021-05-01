@@ -8,20 +8,42 @@ public class Character_AttackSpecial : MonoBehaviour
     public MouseInputs moIn;
     public Character_Attack charAtk;
     [Header("Attack FXs")]
-    public SO_AttackFX SO_WindupFX, SO_HoldFX, SO_ReleaseFX;
-    public Character_AttackFX windupFX, holdFX, releaseFX;
-    public Coroutine windupCoroutine, holdCoroutine, releaseCoroutine;
+    public SO_Weapon mainSpecialSO;
+    public SO_CharAtk_Motion SO_WindupCharMo; // Character motion
+    public SO_Weapon_Motion sOWeapoMo; // Weapon Motion
+    public List<SO_AttackFX> SO_WindupFX, SO_HoldFX, SO_ReleaseFX; // FXs
+    public Weapon_Motion weaponMotion;
+    public List<Character_AttackFX> windupFX, holdFX, releaseFX;
+    //public Coroutine windupCoroutine, holdCoroutine, releaseCoroutine;
     //[Header("Player Motion")]
-    public SO_CharAtk_Motion SO_WindupCharMo;/* , SO_HoldCharMo, SO_ReleaseCharMo; */
     //public Character_AttackFX windupFX, holdFX, releaseFX;
     //public Coroutine windupCoroutine, holdCoroutine, releaseCoroutine;
     [Header("General Variables")]
     public bool specAtkButtonDown;
     public bool inWindup, inHold, inRelease;
-
+    private Coroutine specialAtkCoroutine;
 
     public void SpecialAttack() {
         charAtk.ReadyToAttack(false);
+        mainSpecialSO = charAtk.weapon;
+
+        SO_WindupFX[0] = mainSpecialSO.specialAttack.sO_AttackFXWindup[0];
+        SO_HoldFX[0] = mainSpecialSO.specialAttack.sO_AttackFXHold[0];
+        print(mainSpecialSO.specialAttack.sO_AttackFXRelease.Length);
+        SO_ReleaseFX.Clear();
+        for (int i = 0; i < mainSpecialSO.specialAttack.sO_AttackFXRelease.Length; i++) {
+            print("HELLO");
+            if (i >= SO_ReleaseFX.Count) {
+                SO_ReleaseFX.Add(mainSpecialSO.specialAttack.sO_AttackFXRelease[i]);
+            }
+            else {
+                SO_ReleaseFX[i] = mainSpecialSO.specialAttack.sO_AttackFXRelease[i];
+            }
+        }
+        
+        SO_WindupCharMo = mainSpecialSO.specialAttack.sO_CharAtk_Motion;
+        sOWeapoMo = mainSpecialSO.specialAttack.sO_Weapon_Motion;
+
         // Perform the special attack.
         // If the attack is triggered, make sure that the grace period is set back to false since it is used.
         moIn.attackButtonActions.attackButtonTapInGrace = false;
@@ -33,66 +55,57 @@ public class Character_AttackSpecial : MonoBehaviour
         charAtk.ResetWeaponLocalValues();
         // Allow character flip and the weapon to "look at" the mouse.
         charAtk.ForceCharFlipAndWeaponLookAt();
-        // If I want to check the weapon motion every attack. (attack chains can have different motions ex; stab, slash)
-        //Handles moving the player, slowing him down, etc., during the attack. (Player motion)
-        //charAtk.atkPlyrMove.SetupPlayerAttackMotions(SO_HoldCharMo);
-        //curWeaponMotion = weaponMotions[atkChain.curChain];
-        //curWeaponMotion.WeaponMotionSetup(this, weaponTrans, weaponSpriteR);
-        // Clear the character_attackFX list.
-        //atkFXsInUse.Clear();
-        windupFX = null;
-        holdFX = null;
-        releaseFX = null;
-        windupFX = charAtk.atkFXPool.RequestAttackFX();
-        windupFX.inUse = true;
-        holdFX = charAtk.atkFXPool.RequestAttackFX();
-        holdFX.inUse = true;
-        releaseFX = charAtk.atkFXPool.RequestAttackFX();
-        releaseFX.inUse = true;
-
-        StartCoroutine(InSpecialAttack());
-        // Activate all this attack's FX's.
-        //foreach (SO_AttackFX sO_AttackFX in ChainAttackFXs) {
-            // Request an attack FX from the attack FX pool, the attack FX contains a Sprite Renderer and a PolygonalCollider2D.
-            //atkFX = atkFXPool.RequestAttackFX();
-            // Flip the attack FX Sprite if needed. (So far, for alternating Slash motions)
-            // if (atkDirectionChanges) { atkFX.spriteR.flipX = atkFXFlip; } else { atkFX.spriteR.flipX = false; }
-            // Try flipping the attack fx's local x scale instead.
-            // if (atkDirectionChanges) { 
-            //     atkFXFlipScale = (atkFXFlip) ? -1 : 1;
-            //     atkFX.transform.localScale = new Vector2(atkFXFlipScale, atkFX.transform.localScale.y); 
-            // }
-            // else {
-            //     atkFX.transform.localScale = new Vector2(1, atkFX.transform.localScale.y);
-            // }
-
-            // Enables and changes the attack effect over the course of the attack and dictates if the atkFX pool object is inUse then not.
-            // Start the coroutine ON the pool object script, not the script holding the coroutine logic.
-            //atkFX.StartCoroutine(atkVisual.AttackAnimation(sO_AttackFX, atkFX));
-            // Enables and disables the attack's collider during the "animation" and detects colliders it can hit, once, if it has one assigned.
-            // Requires the sOWeapon because durability damage is general, if it was attack chain specific then just having the weaponAttackChain would be sufficient as it would hold the durability damage info.
-            //print("Weapon one is active on attack trigger: "+equippedWeapons.weaponOneIsActive);
-            // if (sO_AttackFX.collider != null) {
-            //     atkDetection.StartCoroutine(atkDetection.AttackCollider(equippedWeapons.weaponOneIsActive, weapon, WeapAtkChain, sO_AttackFX, atkFX.col));
-            // }
-            // Turn the atk direction change back to false. This is done at the end because colliders will also be flipped by checking this variable. Now flipping the attack FX pool object's x scale instead of just the sprite.
-            //atkDirectionChanges = false;
-            // Player sripte to idle and stop animations
-            // charMov.mySpriteAnim.Stop();
-            // charMov.spriteRend.sprite = charMov.idleSprite;
-            // Add the character_attackFXs used to a list to better keep track of them.
-            //atkFXsInUse.Add(atkFX);
-        //}
+        weaponMotion = charAtk.weaponMotionController.CheckMotionList(sOWeapoMo.weapon_Motion);
+        //windupFX = null;
+        //holdFX = null;
+        //releaseFX = null;
+        releaseFX.Clear();
+        windupFX[0] = charAtk.atkFXPool.RequestAttackFX();
+        windupFX[0].inUse = true;
+        holdFX[0] = charAtk.atkFXPool.RequestAttackFX();
+        holdFX[0].inUse = true;
+        for (int i = 0; i < SO_ReleaseFX.Count; i++) {
+            if (i >= releaseFX.Count) {
+                releaseFX.Add(charAtk.atkFXPool.RequestAttackFX());
+            }
+            else {
+                releaseFX[i] = charAtk.atkFXPool.RequestAttackFX();
+            }
+            releaseFX[i].inUse = true;
+        }
+        
+        if (specialAtkCoroutine != null) { 
+            specialAtkCoroutine = null;
+        }
+        specialAtkCoroutine = StartCoroutine(InSpecialAttack());
     }
 
     public void SpecialAttackButtonReleased(bool releasedByPlayer) {
         specAtkButtonDown = false;
+        // Can the player use their movement skill?
         if (inWindup) { 
             //CANCELATTACK;
+            weaponMotion.StopMotions();
+            windupFX[0].StopAllCoroutines();
+            windupFX[0].spriteR.sprite = null;
+            windupFX[0].col.enabled = false;
+            windupFX[0].gameObject.SetActive(false);
+            windupFX[0].stopOnStun = false;
+            windupFX[0].inUse = false;
+            holdFX[0].inUse = false;
+            foreach(Character_AttackFX charAtkFX in releaseFX) {
+                charAtkFX.inUse = false;
+            }
+            charAtk.atkPlyrMove.StopPlayerMotion();
+            charAtk.ReadyToAttack(true);
+            StopCoroutine(specialAtkCoroutine);
+            specialAtkCoroutine = null;
+            inWindup = false;
+            charAtk.equippedWeapons.canSwapWeapon = true;
         }
         if (inHold) { 
             if (releasedByPlayer) {
-                holdFX.exitAttackAnimationFX = true;
+                holdFX[0].exitAttackAnimationFX = true;
                 charAtk.atkPlyrMove.exitPlayerMotion = true;
             } 
             else {
@@ -102,15 +115,17 @@ public class Character_AttackSpecial : MonoBehaviour
     }
 
     IEnumerator InSpecialAttack() {
-        // General Variables 
+        // General Variables
         float timer = 0f;
         // Windup
         inWindup = true;
-        windupFX.gameObject.SetActive(true);
-        windupFX.StartCoroutine(charAtk.atkVisual.AttackAnimation(SO_WindupFX, windupFX));
-        windupFX.StartCoroutine(charAtk.atkMovement.AttackMovement(SO_WindupFX, windupFX.transform));
+        windupFX[0].gameObject.SetActive(true);
+        windupFX[0].StartCoroutine(charAtk.atkVisual.AttackAnimation(SO_WindupFX[0], windupFX[0]));
+        windupFX[0].StartCoroutine(charAtk.atkMovement.AttackMovement(SO_WindupFX[0], windupFX[0].transform));
         charAtk.atkPlyrMove.SetupPlayerAttackMotions(SO_WindupCharMo);
-        while (timer < SO_WindupFX.totalDuration) {
+        weaponMotion.WeaponMotionSetup(charAtk, charAtk.weaponTrans, charAtk.weaponSpriteR, sOWeapoMo);
+
+        while (timer < SO_WindupFX[0].totalDuration) {
             timer += Time.deltaTime;
             yield return null;
         }
@@ -118,28 +133,39 @@ public class Character_AttackSpecial : MonoBehaviour
         timer = 0f;
         // Hold
         inHold = true;
-        holdFX.gameObject.SetActive(true);
+        holdFX[0].gameObject.SetActive(true);
         //holdFX.loopAnimation = true;
-        holdFX.StartCoroutine(charAtk.atkVisual.AttackAnimation(SO_HoldFX, holdFX));
-        holdFX.StartCoroutine(charAtk.atkMovement.AttackMovement(SO_HoldFX, holdFX.transform));
+        holdFX[0].StartCoroutine(charAtk.atkVisual.AttackAnimation(SO_HoldFX[0], holdFX[0]));
+        holdFX[0].StartCoroutine(charAtk.atkMovement.AttackMovement(SO_HoldFX[0], holdFX[0].transform));
         //charAtk.atkPlyrMove.SetupPlayerAttackMotions(SO_HoldCharMo);
         while (specAtkButtonDown) {
             yield return null;
         }
-        holdFX.exitAttackAnimationFX = true;
+        holdFX[0].exitAttackAnimationFX = true;
         inHold = false;
         // Release
         inRelease = true;
-        releaseFX.gameObject.SetActive(true);
-        releaseFX.StartCoroutine(charAtk.atkVisual.AttackAnimation(SO_ReleaseFX, releaseFX));
-        releaseFX.StartCoroutine(charAtk.atkMovement.AttackMovement(SO_ReleaseFX, releaseFX.transform));
-        //charAtk.atkPlyrMove.SetupPlayerAttackMotions(SO_ReleaseCharMo);
-        while (timer < SO_ReleaseFX.totalDuration) {
+        // foreach(Character_AttackFX releaseAtkFX in releaseFX) {
+        //     releaseFX[0].gameObject.SetActive(true);
+        //     releaseFX[0].StartCoroutine(charAtk.atkVisual.AttackAnimation(SO_ReleaseFX[0], releaseFX[0]));
+        //     releaseFX[0].StartCoroutine(charAtk.atkMovement.AttackMovement(SO_ReleaseFX[0], releaseFX[0].transform));
+        // }
+        for (int i = 0; i < releaseFX.Count; i++) {
+            releaseFX[i].gameObject.SetActive(true);
+            releaseFX[i].StartCoroutine(charAtk.atkVisual.AttackAnimation(SO_ReleaseFX[i], releaseFX[i]));
+            releaseFX[i].StartCoroutine(charAtk.atkMovement.AttackMovement(SO_ReleaseFX[i], releaseFX[i].transform));
+        }
+        if (SO_ReleaseFX[0].collider != null) {
+            charAtk.atkDetection.StartCoroutine(charAtk.atkDetection.AttackCollider(charAtk.equippedWeapons.weaponOneIsActive, charAtk.weapon, charAtk.WeapAtkChain, SO_ReleaseFX[0], releaseFX[0].col));
+        }
+        weaponMotion.StopHoldingMotion();
+        while (timer < SO_ReleaseFX[0].totalDuration) {
             timer += Time.deltaTime;
             yield return null;
         }
         inRelease = false;
         timer = 0f;
+        charAtk.equippedWeapons.canSwapWeapon = true;
         charAtk.ReadyToAttack(true);
     }
 

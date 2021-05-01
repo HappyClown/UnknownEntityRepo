@@ -26,7 +26,8 @@ public class RangedSkeleton_Actions : Enemy_Actions
     public override void StartChecks() {
         // Create a new state machine for this enemy. 
         // The "checkingAggro" state should be implemented in the state machine only if needed.
-        brain = new FSM();
+        //brain = new FSM();
+        brain = this.gameObject.AddComponent<FSM>();
         // Set initial state.
         brain.SetActiveState(ChaseTarget);
         // Set squared variables.

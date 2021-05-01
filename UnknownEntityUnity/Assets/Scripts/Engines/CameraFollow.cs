@@ -37,7 +37,7 @@ public class CameraFollow : MonoBehaviour
         allowNudging_St = allowNudging;
     }
 
-    void Update()
+    void LateUpdate()
     {
         // if (useFrameDelay) {
         //     frameAmnt++;

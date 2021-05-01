@@ -135,6 +135,9 @@ public class Character_AttackPlayerMovement : MonoBehaviour
     public void StopPlayerMotion() {
         //charMov.canInputMove = true;
         //charMov.charCanFlip = true;
+        if (lockInputMovement[curMotion]) {
+            charMov.canInputMove = true;
+        }
         charMov.ReduceSpeed(-curSlow);
         curSlow = 0f;
         charMov.FlipSpriteMouseBased();

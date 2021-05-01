@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30197a3e3f97a66498f923bd65aa317a, type: 3}
+  m_Name: ArrowHitImpactFX
+  m_EditorClassIdentifier: 
+  impactFXSprites:
+  - {fileID: -5330057415718424389, guid: c516d387b1601b04c804b061e1674372, type: 3}
+  - {fileID: 1062947120575940386, guid: c516d387b1601b04c804b061e1674372, type: 3}
+  - {fileID: 8106744834852254107, guid: c516d387b1601b04c804b061e1674372, type: 3}
+  - {fileID: 8331494065182728104, guid: c516d387b1601b04c804b061e1674372, type: 3}
+  impactFXTimings:
+  - 0
+  - 0.1
+  - 0.2
+  - 0.3
+  - 0.4
+  keepDirection: 1

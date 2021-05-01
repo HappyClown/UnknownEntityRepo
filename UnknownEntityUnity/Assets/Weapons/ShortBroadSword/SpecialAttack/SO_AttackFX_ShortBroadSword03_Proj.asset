@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f167f306c0b1be84d9c7f92f4bae2a58, type: 3}
+  m_Name: SO_AttackFX_ShortBroadSword03_Proj
+  m_EditorClassIdentifier: 
+  totalDuration: 0.4
+  stopOnStun: 1
+  cantInterrupStart: 0
+  cantInterrupEnd: 0
+  cancelPoint: 0
+  loopAnimation: 0
+  collider: {fileID: 6841409416684675371, guid: e535e837fec552841a83269c5fb6ad72,
+    type: 3}
+  colStart: 0
+  colEnd: 0.4
+  soImpactFX: {fileID: 11400000, guid: ee52250fe04d09a4c9e94699de25cdd5, type: 2}
+  sprites:
+  - {fileID: -2379977663514284478, guid: 3cf4f8a9a9de02b4c91d483220f56c2e, type: 3}
+  - {fileID: 6543350016567360311, guid: 3cf4f8a9a9de02b4c91d483220f56c2e, type: 3}
+  - {fileID: 8461002379179341269, guid: 3cf4f8a9a9de02b4c91d483220f56c2e, type: 3}
+  - {fileID: 4325094332545667050, guid: 3cf4f8a9a9de02b4c91d483220f56c2e, type: 3}
+  - {fileID: 615237464452920938, guid: 3cf4f8a9a9de02b4c91d483220f56c2e, type: 3}
+  - {fileID: -1824017750894582618, guid: 3cf4f8a9a9de02b4c91d483220f56c2e, type: 3}
+  - {fileID: 6701720843190365938, guid: 3cf4f8a9a9de02b4c91d483220f56c2e, type: 3}
+  - {fileID: -5467370296701029847, guid: 3cf4f8a9a9de02b4c91d483220f56c2e, type: 3}
+  spriteChangeTiming:
+  - 0
+  - 0.05
+  - 0.1
+  - 0.15
+  - 0.2
+  - 0.25
+  - 0.3
+  - 0.35
+  spawnDistance: 0.8
+  moveDistance: 1.5
+  moveDelay: 0.1
+  setupBeforeDelay: 1
+  followWeapon: 0
+  followWeaponHeight: 0
+  moveAnimCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

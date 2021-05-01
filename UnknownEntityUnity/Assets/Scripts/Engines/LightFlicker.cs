@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LightFlicker : MonoBehaviour
 {
-    public UnityEngine.Experimental.Rendering.Universal.Light2D light;
+    public UnityEngine.Experimental.Rendering.Universal.Light2D theLight;
     public bool flickering;
     public float minIntensity, maxIntensity;
     private float intensity;
@@ -21,8 +21,8 @@ public class LightFlicker : MonoBehaviour
             timer += Time.deltaTime;
             if (timer > flickerTime) {
                 timer = 0f;
-                light.intensity = intensity;
-                light.pointLightOuterRadius = outerRadius;
+                theLight.intensity = intensity;
+                theLight.pointLightOuterRadius = outerRadius;
                 intensity = Random.Range(minIntensity, maxIntensity);
                 outerRadius = Random.Range(minOuterRadius, maxOuterRadius);
                 flickerTime = Random.Range(minFlickerTime, maxFlickerTime);

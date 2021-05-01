@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f167f306c0b1be84d9c7f92f4bae2a58, type: 3}
-  m_Name: AttackFX_03Charge_NimbleSpear
+  m_Name: SO_AttackFX_ShortBroadSword03_BarRelease
   m_EditorClassIdentifier: 
-  totalDuration: 0.65
+  totalDuration: 0.3
   stopOnStun: 1
   cantInterrupStart: 0
   cantInterrupEnd: 0
@@ -23,49 +23,43 @@ MonoBehaviour:
   colEnd: 0
   soImpactFX: {fileID: 0}
   sprites:
-  - {fileID: -41779012396021193, guid: 0ccab22cdc245464ba4505b5a4888a11, type: 3}
-  - {fileID: -7523677792983848363, guid: 0ccab22cdc245464ba4505b5a4888a11, type: 3}
-  - {fileID: -4767951733902647808, guid: 0ccab22cdc245464ba4505b5a4888a11, type: 3}
-  - {fileID: 5166181997172222442, guid: 0ccab22cdc245464ba4505b5a4888a11, type: 3}
-  - {fileID: 5786006057729198669, guid: 0ccab22cdc245464ba4505b5a4888a11, type: 3}
-  - {fileID: 8078745095116107623, guid: 0ccab22cdc245464ba4505b5a4888a11, type: 3}
-  - {fileID: 636933534131968429, guid: 0ccab22cdc245464ba4505b5a4888a11, type: 3}
-  - {fileID: -2434009657122903275, guid: 0ccab22cdc245464ba4505b5a4888a11, type: 3}
-  - {fileID: 7959019314178515830, guid: 0ccab22cdc245464ba4505b5a4888a11, type: 3}
+  - {fileID: -2842866737287667578, guid: 882d819e05f7b234199f07f546f47c28, type: 3}
+  - {fileID: 1047354210161147942, guid: 882d819e05f7b234199f07f546f47c28, type: 3}
+  - {fileID: 2293084179464522052, guid: 882d819e05f7b234199f07f546f47c28, type: 3}
+  - {fileID: 8506451434830343407, guid: 882d819e05f7b234199f07f546f47c28, type: 3}
+  - {fileID: -8032150097341011936, guid: 882d819e05f7b234199f07f546f47c28, type: 3}
+  - {fileID: 5109743051686566920, guid: 882d819e05f7b234199f07f546f47c28, type: 3}
   spriteChangeTiming:
+  - 0
+  - 0.05
   - 0.1
   - 0.15
   - 0.2
   - 0.25
-  - 0.3
-  - 0.35
-  - 0.4
-  - 0.45
-  - 0.5
-  spawnDistance: 0.5
+  spawnDistance: 0.8
   moveDistance: 0
   moveDelay: 0
   setupBeforeDelay: 0
-  followWeapon: 1
-  followWeaponHeight: 0.6
+  followWeapon: 0
+  followWeaponHeight: 0
   moveAnimCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334

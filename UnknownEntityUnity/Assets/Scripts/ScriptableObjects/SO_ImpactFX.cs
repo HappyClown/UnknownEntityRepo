@@ -7,4 +7,5 @@ public class SO_ImpactFX : ScriptableObject
 {
     public Sprite[] impactFXSprites;
     public float[] impactFXTimings;
+    public bool keepDirection;
 }

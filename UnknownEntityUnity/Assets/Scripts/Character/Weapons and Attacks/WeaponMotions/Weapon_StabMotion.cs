@@ -21,11 +21,13 @@ public class Weapon_StabMotion : Weapon_Motion
     private float[] motionDurations;
     private float[] yPositions;
     private AnimationCurve[] animCurves;
+    private bool[] holdMotions;
     //
     private float curYPos, startYPos, endYPos;
     private int curMotion;
     //
     private bool camNudged;
+    public bool curHoldMotion;
 
     void Update() {
         // Rotate charAtk.weapon back to its reset position.
@@ -45,15 +47,21 @@ public class Weapon_StabMotion : Weapon_Motion
         if (weapMotionOn) {
             moveTimer += Time.deltaTime / curMotionDur;
             curYPos = Mathf.Lerp(startYPos, endYPos, curAnimCurve.Evaluate(moveTimer));
-            if (moveTimer >= 1f) {
+            if (moveTimer >= 1f && !curHoldMotion) {
                 SetupNextMotion();
             }
             weaponTrans.localPosition = new Vector3(weaponTrans.localPosition.x, curYPos, weaponTrans.localPosition.z);
         }
     }
+    public override void StopHoldingMotion()
+    {
+        curHoldMotion = false;
+    }
 
     public override void SetupNextMotion() {
         curMotion++;
+        curHoldMotion = false;
+        if (curMotion < holdMotions.Length-1 && holdMotions[curMotion]) { curHoldMotion = true; } else { curHoldMotion = false; }
         // At what motion can the player start his next attack and swap his weapon.
         // if (curMotion >= sOWeaponMotionStab.allowAttackAndSwap) {
         //     charAtk.ReadyToAttack(true);
@@ -87,17 +95,23 @@ public class Weapon_StabMotion : Weapon_Motion
         moveTimer = 0f;
     }
 
-    public override void WeaponMotionSetup(Character_Attack _charAtk, Transform _weaponTrans, SpriteRenderer _weaponSpriteR) {
+    public override void WeaponMotionSetup(Character_Attack _charAtk, Transform _weaponTrans, SpriteRenderer _weaponSpriteR, SO_Weapon_Motion specialSOWeapMo = null) {
         // References from the character.
         weaponTrans = _weaponTrans;
         weaponSpriteR = _weaponSpriteR;
         charAtk = _charAtk;
-        // References from the motion SO associated with the current attack chain.
-        sOWeaponMotionStab = charAtk.weapon.attackChains[charAtk.atkChain.curChain].sO_Weapon_Motion as SO_Weapon_Motion_Stab;
+        if (specialSOWeapMo != null) {
+            sOWeaponMotionStab = specialSOWeapMo as SO_Weapon_Motion_Stab;
+        }
+        else {
+            // References from the motion SO associated with the current attack chain.
+            sOWeaponMotionStab = charAtk.weapon.attackChains[charAtk.atkChain.curChain].sO_Weapon_Motion as SO_Weapon_Motion_Stab;
+        }
         motionDurations = sOWeaponMotionStab.motionDurations;
         yPositions = sOWeaponMotionStab.yPositions;
         animCurves = sOWeaponMotionStab.animCurves;
         restingY = sOWeaponMotionStab.restingPosition.y;
+        holdMotions = sOWeaponMotionStab.holdMotions;
         curMotion = 0;
         // First motion setup.
         curMotionDur = motionDurations[curMotion];
@@ -106,6 +120,7 @@ public class Weapon_StabMotion : Weapon_Motion
         curAnimCurve = animCurves[curMotion];
         moveTimer = 0f;
         camNudged = false;
+        if (curMotion < holdMotions.Length-1 && holdMotions[curMotion]) { curHoldMotion = true; } else { curHoldMotion = false; }
         // Enable motion.
         resetWeapRot = false;
         weapMotionOn = true;

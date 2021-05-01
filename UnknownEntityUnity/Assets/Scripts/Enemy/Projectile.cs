@@ -131,7 +131,7 @@ public class Projectile : MonoBehaviour
                     if (col.CompareTag("Player")) { // Change for variable reference to Tag to allow being used by player???
                         Character_Health charHealth = col.GetComponent<Character_Health>();
                         // Hit impact FX. Apply the correct rotation, position, sprites and layerMask to an impactFX.
-                        HitImpact.PlayImpactFX(myCol.transform.position, col.transform.position, projSO.sO_ImpactFX, projSO.contactFilter.layerMask, col);
+                        //HitImpact.PlayImpactFX(myCol.transform.position, col.transform.position, projSO.sO_ImpactFX, projSO.contactFilter.layerMask, col);
                         // Apply damage to the player.
                         col.GetComponent<Character_Health>().TakeDamage(projSO.Damage, ((Vector2)charHealth.transform.position - (Vector2)this.transform.position).normalized);
                         //print("Projectile hit the Player");
@@ -147,6 +147,7 @@ public class Projectile : MonoBehaviour
                     }
                     // Turn off the projectile with collision.
                     if (projSO.destroyOnContact) {
+                        HitImpact.PlayImpactFX(myCol, col.transform.position, projSO.sO_ImpactFX, projSO.contactFilter.layerMask, col);
                         DeactivateProjectile();
                     }
                 }
@@ -161,6 +162,7 @@ public class Projectile : MonoBehaviour
         collidersDamaged.Clear();
         myCol.enabled = false;
         mySpriteAnim.Stop();
+        //HitImpact.PlayImpactFX()
         // if (partSys != null) { 
         //     partSys.Stop(); 
         // }

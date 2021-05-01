@@ -15,7 +15,7 @@ MonoBehaviour:
   minDamage: 3
   maxDamage: 4
   duration: 4
-  maxSpeed: 8
+  maxSpeed: 10
   spawnDistance: 0
   destroyOnContact: 1
   useSpeedCurve: 0
@@ -78,4 +78,4 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  sO_ImpactFX: {fileID: 11400000, guid: 92847d8334ad62e4fb58d43334968c38, type: 2}
+  sO_ImpactFX: {fileID: 11400000, guid: 2869515587a688442a9fe62a7e1b5189, type: 2}

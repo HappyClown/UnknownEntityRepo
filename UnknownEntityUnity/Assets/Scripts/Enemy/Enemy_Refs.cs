@@ -7,6 +7,7 @@ public class Enemy_Refs : MonoBehaviour
 {
     [Header("Variables States")]
     public Sprite walkingSprite;
+    public Sprite alternateIdleSprite;
     [Header("General Enemy Refs")]
     public Transform playerShadow;
     public Transform playerCenter;

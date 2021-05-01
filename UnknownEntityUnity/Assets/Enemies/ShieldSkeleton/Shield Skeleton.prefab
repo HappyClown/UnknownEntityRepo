@@ -640,6 +640,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkingSprite: {fileID: 21300000, guid: 90677c209943e0a4284cc2643d6d6796, type: 3}
+  alternateIdleSprite: {fileID: 7890063734836338472, guid: 9ba32391744736b48adc8cf99c2caaf8,
+    type: 3}
   playerShadow: {fileID: 0}
   playerCenter: {fileID: 0}
   eSpriteR: {fileID: 764420645824505556}
@@ -673,6 +675,7 @@ MonoBehaviour:
   flip: {fileID: 764420645499934844}
   eRefs: {fileID: 764420645499934723}
   useOldAnimSystem: 1
+  useAlternateIdle: 0
   followOnStart: 0
   drawPathGizmos: 0
   myZ: -0.1
@@ -864,7 +867,7 @@ MonoBehaviour:
   - 0.55
   - 0.65
   events:
-  - 0.4
+  - 0.55
   - 0.75
   spriteR: {fileID: 764420645824505556}
   loopingBashSprites:

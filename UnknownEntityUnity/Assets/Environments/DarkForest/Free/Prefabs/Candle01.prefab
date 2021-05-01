@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2b544bae28635549a44b79e704a37f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  light: {fileID: 3073401970998728026}
+  theLight: {fileID: 3073401970998728026}
   flickering: 1
   minIntensity: 0.17
   maxIntensity: 0.23

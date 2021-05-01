@@ -27,6 +27,7 @@ public class Weapon_SlashMotion : Weapon_Motion
     bool weapMotionOn;
     private bool camNudged;
     private bool dontReset;
+    public bool curHoldMotion;
 
     IEnumerator ResetWeapon() {
         while (moveTimer < 1f) {
@@ -47,6 +48,10 @@ public class Weapon_SlashMotion : Weapon_Motion
             yield return null;
         }
         SetupNextMotion();
+    }
+    public override void StopHoldingMotion()
+    {
+        curHoldMotion = false;
     }
 
     public override void SetupNextMotion() {
@@ -87,7 +92,7 @@ public class Weapon_SlashMotion : Weapon_Motion
         StartCoroutine(WeaponMotionOn());
     }
 
-    public override void WeaponMotionSetup(Character_Attack _charAtk, Transform _weaponTrans, SpriteRenderer _weaponSpriteR) {
+    public override void WeaponMotionSetup(Character_Attack _charAtk, Transform _weaponTrans, SpriteRenderer _weaponSpriteR, SO_Weapon_Motion specialSOWeapMo = null) {
         // References from the character.
         weaponTrans = _weaponTrans;
         weaponSpriteR = _weaponSpriteR;

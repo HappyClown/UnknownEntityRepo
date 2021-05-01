@@ -166,7 +166,7 @@ public class ShieldSkeleton_ShieldBash : MonoBehaviour
                 }
                 if (col.CompareTag("Player")) { // Change for variable reference to Tag to allow being used by player?
                     // Hit impact FX. Apply the correct rotation, position, sprites and layerMask to an impactFX.
-                    HitImpact.PlayImpactFX(atkCol.transform.position, col.transform.position, sO_ImpactFX, atkContactFilter.layerMask, col);
+                    HitImpact.PlayImpactFX(atkCol, col.transform.position, sO_ImpactFX, atkContactFilter.layerMask, col);
                     // Apply damage to the player, also give it the direction from the hittingCollider to the playerCollider.
                     col.GetComponent<Character_Health>().TakeDamage(Damage, eRefs.NormDirToTargetV2(atkCol.transform.position, col.transform.position));
                     hitTransforms.Add(col.transform);

@@ -854,6 +854,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moIn: {fileID: 0}
   charAtk: {fileID: 0}
+  SO_WindupFX: {fileID: 0}
+  SO_HoldFX: {fileID: 0}
+  SO_ReleaseFX: {fileID: 0}
+  windupFX: {fileID: 0}
+  holdFX: {fileID: 0}
+  releaseFX: {fileID: 0}
+  SO_WindupCharMo: {fileID: 0}
+  specAtkButtonDown: 0
+  inWindup: 0
+  inHold: 0
+  inRelease: 0
 --- !u!114 &3651932565041545240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -925,6 +936,9 @@ MonoBehaviour:
   weapOrigTrans: {fileID: 3651932565724258071}
   playerTrans: {fileID: 3651932565041545238}
   charAtkMotionOn: 0
+  finalMotion: 0
+  loopFinalMotion: 0
+  exitPlayerMotion: 0
 --- !u!114 &1731692023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -975,11 +989,13 @@ MonoBehaviour:
   spriteBouncePool: {fileID: 0}
   activeWeapon: {fileID: 11400000, guid: 8ea15883b7e558048ba628d7a17b1d78, type: 2}
   weaponSpriteR: {fileID: 3651932565548517001}
+  weaponSwapCooldownDur: 0.5
   inactiveWeapon: {fileID: 11400000, guid: 7ab0f055dc61acb4682c8cf11a984f41, type: 2}
   weaponOneDurability: 100
   weaponTwoDurability: 100
   weaponOneIsActive: 1
   canSwapWeapon: 1
+  weaponSwapOnCooldown: 0
 --- !u!114 &396231391011437111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1068,8 +1084,6 @@ Transform:
   - {fileID: 632207024}
   - {fileID: 101568786}
   - {fileID: 1701453885}
-  - {fileID: 7847637287177695944}
-  - {fileID: 3460520485528610456}
   m_Father: {fileID: 3651932565041545238}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1492,63 +1506,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.28, y: 0.3}
   m_EdgeRadius: 0
---- !u!1 &5556292587007108002
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3460520485528610456}
-  m_Layer: 0
-  m_Name: Weapon Two
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &3460520485528610456
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5556292587007108002}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3651932565309937596}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &9011637384277872018
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7847637287177695944}
-  m_Layer: 0
-  m_Name: Weapon One
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &7847637287177695944
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9011637384277872018}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3651932565309937596}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

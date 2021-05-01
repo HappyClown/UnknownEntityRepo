@@ -41,6 +41,8 @@ public class ShieldSkeleton_ShieldUp : MonoBehaviour
         eRefs.eHealth.damageModifier *= shieldUpDamageMod;
         // Change the walking sprite array to the shield up sprites.
         eRefs.eWalkAnim.ChangeCycleAnimation(shieldUpWalkCycle);
+        // Change the idle sprite to one with the shield up.
+        eRefs.eFollowPath.useAlternateIdle = true;
         StartCoroutine(Shielded());
     }
     IEnumerator Shielded() {
@@ -70,6 +72,8 @@ public class ShieldSkeleton_ShieldUp : MonoBehaviour
         eRefs.eHealth.damageModifier /= shieldUpDamageMod;
         // Set the walk cycle back to the shield down walk cycle.
         eRefs.eWalkAnim.ChangeCycleAnimation(eRefs.eSO.walkingSprites);
+        // Change the idle sprite to one with the shield down.
+        eRefs.eFollowPath.useAlternateIdle = false;
         SetShieldUpCooldown();
     }
     public void ForceShieldDown() {

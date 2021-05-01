@@ -109,7 +109,7 @@ public class AttackButtonActions : MonoBehaviour
         }
         else {
             // Set a bool in this script to true to simulate the button being held, and to keep checking if the attack can be performed.
-            print("Right click has been performed!! BEHOLD, NOTOOTTINHG.");
+            //print("Right click has been performed!! BEHOLD, NOTOOTTINHG.");
             specialAttackHeld = true;
             specAtkCoroutine = StartCoroutine(SpecialAttackIsHeld());
         }
@@ -123,7 +123,7 @@ public class AttackButtonActions : MonoBehaviour
     }
     IEnumerator SpecialAttackIsHeld() {
         while (specialAttackHeld) {
-            print("shit");
+            //print("shit");
             if (charAtk.ReadyToAttackCheck()) {
                 charAtkSpecial.SpecialAttack();
                 specialAttackHeld = false;

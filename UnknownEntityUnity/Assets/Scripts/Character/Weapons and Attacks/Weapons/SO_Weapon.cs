@@ -14,6 +14,7 @@ public class SO_Weapon : ScriptableObject
     public float poiseDamage = 1f;
     public SO_ObjectDestructionSpawner SO_brokenPiecesSpawner;
     public AttackChain[] attackChains;
+    public SpecialAttack specialAttack;
     [System.Serializable]
     public class AttackChain {
         public SO_Weapon_Motion sO_Weapon_Motion;
@@ -36,5 +37,18 @@ public class SO_Weapon : ScriptableObject
          // ////////////////////////////////////////////////////////////////////
          public bool chargeable;
          public SO_ChargeAttack sO_ChargeAttack;
+    }
+    [System.Serializable]
+    public class SpecialAttack {
+        public SO_Weapon_Motion sO_Weapon_Motion;
+        // /////////////////////////////////////////////////////////////////////
+        public SO_CharAtk_Motion sO_CharAtk_Motion;
+        // /////////////////////////////////////////////////////////////////////
+        public SO_AttackFX[] sO_AttackFXWindup, sO_AttackFXHold, sO_AttackFXRelease;
+        public float minDamage, maxDamage;
+        [Tooltip("The full duration of the attack starts when the attack is triggered and ends after this duration, used to track when certain actions can be done during an attack, IE when can the attack be interrupted, cancelled, etc.")]
+        public float fullAttackDuration;
+        [Tooltip("After the full attack duration the cooldown before another attack can be done starts.")]
+        public float canAttackCooldown;
     }
 }

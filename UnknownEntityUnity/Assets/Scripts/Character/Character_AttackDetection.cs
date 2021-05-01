@@ -51,7 +51,7 @@ public class Character_AttackDetection : MonoBehaviour
                     if (!collidersDamaged.Contains(col)) {
                         collidersDamaged.Add(col);
                         // Hit impact FX. Apply the correct rotation, position, sprites and layerMask to an impactFX.
-                        HitImpact.PlayImpactFX(atkFXCol.transform.position, col.bounds.center, sO_ImpactFX, hitLayers.layerMask, col);
+                        HitImpact.PlayImpactFX(atkFXCol, col.bounds.center, sO_ImpactFX, hitLayers.layerMask, col);
                         // Slow time. Duration to be set by weapon damage, slow to be adjusted (animation curve) by TimeSlow script.
                         TimeSlow.StartTimeSlow(timeSlowDur);
                         // If this is an enemy, apply damage.
