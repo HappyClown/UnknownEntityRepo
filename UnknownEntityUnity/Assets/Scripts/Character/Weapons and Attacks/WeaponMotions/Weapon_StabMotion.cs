@@ -41,7 +41,7 @@ public class Weapon_StabMotion : Weapon_Motion
                 curYPos = endYPos;
                 //weaponSpriteR.color= Color.white;
             }
-            weaponTrans.localPosition = new Vector3(weaponTrans.localPosition.x, curYPos, weaponTrans.localPosition.z);
+            weaponTrans.localPosition = new Vector3(weaponTrans.localPosition.x, curYPos, weaponTrans.localPosition.z/* weaponTrans.localPosition.z */);
         }
 
         if (weapMotionOn) {
@@ -50,7 +50,7 @@ public class Weapon_StabMotion : Weapon_Motion
             if (moveTimer >= 1f && !curHoldMotion) {
                 SetupNextMotion();
             }
-            weaponTrans.localPosition = new Vector3(weaponTrans.localPosition.x, curYPos, weaponTrans.localPosition.z);
+            weaponTrans.localPosition = new Vector3(weaponTrans.localPosition.x, curYPos, weaponTrans.localPosition.z/* weaponTrans.localPosition.z */);
         }
     }
     public override void StopHoldingMotion()

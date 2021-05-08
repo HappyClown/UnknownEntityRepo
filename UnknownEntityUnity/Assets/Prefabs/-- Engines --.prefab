@@ -822,7 +822,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a7d87cba182ff645b7b9a8c7f41d25d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorOff: 1
   cam: {fileID: 0}
   mousePos: {x: 0, y: 0, z: 0}
   mousePosWorld: {x: 0, y: 0, z: 0}
@@ -845,12 +844,13 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
   graceUsesFrames: 1
-  weaponSwapGraceDuration: 0.08
+  weaponSwapGraceDuration: 0.1
   weaponSwapGraceFrames: 5
   weaponSwapPressed: 0
   interactPressed: 0
   confirmPressed: 0
   movementSkillPressed: 0
+  cursorOff: 0
 --- !u!114 &301151599677730763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -875,14 +875,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 707f7f25f2e5710479c7f6dd462399b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charAttack: {fileID: 0}
+  charAtk: {fileID: 0}
+  charAtkSpecial: {fileID: 0}
+  otherBtnActs: {fileID: 325346245}
   graceUsesFrames: 0
-  attackGraceDuration: 0.08
+  attackGraceDuration: 0.2
   attackGraceFrames: 5
   attackButtonTapInGrace: 0
   heldTimer: 0
   pressed: 0
   chargeAttackReady: 0
+  specialAttackHeld: 0
 --- !u!114 &325346245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -897,7 +900,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSkill: {fileID: 0}
   moveSkillGraceDuration: 0.1
+  moveSkillGracePressed: 0
+  charPickUp: {fileID: 0}
   interactPressed: 0
+  charEquippedWeapon: {fileID: 0}
+  weaponSwapGraceDuration: 0.2
+  weaponSwapGracePressed: 0
+  uI_PauseMenu: {fileID: 0}
+  confirmPressed: 0
 --- !u!1 &301151599679802802
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,6 +985,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   allowTimeSlow: 1
+  timeSlowPaused: 0
 --- !u!1 &301151599686658065
 GameObject:
   m_ObjectHideFlags: 0
@@ -1696,6 +1707,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6079757129478317458}
     m_Modifications:
+    - target: {fileID: 5725472250427339940, guid: a8c09f08e2a07b949a2b05112edaa569,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725472250427339940, guid: a8c09f08e2a07b949a2b05112edaa569,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1350325209
+      objectReference: {fileID: 0}
     - target: {fileID: 5725472250596746365, guid: a8c09f08e2a07b949a2b05112edaa569,
         type: 3}
       propertyPath: m_Name
@@ -2038,6 +2059,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724839056194331032, guid: 8ed67976f649b9c40967680e3ff1852a,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724839056194331032, guid: 8ed67976f649b9c40967680e3ff1852a,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724839056194331032, guid: 8ed67976f649b9c40967680e3ff1852a,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1444656235
       objectReference: {fileID: 0}
     - target: {fileID: 8290580468300969726, guid: 8ed67976f649b9c40967680e3ff1852a,
         type: 3}

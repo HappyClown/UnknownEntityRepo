@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon_Motion: {fileID: 5225363897518247411, guid: cc3600e560244d24b894191f1cca280c,
     type: 3}
-  restingPosition: {x: 0, y: 0, z: 0}
+  restingPosition: {x: 0, y: 0, z: -1.5}
   restingRotation: {x: -0, y: -0, z: 80}
   allowAttackAndSwap: 2
   nudgeCamera: 0

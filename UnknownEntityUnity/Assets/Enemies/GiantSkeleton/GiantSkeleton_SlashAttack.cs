@@ -95,7 +95,8 @@ public class GiantSkeleton_SlashAttack : MonoBehaviour
         if (eRefs.mySpriteAnim.Clip == eRefs.animClips[1]) {
             eRefs.mySpriteAnim.Stop();
         }
-        this.StopAllCoroutines();
+        //this.StopAllCoroutines(); // NOT NEEDED ATM SINCE the animation and the events are HANDLED by the animation and not by coroutines.
+        StartCoroutine(SlashCooldown());
 
     }
 }
