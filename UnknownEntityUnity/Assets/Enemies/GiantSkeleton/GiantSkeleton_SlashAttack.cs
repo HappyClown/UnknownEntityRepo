@@ -13,23 +13,63 @@ public class GiantSkeleton_SlashAttack : MonoBehaviour
     public Transform attackDirPoint;
     public ProjectilePool projPool;
     private Vector2 slashProjDirection;
+    public GiantSkeleton_GroundAttack giantSkel_GroundAtk;
 
     public bool CheckToSlash() {
+        // If im attacking or my attack is on cooldown, I cannot slash.
+        if (inAtk || inCooldown || giantSkel_GroundAtk.inAtk || giantSkel_GroundAtk.inCooldown) {
+            return false;
+        }
         // Check the distance to the player, slash
         if (Vector2.Distance(eRefs.PlayerCenterPos, attackDirPoint.position) < eRefs.eSO.atkRange) {
             return true;
         }
         return false;
     }
-
     public void StartSlashAttack() {
-        // attack direction
+        // Attack direction
         inAtk = true;
         eRefs.mySpriteAnim.Play(eRefs.animClips[1]);
         //eRefs.mySpriteAnim.SetSpeed(2);
         //StartCoroutine(SlashAttack());
     }
+    IEnumerator SlashCooldown() {
+        inAtk = false;
+        inCooldown = true;
+        yield return new WaitForSeconds(eRefs.eSO.attackCooldown);
+        inCooldown = false;
+    }
 
+    public void StopSlashAttack() {
+        // One of the next two to stop the anim clip if it is the slash one playing now.
+        // AnimationClip curClip = eRefs.mySpriteAnim.GetCurrentAnimation();
+        // if (curClip = eRefs.animClips[1]) {
+        //     eRefs.mySpriteAnim.Stop();
+        // }
+        if (eRefs.mySpriteAnim.Clip == eRefs.animClips[1]) {
+            eRefs.mySpriteAnim.Stop();
+        }
+        //this.StopAllCoroutines(); // NOT NEEDED ATM SINCE the animation and the events are HANDLED by the animation and not by coroutines.
+        StartCoroutine(SlashCooldown());
+    }
+
+    public void AnimLaunchSlashProjectile() {
+        projPool.RequestProjectile().LaunchProjectile(pV, slashProjDirection, attackDirPoint.position);
+    }
+
+    public void AnimStartSlashCooldown() {
+        eRefs.mySpriteAnim.Stop();
+        StartCoroutine(SlashCooldown());
+    }
+
+    public void AnimFlipTowardsPlayer() {
+        eRefs.flipX.FlipTowards(attackDirPoint.position, eRefs.PlayerShadowPos);
+    }
+
+    public void AnimGetDirToPlayer() {
+        slashProjDirection = eRefs.NormDirToTargetV2(attackDirPoint.position, eRefs.PlayerCenterPos);
+    }
+    
     IEnumerator SlashAttack() {
         float timer = 0f;
         int spriteStep = 0;
@@ -60,43 +100,5 @@ public class GiantSkeleton_SlashAttack : MonoBehaviour
         inCooldown = true;
         yield return new WaitForSeconds(eRefs.eSO.attackCooldown);
         inCooldown = false;
-    }
-
-    public void AnimLaunchSlashProjectile() {
-        projPool.RequestProjectile().LaunchProjectile(pV, slashProjDirection, attackDirPoint.position);
-    }
-
-    public void AnimStartSlashCooldown() {
-        eRefs.mySpriteAnim.Stop();
-        StartCoroutine(SlashCooldown());
-    }
-
-    public void AnimFlipTowardsPlayer() {
-        eRefs.flipX.FlipTowards(attackDirPoint.position, eRefs.PlayerShadowPos);
-    }
-
-    public void AnimGetDirToPlayer() {
-        slashProjDirection = eRefs.NormDirToTargetV2(attackDirPoint.position, eRefs.PlayerCenterPos);
-    }
-
-    IEnumerator SlashCooldown() {
-        inAtk = false;
-        inCooldown = true;
-        yield return new WaitForSeconds(eRefs.eSO.attackCooldown);
-        inCooldown = false;
-    }
-
-    public void StopSlashAttack() {
-        // One of the next two to stop the anim clip if it is the slash one playing now.
-        // AnimationClip curClip = eRefs.mySpriteAnim.GetCurrentAnimation();
-        // if (curClip = eRefs.animClips[1]) {
-        //     eRefs.mySpriteAnim.Stop();
-        // }
-        if (eRefs.mySpriteAnim.Clip == eRefs.animClips[1]) {
-            eRefs.mySpriteAnim.Stop();
-        }
-        //this.StopAllCoroutines(); // NOT NEEDED ATM SINCE the animation and the events are HANDLED by the animation and not by coroutines.
-        StartCoroutine(SlashCooldown());
-
     }
 }

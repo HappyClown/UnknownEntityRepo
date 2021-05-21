@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &859882066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 859882067}
+  m_Layer: 0
+  m_Name: GroundAttack Origin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &859882067
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859882066}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.55, y: -0.05, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6264118744442853644}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &298442652256955469
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,6 +229,7 @@ GameObject:
   m_Component:
   - component: {fileID: 958681501220435872}
   - component: {fileID: 1203715507877199406}
+  - component: {fileID: 5777153203863305610}
   - component: {fileID: 463057788}
   m_Layer: 0
   m_Name: Anim Events
@@ -241,6 +272,32 @@ MonoBehaviour:
   pV: {fileID: 11400000, guid: 143aec14a9e1d1340be8044357494cda, type: 2}
   attackDirPoint: {fileID: 7171370008164914717}
   projPool: {fileID: 0}
+  giantSkel_GroundAtk: {fileID: 5777153203863305610}
+--- !u!114 &5777153203863305610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6211065382984170234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 260852dcd39053041b23dd07e9fe8e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inAtk: 0
+  inCooldown: 0
+  eRefs: {fileID: 6264118744248117210}
+  giantSkel_SlashAtk: {fileID: 1203715507877199406}
+  projPool: {fileID: 0}
+  projValues: {fileID: 11400000, guid: 760556efd8e418143b75b3df96043279, type: 2}
+  groundAttackOrigin: {fileID: 859882067}
+  attackDirPoint: {fileID: 7171370008164914717}
+  triggerRadius: 4
+  triggerThreshold: 2
+  spikeSpawnDist: 1.25
+  delayBetweenSpikes: 0.25
+  spikeAmount: 4
 --- !u!114 &463057788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,6 +377,7 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 0dda3c1164caade42bf09e607e46023c, type: 2}
   - {fileID: 7400000, guid: 064131c62e1171c48851a66e5a1152b2, type: 2}
   - {fileID: 7400000, guid: 12e043377700e8542ac149135a80617f, type: 2}
+  - {fileID: 7400000, guid: f262153f182f3614c837b35f2b957152, type: 2}
   eFollowPath: {fileID: 8540736067695667070}
   eWalkAnim: {fileID: 6264118744248117152}
   eAggro: {fileID: 298442652256955470}
@@ -436,6 +494,7 @@ MonoBehaviour:
   eRefs: {fileID: 6264118744248117210}
   movement_Chase: {fileID: 7799897352561013228}
   giantSkel_SlashAtk: {fileID: 1203715507877199406}
+  giantSkel_GroundAtk: {fileID: 5777153203863305610}
   debugs: 0
   chaseDistance: 0
   curState: 
@@ -609,6 +668,7 @@ Transform:
   - {fileID: 6264118744310853074}
   - {fileID: 6264118744956482172}
   - {fileID: 7171370008164914717}
+  - {fileID: 859882067}
   m_Father: {fileID: 958681501220435872}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -649,8 +709,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1350325209
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 4115683936894623653, guid: c9bb8344f2fe5a8408d1e5128eb1273b,
     type: 3}
@@ -778,8 +838,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1444656235
-  m_SortingLayer: -1
-  m_SortingOrder: 5
+  m_SortingLayer: -2
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 8fe782edd11b91a41a1209f46cfe70ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -135,9 +135,9 @@ public class SpriteBounce : MonoBehaviour
                 zRotation = Mathf.MoveTowards(spriteToBounceTrans.eulerAngles.z, targetZRotation, rotationDelta*Time.deltaTime);
                 spriteToBounceTrans.eulerAngles = new Vector3(0f, 0f, zRotation);
             }
-
             yield return null;
         }
+        spriteR.sortingOrder = -1;
     }
     #region Complicated unfinished slow movement naturally over multiple lerps.
     // Goes in a coroutine.

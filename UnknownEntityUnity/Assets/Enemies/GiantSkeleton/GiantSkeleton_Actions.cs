@@ -8,6 +8,7 @@ public class GiantSkeleton_Actions : Enemy_Actions
     public Enemy_Refs eRefs;
     public Enemy_Movement_Chase movement_Chase;
     public GiantSkeleton_SlashAttack giantSkel_SlashAtk;
+    public GiantSkeleton_GroundAttack giantSkel_GroundAtk;
     [Header ("To-set Variables")]
     public bool debugs;
     public float chaseDistance;
@@ -47,9 +48,13 @@ public class GiantSkeleton_Actions : Enemy_Actions
     public void LateUpdate() {
         // This can be switched to from ANY state.
         if (updateState) {
-            // Attack
-            if (!giantSkel_SlashAtk.inAtk && !giantSkel_SlashAtk.inCooldown && giantSkel_SlashAtk.CheckToSlash()) {
+            // Check if I should Slash Attack.
+            if (giantSkel_SlashAtk.CheckToSlash()) {
                  brain.SetActiveState(SlashTarget);
+            }
+            // Check if I should Ground Attack.
+            if (giantSkel_GroundAtk.CheckToAttack()) {
+                brain.SetActiveState(GroundAttackTarget);
             }
             // This will run the active state. (Function)
             brain.FSMUpdate();
@@ -71,9 +76,29 @@ public class GiantSkeleton_Actions : Enemy_Actions
         }
         if (debugs) print("SlashTarget: In state.");
         // -- EXIT CONDITION --
-        // If the player is no longer bashing.
+        // If I am no longer doing my Slash Attack.
         if (!giantSkel_SlashAtk.inAtk){
             if (debugs) print("SlashTarget: Exiting state.");
+            eRefs.eFollowPath.allowPathUpdate = true;
+            brain.SetActiveState(Neutral);
+            stateStarted = false;
+            return;
+        }
+    }
+
+    public void GroundAttackTarget() {
+        if (!stateStarted) {
+            if (debugs) print("GroundAttackTarget: Initial state setup.");
+            eRefs.eFollowPath.StopAllMovementCoroutines();
+            giantSkel_GroundAtk.StartGroundAttack();
+            stateStarted = true;
+            return;
+        }
+        if (debugs) print("GroundAttackTarget: In state.");
+        // -- EXIT CONDITION --
+        // If I am no longer doing my Ground Attack.
+        if (!giantSkel_GroundAtk.inAtk){
+            if (debugs) print("GroundAttackTarget: Exiting state.");
             eRefs.eFollowPath.allowPathUpdate = true;
             brain.SetActiveState(Neutral);
             stateStarted = false;

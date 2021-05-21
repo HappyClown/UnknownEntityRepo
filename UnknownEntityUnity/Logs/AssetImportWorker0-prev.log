@@ -15,11 +15,11 @@ F:/_GAME PROTOTYPES/UnknownEntityRepo/UnknownEntityUnity
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-62231
+55746
 Successfully changed project path to: F:/_GAME PROTOTYPES/UnknownEntityRepo/UnknownEntityUnity
 F:/_GAME PROTOTYPES/UnknownEntityRepo/UnknownEntityUnity
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 139.71 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 89.89 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.2.1f1 (270dd8c3da1c)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/Resources/UnitySubsystems
@@ -36,242 +36,170 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56468
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56260
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002710 seconds.
+Registered in 0.002567 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 135.21 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 91.99 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  4.027 seconds
+- Completed reload, in  2.702 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.002000 seconds.
+Registered in 0.001509 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 107.36 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 91.43 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.102 seconds
+- Completed reload, in  1.833 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.11 seconds
-Refreshing native plugins compatible for Editor in 0.66 ms, found 0 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
+Refreshing native plugins compatible for Editor in 0.81 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2913 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 129.6 MB.
-System memory in use after: 129.8 MB.
+System memory in use before: 131.9 MB.
+System memory in use after: 132.1 MB.
 
 Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 3362.
-Total: 3.149400 ms (FindLiveObjects: 0.322100 ms CreateObjectMapping: 0.184600 ms MarkObjects: 2.570000 ms  DeleteObjects: 0.071200 ms)
+Total: 3.373300 ms (FindLiveObjects: 0.424200 ms CreateObjectMapping: 0.326800 ms MarkObjects: 2.553200 ms  DeleteObjects: 0.068000 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Environments/DarkForest/WallWithShadowTest03.png
-  artifactKey: Guid(0e96aa676aa576e42945c2ece469a99d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environments/DarkForest/WallWithShadowTest03.png using Guid(0e96aa676aa576e42945c2ece469a99d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8adfe465193ac3944c357fc7d8ed40e') in 0.318818 seconds
-  Import took 0.408828 seconds .
+  path: Assets/Enemies/GiantSkeleton/GiantSkeleton_GettingHit.anim
+  artifactKey: Guid(5960dcdf2a6fb0640accdca14e00ef00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Enemies/GiantSkeleton/GiantSkeleton_GettingHit.anim using Guid(5960dcdf2a6fb0640accdca14e00ef00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'caabddb4d3068426125cf123eb47fcb6') in 0.135309 seconds
+  Import took 0.168267 seconds .
 
 ========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001727 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.26 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  2.177 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.76 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2803 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 127.1 MB.
-System memory in use after: 127.3 MB.
-
-Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3370.
-Total: 7.349800 ms (FindLiveObjects: 0.571600 ms CreateObjectMapping: 0.411900 ms MarkObjects: 6.305200 ms  DeleteObjects: 0.058600 ms)
+Received Import Request.
+  Time since last request: 1.705797 seconds.
+  path: Assets/Enemies/GiantSkeleton/GiantSkeleton_SlashAttack.cs
+  artifactKey: Guid(48f429d8d7339f7499c8b0cf9107574c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Enemies/GiantSkeleton/GiantSkeleton_SlashAttack.cs using Guid(48f429d8d7339f7499c8b0cf9107574c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e744e2cd387c7373a2e0c162670cf757') in 0.105987 seconds
+  Import took 0.113006 seconds .
 
 ========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001495 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.07 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.374 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.06 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2803 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 128.1 MB.
-System memory in use after: 128.3 MB.
-
-Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3372.
-Total: 3.717500 ms (FindLiveObjects: 0.447300 ms CreateObjectMapping: 0.342700 ms MarkObjects: 2.901400 ms  DeleteObjects: 0.024400 ms)
+Received Import Request.
+  Time since last request: 68.557580 seconds.
+  path: Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack.png
+  artifactKey: Guid(7af40472a2821de488e9f249f2ca5443) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack.png using Guid(7af40472a2821de488e9f249f2ca5443) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e540ec62cfcddf9daec96900977b9711') in 0.148042 seconds
+  Import took 0.169379 seconds .
 
 ========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001713 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.72 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.287 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.72 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2803 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 128.1 MB.
-System memory in use after: 128.3 MB.
-
-Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3374.
-Total: 4.115700 ms (FindLiveObjects: 0.845700 ms CreateObjectMapping: 0.268500 ms MarkObjects: 2.975600 ms  DeleteObjects: 0.024000 ms)
+Received Import Request.
+  Time since last request: 909.069331 seconds.
+  path: Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack_Attack.png
+  artifactKey: Guid(5f86a2d2036eb5f4fb63098adb29b81b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack_Attack.png using Guid(5f86a2d2036eb5f4fb63098adb29b81b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8fc81429dbe5c631def1c7cda4871ed') in 0.021026 seconds
+  Import took 0.030201 seconds .
 
 ========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001571 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.65 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.324 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.65 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2803 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 127.9 MB.
-System memory in use after: 128.1 MB.
-
-Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3376.
-Total: 4.008900 ms (FindLiveObjects: 0.467200 ms CreateObjectMapping: 0.358300 ms MarkObjects: 3.150700 ms  DeleteObjects: 0.030400 ms)
+Received Import Request.
+  Time since last request: 0.000709 seconds.
+  path: Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack_Attack.png
+  artifactKey: Guid(5f86a2d2036eb5f4fb63098adb29b81b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack_Attack.png using Guid(5f86a2d2036eb5f4fb63098adb29b81b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8fc81429dbe5c631def1c7cda4871ed') in 0.010035 seconds
+  Import took 0.017129 seconds .
 
 ========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001675 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.32 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.986 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 3.23 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2803 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 128.2 MB.
-System memory in use after: 128.4 MB.
-
-Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3378.
-Total: 4.293800 ms (FindLiveObjects: 0.469800 ms CreateObjectMapping: 0.383600 ms MarkObjects: 3.407300 ms  DeleteObjects: 0.030900 ms)
+Received Import Request.
+  Time since last request: 5.778629 seconds.
+  path: Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack_Attack.png
+  artifactKey: Guid(5f86a2d2036eb5f4fb63098adb29b81b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack_Attack.png using Guid(5f86a2d2036eb5f4fb63098adb29b81b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b91bb28cff9482116f140d9a583493f') in 0.014028 seconds
+  Import took 0.026206 seconds .
 
 ========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001881 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.71 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.128 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.89 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2803 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 128.2 MB.
-System memory in use after: 128.4 MB.
-
-Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3380.
-Total: 2.933400 ms (FindLiveObjects: 0.451000 ms CreateObjectMapping: 0.214300 ms MarkObjects: 2.237400 ms  DeleteObjects: 0.029500 ms)
+Received Import Request.
+  Time since last request: 156.471685 seconds.
+  path: Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack_Attack.png
+  artifactKey: Guid(5f86a2d2036eb5f4fb63098adb29b81b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack_Attack.png using Guid(5f86a2d2036eb5f4fb63098adb29b81b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '73cf4684be088f7cfef6ca2274bea355') in 0.046278 seconds
+  Import took 0.068443 seconds .
 
 ========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001728 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.78 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.136 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.60 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2803 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 128.2 MB.
-System memory in use after: 128.4 MB.
-
-Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3382.
-Total: 4.278900 ms (FindLiveObjects: 0.503100 ms CreateObjectMapping: 0.424200 ms MarkObjects: 3.325800 ms  DeleteObjects: 0.023600 ms)
+Received Import Request.
+  Time since last request: 5.321090 seconds.
+  path: Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack.png
+  artifactKey: Guid(7af40472a2821de488e9f249f2ca5443) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack.png using Guid(7af40472a2821de488e9f249f2ca5443) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51cd33c3fd6cf5ed305658187d267e17') in 0.023763 seconds
+  Import took 0.050316 seconds .
 
 ========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001380 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.73 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.353 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.64 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2803 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 128.0 MB.
-System memory in use after: 128.2 MB.
+Received Import Request.
+  Time since last request: 0.004562 seconds.
+  path: Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack.png
+  artifactKey: Guid(7af40472a2821de488e9f249f2ca5443) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack.png using Guid(7af40472a2821de488e9f249f2ca5443) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51cd33c3fd6cf5ed305658187d267e17') in 0.013895 seconds
+  Import took 0.024486 seconds .
 
-Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3384.
-Total: 10.160700 ms (FindLiveObjects: 1.548400 ms CreateObjectMapping: 0.849700 ms MarkObjects: 7.694200 ms  DeleteObjects: 0.063600 ms)
+========================================================================
+Received Import Request.
+  Time since last request: 4.297338 seconds.
+  path: Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack.png
+  artifactKey: Guid(7af40472a2821de488e9f249f2ca5443) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack.png using Guid(7af40472a2821de488e9f249f2ca5443) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '941c1535dd61dea3a2f44730867d9ce8') in 0.014952 seconds
+  Import took 0.056129 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 523.392999 seconds.
+  path: Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack.anim
+  artifactKey: Guid(f262153f182f3614c837b35f2b957152) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack.anim using Guid(f262153f182f3614c837b35f2b957152) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d7d294e449e12271e1192adeba0ae65') in 0.003307 seconds
+  Import took 0.022962 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.924935 seconds.
+  path: Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack 1.anim
+  artifactKey: Guid(a4d10b04664ecf74491ee1ae1ead17a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack 1.anim using Guid(a4d10b04664ecf74491ee1ae1ead17a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93a95d1668f272a216672c842d5a10bc') in 0.013431 seconds
+  Import took 0.026882 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.455101 seconds.
+  path: Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttackFX.anim
+  artifactKey: Guid(a4d10b04664ecf74491ee1ae1ead17a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttackFX.anim using Guid(a4d10b04664ecf74491ee1ae1ead17a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee1044076a732a523bb3d78e76fd9731') in 0.008669 seconds
+  Import took 0.029636 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 18.678152 seconds.
+  path: Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack_Attack.anim
+  artifactKey: Guid(a4d10b04664ecf74491ee1ae1ead17a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack_Attack.anim using Guid(a4d10b04664ecf74491ee1ae1ead17a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c359d41dd00f3163dcbcdc71ab98a16c') in 0.002321 seconds
+  Import took 0.025324 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 318.237032 seconds.
+  path: Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack.png
+  artifactKey: Guid(7af40472a2821de488e9f249f2ca5443) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack.png using Guid(7af40472a2821de488e9f249f2ca5443) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7918f7bbb01120aebf83f6293654f724') in 0.068794 seconds
+  Import took 0.107658 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 235.511184 seconds.
+  path: Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack.png
+  artifactKey: Guid(7af40472a2821de488e9f249f2ca5443) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Enemies/GiantSkeleton/GiantSkeleton_GroundAttack.png using Guid(7af40472a2821de488e9f249f2ca5443) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d91160500c0f2b03b5e2f83c05d91df') in 0.060772 seconds
+  Import took 0.083217 seconds .
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file

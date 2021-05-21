@@ -1,0 +1,516 @@
+fileFormatVersion: 2
+guid: 5f86a2d2036eb5f4fb63098adb29b81b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6984964656153096889
+    second: GiantSkeleton_GroundAttack_Attack_0
+  - first:
+      213: 4654586303534576958
+    second: GiantSkeleton_GroundAttack_Attack_1
+  - first:
+      213: 1370386678486086631
+    second: GiantSkeleton_GroundAttack_Attack_2
+  - first:
+      213: -2897540747384987322
+    second: GiantSkeleton_GroundAttack_Attack_3
+  - first:
+      213: 4193985608594584382
+    second: GiantSkeleton_GroundAttack_Attack_4
+  - first:
+      213: 3747126596830673963
+    second: GiantSkeleton_GroundAttack_Attack_5
+  - first:
+      213: 6159111087994601971
+    second: GiantSkeleton_GroundAttack_Attack_6
+  - first:
+      213: 4158715830463646217
+    second: GiantSkeleton_GroundAttack_Attack_7
+  - first:
+      213: -1826682294110672909
+    second: GiantSkeleton_GroundAttack_Attack_8
+  - first:
+      213: -7904831098156469946
+    second: GiantSkeleton_GroundAttack_Attack_9
+  - first:
+      213: 7199371053084190363
+    second: GiantSkeleton_GroundAttack_Attack_10
+  - first:
+      213: -8025385236462293105
+    second: GiantSkeleton_GroundAttack_Attack_11
+  - first:
+      213: 4028084070218580138
+    second: GiantSkeleton_GroundAttack_Attack_12
+  - first:
+      213: 1129992750334550935
+    second: GiantSkeleton_GroundAttack_Attack_13
+  - first:
+      213: -2273630730392823051
+    second: GiantSkeleton_GroundAttack_Attack_14
+  - first:
+      213: -7292876801102138513
+    second: GiantSkeleton_GroundAttack_Attack_15
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 20
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GiantSkeleton_GroundAttack_Attack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 33
+        width: 25
+        height: 33
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1060606}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b2f9aac8549fe060800000000000000
+      internalID: 6984964656153096889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantSkeleton_GroundAttack_Attack_1
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 33
+        width: 25
+        height: 33
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1060606}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e35b39ef499689040800000000000000
+      internalID: 4654586303534576958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantSkeleton_GroundAttack_Attack_2
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 33
+        width: 25
+        height: 33
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1060606}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e337186c67940310800000000000000
+      internalID: 1370386678486086631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantSkeleton_GroundAttack_Attack_3
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 33
+        width: 25
+        height: 33
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1060606}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 641e5e5ca0ed9c7d0800000000000000
+      internalID: -2897540747384987322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantSkeleton_GroundAttack_Attack_4
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 33
+        width: 25
+        height: 33
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1060606}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e337169b0b7043a30800000000000000
+      internalID: 4193985608594584382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantSkeleton_GroundAttack_Attack_5
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 33
+        width: 25
+        height: 33
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1060606}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2cb28469c7700430800000000000000
+      internalID: 3747126596830673963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantSkeleton_GroundAttack_Attack_6
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 33
+        width: 25
+        height: 33
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1060606}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f18614f6ee897550800000000000000
+      internalID: 6159111087994601971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantSkeleton_GroundAttack_Attack_7
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 33
+        width: 25
+        height: 33
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1060606}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90a4494930ab6b930800000000000000
+      internalID: 4158715830463646217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantSkeleton_GroundAttack_Attack_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 25
+        height: 33
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1060606}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f7a906b12256a6e0800000000000000
+      internalID: -1826682294110672909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantSkeleton_GroundAttack_Attack_9
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 0
+        width: 25
+        height: 33
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1060606}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6413ce07ff56c4290800000000000000
+      internalID: -7904831098156469946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantSkeleton_GroundAttack_Attack_10
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 0
+        width: 25
+        height: 33
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1060606}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b96205134dd49e360800000000000000
+      internalID: 7199371053084190363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantSkeleton_GroundAttack_Attack_11
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 0
+        width: 25
+        height: 33
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1060606}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8f2003d5aa10a090800000000000000
+      internalID: -8025385236462293105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantSkeleton_GroundAttack_Attack_12
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 25
+        height: 33
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1060606}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa0c9c2ce11a6e730800000000000000
+      internalID: 4028084070218580138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantSkeleton_GroundAttack_Attack_13
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 0
+        width: 25
+        height: 33
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1060606}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79325726b6a8eaf00800000000000000
+      internalID: 1129992750334550935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantSkeleton_GroundAttack_Attack_14
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 25
+        height: 33
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1060606}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fa168c95e07270e0800000000000000
+      internalID: -2273630730392823051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantSkeleton_GroundAttack_Attack_15
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 0
+        width: 25
+        height: 33
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1060606}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f63be9f403f7aca90800000000000000
+      internalID: -7292876801102138513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
