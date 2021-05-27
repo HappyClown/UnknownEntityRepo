@@ -15,11 +15,13 @@ public class GiantSkeleton_GroundAttack : MonoBehaviour
     public GiantSkeleton_SlashAttack giantSkel_SlashAtk;
     public ProjectilePool projPool;
     public SO_Projectile projValues;
+    public SO_Projectile lastProjValues;
     public Transform groundAttackOrigin;
     public Transform attackDirPoint;
     public float triggerRadius;
     public float triggerThreshold;
     private float triggerValue;
+    public float firstSpikeMaxDist;
     // TEMP
     [Header("Spike Values")]
     public float spikeSpawnDist;
@@ -45,6 +47,7 @@ public class GiantSkeleton_GroundAttack : MonoBehaviour
     {
         inAtk = true;
         eRefs.mySpriteAnim.Play(eRefs.animClips[3]);
+        triggerValue = 0f;
     }
 
     IEnumerator GroundAttackCooldown() {
@@ -52,6 +55,13 @@ public class GiantSkeleton_GroundAttack : MonoBehaviour
         inCooldown = true;
         yield return new WaitForSeconds(eRefs.eSO.attackCooldown);
         inCooldown = false;
+    }
+
+    public void StopGroundAttack() {
+        if (eRefs.mySpriteAnim.Clip == eRefs.animClips[3]) {
+            eRefs.mySpriteAnim.Stop();
+        }
+        StartCoroutine(GroundAttackCooldown());
     }
 
     public void AnimSpawnGroundSpikes() {
@@ -62,16 +72,26 @@ public class GiantSkeleton_GroundAttack : MonoBehaviour
         // Decide on first spike's spawn position, for now in direction of player, at a certain distance from self.
         float timer = 0f;
         int curSpike = 1;
-        normDirToPlayer= (eRefs.PlayerCenterPos-attackDirPoint.position).normalized;
-        Vector2 spikePos = (Vector2)groundAttackOrigin.position+(normDirToPlayer*(spikeSpawnDist*curSpike));
-        projPool.RequestProjectile().LaunchProjectile(projValues, Vector2.up, spikePos);
+        normDirToPlayer= (eRefs.playerShadow.position - groundAttackOrigin.position).normalized;
+        float firstSpikeDist = ((Vector2)groundAttackOrigin.position-(Vector2)eRefs.PlayerShadowPos).magnitude;
+        if (firstSpikeDist > firstSpikeMaxDist) {
+            firstSpikeDist = firstSpikeMaxDist;
+        }
+        Vector2 spikePos = (Vector2)groundAttackOrigin.position+(normDirToPlayer*(firstSpikeDist));
+        // 
+        projPool.RequestProjectile().LaunchProjectile(projValues, Vector2.up, spikePos, normDirToPlayer.x);
         while (curSpike < spikeAmount) {
             timer += Time.deltaTime;
             if (timer >= delayBetweenSpikes) {
                 curSpike++;
                 timer = 0f;
-                spikePos = (Vector2)groundAttackOrigin.position+(normDirToPlayer*(spikeSpawnDist*curSpike));
-                projPool.RequestProjectile().LaunchProjectile(projValues, Vector2.up, spikePos);
+                spikePos = (Vector2)groundAttackOrigin.position+(normDirToPlayer*(firstSpikeDist+(spikeSpawnDist*(curSpike-1))));
+                if (curSpike == spikeAmount) { // Spawn the last spike (different one).
+                    projPool.RequestProjectile().LaunchProjectile(lastProjValues, Vector2.up, spikePos, normDirToPlayer.x);
+                }
+                else {
+                    projPool.RequestProjectile().LaunchProjectile(projValues, Vector2.up, spikePos, normDirToPlayer.x);
+                }
             }
             yield return null;
         }
@@ -81,12 +101,7 @@ public class GiantSkeleton_GroundAttack : MonoBehaviour
         StartCoroutine(GroundAttackCooldown());
     }
 
-    // NEED TO DO: 
-    // Make sure the spikes come out at a good distance from each other.
-    // Calculate the spawn distance of the first spike more precisely based on player distance.
-    // Have the spike slightly curve towards the player by adjusting their direction in the towards the player.
-    // Have an anim even adjust the spike's sorting order from lower to higher.
-    // Review spike sprites to be bigger and more intimidating, exagerated versions of the giant's sword.
-    // Have a bigger last spike to finish off the attack with more oomf.
-    // Make a proper collision for the spikes.
+    // NEED TO DO:
+    // Have the spike slightly curve towards the player by adjusting their direction in the towards the player.*
+    // Flip the projectiles based on the direction they go in.
 }

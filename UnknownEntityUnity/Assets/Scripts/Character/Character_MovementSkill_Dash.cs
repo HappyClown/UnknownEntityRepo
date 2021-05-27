@@ -29,6 +29,7 @@ public class Character_MovementSkill_Dash : Character_MovementSkills
     public AfterImageEffect afterImageEffect;
     public SO_SpriteAnimObject sOSpriteAnimObject;
     SpriteAnimObject spriteAnimObject;
+    public Transform charSpriteTrans;
 
     // void Update() {
     //     // MOVE THIS TO THE OTHER INPUT ACTION SCRIPT
@@ -63,7 +64,9 @@ public class Character_MovementSkill_Dash : Character_MovementSkills
          else spriteAnimObject.gameObject.GetComponent<SpriteRenderer>().flipX = false;
         spriteAnimObject.StartSpriteAnim(sOSpriteAnimObject);
         // Start the after image FX.
-        afterImageEffect.StartAfterImage(charMove.spriteRend.sprite, charMove.spriteRend.flipX, dashDuration, charMove.transform);
+        bool flipBool;
+        if (charSpriteTrans.localScale.x >= 0) {flipBool = false;} else {flipBool = true;}
+        afterImageEffect.StartAfterImage(charMove.spriteRend.sprite, flipBool, dashDuration, charMove.transform);
         StartCoroutine(Dashing());
     }
 

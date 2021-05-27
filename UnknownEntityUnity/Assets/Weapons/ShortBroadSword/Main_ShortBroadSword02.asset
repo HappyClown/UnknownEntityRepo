@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: ShortBroadSword
   weaponSprite: {fileID: 21300000, guid: 18c61cc2554ceeb49a48cbcb49c5c950, type: 3}
-  chainResetDelay: 1
+  chainResetDelay: 0.25
   restingRotation: {x: 0, y: 0, z: 110}
   restingPosition: {x: 0, y: 0, z: -1}
   durabilityDamageOnHit: 1
@@ -31,7 +31,9 @@ MonoBehaviour:
     minDamage: 10
     maxDamage: 12
     fullAttackDuration: 0.5
-    canAttackCooldown: 0.01
+    allowWeaponSwap: 0.4
+    allowNextChainAttack: 0.4
+    canAttackCooldown: 0
     chargeable: 0
     sO_ChargeAttack: {fileID: 0}
   - sO_Weapon_Motion: {fileID: 11400000, guid: 2f59c7d987f9ce1459ac5a2f4d70c5c9, type: 2}
@@ -42,7 +44,9 @@ MonoBehaviour:
     minDamage: 10
     maxDamage: 12
     fullAttackDuration: 0.5
-    canAttackCooldown: 0.01
+    allowWeaponSwap: 0.4
+    allowNextChainAttack: 0.4
+    canAttackCooldown: 0.25
     chargeable: 0
     sO_ChargeAttack: {fileID: 0}
   specialAttack:

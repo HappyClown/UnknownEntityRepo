@@ -72,7 +72,7 @@ MonoBehaviour:
   dashDistance: 3
   maxCharges: 3
   curCharges: 3
-  chargeCooldown: 1
+  chargeCooldown: 3
   spriteAnimPool: {fileID: 0}
   afterImageEffect: {fileID: 4243094996786927580}
   sOSpriteAnimObject: {fileID: 11400000, guid: 59d88d2dd09e43f46a9b1cc601a7df31, type: 2}

@@ -28,13 +28,16 @@ public class AfterImageEffect : MonoBehaviour
         while (timer < totalDuration) {
             timer += Time.deltaTime;
             imageSpawnTimer += Time.deltaTime;
+            if (timer >= totalDuration) {
+                RequestAfterImageObject().StartFadeOut(imageFadeTime, sprite, playerTransform.position, flipX);
+                break;
+            }
             if (imageSpawnTimer > imageSpawnRate) {
                 imageSpawnTimer = 0f;
                 RequestAfterImageObject().StartFadeOut(imageFadeTime, sprite, playerTransform.position, flipX);
             }
             yield return null;
         }
-        RequestAfterImageObject().StartFadeOut(imageFadeTime, sprite, playerTransform.position, flipX);
     }
 
     public AfterImageObject RequestAfterImageObject() {

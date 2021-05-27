@@ -11,7 +11,9 @@ public class Character_Movement : MonoBehaviour
     [Header("To-set variables")]
     public float baseRunSpeed = 1f; 
     public SpriteRenderer spriteRend;
+    public Transform characterSprite;
     public Animator animator;
+    
     [Header("Read Only")]
     private float moddedRunSpeed, lessSpeedModifier, moreSpeedModifier;
     public bool canInputMove = true;
@@ -186,12 +188,14 @@ public class Character_Movement : MonoBehaviour
     public void FlipSpriteMouseBased () {
         // Flip sprite based on player mouse position.
         if (moIn.mousePosWorld2D.x < this.transform.position.x) {
-            spriteRend.flipX = true;
+            //spriteRend.flipX = true;
+            characterSprite.transform.localScale = new Vector3(-1, 1 ,1);
             lookLeft = true;
             lookRight = false;
         }
         else {
-            spriteRend.flipX = false;
+            //spriteRend.flipX = false;
+            characterSprite.transform.localScale = new Vector3(1, 1 ,1);
             lookLeft = false;
             lookRight = true;
         }
@@ -208,10 +212,12 @@ public class Character_Movement : MonoBehaviour
 
     public void FlipSpriteDirectionBased(Vector3 direction) {
         if (direction.x > 0f) {
-            spriteRend.flipX = true;
+            //spriteRend.flipX = true;
+            characterSprite.transform.localScale = new Vector3(-1, 1 ,1);
         }
         else {
-            spriteRend.flipX = false;
+            //spriteRend.flipX = false;
+            characterSprite.transform.localScale = new Vector3(1, 1 ,1);
         }
     }
 

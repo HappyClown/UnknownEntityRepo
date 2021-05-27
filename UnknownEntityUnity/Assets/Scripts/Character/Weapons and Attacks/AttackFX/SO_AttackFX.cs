@@ -23,6 +23,7 @@ public class SO_AttackFX : ScriptableObject {
     public float moveDelay; // Currently unused.
     public bool setupBeforeDelay;
     public bool followWeapon;
+    public float followDuration;
     public float followWeaponHeight;
     public AnimationCurve moveAnimCurve;
 }

@@ -29,9 +29,14 @@ public class Projectile : MonoBehaviour
     Transform partSysParent;
     //Vector2 direction;
 
-    public void LaunchProjectile(SO_Projectile _projSO, Vector2 _direction, Vector2 startPos/* , ParticleSystem _partSys = null, Transform _partSysParent = null */) {
+    public void LaunchProjectile(SO_Projectile _projSO, Vector2 _direction, Vector2 startPos, float flipXDirection = 0f/* , ParticleSystem _partSys = null, Transform _partSysParent = null */) {
         inUse = true;
+        mySpriteR.sortingOrder = _projSO.sortingOrder;
         projDurationTimer = 0f;
+        //
+        if (flipXDirection < 0f) {
+            mySpriteR.flipX = true;
+        }
         // partSys = _partSys;
         // partSysParent = _partSysParent;
         projSO = _projSO;
@@ -52,7 +57,7 @@ public class Projectile : MonoBehaviour
         this.gameObject.SetActive(true);
         // Check if the sprite is animated, if yes start animation coroutine? Else just take the single sprite.
         if (!projSO.animated) {
-            mySpriteR.sprite = projSO.sprite;
+            mySpriteR.sprite = projSO.sprite; 
         }
         else {
             // Setup animation.
@@ -162,6 +167,8 @@ public class Projectile : MonoBehaviour
         collidersDamaged.Clear();
         myCol.enabled = false;
         mySpriteAnim.Stop();
+        mySpriteR.sortingOrder = 0;
+        mySpriteR.flipX = false;
         //HitImpact.PlayImpactFX()
         // if (partSys != null) { 
         //     partSys.Stop(); 

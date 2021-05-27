@@ -49,8 +49,8 @@ public class Character_AttackChain : MonoBehaviour
         if (atkDurCoroutine != null) StopCoroutine(atkDurCoroutine);
         if (atkCooldownCoroutine != null) StopCoroutine(atkCooldownCoroutine);
         atkDurCoroutine = StartCoroutine(FullAttackDuration());
-        
         nextChain++;
+        
     }
     // public bool NotInAnAttack() {
     //     if (atkDurCoroutine != null) {
@@ -86,6 +86,14 @@ public class Character_AttackChain : MonoBehaviour
         int currentAttackChain = curChain;
         while (timer < fullattackDuration) {
             timer += Time.deltaTime;
+            // After a certain amount of time in the attack, allow weapon to be swapped.
+            if (timer > charAtk.weapon.attackChains[curChain].allowWeaponSwap) {
+                charAtk.equippedWeapons.canSwapWeapon = true;
+            }
+            // If this isn't the last attack in the weapon's attack chain allow another attack to be started after allowNextChainAttack time.
+            if (nextChain < charAtk.weapon.attackChains.Length && timer > charAtk.weapon.attackChains[curChain].allowNextChainAttack) {
+                charAtk.ReadyToAttack(true);
+            }
             // Can check here when the player would be able to swap his weapon or start another attack if it can be done during an attack. Could have that the weapon swap can be done during the cooldown but not starting a new attack.
             yield return null;
         }

@@ -17,6 +17,7 @@ MonoBehaviour:
   cantInterrupStart: 0
   cantInterrupEnd: 0.37
   cancelPoint: 0.33
+  loopAnimation: 0
   collider: {fileID: 8939317785436719242, guid: 91c6f2fea35555543bcd831e0022e287,
     type: 3}
   colStart: 0.33
@@ -38,10 +39,11 @@ MonoBehaviour:
   - 0.52
   spawnDistance: 1
   moveDistance: 2.2
-  moveDelay: 0.25
+  moveDelay: 0.33
   setupBeforeDelay: 0
-  followWeapon: 0
-  followWeaponHeight: 0
+  followWeapon: 1
+  followDuration: 0.33
+  followWeaponHeight: 0.75
   moveAnimCurve:
     serializedVersion: 2
     m_Curve:

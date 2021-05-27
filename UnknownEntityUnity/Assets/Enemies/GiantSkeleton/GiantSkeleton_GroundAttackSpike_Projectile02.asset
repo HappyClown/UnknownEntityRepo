@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55ed1810f1a3fbe4888e02251c45b564, type: 3}
-  m_Name: GiantSkeleton_GroundAttackSpike_Projectile
+  m_Name: GiantSkeleton_GroundAttackSpike_Projectile02
   m_EditorClassIdentifier: 
-  minDamage: 8
-  maxDamage: 8
-  duration: 1.169
+  minDamage: 10
+  maxDamage: 10
+  duration: 1.433
   maxSpeed: 0
   spawnDistance: 0
   destroyOnContact: 0
@@ -44,14 +44,14 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   animated: 1
-  animTotalDuration: 1
+  animTotalDuration: 1.462
   animSprites: []
   animTimings: []
-  animClip: {fileID: 7400000, guid: a4d10b04664ecf74491ee1ae1ead17a1, type: 2}
-  colStartTime: 0.3
-  colEndTime: 0.9
+  animClip: {fileID: 7400000, guid: e21d2a1acc31ee84fb11e94c9b933060, type: 2}
+  colStartTime: 0.28
+  colEndTime: 1
   sprite: {fileID: -5696415690592143733, guid: efcc52ec15d204b4182df718fd73291f, type: 3}
-  col: {fileID: 3092068327745496221, guid: e7e5b5eb629425a428a19074d558ea69, type: 3}
+  col: {fileID: 8562888170432636692, guid: 22fb37da6192c8b42b5f3c140c0f5c01, type: 3}
   contactFilter:
     useTriggers: 0
     useLayerMask: 1

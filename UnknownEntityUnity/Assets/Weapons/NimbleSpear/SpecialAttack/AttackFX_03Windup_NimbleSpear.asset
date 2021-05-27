@@ -47,6 +47,7 @@ MonoBehaviour:
   moveDelay: 0
   setupBeforeDelay: 0
   followWeapon: 1
+  followDuration: 0.5
   followWeaponHeight: 0.6
   moveAnimCurve:
     serializedVersion: 2

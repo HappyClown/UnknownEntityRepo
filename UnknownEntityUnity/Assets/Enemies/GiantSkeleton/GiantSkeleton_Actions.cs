@@ -32,9 +32,8 @@ public class GiantSkeleton_Actions : Enemy_Actions
         brain.SetActiveState(ChaseTarget);
     }
     public override void StopActions() {
-        // For the Shield Skeleton, it should only trigger the hit reaction if the skeleton is not reducing damage during shield up or his attack.
-        //shieldBash.StopAction();
         giantSkel_SlashAtk.StopSlashAttack();
+        giantSkel_GroundAtk.StopGroundAttack();
     }
     public override void StopStateUpdates () {
         brain.SetActiveState(Neutral);

@@ -19,8 +19,8 @@ MonoBehaviour:
   - {fileID: 8331494065182728104, guid: c516d387b1601b04c804b061e1674372, type: 3}
   impactFXTimings:
   - 0
-  - 0.1
-  - 0.2
+  - 0.075
+  - 0.15
+  - 0.225
   - 0.3
-  - 0.4
   keepDirection: 1

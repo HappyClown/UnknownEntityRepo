@@ -16,7 +16,7 @@ MonoBehaviour:
     type: 3}
   restingPosition: {x: 0, y: 0, z: 0}
   restingRotation: {x: -0, y: -0, z: -80}
-  allowAttackAndSwap: 2
+  allowAttackAndSwap: 1
   nudgeCamera: 1
   nudgeDistance: 0.03
   resetRotDuration: 0.5

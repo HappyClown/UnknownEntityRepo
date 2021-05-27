@@ -26,6 +26,10 @@ public class SO_Weapon : ScriptableObject
         public float minDamage, maxDamage;
         [Tooltip("The full duration of the attack starts when the attack is triggered and ends after this duration, used to track when certain actions can be done during an attack, IE when can the attack be interrupted, cancelled, etc.")]
         public float fullAttackDuration;
+        [Tooltip("After how long during an attack can the player swap weapon, only works if it is smaller then the fullAttackDuration.")]
+        public float allowWeaponSwap;
+        [Tooltip("After how long during an attack can the player start the next attack, only works if the current attack is not the last one in this weapon's attack chains.")]
+        public float allowNextChainAttack;
         [Tooltip("After the full attack duration the cooldown before another attack can be done starts.")]
         public float canAttackCooldown;
         //[Tooltip("Time frame in which the player can't interrupt his attack. Start and End times.")]

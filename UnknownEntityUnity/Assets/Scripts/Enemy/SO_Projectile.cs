@@ -18,6 +18,7 @@ public class SO_Projectile : ScriptableObject
     public bool destroyOnContact;
     public bool useSpeedCurve;
     public AnimationCurve speedCurve;
+    public int sortingOrder;
     [Header("Projectile Animation")]
     public bool animated;
     public float animTotalDuration;

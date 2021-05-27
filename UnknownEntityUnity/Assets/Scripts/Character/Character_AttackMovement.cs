@@ -12,6 +12,7 @@ public class Character_AttackMovement : MonoBehaviour
     {
         // References from SO_AttackFX.
         float totalDuration = sO_AttackFX.totalDuration;
+        float followDuration = sO_AttackFX.followDuration;
         float moveDistance = sO_AttackFX.moveDistance;
         float spawnDistance = sO_AttackFX.spawnDistance;
         float moveDelay = sO_AttackFX.moveDelay;
@@ -20,6 +21,7 @@ public class Character_AttackMovement : MonoBehaviour
         Vector3 startPos = Vector3.zero;
         Vector3 targetPos = Vector3.zero;
         Vector3 xyweapOrig = Vector3.zero;
+        //
 
         // Get movement values before or after delay.
         if (sO_AttackFX.setupBeforeDelay || moveDelay <= 0f) {
@@ -53,16 +55,8 @@ public class Character_AttackMovement : MonoBehaviour
         float timer = 0f;
         float moveDuration = totalDuration - moveDelay;
 
-        // Move the attack a certain distance over attack length period using a lerp.
-        if (moveDistance > 0f) {
-            while (timer < 1f) {
-                timer += Time.deltaTime / moveDuration;
-                atkFXTrans.position = Vector3.Lerp(startPos, targetPos, moveAnimCurve.Evaluate(timer));
-                yield return null;
-            }
-        }
-        else if (sO_AttackFX.followWeapon) {
-            while (timer < totalDuration) {
+        if (sO_AttackFX.followWeapon) {
+            while (timer < followDuration) {
                 timer += Time.deltaTime;
                 atkFXTrans.position = weapSpriteTrans.position + (weapOrigTrans.up * sO_AttackFX.followWeaponHeight);
                 atkFXTrans.rotation = weapOrigTrans.rotation;
@@ -70,7 +64,16 @@ public class Character_AttackMovement : MonoBehaviour
                     if (sO_AttackFX.loopAnimation) {
                         timer = 0f;
                     }
+                    
                 }
+                yield return null;
+            }
+        }
+        // Move the attack a certain distance over attack length period using a lerp.
+        if (followDuration < totalDuration) {
+            while (timer < 1f) {
+                timer += Time.deltaTime / moveDuration;
+                atkFXTrans.position = Vector3.Lerp(startPos, targetPos, moveAnimCurve.Evaluate(timer));
                 yield return null;
             }
         }
