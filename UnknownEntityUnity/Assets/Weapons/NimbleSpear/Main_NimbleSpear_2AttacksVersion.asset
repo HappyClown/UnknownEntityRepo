@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: NimbleSpear
   weaponSprite: {fileID: 21300000, guid: 89b331cd8ed0e534aa6904b2812f08fc, type: 3}
-  chainResetDelay: 0.25
+  chainResetDelay: 0.05
   restingRotation: {x: 0, y: 0, z: 0}
   restingPosition: {x: 0, y: 0, z: -1}
   durabilityDamageOnHit: 1
@@ -30,9 +30,22 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 954a272b6bc475f4dbdd0d5f9f21bb98, type: 2}
     minDamage: 5
     maxDamage: 7
-    fullAttackDuration: 0.55
-    allowWeaponSwap: 0.45
-    allowNextChainAttack: 0.45
+    fullAttackDuration: 0.46
+    allowWeaponSwap: 0.42
+    allowNextChainAttack: 0.42
+    canAttackCooldown: 0
+    chargeable: 0
+    sO_ChargeAttack: {fileID: 0}
+  - sO_Weapon_Motion: {fileID: 11400000, guid: d609280dc082e524b9e808e3d32b03dc, type: 2}
+    sO_CharAtk_Motion: {fileID: 11400000, guid: ba50da0b20bbf024bbd99079aff1d1bc,
+      type: 2}
+    sO_AttackFXs:
+    - {fileID: 11400000, guid: 954a272b6bc475f4dbdd0d5f9f21bb98, type: 2}
+    minDamage: 5
+    maxDamage: 7
+    fullAttackDuration: 0.46
+    allowWeaponSwap: 0.42
+    allowNextChainAttack: 0.42
     canAttackCooldown: 0
     chargeable: 0
     sO_ChargeAttack: {fileID: 0}
@@ -44,8 +57,8 @@ MonoBehaviour:
     minDamage: 4
     maxDamage: 6
     fullAttackDuration: 0.55
-    allowWeaponSwap: 0.4
-    allowNextChainAttack: 0.4
+    allowWeaponSwap: 0.55
+    allowNextChainAttack: 0.55
     canAttackCooldown: 0.2
     chargeable: 0
     sO_ChargeAttack: {fileID: 0}

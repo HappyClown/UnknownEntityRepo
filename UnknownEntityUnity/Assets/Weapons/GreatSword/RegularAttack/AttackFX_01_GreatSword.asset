@@ -10,40 +10,38 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f167f306c0b1be84d9c7f92f4bae2a58, type: 3}
-  m_Name: SO_AttackFX_ShortBroadSword01
+  m_Name: AttackFX_01_GreatSword
   m_EditorClassIdentifier: 
-  totalDuration: 0.5
-  stopOnStun: 1
+  totalDuration: 0.68
+  stopOnStun: 0
   cantInterrupStart: 0
-  cantInterrupEnd: 0.24
-  cancelPoint: 0.24
+  cantInterrupEnd: 0.5
+  cancelPoint: 0.5
   loopAnimation: 0
-  collider: {fileID: 6730313490488880281, guid: 264935880256aaf409acbf44debed5b3,
+  collider: {fileID: 8939317785436719242, guid: 56eb617efd0d6614c82089b7c6b3479b,
     type: 3}
-  colStart: 0.24
-  colEnd: 0.5
-  soImpactFX: {fileID: 11400000, guid: ee52250fe04d09a4c9e94699de25cdd5, type: 2}
+  colStart: 0.5
+  colEnd: 0.6
+  soImpactFX: {fileID: 11400000, guid: 92847d8334ad62e4fb58d43334968c38, type: 2}
   sprites:
-  - {fileID: 305904754288004164, guid: 0c2eb932e1ae0c943b23d5e7951fbf81, type: 3}
-  - {fileID: 8616239445314081578, guid: 0c2eb932e1ae0c943b23d5e7951fbf81, type: 3}
-  - {fileID: -5869084063817723082, guid: 0c2eb932e1ae0c943b23d5e7951fbf81, type: 3}
-  - {fileID: 7180106082617976391, guid: 0c2eb932e1ae0c943b23d5e7951fbf81, type: 3}
-  - {fileID: -966390713759397104, guid: 0c2eb932e1ae0c943b23d5e7951fbf81, type: 3}
-  - {fileID: 7216096012829024202, guid: 0c2eb932e1ae0c943b23d5e7951fbf81, type: 3}
+  - {fileID: -8824601575630009, guid: de97668720b6e96428defc200e5baedb, type: 3}
+  - {fileID: -4175258118349823453, guid: de97668720b6e96428defc200e5baedb, type: 3}
+  - {fileID: -5730455986224954574, guid: de97668720b6e96428defc200e5baedb, type: 3}
+  - {fileID: 9085921428334450119, guid: de97668720b6e96428defc200e5baedb, type: 3}
+  - {fileID: 5021343423864899109, guid: de97668720b6e96428defc200e5baedb, type: 3}
   spriteChangeTiming:
-  - 0.2
-  - 0.24
-  - 0.28
-  - 0.4
-  - 0.43
-  - 0.46
-  spawnDistance: 0
+  - 0.5
+  - 0.6
+  - 0.62
+  - 0.64
+  - 0.66
+  spawnDistance: -0.15
   moveDistance: 0
-  moveDelay: 0.2
+  moveDelay: 0
   setupBeforeDelay: 0
   followWeapon: 1
   followDuration: 0.2
-  followWeaponHeight: 0
+  followWeaponHeight: -0.2
   moveAnimCurve:
     serializedVersion: 2
     m_Curve:

@@ -15,23 +15,25 @@ public class Character_AttackChain : MonoBehaviour
     public int curChain;
     private int nextChain = 0;
     private float chainResetTimer;
-    private Coroutine atkDurCoroutine, atkCooldownCoroutine; 
+    private Coroutine atkDurCoroutine, atkChainCooldownCoroutine, chainResetTimerCoroutine; 
 
     void Start() {
         chainResetTimer = chainResetDelay;
     }
 
-    void Update() {
+    IEnumerator ChainResetTimerCoroutine() {
         // Full attack duration timer.
 
         // Cooldown during which player cannot attack.
         // Chain reset timer once the player can attack again.
-        if (chainResetTimer < chainResetDelay) {
+        chainResetTimer = 0f;
+        while (chainResetTimer < chainResetDelay) {
             chainResetTimer += Time.deltaTime;
             if (chainResetTimer >= chainResetDelay) {
                 nextChain = 0;
                 curChain = 0;
             }
+            yield return null;
         }
     }
 
@@ -42,12 +44,13 @@ public class Character_AttackChain : MonoBehaviour
         }
         curChain = nextChain;
         // Turn this chain reset timer to 0 after the attack is complete.
-        chainResetTimer = 0f;
+        if (chainResetTimerCoroutine != null) StopCoroutine(chainResetTimerCoroutine);
+        chainResetTimerCoroutine = null;
         
         charAtk.ReadyToAttack(false);
         charAtk.equippedWeapons.canSwapWeapon = false;
         if (atkDurCoroutine != null) StopCoroutine(atkDurCoroutine);
-        if (atkCooldownCoroutine != null) StopCoroutine(atkCooldownCoroutine);
+        if (atkChainCooldownCoroutine != null) StopCoroutine(atkChainCooldownCoroutine);
         atkDurCoroutine = StartCoroutine(FullAttackDuration());
         nextChain++;
         
@@ -87,30 +90,36 @@ public class Character_AttackChain : MonoBehaviour
         while (timer < fullattackDuration) {
             timer += Time.deltaTime;
             // After a certain amount of time in the attack, allow weapon to be swapped.
-            if (timer > charAtk.weapon.attackChains[curChain].allowWeaponSwap) {
-                charAtk.equippedWeapons.canSwapWeapon = true;
-            }
+            // if (timer > charAtk.weapon.attackChains[curChain].allowWeaponSwap) {
+            //     charAtk.equippedWeapons.canSwapWeapon = true;
+            // }
             // If this isn't the last attack in the weapon's attack chain allow another attack to be started after allowNextChainAttack time.
-            if (nextChain < charAtk.weapon.attackChains.Length && timer > charAtk.weapon.attackChains[curChain].allowNextChainAttack) {
+            if (nextChain < charAtk.weapon.attackChains.Length && timer > charAtk.weapon.attackChains[curChain].allowNextChainAttack && !charAtk.atkSpecial.inWindup && !charAtk.atkSpecial.inHold && !charAtk.atkSpecial.inRelease) {
                 charAtk.ReadyToAttack(true);
+                charAtk.equippedWeapons.canSwapWeapon = true;
+                if (chainResetTimerCoroutine == null) chainResetTimerCoroutine = StartCoroutine(ChainResetTimerCoroutine());
             }
             // Can check here when the player would be able to swap his weapon or start another attack if it can be done during an attack. Could have that the weapon swap can be done during the cooldown but not starting a new attack.
             yield return null;
         }
         // Start cooldown timer before enabling ReadyToAttack.
-        atkCooldownCoroutine = StartCoroutine(CanAttackCooldown(currentAttackChain));
-        chainResetTimer = 0f;
-        atkDurCoroutine = null;
+        if (nextChain >= charAtk.weapon.attackChains.Length) {
+            atkChainCooldownCoroutine = StartCoroutine(AttackChainCooldown(currentAttackChain));
+            chainResetTimer = 0f;
+            atkDurCoroutine = null;
+        }
     }
-    IEnumerator CanAttackCooldown(int currentAttackChain) {
+    IEnumerator AttackChainCooldown(int currentAttackChain) {
         float timer = 0f;
         float canAttackCooldown = charAtk.weapon.attackChains[currentAttackChain].canAttackCooldown;
         while (timer < canAttackCooldown) {
             timer += Time.deltaTime;
             yield return null;
         }
+        nextChain = 0;
+        curChain = 0;
         charAtk.ReadyToAttack(true);
         charAtk.equippedWeapons.canSwapWeapon = true;
-        atkCooldownCoroutine = null;
+        atkChainCooldownCoroutine = null;
     }
 }

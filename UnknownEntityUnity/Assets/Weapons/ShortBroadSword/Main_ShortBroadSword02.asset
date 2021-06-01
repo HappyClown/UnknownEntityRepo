@@ -28,11 +28,11 @@ MonoBehaviour:
       type: 2}
     sO_AttackFXs:
     - {fileID: 11400000, guid: c20a8cf01f4a6fe4bad2ca479168ff23, type: 2}
-    minDamage: 10
-    maxDamage: 12
-    fullAttackDuration: 0.5
-    allowWeaponSwap: 0.4
-    allowNextChainAttack: 0.4
+    minDamage: 8
+    maxDamage: 10
+    fullAttackDuration: 0.42
+    allowWeaponSwap: 0.36
+    allowNextChainAttack: 0.36
     canAttackCooldown: 0
     chargeable: 0
     sO_ChargeAttack: {fileID: 0}
@@ -41,11 +41,11 @@ MonoBehaviour:
       type: 2}
     sO_AttackFXs:
     - {fileID: 11400000, guid: c20a8cf01f4a6fe4bad2ca479168ff23, type: 2}
-    minDamage: 10
-    maxDamage: 12
-    fullAttackDuration: 0.5
-    allowWeaponSwap: 0.4
-    allowNextChainAttack: 0.4
+    minDamage: 8
+    maxDamage: 10
+    fullAttackDuration: 0.42
+    allowWeaponSwap: 0.36
+    allowNextChainAttack: 0.36
     canAttackCooldown: 0.25
     chargeable: 0
     sO_ChargeAttack: {fileID: 0}
@@ -60,7 +60,7 @@ MonoBehaviour:
     sO_AttackFXRelease:
     - {fileID: 11400000, guid: c7b09a0dfef64014a874a0afa6b9e691, type: 2}
     - {fileID: 11400000, guid: ca9a809d1cb82e944a1a9a8b0d398f50, type: 2}
-    minDamage: 10
-    maxDamage: 12
+    minDamage: 12
+    maxDamage: 13
     fullAttackDuration: 0
     canAttackCooldown: 0

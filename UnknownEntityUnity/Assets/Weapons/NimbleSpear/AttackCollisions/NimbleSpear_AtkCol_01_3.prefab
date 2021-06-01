@@ -46,6 +46,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -110,5 +112,6 @@ PolygonCollider2D:
     - - {x: 0, y: 0.95}
       - {x: -0.128, y: 0.75}
       - {x: -0.128, y: 0}
+      - {x: 0, y: -0.35}
       - {x: 0.128, y: 0}
       - {x: 0.128, y: 0.75}

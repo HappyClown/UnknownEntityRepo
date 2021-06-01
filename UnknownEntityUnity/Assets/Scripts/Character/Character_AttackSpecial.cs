@@ -29,10 +29,10 @@ public class Character_AttackSpecial : MonoBehaviour
 
         SO_WindupFX[0] = mainSpecialSO.specialAttack.sO_AttackFXWindup[0];
         SO_HoldFX[0] = mainSpecialSO.specialAttack.sO_AttackFXHold[0];
-        print(mainSpecialSO.specialAttack.sO_AttackFXRelease.Length);
+        //print(mainSpecialSO.specialAttack.sO_AttackFXRelease.Length);
         SO_ReleaseFX.Clear();
         for (int i = 0; i < mainSpecialSO.specialAttack.sO_AttackFXRelease.Length; i++) {
-            print("HELLO");
+            //print("HELLO");
             if (i >= SO_ReleaseFX.Count) {
                 SO_ReleaseFX.Add(mainSpecialSO.specialAttack.sO_AttackFXRelease[i]);
             }

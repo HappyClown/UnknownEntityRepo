@@ -110,9 +110,11 @@ public class Character_Attack : MonoBehaviour
         if (readyToAttackValue <= 0) {
             readyToAttackValue = 0;
             readyToAtk = true;
+            //weaponSpriteR.color = Color.white;
         }
         else {
             readyToAtk = false;
+            //weaponSpriteR.color = Color.gray;
         }
     }
     // When you want to stop the current attack.
