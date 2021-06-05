@@ -10,40 +10,38 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f167f306c0b1be84d9c7f92f4bae2a58, type: 3}
-  m_Name: AttackFX_03Release_NimbleSpear_Special
+  m_Name: AttackFX_02_GreatSword
   m_EditorClassIdentifier: 
-  totalDuration: 0.23
+  totalDuration: 0.73
   stopOnStun: 0
   cantInterrupStart: 0
-  cantInterrupEnd: 0.1
-  cancelPoint: 0
+  cantInterrupEnd: 0.55
+  cancelPoint: 0.55
   loopAnimation: 0
-  collider: {fileID: 2499665363079990395, guid: e4dadb3ec98b46948bbd1f09651f4d66,
+  collider: {fileID: 6721537466041380209, guid: 06b14651681f1b843a011c3fe16406c6,
     type: 3}
-  colStart: 0
-  colEnd: 0.2
+  colStart: 0.55
+  colEnd: 0.66
   soImpactFX: {fileID: 11400000, guid: e02907e2cbff8574681d5aeb922a4c93, type: 2}
   sprites:
-  - {fileID: -4122634843349117238, guid: 6b59f02735102ac41b5cd775c0c268f2, type: 3}
-  - {fileID: 5820681603078485925, guid: 6b59f02735102ac41b5cd775c0c268f2, type: 3}
-  - {fileID: -2735028753627688409, guid: 6b59f02735102ac41b5cd775c0c268f2, type: 3}
-  - {fileID: -5025760410891385807, guid: 6b59f02735102ac41b5cd775c0c268f2, type: 3}
-  - {fileID: -221070609344128289, guid: 6b59f02735102ac41b5cd775c0c268f2, type: 3}
-  - {fileID: -2572131849215420816, guid: 6b59f02735102ac41b5cd775c0c268f2, type: 3}
+  - {fileID: 715561181057400970, guid: 907e7817e9539e044ab3d2d2ec9242c1, type: 3}
+  - {fileID: -5782529815243592917, guid: 907e7817e9539e044ab3d2d2ec9242c1, type: 3}
+  - {fileID: -5075518829310545713, guid: 907e7817e9539e044ab3d2d2ec9242c1, type: 3}
+  - {fileID: 3391049226387696796, guid: 907e7817e9539e044ab3d2d2ec9242c1, type: 3}
+  - {fileID: 2372851827174315611, guid: 907e7817e9539e044ab3d2d2ec9242c1, type: 3}
   spriteChangeTiming:
-  - 0
-  - 0.03
-  - 0.06
-  - 0.14
-  - 0.17
-  - 0.2
-  spawnDistance: 0.5
-  moveDistance: 2.5
-  moveDelay: 0
+  - 0.55
+  - 0.65
+  - 0.67
+  - 0.69
+  - 0.71
+  spawnDistance: -1.1
+  moveDistance: 0
+  moveDelay: 0.55
   setupBeforeDelay: 0
-  followWeapon: 0
-  followDuration: 0
-  followWeaponHeight: 0
+  followWeapon: 1
+  followDuration: 0.2
+  followWeaponHeight: -1.1
   moveAnimCurve:
     serializedVersion: 2
     m_Curve:

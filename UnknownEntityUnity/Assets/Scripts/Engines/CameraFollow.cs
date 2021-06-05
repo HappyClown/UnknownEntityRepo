@@ -6,9 +6,6 @@ public class CameraFollow : MonoBehaviour
 {
     public Transform playerTran;
     public MouseInputs moIn;
-    //public bool useFrameDelay = false;
-    public int everyXFrame = 1;
-    private int frameAmnt;
     [Range(0, 1)]
     public float camPlayerToMouse;
     private Vector3 dirVector, dirVectorNorm, adjustedVector, targetPos;
@@ -21,7 +18,6 @@ public class CameraFollow : MonoBehaviour
     private Vector3 refVelocity;
     // Nudge
     public float nudgeDuration;
-    private float nudgeTimer;
     public AnimationCurve nudgeAnimCurve;
     private float nudgeForce;
     public bool allowNudging;
@@ -32,6 +28,7 @@ public class CameraFollow : MonoBehaviour
     private static Vector2 nudgeDirection_St;
     private static bool nudged_St;
     public bool directlyOnPlayer;
+    bool inNudge;
 
     void Start() {
         allowNudging_St = allowNudging;
@@ -39,28 +36,11 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        // if (useFrameDelay) {
-        //     frameAmnt++;
-        //     if (frameAmnt >= everyXFrame) {
-        //         this.transform.position = new Vector3(playerTran.position.x, playerTran.position.y, this.transform.position.z);
-        //         frameAmnt = 1;
-        //     }
-        // }
-
-        if (nudged_St) {
-            if (nudgeTimer >= 1f) {
-                cameraNudge_St = Vector3.zero;
-                nudgeTimer = 0f;
-                nudged_St = false;
-            }
-            else {
-                nudgeTimer += Time.deltaTime / nudgeDuration;
-                nudgeForce = nudgeAnimCurve.Evaluate(nudgeTimer) * nudgeForce_St;
-                cameraNudge_St = new Vector3(nudgeDirection_St.x, nudgeDirection_St.y, 0f) * nudgeForce;
-            }
-        }
-
         if (followingPlayer) {
+            if (nudged_St) {
+                nudged_St = false;
+                StartCoroutine(Nudge());
+            }
             if (directlyOnPlayer) {
                 this.transform.position = new Vector3(playerTran.position.x, playerTran.position.y, this.transform.position.z);
             }
@@ -72,7 +52,6 @@ public class CameraFollow : MonoBehaviour
                 adjustedVector = dirVectorNorm * (camPlayerToMouse * dirVectorMag);
                 targetPos = new Vector3(playerTran.position.x, playerTran.position.y, 0f) + new Vector3(adjustedVector.x, adjustedVector.y, this.transform.position.z);
 
-                //this.transform.position = Vector3.SmoothDamp(this.transform.position, targetPos, ref refVelocity, smoothTime);
                 this.transform.position = targetPos;
                 this.transform.position += cameraNudge_St;
             }
@@ -83,8 +62,22 @@ public class CameraFollow : MonoBehaviour
         if (allowNudging_St) {
             nudgeForce_St = force;
             nudgeDirection_St = directionNorm;
-            //cameraNudge_St = new Vector3(direction.x, direction.y, 0f) * force;
             nudged_St = true;
         }
+    }
+
+    IEnumerator Nudge () {
+        inNudge = true;
+        cameraNudge_St = Vector3.zero;
+        float nudgeTimer = 0f;
+        float realStartTime = Time.time;
+        while (nudgeTimer < 1f) {
+            //nudgeTimer += Time.deltaTime / nudgeDuration;
+            nudgeTimer += (Time.time-realStartTime) / nudgeDuration;
+            nudgeForce = nudgeAnimCurve.Evaluate(nudgeTimer) * nudgeForce_St;
+            cameraNudge_St = new Vector3(nudgeDirection_St.x, nudgeDirection_St.y, 0f) * nudgeForce;
+            yield return null;
+        }
+        inNudge = false;
     }
 }

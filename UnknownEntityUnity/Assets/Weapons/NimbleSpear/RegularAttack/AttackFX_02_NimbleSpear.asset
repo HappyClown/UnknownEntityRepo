@@ -12,31 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f167f306c0b1be84d9c7f92f4bae2a58, type: 3}
   m_Name: AttackFX_02_NimbleSpear
   m_EditorClassIdentifier: 
-  totalDuration: 0.38
+  totalDuration: 0.36
   stopOnStun: 0
   cantInterrupStart: 0
-  cantInterrupEnd: 0.32
-  cancelPoint: 0.21
+  cantInterrupEnd: 0.18
+  cancelPoint: 0.18
   loopAnimation: 0
-  collider: {fileID: 5298593161510228955, guid: 0cf057d1b5ea3b44aa6add6394769618,
-    type: 3}
-  colStart: 0.21
-  colEnd: 0.38
-  soImpactFX: {fileID: 11400000, guid: 92847d8334ad62e4fb58d43334968c38, type: 2}
+  collider: {fileID: 613360632466680826, guid: d3c69666b97eee74fa19b8695d5cb75a, type: 3}
+  colStart: 0.18
+  colEnd: 0.28
+  soImpactFX: {fileID: 11400000, guid: e02907e2cbff8574681d5aeb922a4c93, type: 2}
   sprites:
-  - {fileID: -6155904458075281166, guid: 23bbdf9834434a543bbfb6023e814cea, type: 3}
-  - {fileID: -3335685133682221269, guid: 23bbdf9834434a543bbfb6023e814cea, type: 3}
-  - {fileID: -1084358405004376363, guid: 23bbdf9834434a543bbfb6023e814cea, type: 3}
-  - {fileID: -7984592384770224805, guid: 23bbdf9834434a543bbfb6023e814cea, type: 3}
-  - {fileID: 1847943847430430673, guid: 23bbdf9834434a543bbfb6023e814cea, type: 3}
+  - {fileID: 6685790549341644937, guid: f0844c440d9ec0a44bcc7b00d891aca7, type: 3}
+  - {fileID: -7558294270920985493, guid: f0844c440d9ec0a44bcc7b00d891aca7, type: 3}
+  - {fileID: -5165248798496011969, guid: f0844c440d9ec0a44bcc7b00d891aca7, type: 3}
+  - {fileID: 6977654167779559483, guid: f0844c440d9ec0a44bcc7b00d891aca7, type: 3}
   spriteChangeTiming:
   - 0.18
-  - 0.21
-  - 0.24
-  - 0.32
-  - 0.35
-  spawnDistance: 0.5
-  moveDistance: 0.5
+  - 0.28
+  - 0.31
+  - 0.33
+  spawnDistance: 0.35
+  moveDistance: 0
   moveDelay: 0.18
   setupBeforeDelay: 0
   followWeapon: 0

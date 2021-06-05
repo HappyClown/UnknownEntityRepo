@@ -1,22 +1,19 @@
 fileFormatVersion: 2
-guid: 3a93a1fb5371c7a46866a376516de608
+guid: f0844c440d9ec0a44bcc7b00d891aca7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6155904458075281166
-    second: NimbleSpear_AtkFX_02_0
+      213: 6685790549341644937
+    second: NimbleSpear_AtkFX_02-2_0
   - first:
-      213: -3335685133682221269
-    second: NimbleSpear_AtkFX_02_1
+      213: -7558294270920985493
+    second: NimbleSpear_AtkFX_02-2_1
   - first:
-      213: -1084358405004376363
-    second: NimbleSpear_AtkFX_02_2
+      213: -5165248798496011969
+    second: NimbleSpear_AtkFX_02-2_2
   - first:
-      213: -7984592384770224805
-    second: NimbleSpear_AtkFX_02_3
-  - first:
-      213: 1847943847430430673
-    second: NimbleSpear_AtkFX_02_4
+      213: 6977654167779559483
+    second: NimbleSpear_AtkFX_02-2_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -76,11 +73,11 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: 4
     textureCompression: 1
@@ -92,7 +89,31 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 512
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: 4
     textureCompression: 1
@@ -106,13 +127,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NimbleSpear_AtkFX_02_0
+      name: NimbleSpear_AtkFX_02-2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 47
-        height: 17
+        width: 66
+        height: 24
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -120,20 +141,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85bfc98b00cfceb41a82277b86a497d6
-      internalID: -6155904458075281166
+      spriteID: 9882c20f413b8cc50800000000000000
+      internalID: 6685790549341644937
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NimbleSpear_AtkFX_02_1
+      name: NimbleSpear_AtkFX_02-2_1
       rect:
         serializedVersion: 2
-        x: 47
+        x: 66
         y: 0
-        width: 47
-        height: 17
+        width: 66
+        height: 24
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,20 +162,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0494a216887221948989526bd6617f50
-      internalID: -3335685133682221269
+      spriteID: b6472e9f76b8b1790800000000000000
+      internalID: -7558294270920985493
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NimbleSpear_AtkFX_02_2
+      name: NimbleSpear_AtkFX_02-2_2
       rect:
         serializedVersion: 2
-        x: 94
+        x: 132
         y: 0
-        width: 47
-        height: 17
+        width: 66
+        height: 24
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,20 +183,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f8c38625cd811844bbcbb6066785dfe
-      internalID: -1084358405004376363
+      spriteID: f39c12d95995158b0800000000000000
+      internalID: -5165248798496011969
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NimbleSpear_AtkFX_02_3
+      name: NimbleSpear_AtkFX_02-2_3
       rect:
         serializedVersion: 2
-        x: 141
+        x: 198
         y: 0
-        width: 47
-        height: 17
+        width: 66
+        height: 24
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,29 +204,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3b17462c6547f7499f18b2f664e0b9b
-      internalID: -7984592384770224805
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NimbleSpear_AtkFX_02_4
-      rect:
-        serializedVersion: 2
-        x: 188
-        y: 0
-        width: 47
-        height: 17
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ba85257835061ab4ba2f25655ec7274d
-      internalID: 1847943847430430673
+      spriteID: b3846041f7b95d060800000000000000
+      internalID: 6977654167779559483
       vertices: []
       indices: 
       edges: []

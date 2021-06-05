@@ -15,14 +15,14 @@ MonoBehaviour:
   totalDuration: 0.68
   stopOnStun: 0
   cantInterrupStart: 0
-  cantInterrupEnd: 0.5
+  cantInterrupEnd: 0.6
   cancelPoint: 0.5
   loopAnimation: 0
   collider: {fileID: 8939317785436719242, guid: 56eb617efd0d6614c82089b7c6b3479b,
     type: 3}
   colStart: 0.5
   colEnd: 0.6
-  soImpactFX: {fileID: 11400000, guid: 92847d8334ad62e4fb58d43334968c38, type: 2}
+  soImpactFX: {fileID: 11400000, guid: e02907e2cbff8574681d5aeb922a4c93, type: 2}
   sprites:
   - {fileID: -8824601575630009, guid: de97668720b6e96428defc200e5baedb, type: 3}
   - {fileID: -4175258118349823453, guid: de97668720b6e96428defc200e5baedb, type: 3}
@@ -37,10 +37,10 @@ MonoBehaviour:
   - 0.66
   spawnDistance: -0.15
   moveDistance: 0
-  moveDelay: 0
+  moveDelay: 0.5
   setupBeforeDelay: 0
-  followWeapon: 1
-  followDuration: 0.2
+  followWeapon: 0
+  followDuration: 0.1
   followWeaponHeight: -0.2
   moveAnimCurve:
     serializedVersion: 2

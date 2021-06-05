@@ -19,7 +19,7 @@ MonoBehaviour:
   restingPosition: {x: 0, y: 0, z: -1}
   durabilityDamageOnHit: 1
   durabilityDamage: 2
-  poiseDamage: 1
+  poiseDamage: 2
   SO_brokenPiecesSpawner: {fileID: 11400000, guid: c1e5a24798aaecc418c2b78c295ccb9e,
     type: 2}
   attackChains:
@@ -27,7 +27,7 @@ MonoBehaviour:
     sO_CharAtk_Motion: {fileID: 11400000, guid: 7f66dc511e7f3a142b9804c2f525d7f9,
       type: 2}
     sO_AttackFXs:
-    - {fileID: 11400000, guid: 9181970129b08ab44afc9571275029b6, type: 2}
+    - {fileID: 11400000, guid: 1396c9dbe753ebe4990f4b0c0998f061, type: 2}
     minDamage: 10
     maxDamage: 12
     fullAttackDuration: 0.75
@@ -40,13 +40,26 @@ MonoBehaviour:
     sO_CharAtk_Motion: {fileID: 11400000, guid: 7f66dc511e7f3a142b9804c2f525d7f9,
       type: 2}
     sO_AttackFXs:
-    - {fileID: 11400000, guid: 9181970129b08ab44afc9571275029b6, type: 2}
+    - {fileID: 11400000, guid: 1396c9dbe753ebe4990f4b0c0998f061, type: 2}
     minDamage: 10
     maxDamage: 12
     fullAttackDuration: 0.75
     allowWeaponSwap: 0.75
     allowNextChainAttack: 0.75
     canAttackCooldown: 0.01
+    chargeable: 0
+    sO_ChargeAttack: {fileID: 0}
+  - sO_Weapon_Motion: {fileID: 11400000, guid: 22922080e2432384387f503317df8905, type: 2}
+    sO_CharAtk_Motion: {fileID: 11400000, guid: 82426f98fcb664742aa2e0650e7ca7ef,
+      type: 2}
+    sO_AttackFXs:
+    - {fileID: 11400000, guid: 9181970129b08ab44afc9571275029b6, type: 2}
+    minDamage: 18
+    maxDamage: 20
+    fullAttackDuration: 0.75
+    allowWeaponSwap: 0.75
+    allowNextChainAttack: 0.75
+    canAttackCooldown: 0.25
     chargeable: 0
     sO_ChargeAttack: {fileID: 0}
   specialAttack:

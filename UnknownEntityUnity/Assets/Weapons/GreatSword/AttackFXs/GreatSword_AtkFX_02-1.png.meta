@@ -1,25 +1,22 @@
 fileFormatVersion: 2
-guid: 7d09d3545a5c535469615b49392d9a44
+guid: 687af47f84ccd2d42b41477df7d19d9d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7225031104604755414
-    second: NimbleSpear_AtkFX_01_0
+      213: 2683702139666022703
+    second: GreatSword_AtkFX_02-1_0
   - first:
-      213: -5482127552482552381
-    second: NimbleSpear_AtkFX_01_1
+      213: 8857240874697060251
+    second: GreatSword_AtkFX_02-1_1
   - first:
-      213: -1301621813282257511
-    second: NimbleSpear_AtkFX_01_2
+      213: -197950403453641649
+    second: GreatSword_AtkFX_02-1_2
   - first:
-      213: -6960171663229818507
-    second: NimbleSpear_AtkFX_01_3
+      213: 4930479989654794231
+    second: GreatSword_AtkFX_02-1_3
   - first:
-      213: -3855377827705009214
-    second: NimbleSpear_AtkFX_01_4
-  - first:
-      213: -6726016036340348919
-    second: NimbleSpear_AtkFX_01_5
+      213: -7100373658936402875
+    second: GreatSword_AtkFX_02-1_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -79,11 +76,11 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: 4
     textureCompression: 1
@@ -95,7 +92,31 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 512
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: 4
     textureCompression: 1
@@ -109,127 +130,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NimbleSpear_AtkFX_01_0
+      name: GreatSword_AtkFX_02-1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 11
-        height: 21
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 15
+        height: 87
+      alignment: 9
+      pivot: {x: 0.2333333, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4dfe5fcaeb350b540827f3c648562ef5
-      internalID: -7225031104604755414
+      spriteID: f21cfbd80ec6e3520800000000000000
+      internalID: 2683702139666022703
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NimbleSpear_AtkFX_01_1
+      name: GreatSword_AtkFX_02-1_1
       rect:
         serializedVersion: 2
-        x: 11
+        x: 15
         y: 0
-        width: 11
-        height: 21
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 15
+        height: 87
+      alignment: 9
+      pivot: {x: 0.2333333, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42166d747ed2e8240bb47f82d6aa235e
-      internalID: -5482127552482552381
+      spriteID: b9f636ad5ad3bea70800000000000000
+      internalID: 8857240874697060251
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NimbleSpear_AtkFX_01_2
+      name: GreatSword_AtkFX_02-1_2
       rect:
         serializedVersion: 2
-        x: 22
+        x: 30
         y: 0
-        width: 11
-        height: 21
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 15
+        height: 87
+      alignment: 9
+      pivot: {x: 0.2333333, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ac2e0259fdd0944983ebaa34d342c52
-      internalID: -1301621813282257511
+      spriteID: f4c1007282db04df0800000000000000
+      internalID: -197950403453641649
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NimbleSpear_AtkFX_01_3
+      name: GreatSword_AtkFX_02-1_3
       rect:
         serializedVersion: 2
-        x: 33
+        x: 45
         y: 0
-        width: 11
-        height: 21
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 15
+        height: 87
+      alignment: 9
+      pivot: {x: 0.2333333, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42bf6c857bc268e4eb48b6e6a7fc1af1
-      internalID: -6960171663229818507
+      spriteID: 7ffab838d659c6440800000000000000
+      internalID: 4930479989654794231
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NimbleSpear_AtkFX_01_4
+      name: GreatSword_AtkFX_02-1_4
       rect:
         serializedVersion: 2
-        x: 44
+        x: 60
         y: 0
-        width: 11
-        height: 21
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 15
+        height: 87
+      alignment: 9
+      pivot: {x: 0.2333333, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f5bd48cca5136b45971714f5869c1a4
-      internalID: -3855377827705009214
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NimbleSpear_AtkFX_01_5
-      rect:
-        serializedVersion: 2
-        x: 55
-        y: 0
-        width: 11
-        height: 21
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 41faef131420a4741bc0e266787135c8
-      internalID: -6726016036340348919
+      spriteID: 54c1e8ec6c7667d90800000000000000
+      internalID: -7100373658936402875
       vertices: []
       indices: 
       edges: []

@@ -15,7 +15,7 @@ MonoBehaviour:
   weapon_Motion: {fileID: 5225363897518247411, guid: cc3600e560244d24b894191f1cca280c,
     type: 3}
   restingPosition: {x: 0, y: 0, z: 0}
-  restingRotation: {x: -0, y: -0, z: 108}
+  restingRotation: {x: -0, y: -0, z: -108}
   allowAttackAndSwap: 2
   nudgeCamera: 0
   nudgeDistance: 0
@@ -25,9 +25,9 @@ MonoBehaviour:
   - 0.05
   - 0.5
   rotations:
-  - -125
-  - 106
-  - 106
+  - -155
+  - 97
+  - 97
   animCurves:
   - serializedVersion: 2
     m_Curve:
@@ -99,4 +99,4 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   useDirectionChange: 1
-  clockwise: 1
+  clockwise: 0

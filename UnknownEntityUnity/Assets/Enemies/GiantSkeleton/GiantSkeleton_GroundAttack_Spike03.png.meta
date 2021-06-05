@@ -1,34 +1,40 @@
 fileFormatVersion: 2
-guid: d7da4d29c761f534999de4144e28c0fe
+guid: 0bab5214756570446ab63947ce9466fd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -41779012396021193
-    second: NimbleSpear_AtkFX_03_Charge_0
+      213: 3735132092373684336
+    second: GiantSkeleton_GroundAttack_Spike03_0
   - first:
-      213: -7523677792983848363
-    second: NimbleSpear_AtkFX_03_Charge_1
+      213: -3100862046051166447
+    second: GiantSkeleton_GroundAttack_Spike03_1
   - first:
-      213: -4767951733902647808
-    second: NimbleSpear_AtkFX_03_Charge_2
+      213: -8994236559369326647
+    second: GiantSkeleton_GroundAttack_Spike03_2
   - first:
-      213: 5166181997172222442
-    second: NimbleSpear_AtkFX_03_Charge_3
+      213: -2370397662224124100
+    second: GiantSkeleton_GroundAttack_Spike03_3
   - first:
-      213: 5786006057729198669
-    second: NimbleSpear_AtkFX_03_Charge_4
+      213: -5277865592972907228
+    second: GiantSkeleton_GroundAttack_Spike03_4
   - first:
-      213: 8078745095116107623
-    second: NimbleSpear_AtkFX_03_Charge_5
+      213: -5054110370252829970
+    second: GiantSkeleton_GroundAttack_Spike03_5
   - first:
-      213: 636933534131968429
-    second: NimbleSpear_AtkFX_03_Charge_6
+      213: 4235201180797186104
+    second: GiantSkeleton_GroundAttack_Spike03_6
   - first:
-      213: -2434009657122903275
-    second: NimbleSpear_AtkFX_03_Charge_7
+      213: -1641985247276833206
+    second: GiantSkeleton_GroundAttack_Spike03_7
   - first:
-      213: 7959019314178515830
-    second: NimbleSpear_AtkFX_03_Charge_8
+      213: -2383111272656592783
+    second: GiantSkeleton_GroundAttack_Spike03_8
+  - first:
+      213: 7882362928724987729
+    second: GiantSkeleton_GroundAttack_Spike03_9
+  - first:
+      213: -1881481752776836930
+    second: GiantSkeleton_GroundAttack_Spike03_10
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -88,11 +94,11 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: 4
     textureCompression: 1
@@ -104,7 +110,31 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 512
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: 4
     textureCompression: 1
@@ -118,190 +148,232 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NimbleSpear_AtkFX_03_Charge_0
+      name: GiantSkeleton_GroundAttack_Spike03_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 15
-        height: 21
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 40
+        height: 49
+      alignment: 9
+      pivot: {x: 0.4625, y: 0.1938775}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 541162003196a27449e2d779bab661ea
-      internalID: -41779012396021193
+      spriteID: 070581339dad5d330800000000000000
+      internalID: 3735132092373684336
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NimbleSpear_AtkFX_03_Charge_1
+      name: GiantSkeleton_GroundAttack_Spike03_1
       rect:
         serializedVersion: 2
-        x: 15
+        x: 40
         y: 0
-        width: 15
-        height: 21
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 40
+        height: 49
+      alignment: 9
+      pivot: {x: 0.4625, y: 0.1938775}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca3610ea8e0d1da4d933db8179e2e010
-      internalID: -7523677792983848363
+      spriteID: 11711afe56687f4d0800000000000000
+      internalID: -3100862046051166447
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NimbleSpear_AtkFX_03_Charge_2
+      name: GiantSkeleton_GroundAttack_Spike03_2
       rect:
         serializedVersion: 2
-        x: 30
+        x: 80
         y: 0
-        width: 15
-        height: 21
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 40
+        height: 49
+      alignment: 9
+      pivot: {x: 0.4625, y: 0.1938775}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eef428c44bb65fc4e8e64222e3e53c82
-      internalID: -4767951733902647808
+      spriteID: 9cfa5f4b08d0e2380800000000000000
+      internalID: -8994236559369326647
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NimbleSpear_AtkFX_03_Charge_3
-      rect:
-        serializedVersion: 2
-        x: 45
-        y: 0
-        width: 15
-        height: 21
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0dd318325560aa44dbfef76f2550cc9e
-      internalID: 5166181997172222442
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NimbleSpear_AtkFX_03_Charge_4
-      rect:
-        serializedVersion: 2
-        x: 60
-        y: 0
-        width: 15
-        height: 21
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 14e38c9a6da51b54baefc7701fc4219b
-      internalID: 5786006057729198669
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NimbleSpear_AtkFX_03_Charge_5
-      rect:
-        serializedVersion: 2
-        x: 75
-        y: 0
-        width: 15
-        height: 21
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5a6202bc8b89efa4592d40327c6d4bfc
-      internalID: 8078745095116107623
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NimbleSpear_AtkFX_03_Charge_6
-      rect:
-        serializedVersion: 2
-        x: 90
-        y: 0
-        width: 15
-        height: 21
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8124911409203d94383c3f58eaadadb0
-      internalID: 636933534131968429
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NimbleSpear_AtkFX_03_Charge_7
-      rect:
-        serializedVersion: 2
-        x: 105
-        y: 0
-        width: 15
-        height: 21
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 69eb13c28edc8334e833cdee3130a1d1
-      internalID: -2434009657122903275
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NimbleSpear_AtkFX_03_Charge_8
+      name: GiantSkeleton_GroundAttack_Spike03_3
       rect:
         serializedVersion: 2
         x: 120
         y: 0
-        width: 15
-        height: 21
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 40
+        height: 49
+      alignment: 9
+      pivot: {x: 0.4625, y: 0.1938775}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8776d58436c3d1448a8d95f254e0847
-      internalID: 7959019314178515830
+      spriteID: c37f6b692e7aa1fd0800000000000000
+      internalID: -2370397662224124100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantSkeleton_GroundAttack_Spike03_4
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 40
+        height: 49
+      alignment: 9
+      pivot: {x: 0.4625, y: 0.1938775}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42de79ed43141c6b0800000000000000
+      internalID: -5277865592972907228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantSkeleton_GroundAttack_Spike03_5
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 40
+        height: 49
+      alignment: 9
+      pivot: {x: 0.4625, y: 0.1938775}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eea467565613cd9b0800000000000000
+      internalID: -5054110370252829970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantSkeleton_GroundAttack_Spike03_6
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 40
+        height: 49
+      alignment: 9
+      pivot: {x: 0.4625, y: 0.1938775}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8303bbde80576ca30800000000000000
+      internalID: 4235201180797186104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantSkeleton_GroundAttack_Spike03_7
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 0
+        width: 40
+        height: 49
+      alignment: 9
+      pivot: {x: 0.4625, y: 0.1938775}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a46e1a10e1f7639e0800000000000000
+      internalID: -1641985247276833206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantSkeleton_GroundAttack_Spike03_8
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 40
+        height: 49
+      alignment: 9
+      pivot: {x: 0.4625, y: 0.1938775}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 170231d7cec7deed0800000000000000
+      internalID: -2383111272656592783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantSkeleton_GroundAttack_Spike03_9
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 0
+        width: 40
+        height: 49
+      alignment: 9
+      pivot: {x: 0.4625, y: 0.1938775}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15f4c553257c36d60800000000000000
+      internalID: 7882362928724987729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantSkeleton_GroundAttack_Spike03_10
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 0
+        width: 40
+        height: 49
+      alignment: 9
+      pivot: {x: 0.4625, y: 0.1938775}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb87b5a7052a3e5e0800000000000000
+      internalID: -1881481752776836930
       vertices: []
       indices: 
       edges: []

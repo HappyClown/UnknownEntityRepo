@@ -22,7 +22,7 @@ MonoBehaviour:
     type: 3}
   colStart: 0.55
   colEnd: 0.75
-  soImpactFX: {fileID: 11400000, guid: 92847d8334ad62e4fb58d43334968c38, type: 2}
+  soImpactFX: {fileID: 11400000, guid: e02907e2cbff8574681d5aeb922a4c93, type: 2}
   sprites:
   - {fileID: -4122634843349117238, guid: 6b59f02735102ac41b5cd775c0c268f2, type: 3}
   - {fileID: 5820681603078485925, guid: 6b59f02735102ac41b5cd775c0c268f2, type: 3}
@@ -42,6 +42,7 @@ MonoBehaviour:
   moveDelay: 0.55
   setupBeforeDelay: 0
   followWeapon: 0
+  followDuration: 0
   followWeaponHeight: 0
   moveAnimCurve:
     serializedVersion: 2

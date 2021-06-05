@@ -19,7 +19,7 @@ MonoBehaviour:
   restingPosition: {x: 0, y: 0, z: -1}
   durabilityDamageOnHit: 1
   durabilityDamage: 2
-  poiseDamage: 1
+  poiseDamage: 0.5
   SO_brokenPiecesSpawner: {fileID: 11400000, guid: c1e5a24798aaecc418c2b78c295ccb9e,
     type: 2}
   attackChains:
@@ -31,6 +31,8 @@ MonoBehaviour:
     minDamage: 5
     maxDamage: 7
     fullAttackDuration: 0.48
+    allowWeaponSwap: 0
+    allowNextChainAttack: 0
     canAttackCooldown: 0.01
     chargeable: 0
     sO_ChargeAttack: {fileID: 0}
@@ -42,6 +44,8 @@ MonoBehaviour:
     minDamage: 4
     maxDamage: 6
     fullAttackDuration: 0.38
+    allowWeaponSwap: 0
+    allowNextChainAttack: 0
     canAttackCooldown: 0.01
     chargeable: 0
     sO_ChargeAttack: {fileID: 0}
@@ -54,6 +58,8 @@ MonoBehaviour:
     minDamage: 8
     maxDamage: 10
     fullAttackDuration: 0.72
+    allowWeaponSwap: 0
+    allowNextChainAttack: 0
     canAttackCooldown: 0.5
     chargeable: 0
     sO_ChargeAttack: {fileID: 0}

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30197a3e3f97a66498f923bd65aa317a, type: 3}
-  m_Name: SO_ImpactFX03
+  m_Name: SO_ImpactFX02-2
   m_EditorClassIdentifier: 
   impactFXSprites:
-  - {fileID: 6856927915065367238, guid: 5d3bd71d7c72d9341bb0e5ac4f316f8c, type: 3}
-  - {fileID: 5611850134617836674, guid: 5d3bd71d7c72d9341bb0e5ac4f316f8c, type: 3}
-  - {fileID: 8360836970177401909, guid: 5d3bd71d7c72d9341bb0e5ac4f316f8c, type: 3}
+  - {fileID: 7181354786984967704, guid: edcea8e19769d5945a470ec0e190ea9b, type: 3}
+  - {fileID: -9136456892950400999, guid: edcea8e19769d5945a470ec0e190ea9b, type: 3}
+  - {fileID: -8160636980373017012, guid: edcea8e19769d5945a470ec0e190ea9b, type: 3}
   impactFXTimings:
   - 0
   - 0.05
