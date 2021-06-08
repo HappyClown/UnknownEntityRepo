@@ -152,7 +152,7 @@ public class Projectile : MonoBehaviour
                     }
                     // Turn off the projectile with collision.
                     if (projSO.destroyOnContact) {
-                        HitImpact.PlayImpactFX(myCol, col.transform.position, projSO.sO_ImpactFX, projSO.contactFilter.layerMask, col);
+                        HitImpact.PlayImpactFX(myCol, col.transform.position, projSO.sO_ImpactFX, projSO.contactFilter.layerMask, col, true);
                         DeactivateProjectile();
                     }
                 }

@@ -39,7 +39,7 @@ MonoBehaviour:
   moveDistance: 0
   moveDelay: 0.55
   setupBeforeDelay: 0
-  followWeapon: 1
+  followWeapon: 0
   followDuration: 0.2
   followWeaponHeight: -1.1
   moveAnimCurve:

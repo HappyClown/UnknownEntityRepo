@@ -60,14 +60,14 @@ public class Enemy_Death : MonoBehaviour
         for (int i = 0; i < sODestructionSpawners.Length; i++) {
             //print("sODestructionSpawner go by now.");
             // Make a results array the size of the the amount of bits to spawn.
-            int[] results = new int[amountToSpawn[i]];
-            int roll;
-            for (int j = amountToSpawn[i]-1; j >= 0; j--) {
-                roll = Random.Range(0, amountToSpawn[i]+1);
-                results[j] = roll;
-                //print("Roolll rol rol your boat "+roll);
-            }
-            foreach (int result in results) {
+            // int[] results = new int[amountToSpawn[i]];
+            // int roll;
+            // for (int j = amountToSpawn[i]-1; j >= 0; j--) {
+            //     roll = Random.Range(0, amountToSpawn[i]+1);
+            //     results[j] = roll;
+            //     //print("Roolll rol rol your boat "+roll);
+            // }
+            foreach (int result in ListShuffle(sODestructionSpawners[i].bouncingSpritesSO.Length, amountToSpawn[i])) {
                 spriteBounce = spriteBouncePool.RequestSpriteBounce();
                 spriteBounce.transform.position = (Vector2)this.transform.position + sODestructionSpawners[i].spawnPositions[result];
                 spriteBounce.StartBounce(sODestructionSpawners[i].bouncingSpritesSO[result], hitDir);
@@ -76,5 +76,30 @@ public class Enemy_Death : MonoBehaviour
         }
         eRefs.eSpriteR.sprite = null;
         yield return null;
+    }
+    public List<int> ListShuffle(int amountOfPieces, int amountToSpawnOnce) {
+        int randomRoll;
+        int amountLeft = amountOfPieces;
+        List<int> resultList = new List<int>();
+        // Initialize list from 0 to desired length.
+        List<int> scratchList = new List<int>(new int[amountOfPieces]);
+        for (int i = 0; i < amountOfPieces; i++) {
+            scratchList[i] = i;
+        }
+        //
+        //print("New List: ");
+        for (int i = 0; i < amountToSpawnOnce; i++) {
+            randomRoll = Random.Range(0, amountLeft);
+            //print(randomRoll);
+            resultList.Add(scratchList[randomRoll]);
+            amountLeft--;
+            scratchList[randomRoll] = amountLeft;
+        }
+        print("New List: ");
+        foreach(int result in resultList) {
+            print(result);
+        }
+
+        return resultList;
     }
 }

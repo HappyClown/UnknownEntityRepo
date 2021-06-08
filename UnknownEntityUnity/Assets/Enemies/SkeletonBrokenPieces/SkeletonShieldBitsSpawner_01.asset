@@ -17,9 +17,9 @@ MonoBehaviour:
   crackedDur: 0.03
   destroyedSprite: {fileID: 0}
   bouncingSpritesSO:
-  - {fileID: 11400000, guid: e337fa2d7ca530c499aff8cbb992ebae, type: 2}
   - {fileID: 11400000, guid: e92d29aca3fffb44ca2cda6d5ae6392f, type: 2}
   - {fileID: 11400000, guid: 343561992ef875848b8b294aed3bb8fe, type: 2}
+  - {fileID: 11400000, guid: e337fa2d7ca530c499aff8cbb992ebae, type: 2}
   spawnPositions:
   - {x: -0.2, y: 0.4}
   - {x: -0.2, y: 0.4}

@@ -290,14 +290,16 @@ MonoBehaviour:
   eRefs: {fileID: 6264118744248117210}
   giantSkel_SlashAtk: {fileID: 1203715507877199406}
   projPool: {fileID: 0}
-  projValues: {fileID: 11400000, guid: 760556efd8e418143b75b3df96043279, type: 2}
+  projValues: {fileID: 11400000, guid: 17cc0e65c60417d44ac2305b356df69a, type: 2}
+  lastProjValues: {fileID: 11400000, guid: 17cc0e65c60417d44ac2305b356df69a, type: 2}
   groundAttackOrigin: {fileID: 859882067}
   attackDirPoint: {fileID: 7171370008164914717}
   triggerRadius: 4
   triggerThreshold: 2
+  firstSpikeMaxDist: 1.5
   spikeSpawnDist: 1.25
-  delayBetweenSpikes: 0.25
-  spikeAmount: 4
+  delayBetweenSpikes: 0.15
+  spikeAmount: 3
 --- !u!114 &463057788
 MonoBehaviour:
   m_ObjectHideFlags: 0
