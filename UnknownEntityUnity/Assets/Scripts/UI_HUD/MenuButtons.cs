@@ -19,6 +19,6 @@ public class MenuButtons : MonoBehaviour, ISelectHandler, IPointerEnterHandler {
     // When selected.
     public void OnSelect(BaseEventData eventData) {
         // Move the Select object image to the Selected button.
-        highlightObject.position = new Vector2(myRectTransform.position.x, myRectTransform.position.y+yOffset);
+        //highlightObject.position = new Vector2(myRectTransform.position.x, myRectTransform.position.y+yOffset);
     }
 }

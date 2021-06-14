@@ -380,6 +380,7 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 064131c62e1171c48851a66e5a1152b2, type: 2}
   - {fileID: 7400000, guid: 12e043377700e8542ac149135a80617f, type: 2}
   - {fileID: 7400000, guid: f262153f182f3614c837b35f2b957152, type: 2}
+  charHealth: {fileID: 0}
   eFollowPath: {fileID: 8540736067695667070}
   eWalkAnim: {fileID: 6264118744248117152}
   eAggro: {fileID: 298442652256955470}
@@ -387,8 +388,10 @@ MonoBehaviour:
   eCol: {fileID: 1983698432912115030}
   eHealth: {fileID: 6264118744310853072}
   eDeath: {fileID: 6264118744310853073}
+  eDrops: {fileID: 0}
   eSO: {fileID: 11400000, guid: 43000d9eda23cf14d9fcd4ef91800b0c, type: 2}
   flipX: {fileID: 6264118744248117157}
+  spriteColorFlash: {fileID: 0}
 --- !u!114 &8540736067695667070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -645,6 +648,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6264118744442853644}
   - component: {fileID: 6264118744442853645}
+  - component: {fileID: 2220166322799735831}
   - component: {fileID: 6662330497038643177}
   - component: {fileID: 583343142}
   - component: {fileID: 583343141}
@@ -693,7 +697,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 500e72a18c1a78440843d538efccbe79, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -726,6 +730,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!114 &2220166322799735831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6264118744442853647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff1f6ab4e343ec49a3582e6a47509e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matValue: 0.75
+  spriteR: {fileID: 6264118744442853645}
+  flashDuration: 0.05
 --- !u!114 &6662330497038643177
 MonoBehaviour:
   m_ObjectHideFlags: 0

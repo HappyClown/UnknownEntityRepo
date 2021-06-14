@@ -109,6 +109,11 @@ public class Weapon_SlashMotion : Weapon_Motion
         if (sOWeaponMotionSlash.useDirectionChange) {
             DirectionChange();
         }
+        else if (sOWeaponMotionSlash.followPlayerOrientation) {
+            // flip the rotation if player is looking right. may depend on rotation and weapon FX visuals
+            AllignWithPlayer();
+            charAtk.atkFollowPlayerOrientation = true;
+        }
         startRot = restingRotation;
         endRot = rotations[curMotion];
 
@@ -141,7 +146,17 @@ public class Weapon_SlashMotion : Weapon_Motion
         charAtk.atkFXFlip = !sOWeaponMotionSlash.clockwise;
         weaponSpriteR.flipX = !weaponSpriteR.flipX;
     }
-
+    void AllignWithPlayer() {
+        if (charAtk.playerSpriteTrans.localScale.x >= 0) {
+            for (int i = 0; i < rotations.Length; i++) {
+                rotations[i] *= -1;
+            }
+            //charAtk.atkFXFlipScale = -1;
+            charAtk.atkDirectionChanges = true;
+            charAtk.atkFXFlip = !sOWeaponMotionSlash.clockwise;
+            weaponSpriteR.flipX = !weaponSpriteR.flipX;
+        }
+    }
     //Stop rotations, used for weapon swapping, ...interrupts like stuns?
     public override void StopMotions() {
         resetWeapOn = false;

@@ -345,8 +345,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1444656235
-  m_SortingLayer: -1
-  m_SortingOrder: 5
+  m_SortingLayer: -2
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 8fe782edd11b91a41a1209f46cfe70ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -650,6 +650,7 @@ MonoBehaviour:
     m_Bits: 256
   mySpriteAnim: {fileID: 0}
   animClips: []
+  charHealth: {fileID: 0}
   eFollowPath: {fileID: 3094976223254943911}
   eWalkAnim: {fileID: 764420645499934841}
   eAggro: {fileID: 6363887862280098711}
@@ -657,8 +658,10 @@ MonoBehaviour:
   eCol: {fileID: 5184445261597915791}
   eHealth: {fileID: 764420645428285961}
   eDeath: {fileID: 764420645428285960}
+  eDrops: {fileID: 0}
   eSO: {fileID: 11400000, guid: 045ea6ddd98838e4d97441301425238a, type: 2}
-  flipX: {fileID: 0}
+  flipX: {fileID: 764420645499934844}
+  spriteColorFlash: {fileID: 0}
 --- !u!114 &3094976223254943911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -836,7 +839,7 @@ MonoBehaviour:
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 165888
+      m_Bits: 163840
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
@@ -918,6 +921,7 @@ GameObject:
   - component: {fileID: 764420645824505557}
   - component: {fileID: 764420645824505556}
   - component: {fileID: 268734512}
+  - component: {fileID: 488477964}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -962,7 +966,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 500e72a18c1a78440843d538efccbe79, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1007,6 +1011,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 764420645499934840}
+--- !u!114 &488477964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764420645824505558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff1f6ab4e343ec49a3582e6a47509e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matValue: 0.75
+  spriteR: {fileID: 764420645824505556}
+  flashDuration: 0.05
 --- !u!1 &4653745868195490033
 GameObject:
   m_ObjectHideFlags: 0

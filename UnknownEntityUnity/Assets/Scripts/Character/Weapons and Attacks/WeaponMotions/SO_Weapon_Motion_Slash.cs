@@ -15,6 +15,7 @@ public class SO_Weapon_Motion_Slash : SO_Weapon_Motion
     [Header("Direction change")]
     public bool useDirectionChange;
     public bool clockwise;
+    public bool followPlayerOrientation;
     // public float RotationDifference {
     //     get {
     //         return Mathf.Abs(restingAngle-waitingForResetAngle);

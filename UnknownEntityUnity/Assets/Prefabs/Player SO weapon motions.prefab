@@ -51,17 +51,17 @@ MonoBehaviour:
   charDeath: {fileID: 2656337685487112101}
   weapLookAt: {fileID: 3651932565724258068}
   HUDManager: {fileID: 0}
-  maximumHealth: 100
-  currentHealth: 100
+  maximumHealth: 50
+  currentHealth: 50
   takeHitCamNudge: 0.2
-  spriteR: {fileID: 3651932565309937599, guid: 17191f42f3a871b4a83450ce0b9bcb4a, type: 3}
+  spriteR: {fileID: 0}
   hitSprites:
   - {fileID: -334237908168880825, guid: 94f1025fe8e6b384ab84a94416ec7afd, type: 3}
   - {fileID: -7383483480462489881, guid: 94f1025fe8e6b384ab84a94416ec7afd, type: 3}
   hitSpriteTimings:
   - 0
   - 0.3
-  getHitDuration: 0.4
+  getHitDuration: 0.05
   clipHit: {fileID: 7400000, guid: 464e4f3bd140f2d458208ca5cb405b6a, type: 2}
   charHitMoveOn: 0
 --- !u!114 &2656337685487112101
@@ -103,7 +103,7 @@ MonoBehaviour:
   - 0.6
   - 0.7
   - 0.8
-  spriteR: {fileID: 3651932565309937599, guid: 17191f42f3a871b4a83450ce0b9bcb4a, type: 3}
+  spriteR: {fileID: 7672342354818092191}
 --- !u!61 &96031778
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -853,8 +853,10 @@ MonoBehaviour:
   charMov: {fileID: 3651932565041545239}
   weaponLookAt: {fileID: 3651932565724258068}
   weaponMotionController: {fileID: 0}
+  weaponOriginTrans: {fileID: 3651932565724258071}
   weaponTrans: {fileID: 3651932565548517000}
   weaponSpriteR: {fileID: 3651932565548517001}
+  playerSpriteTrans: {fileID: 4026527645390372388}
   readyToAtk: 0
   weapon: {fileID: 0}
   weaponMotion: {fileID: 0}
@@ -862,6 +864,7 @@ MonoBehaviour:
   weaponMotions: []
   atkFX: {fileID: 0}
   atkDirectionChanges: 0
+  atkFollowPlayerOrientation: 0
   atkFXFlip: 0
   atkFXFlipScale: 0
 --- !u!114 &3651932565041545243
@@ -877,7 +880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charAtk: {fileID: 3651932565041545236}
-  chainResetDelay: 1
+  chainResetDelay: 0.3
   curChain: 0
 --- !u!114 &1032852742220740574
 MonoBehaviour:
@@ -926,6 +929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77cad8ddee6644a44830f32290749b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charAtk: {fileID: 3651932565041545236}
 --- !u!114 &1731692029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1057,7 +1061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9937c332e3bba94d9aff820a7818ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myAggroCol: {fileID: 1451212341, guid: 17191f42f3a871b4a83450ce0b9bcb4a, type: 3}
+  myAggroCol: {fileID: 5216280897769875313}
   filter:
     useTriggers: 0
     useLayerMask: 1
@@ -1436,8 +1440,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1350325209
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 551c2d12986bd29408e96608503e5dee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1547,4 +1551,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charMove: {fileID: 3651932565041545239}
-  charHealth: {fileID: 0}
+  charHealth: {fileID: 96031779}

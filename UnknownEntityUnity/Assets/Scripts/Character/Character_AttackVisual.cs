@@ -5,7 +5,8 @@ using UnityEngine;
 public class Character_AttackVisual : MonoBehaviour
 {
     // Variables are created in the coroutine to allow starting multiple coroutines simultaneously with different variable references.
-    public IEnumerator AttackAnimation(SO_AttackFX sO_AttackFX, Character_AttackFX atkFX) {
+    public Character_Attack charAtk;
+    public IEnumerator AttackAnimation(SO_AttackFX sO_AttackFX, Character_AttackFX atkFX, bool atkFollowPlayerOrientation = false) {
         // References from the AttackFX object from the CharacterAttackFX Pool.
         atkFX.inUse = true;
         atkFX.exitAttackAnimationFX = false;
@@ -24,6 +25,9 @@ public class Character_AttackVisual : MonoBehaviour
         // Set other variables.
         float timer = 0f;
         int thisSpriteIndex = 0;
+        float fxXOrientation = atkFX.transform.localScale.x;
+        float playerXOrientation = charAtk.playerSpriteTrans.localScale.x;
+        bool flipCheck = false;
         // This was put it to avoid having the first sprite appear before the attack movement was set.
         yield return null;
         // Go through all the attack FX sprites based on their change timings.
@@ -33,6 +37,12 @@ public class Character_AttackVisual : MonoBehaviour
                 atkSpriteR.sprite = atkSprites[thisSpriteIndex];
                 if (thisSpriteIndex < atkSpriteChangeTimes.Length -1) {
                     thisSpriteIndex++;
+                }
+            }
+            if (atkFollowPlayerOrientation && timer >= atkSpriteChangeTimes[0] && !flipCheck) {
+                flipCheck = true;
+                if (charAtk.playerSpriteTrans.localScale.x != playerXOrientation) {
+                    atkFX.transform.localScale = new Vector3(-fxXOrientation, 1, 1);
                 }
             }
             // During this time the player will not be able to voluntarily interrupt his attack, for example they will not be able to use their dash skill.

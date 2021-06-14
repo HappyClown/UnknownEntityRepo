@@ -156,7 +156,7 @@ public class Character_AttackSpecial : MonoBehaviour
             releaseFX[i].StartCoroutine(charAtk.atkMovement.AttackMovement(SO_ReleaseFX[i], releaseFX[i].transform));
         }
         if (SO_ReleaseFX[0].collider != null) {
-            charAtk.atkDetection.StartCoroutine(charAtk.atkDetection.AttackCollider(charAtk.equippedWeapons.weaponOneIsActive, charAtk.weapon, charAtk.WeapAtkChain, SO_ReleaseFX[0], releaseFX[0].col));
+            charAtk.atkDetection.StartCoroutine(charAtk.atkDetection.AttackCollider(charAtk.equippedWeapons.weaponOneIsActive, charAtk.weapon, charAtk.WeapAtkChain, SO_ReleaseFX[0], releaseFX[0].col, charAtk.weaponOriginTrans));
         }
         weaponMotion.StopHoldingMotion();
         while (timer < SO_ReleaseFX[0].totalDuration) {

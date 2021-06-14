@@ -15,6 +15,7 @@ public class Enemy_Refs : MonoBehaviour
     public LayerMask losLayerMask;
     public SpriteAnim mySpriteAnim;
     public AnimationClip[] animClips;
+    public Character_Health charHealth;
     [Header("Enemy Scripts")]
     public Enemy_FollowPath eFollowPath;
     public Enemy_WalkAnim eWalkAnim;
@@ -23,8 +24,10 @@ public class Enemy_Refs : MonoBehaviour
     public Enemy_CollisionDetection eCol;
     public Enemy_Health eHealth;
     public Enemy_Death eDeath;
+    public Enemy_Drops eDrops;
     public SO_EnemyBase eSO;
     public FlipObjectX flipX;
+    public SpriteColorFlash spriteColorFlash;
     public Vector3 PlayerShadowPos {
         get{
             return playerShadow.position;

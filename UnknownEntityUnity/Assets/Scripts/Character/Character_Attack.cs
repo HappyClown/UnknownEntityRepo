@@ -18,8 +18,10 @@ public class Character_Attack : MonoBehaviour
     public WeaponLookAt weaponLookAt;
     public Weapon_MotionController weaponMotionController;
     [Header("To-set Variables")]
+    public Transform weaponOriginTrans;
     public Transform weaponTrans;
     public SpriteRenderer weaponSpriteR;
+    public Transform playerSpriteTrans;
     [Header("Read Only")]
     public bool readyToAtk;
     int readyToAttackValue;
@@ -30,6 +32,7 @@ public class Character_Attack : MonoBehaviour
     public List<Weapon_Motion> weaponMotions = new List<Weapon_Motion>();
     public Character_AttackFX atkFX;
     public bool atkDirectionChanges;
+    public bool atkFollowPlayerOrientation;
     public bool atkFXFlip;
     public int atkFXFlipScale;
     private List<Character_AttackFX> atkFXsInUse = new List<Character_AttackFX>();
@@ -76,15 +79,16 @@ public class Character_Attack : MonoBehaviour
             atkFX.StartCoroutine(atkMovement.AttackMovement(sO_AttackFX, atkFX.transform));
             // Enables and changes the attack effect over the course of the attack and dictates if the atkFX pool object is inUse then not.
             // Start the coroutine ON the pool object script, not the script holding the coroutine logic.
-            atkFX.StartCoroutine(atkVisual.AttackAnimation(sO_AttackFX, atkFX));
+            atkFX.StartCoroutine(atkVisual.AttackAnimation(sO_AttackFX, atkFX, atkFollowPlayerOrientation));
             // Enables and disables the attack's collider during the "animation" and detects colliders it can hit, once, if it has one assigned.
             // Requires the sOWeapon because durability damage is general, if it was attack chain specific then just having the weaponAttackChain would be sufficient as it would hold the durability damage info.
             //print("Weapon one is active on attack trigger: "+equippedWeapons.weaponOneIsActive);
             if (sO_AttackFX.collider != null) {
-                atkDetection.StartCoroutine(atkDetection.AttackCollider(equippedWeapons.weaponOneIsActive, weapon, WeapAtkChain, sO_AttackFX, atkFX.col));
+                atkDetection.StartCoroutine(atkDetection.AttackCollider(equippedWeapons.weaponOneIsActive, weapon, WeapAtkChain, sO_AttackFX, atkFX.col, weaponOriginTrans));
             }
             // Turn the atk direction change back to false. This is done at the end because colliders will also be flipped by checking this variable. Now flipping the attack FX pool object's x scale instead of just the sprite.
             atkDirectionChanges = false;
+            atkFollowPlayerOrientation = false;
             // Player sripte to idle and stop animations
             // charMov.mySpriteAnim.Stop();
             // charMov.spriteRend.sprite = charMov.idleSprite;

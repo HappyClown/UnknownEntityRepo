@@ -24,6 +24,7 @@ public class Enemy_Death : MonoBehaviour
         eRefs.eFollowPath.StopAllMovementCoroutines();
         eRefs.eAction.StopActions();
         eRefs.eAction.enabled = false;
+        eRefs.eDrops.CheckHealthDrop(this.transform.position, eRefs.charHealth.CurrentHealthPercentage());
         StopEnemyCoroutines();
         // Spawn enemy bits.
         StartCoroutine(EnemyDestruction(hitDir));
@@ -95,10 +96,10 @@ public class Enemy_Death : MonoBehaviour
             amountLeft--;
             scratchList[randomRoll] = amountLeft;
         }
-        print("New List: ");
-        foreach(int result in resultList) {
-            print(result);
-        }
+        // print("New List: ");
+        // foreach(int result in resultList) {
+        //     print(result);
+        // }
 
         return resultList;
     }

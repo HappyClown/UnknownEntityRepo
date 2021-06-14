@@ -10,7 +10,8 @@ public class OtherButtonActions : MonoBehaviour
     Coroutine moveGraceCoroutine;
     public bool moveSkillGracePressed;
     [Header("Interact")]
-    public Character_PickupWeapon charPickUp;
+    public Character_PickupWeapon charPickUpWeap;
+    public Character_Health charHealth;
     public bool interactPressed;
     [Header("Weapon Swap")]
     public Character_EquippedWeapons charEquippedWeapon;
@@ -56,7 +57,9 @@ public class OtherButtonActions : MonoBehaviour
 #region Interaction button checks
     public void InteractButtonChecks() {
         // Pick up weapon.
-        charPickUp.CanIPickUpWeapon();
+        charPickUpWeap.CanIPickUpWeapon();
+        // Pick up health consumable drop.
+        //charHealth.CanIPickUpHealth();
     }
 #endregion
 

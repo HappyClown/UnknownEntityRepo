@@ -12,6 +12,10 @@ public class Character_Health : MonoBehaviour
     public float maximumHealth;
     public  float currentHealth;
     public float takeHitCamNudge = 0.05f;
+    [Header("Loot Health Drops")]
+    public Collider2D charLootCol;
+    public ContactFilter2D lootLayer;
+    List<Collider2D> results = new List<Collider2D>();
     // Not sure if this is gonna stay here, hit sprites.
     [Header("Get Hit Animation")]
     public SpriteRenderer spriteR;
@@ -135,6 +139,34 @@ public class Character_Health : MonoBehaviour
             charMov.charCanFlip = true;
             charMov.StartIdling();
         }
+    }
+
+    public float CurrentHealthPercentage() {
+        return currentHealth/maximumHealth;
+    }
+
+    public bool CanIPickUpHealth(float healAmount) {
+        if (currentHealth >= maximumHealth) {
+            //print("Life already full! Save it for later pal.");
+            return false;
+        }
+        currentHealth = Mathf.Clamp(currentHealth+healAmount, 0f, maximumHealth);
+        HUDManager.playerLifeBar.AdjustHealthBar(maximumHealth, currentHealth);
+        return true;
+        // Check if there are any weapons on the floor.
+        // Physics2D.OverlapCollider(charLootCol, lootLayer, results);
+        // if (results.Count > 0) {
+                // // Loot all the health drops.
+                // foreach(Collider2D result in results) {
+                //     if (result.GetComponent<HealthDrop>()) {
+                //         HealPlayer(result.GetComponent<HealthDrop>().LootHealthDrop());
+                //     }
+                // }
+        // }
+    }
+    public void HealPlayer(float healAmount) {
+        currentHealth = Mathf.Clamp(currentHealth+healAmount, 0f, maximumHealth);
+        HUDManager.playerLifeBar.AdjustHealthBar(maximumHealth, currentHealth);
     }
 
     void Update() {

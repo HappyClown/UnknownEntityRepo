@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy_Health : MonoBehaviour
 {
     public Enemy_Refs eRefs;
+    //public Enemy_ColorFlash eColorFlash;
     public HealthBar healthBar;
     public float maxHealth;
     public float curHealth;
@@ -32,6 +33,7 @@ public class Enemy_Health : MonoBehaviour
     public void ReceiveDamage(float healthDamage, float hitPoiseDamage, Vector2 hittingColliderPos, Vector2 receivingColliderPos) {
         if (!alreadyDead) {
             curHealth -= healthDamage * damageModifier;
+            eRefs.spriteColorFlash.PlayColorFlash(eRefs.eSpriteR);
             healthBar.AdjustHealthBar(maxHealth, curHealth);
             Vector2 hitDir = ((Vector2)receivingColliderPos - hittingColliderPos).normalized;
             // Apply poise damage from the hit to the enemy which can lead to the enemy being stunned.

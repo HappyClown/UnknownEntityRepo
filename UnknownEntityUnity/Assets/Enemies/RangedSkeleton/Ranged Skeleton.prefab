@@ -5299,8 +5299,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1444656235
-  m_SortingLayer: -1
-  m_SortingOrder: 5
+  m_SortingLayer: -2
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 8fe782edd11b91a41a1209f46cfe70ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5508,6 +5508,7 @@ MonoBehaviour:
   - {fileID: 7400000, guid: e2f7a485d6ebf9b40b29a59d0213798e, type: 2}
   - {fileID: 7400000, guid: 35ff05aa13af7684b9b53cd4106df2a5, type: 2}
   - {fileID: 7400000, guid: 97e20cf24cd31164fa6d0afa896b35dc, type: 2}
+  charHealth: {fileID: 0}
   eFollowPath: {fileID: 1990586592331264952}
   eWalkAnim: {fileID: 3690657262318137124}
   eAggro: {fileID: 7060817331708994764}
@@ -5515,8 +5516,10 @@ MonoBehaviour:
   eCol: {fileID: 4828088488615937271}
   eHealth: {fileID: 3690657262389814610}
   eDeath: {fileID: 3690657262389814611}
+  eDrops: {fileID: 0}
   eSO: {fileID: 11400000, guid: a0d0f8b4e0debe940b80ae28dd837868, type: 2}
   flipX: {fileID: 3690657262318137147}
+  spriteColorFlash: {fileID: 0}
 --- !u!114 &1990586592331264952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5907,6 +5910,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3690657262526239118}
   - component: {fileID: 3690657262526239119}
+  - component: {fileID: 3427085749841445200}
   - component: {fileID: 1919858842}
   - component: {fileID: 3233431613716869656}
   - component: {fileID: 8448188140139352660}
@@ -5989,6 +5993,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3427085749841445200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3690657262526239117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff1f6ab4e343ec49a3582e6a47509e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matValue: 0.75
+  spriteR: {fileID: 3690657262526239119}
+  flashDuration: 0.05
 --- !u!114 &1919858842
 MonoBehaviour:
   m_ObjectHideFlags: 0

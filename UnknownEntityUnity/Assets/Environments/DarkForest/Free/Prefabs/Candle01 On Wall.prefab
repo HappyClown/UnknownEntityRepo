@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &9137875458600427849
+--- !u!1 &7451498659657206046
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9137875458600427846}
-  - component: {fileID: 9137875458600427847}
-  - component: {fileID: 9137875458600427844}
+  - component: {fileID: 7451498659657206033}
+  - component: {fileID: 7451498659657206032}
+  - component: {fileID: 7451498659657206035}
   m_Layer: 0
   m_Name: Point Light 2D - CandleLight
   m_TagString: Untagged
@@ -18,27 +18,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9137875458600427846
+--- !u!4 &7451498659657206033
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9137875458600427849}
+  m_GameObject: {fileID: 7451498659657206046}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.025, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 9137875459293952165}
+  m_Father: {fileID: 7451498660953592050}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9137875458600427847
+--- !u!114 &7451498659657206032
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9137875458600427849}
+  m_GameObject: {fileID: 7451498659657206046}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
@@ -73,19 +73,19 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!114 &9137875458600427844
+--- !u!114 &7451498659657206035
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9137875458600427849}
+  m_GameObject: {fileID: 7451498659657206046}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2b544bae28635549a44b79e704a37f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theLight: {fileID: 9137875458600427847}
+  theLight: {fileID: 7451498659657206032}
   flickering: 1
   minIntensity: 0.17
   maxIntensity: 0.23
@@ -93,7 +93,7 @@ MonoBehaviour:
   maxOuterRadius: 0.72
   minFlickerTime: 0.5
   maxFlickerTime: 1.5
---- !u!1 &9137875459293952166
+--- !u!1 &7451498660953592049
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,38 +101,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9137875459293952165}
-  - component: {fileID: 9137875459293952164}
-  - component: {fileID: 9137875459293952167}
+  - component: {fileID: 7451498660953592050}
+  - component: {fileID: 7451498660953592051}
+  - component: {fileID: 7451498660953592048}
   m_Layer: 0
-  m_Name: Candle03
+  m_Name: Candle01 On Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9137875459293952165
+--- !u!4 &7451498660953592050
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9137875459293952166}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.55, y: 4.8, z: 0}
+  m_GameObject: {fileID: 7451498660953592049}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.9, y: 6.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 9137875458600427846}
+  - {fileID: 7451498659657206033}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &9137875459293952164
+--- !u!212 &7451498660953592051
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9137875459293952166}
+  m_GameObject: {fileID: 7451498660953592049}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -166,7 +166,7 @@ SpriteRenderer:
   m_SortingLayerID: -1350325209
   m_SortingLayer: -1
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1205142586661667447, guid: 576e5d5a1c86d154d8f5142c878a4377,
+  m_Sprite: {fileID: -8667382519789980335, guid: a595cce50ca14d345a258e0b9e70cd29,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -178,25 +178,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9137875459293952167
+--- !u!114 &7451498660953592048
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9137875459293952166}
+  m_GameObject: {fileID: 7451498660953592049}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0e1928036448c64d8cc65e70cfcd67a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteR: {fileID: 9137875459293952164}
+  spriteR: {fileID: 7451498660953592051}
   totalDuration: 0.75
   sprites:
-  - {fileID: -1205142586661667447, guid: 576e5d5a1c86d154d8f5142c878a4377, type: 3}
-  - {fileID: 4173250011661572416, guid: 576e5d5a1c86d154d8f5142c878a4377, type: 3}
-  - {fileID: 2894137340252803015, guid: 576e5d5a1c86d154d8f5142c878a4377, type: 3}
-  - {fileID: 9181650531808308794, guid: 576e5d5a1c86d154d8f5142c878a4377, type: 3}
+  - {fileID: -8667382519789980335, guid: a595cce50ca14d345a258e0b9e70cd29, type: 3}
+  - {fileID: 7639972974773992643, guid: a595cce50ca14d345a258e0b9e70cd29, type: 3}
+  - {fileID: 6407762719851246575, guid: a595cce50ca14d345a258e0b9e70cd29, type: 3}
+  - {fileID: -1858838809275573088, guid: a595cce50ca14d345a258e0b9e70cd29, type: 3}
   changeSprites:
   - 0
   - 0.18

@@ -26,22 +26,26 @@ public class Character_PickupWeapon : MonoBehaviour
                 int loopIndexCount = 0;
                 // Swap active weapon with closest weapon loot.
                 foreach(Collider2D result in results) {
-                    float distCheck = (result.transform.position - playerTrans.position).sqrMagnitude;
-                    if (distCheck < shortestDist) {
-                        shortestDist = distCheck;
-                        closestCol = result;
-                        if (loopIndexCount == results.Count - 1) {
-                            WeaponPickup weaponOnFloor = closestCol.gameObject.GetComponent<WeaponPickup>();
-                            EquipWeapon(weaponOnFloor);
+                    if (result.GetComponent<WeaponPickup>()) {
+                        float distCheck = (result.transform.position - playerTrans.position).sqrMagnitude;
+                        if (distCheck < shortestDist) {
+                            shortestDist = distCheck;
+                            closestCol = result;
+                            if (loopIndexCount == results.Count - 1) {
+                                WeaponPickup weaponOnFloor = closestCol.gameObject.GetComponent<WeaponPickup>();
+                                EquipWeapon(weaponOnFloor);
+                            }
                         }
+                        loopIndexCount++;
                     }
-                    loopIndexCount++;
                 }
             }
             else {
-                // Swap active weapon with weapon loot.
-                WeaponPickup weaponOnFloor = results[0].gameObject.GetComponent<WeaponPickup>();
-                EquipWeapon(weaponOnFloor);
+                if (results[0].GetComponent<WeaponPickup>()) {
+                    // Swap active weapon with weapon loot.
+                    WeaponPickup weaponOnFloor = results[0].gameObject.GetComponent<WeaponPickup>();
+                    EquipWeapon(weaponOnFloor);
+                }
             }
             // Assign old active weapon to weapon loot on floor.
         }

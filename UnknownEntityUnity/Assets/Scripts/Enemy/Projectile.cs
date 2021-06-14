@@ -68,7 +68,7 @@ public class Projectile : MonoBehaviour
             // StartCoroutine(AnimateProjectile());
             // With PowerSpriteAnimator.
             if (projDuration < projSO.animClip.length) {
-                Debug.Log("Hello, be careful, a projectile that was just started has a duration that is shorter then its animation clip's lenght(duration). This means that the animation clip will not fully play once.");
+                //Debug.Log("Hello, be careful, a projectile that was just started has a duration that is shorter then its animation clip's lenght(duration). This means that the animation clip will not fully play once.");
             }
             mySpriteAnim.Play(projSO.animClip);
         }

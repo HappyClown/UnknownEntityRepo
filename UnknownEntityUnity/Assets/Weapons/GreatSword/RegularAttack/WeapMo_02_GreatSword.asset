@@ -19,7 +19,7 @@ MonoBehaviour:
   allowAttackAndSwap: 3
   nudgeCamera: 0
   nudgeDistance: 0
-  resetRotDuration: 1.5
+  resetRotDuration: 0.25
   motionDurations:
   - 0.515
   - 0.01
@@ -125,3 +125,4 @@ MonoBehaviour:
     m_RotationOrder: 0
   useDirectionChange: 0
   clockwise: 0
+  followPlayerOrientation: 1

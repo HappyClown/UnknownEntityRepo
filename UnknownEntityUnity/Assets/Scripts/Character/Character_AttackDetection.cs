@@ -7,13 +7,14 @@ public class Character_AttackDetection : MonoBehaviour
     public Character_EquippedWeapons charEquippedWeapons;
     public ContactFilter2D hitLayers;
     public float timeSlowDur;
+    public float nudgeStrength = 0.1f;
     // public PolygonCollider2D[] attackColliders;
     // public bool[] activeAttacks;
     // public PolygonCollider2D attackCollider;
     // public List<Collider2D> collidersHit;
     // public List<Collider2D> collidersDamaged;
 
-    public IEnumerator AttackCollider(bool attackFromWeaponOne, SO_Weapon sOWeapon, SO_Weapon.AttackChain WeapAtkChain, SO_AttackFX sO_AttackFX, PolygonCollider2D atkFXCol) {
+    public IEnumerator AttackCollider(bool attackFromWeaponOne, SO_Weapon sOWeapon, SO_Weapon.AttackChain WeapAtkChain, SO_AttackFX sO_AttackFX, PolygonCollider2D atkFXCol, Transform weapOrigTrans) {
         // References from the SO_AttackFX.
         float thisColStart = sO_AttackFX.colStart;
         float thisColEnd = sO_AttackFX.colEnd;
@@ -54,6 +55,8 @@ public class Character_AttackDetection : MonoBehaviour
                         HitImpact.PlayImpactFX(atkFXCol, col.bounds.center, sO_ImpactFX, hitLayers.layerMask, col);
                         // Slow time. Duration to be set by weapon damage, slow to be adjusted (animation curve) by TimeSlow script.
                         TimeSlow.StartTimeSlow(timeSlowDur);
+                        // Set camera nudge backwards from the hit.
+                        CameraFollow.CameraNudge_St(weapOrigTrans.up, nudgeStrength);
                         // If this is an enemy, apply damage.
                         if (col.gameObject.CompareTag("Enemy")) {
                             col.GetComponent<Enemy_Health>().ReceiveDamage(WeapAtkChain.DamageRoll, charEquippedWeapons.activeWeapon.poiseDamage, atkFXCol.transform.position, col.bounds.center);

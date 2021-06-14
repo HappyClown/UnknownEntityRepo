@@ -19,6 +19,16 @@ MonoBehaviour:
   restingPosition: {x: 0, y: 0, z: 0}
   durabilityDamageOnHit: 1
   durabilityDamage: 1
-  poiseDamage: 1
+  poiseDamage: 0.5
   SO_brokenPiecesSpawner: {fileID: 0}
   attackChains: []
+  specialAttack:
+    sO_Weapon_Motion: {fileID: 0}
+    sO_CharAtk_Motion: {fileID: 0}
+    sO_AttackFXWindup: []
+    sO_AttackFXHold: []
+    sO_AttackFXRelease: []
+    minDamage: 0
+    maxDamage: 0
+    fullAttackDuration: 0
+    canAttackCooldown: 0
