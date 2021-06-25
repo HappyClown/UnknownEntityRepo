@@ -1,26 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PowerTools;
 
 public class HealthDrop : MonoBehaviour
 {
     public float healAmount = 5;
-    // public Collider2D myCol;
-    // public ContactFilter2D playerLayer;
-    // List<Collider2D> results = new List<Collider2D>(); 
-    
-    // public float LootHealthDrop() {
-    //     this.gameObject.SetActive(false);
-    //     return healAmount;
-    // }
+    public SpriteAnim spriteAnim;
+    public AnimationClip loopAnimClip;
 
-    // public void Update() {
-    //     Physics2D.OverlapCollider(myCol, playerLayer, results);
-    //     print(results[0]);
-    //     if (results[0] != null) {
-    //         results[0].GetComponent<Character_Health>().CanIPickUpHealth();
-    //     }
-    // }
+
+    void Start() {
+        spriteAnim.Play(spriteAnim.Clip);
+    }
+
+    public void AnimStartAnimationLoop() {
+        spriteAnim.Play(loopAnimClip);
+    }
 
     void OnTriggerStay2D(Collider2D other) {
         if (other.CompareTag("Player")) {

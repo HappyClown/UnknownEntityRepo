@@ -7079,12 +7079,12 @@ PrefabInstance:
     - target: {fileID: 5132844852416599082, guid: 7b50d5ad9bc14ed459f12e24316b7fe6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5132844852416599082, guid: 7b50d5ad9bc14ed459f12e24316b7fe6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5132844852416599082, guid: 7b50d5ad9bc14ed459f12e24316b7fe6,
         type: 3}
@@ -20540,7 +20540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fc3f2f60fd0b444fa041913a5e39b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealthDropChance: 2.5
+  baseHealthDropChance: 50
   increasedPerKill: 0.5
   curHealthDropChance: 0
   healthDropPrefab: {fileID: 5132844852416599084, guid: 7b50d5ad9bc14ed459f12e24316b7fe6,
