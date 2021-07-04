@@ -7,6 +7,7 @@ public class Character_Health : MonoBehaviour
     public Character_Attack charAtk;
     public Character_Movement charMov;
     public Character_Death charDeath;
+    public Character_HealingFX charHealFX;
     public WeaponLookAt weapLookAt;
     public HUD_Manager HUDManager;
     public float maximumHealth;
@@ -152,6 +153,7 @@ public class Character_Health : MonoBehaviour
         }
         currentHealth = Mathf.Clamp(currentHealth+healAmount, 0f, maximumHealth);
         HUDManager.playerLifeBar.AdjustHealthBar(maximumHealth, currentHealth);
+        charHealFX.StartHealingFXOnPlayer();
         return true;
         // Check if there are any weapons on the floor.
         // Physics2D.OverlapCollider(charLootCol, lootLayer, results);

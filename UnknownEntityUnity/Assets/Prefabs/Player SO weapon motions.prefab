@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9203858671286982863}
   - component: {fileID: 96031779}
+  - component: {fileID: 2228150867165659318}
   - component: {fileID: 2656337685487112101}
   - component: {fileID: 96031778}
   - component: {fileID: 28361151}
@@ -49,11 +50,27 @@ MonoBehaviour:
   charAtk: {fileID: 3651932565041545236}
   charMov: {fileID: 3651932565041545239}
   charDeath: {fileID: 2656337685487112101}
+  charHealFX: {fileID: 2228150867165659318}
   weapLookAt: {fileID: 3651932565724258068}
   HUDManager: {fileID: 0}
   maximumHealth: 50
   currentHealth: 50
   takeHitCamNudge: 0.2
+  charLootCol: {fileID: 96031778}
+  lootLayer:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 4096
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
   spriteR: {fileID: 0}
   hitSprites:
   - {fileID: -334237908168880825, guid: 94f1025fe8e6b384ab84a94416ec7afd, type: 3}
@@ -64,6 +81,59 @@ MonoBehaviour:
   getHitDuration: 0.05
   clipHit: {fileID: 7400000, guid: 464e4f3bd140f2d458208ca5cb405b6a, type: 2}
   charHitMoveOn: 0
+--- !u!114 &2228150867165659318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96031776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fefebc2d2ac898f45a9d47f280b478fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteR: {fileID: 7672342354818092191}
+  playerColorTint: {r: 1, g: 0.5, b: 0.5, a: 1}
+  colorSwitchTime: 0
+  playerParent: {fileID: 1257112015}
+  staticSpritePool: {fileID: 0}
+  spawnTrans: {fileID: 1257112015}
+  amountToSpawn: 99
+  spawnRate: 99
+  totSpawnTime: 0.3
+  spawnCrossTime: 0.07
+  spawnCircleRadius: 0.3
+  healingCrossFX: {fileID: 5786022632853964158, guid: 24c58ab5ab5b07c4e81e444cb5e4fff1,
+    type: 3}
+  testStartButton: 0
+  moveDist: 0.6
+  timeToMove: 0.3
+  fXMoveAnimCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  crossFXSprite: {fileID: 21300000, guid: f40632eabc6cc354b9e6d693acae9c3a, type: 3}
 --- !u!114 &2656337685487112101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,6 +501,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3651932565041545238}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1257112014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1257112015}
+  m_Layer: 0
+  m_Name: HealingFXSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1257112015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257112014}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.025, y: 0.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4026527645390372388}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1701453884
 GameObject:
@@ -972,6 +1072,7 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   timeSlowDur: 0.25
+  nudgeStrength: 0.2
 --- !u!114 &505351515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1400,6 +1501,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9203858671286982863}
+  - {fileID: 1257112015}
   m_Father: {fileID: 3651932565041545238}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1422,7 +1524,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 500e72a18c1a78440843d538efccbe79, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

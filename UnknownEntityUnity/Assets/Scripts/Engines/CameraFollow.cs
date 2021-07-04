@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -67,7 +67,7 @@ public class CameraFollow : MonoBehaviour
     }
 
     IEnumerator Nudge () {
-        inNudge = true;
+        //inNudge = true;
         cameraNudge_St = Vector3.zero;
         float nudgeTimer = 0f;
         float realStartTime = Time.time;
@@ -78,6 +78,6 @@ public class CameraFollow : MonoBehaviour
             cameraNudge_St = new Vector3(nudgeDirection_St.x, nudgeDirection_St.y, 0f) * nudgeForce;
             yield return null;
         }
-        inNudge = false;
+        //inNudge = false;
     }
 }

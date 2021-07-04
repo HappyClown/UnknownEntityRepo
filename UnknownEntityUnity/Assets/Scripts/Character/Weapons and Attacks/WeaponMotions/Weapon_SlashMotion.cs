@@ -70,7 +70,7 @@ public class Weapon_SlashMotion : Weapon_Motion
         if (curMotion == motionDurations.Length) {
             StopAllCoroutines();
             if (!dontReset) { StartCoroutine(ResetWeapon()); }
-            weapMotionOn = false;
+            //weapMotionOn = false;
             resetWeapOn = true;
             curRot = endRot;
             startRot = curRot;
@@ -124,7 +124,7 @@ public class Weapon_SlashMotion : Weapon_Motion
         StopAllCoroutines();
         StartCoroutine(WeaponMotionOn());
         resetWeapOn = false;
-        weapMotionOn = true;
+        //weapMotionOn = true;
         moveTimer = 0f;
         if (sOWeaponMotionSlash.useDirectionChange) { 
             sOWeaponMotionSlash.clockwise = !sOWeaponMotionSlash.clockwise;
@@ -160,7 +160,7 @@ public class Weapon_SlashMotion : Weapon_Motion
     //Stop rotations, used for weapon swapping, ...interrupts like stuns?
     public override void StopMotions() {
         resetWeapOn = false;
-        weapMotionOn = false;
+        //weapMotionOn = false;
         StopAllCoroutines();
         moveTimer = 0f;
         weaponTrans.localPosition = sOWeaponMotionSlash.restingPosition;
