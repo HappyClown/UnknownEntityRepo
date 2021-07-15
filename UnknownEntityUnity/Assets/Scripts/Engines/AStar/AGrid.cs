@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using System.Diagnostics;
 
 public class AGrid : MonoBehaviour
@@ -17,6 +18,9 @@ public class AGrid : MonoBehaviour
     private LayerMask walkableMask;
     private Dictionary<int, int> walkableRegionsDictionary = new Dictionary<int, int>();
 
+    public Tilemap[] groundTilemaps;
+    public Grid tilemapGrid;
+
     private Node[,] grid;
     private float nodeDiameter;
     private int gridSizeX, gridSizeY;
@@ -24,7 +28,7 @@ public class AGrid : MonoBehaviour
     private int penaltyMin = int.MaxValue;
     private int penaltyMax = int.MinValue;
 
-    public void SetupCreateGrid(){
+    public void SetupCreateGrid() {
         nodeDiameter = nodeRadius*2;
         // How many nodes fit in the grid on X and Y.
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
@@ -55,8 +59,26 @@ public class AGrid : MonoBehaviour
             for (int y = 0; y < gridSizeY; y++) {
                 // World coordinates of the node's center point.
                 Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.up * (y * nodeDiameter + nodeRadius);
+                
+                bool walkable = true;
+                
+                // Check the ground tiles maps and see if there is a tile, if not > walkable = false
+                int atLeastOne = 0;
+                Vector3Int cellPos = tilemapGrid.WorldToCell(worldPoint);
+                foreach (Tilemap tilemap in groundTilemaps) {
+                    if (tilemap.GetTile(cellPos) != null) {
+                        atLeastOne++;
+                    }
+                }
+                if (atLeastOne == 0) {
+                    walkable = false;
+                }
+
                 // Check if the node is "walkable" by checking if it overlaps with a 2DCollider on the Unwalkable layer.
-                bool walkable = !(Physics2D.OverlapBox(worldPoint, new Vector2(nodeRadius, nodeRadius), 0,unwalkableMask));
+                //walkable = !(Physics2D.OverlapBox(worldPoint, new Vector2(nodeRadius, nodeRadius), 0,unwalkableMask));
+                if (Physics2D.OverlapBox(worldPoint, new Vector2(nodeRadius, nodeRadius), 0,unwalkableMask)) {
+                    walkable = false;
+                }
                 int movementPenalty = 0;
 
                 RaycastHit2D hit = Physics2D.Raycast(worldPoint + Vector3.forward, Vector3.back * 2, 100, walkableMask);
@@ -74,7 +96,7 @@ public class AGrid : MonoBehaviour
             }
         }
 
-        BlurPenaltyMap(blurredPenaltyMapAmount);
+        //BlurPenaltyMap(blurredPenaltyMapAmount);
         //sw.Stop();
         //print ("Grid created in: " + sw.ElapsedMilliseconds + "ms");
     }

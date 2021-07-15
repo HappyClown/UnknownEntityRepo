@@ -51,12 +51,6 @@ public class Character_AttackDetection : MonoBehaviour
                 {
                     if (!collidersDamaged.Contains(col)) {
                         collidersDamaged.Add(col);
-                        // Hit impact FX. Apply the correct rotation, position, sprites and layerMask to an impactFX.
-                        HitImpact.PlayImpactFX(atkFXCol, col.bounds.center, sO_ImpactFX, hitLayers.layerMask, col);
-                        // Slow time. Duration to be set by weapon damage, slow to be adjusted (animation curve) by TimeSlow script.
-                        TimeSlow.StartTimeSlow(timeSlowDur);
-                        // Set camera nudge backwards from the hit.
-                        CameraFollow.CameraNudge_St(weapOrigTrans.up, nudgeStrength);
                         // If this is an enemy, apply damage.
                         if (col.gameObject.CompareTag("Enemy")) {
                             col.GetComponent<Enemy_Health>().ReceiveDamage(WeapAtkChain.DamageRoll, charEquippedWeapons.activeWeapon.poiseDamage, atkFXCol.transform.position, col.bounds.center);
@@ -71,6 +65,12 @@ public class Character_AttackDetection : MonoBehaviour
                         else if (col.gameObject.CompareTag("Destructible")) {
                             col.GetComponent<Clutter_Health>().ReceiveDamage(WeapAtkChain.DamageRoll, atkFXCol.transform.position, col.bounds.center);
                         }
+                        // Hit impact FX. Apply the correct rotation, position, sprites and layerMask to an impactFX.
+                        HitImpact.PlayImpactFX(atkFXCol, col.bounds.center, sO_ImpactFX, hitLayers.layerMask, col);
+                        // Set camera nudge backwards from the hit.
+                        CameraFollow.CameraNudge_St(weapOrigTrans.up, nudgeStrength);
+                        // Slow time. Duration to be set by weapon damage, slow to be adjusted (animation curve) by TimeSlow script.
+                        TimeSlow.StartTimeSlow(timeSlowDur);
                         //Debug.Log("Collider: " + col.gameObject.name + " was hit! Hit hit, hurraay!");
                     }
                 }

@@ -9,6 +9,7 @@ public class SetupOrder : MonoBehaviour
     public PremadeRoomLevelGeneration premadeRoomLvlGen;
     public LevelGrid lvlGrid;
     public bool AStarGridOnStart = false;
+    public bool createLevelGrid;
 
     void Start() {
         if (AStarGridOnStart) {
@@ -26,13 +27,15 @@ public class SetupOrder : MonoBehaviour
         //     premadeRoomLvlGen.SetupCreateLevel();
         //     aGrid.SetupCreateGrid();
         // }
-        // if (Input.GetKeyDown("b")) {
-        //     StartCoroutine(SetupThree());
-        // }
+        if (createLevelGrid) {
+            StartCoroutine(SetupThree());
+            createLevelGrid = false;
+        }
         // if (Input.GetKeyDown("n")) {
         //     aGrid.SetupCreateGrid();
         // }
     }
+    
     IEnumerator SetupThree() {
         lvlGrid.CreateLevel();
         yield return null;
