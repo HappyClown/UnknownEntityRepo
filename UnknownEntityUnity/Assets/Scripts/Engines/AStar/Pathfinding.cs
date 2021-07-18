@@ -36,12 +36,17 @@ public class Pathfinding : MonoBehaviour
     IEnumerator FindPath(Vector3 startPos, Vector3 targetPos, float unitIntel) {
         //Stopwatch sw = new Stopwatch();
         //sw.Start();
+
+        print ("PLAYER MOVEMENT PATH: Calculating the correct path now.");
         Vector3[] waypoints = new Vector3[0];
         bool pathSuccess = false;
         // Get the node on which the start and target world positions are.
         Node startNode = aGrid.NodeFromWorldPoint(startPos);
         Node targetNode = aGrid.NodeFromWorldPoint(targetPos);
-        // print("Is my start node walkable? " + startNode.walkable);
+        //print("MOVEMENT PATH: Is my start node walkable? " + startNode.walkable);
+        print("PLAYER MOVEMENT PATH: targetNode world position: " + targetNode.worldPos);
+        print("PLAYER MOVEMENT PATH: targetNode X/Y grid position: " + targetNode.gridX +"/"+ targetNode.gridY);
+        print("PLAYER MOVEMENT PATH: Is my target node walkable? " + targetNode.walkable);
 
         if (/* startNode.walkable &&  */targetNode.walkable)  {
             Heap<Node> openSet = new Heap<Node>(aGrid.MaxSize);

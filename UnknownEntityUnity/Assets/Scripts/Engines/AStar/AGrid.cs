@@ -96,7 +96,7 @@ public class AGrid : MonoBehaviour
             }
         }
 
-        //BlurPenaltyMap(blurredPenaltyMapAmount);
+        BlurPenaltyMap(blurredPenaltyMapAmount);
         //sw.Stop();
         //print ("Grid created in: " + sw.ElapsedMilliseconds + "ms");
     }

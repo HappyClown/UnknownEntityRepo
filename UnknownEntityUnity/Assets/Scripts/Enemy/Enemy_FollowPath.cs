@@ -43,7 +43,7 @@ public class Enemy_FollowPath : MonoBehaviour
             if (followingPathCoroutine != null) {
                 StopCoroutine(followingPathCoroutine);
             }
-            followingPathCoroutine = StartCoroutine("FollowPath");
+            followingPathCoroutine = StartCoroutine(FollowPath());
         }
     }
     // When to request a new path.
@@ -70,7 +70,7 @@ public class Enemy_FollowPath : MonoBehaviour
                     freePathTrigger = false;
                     // Check to see if a direct line of sight exists to the target. (Ignores Movement slowdown fields)
                     if (CheckDirectMoveToTarget()) {
-                        //print ("Direct line of sight available, do not request path, walk directly towards target.");
+                        print ("MOVEMENT PATH: Direct line of sight available, do not request path, walk directly towards target.");
                         if (followingPathCoroutine != null) {
                             StopCoroutine(followingPathCoroutine);
                         }
@@ -91,6 +91,7 @@ public class Enemy_FollowPath : MonoBehaviour
                         targetPosOld = target.position;
                         continue;
                     }
+                    print ("PLAYER MOVEMENT PATH: No direct line of sight to target, request a path.");
                     if (directMoveCoroutine != null) {
                         StopCoroutine(directMoveCoroutine);
                     }
@@ -157,7 +158,7 @@ public class Enemy_FollowPath : MonoBehaviour
                 if (pathIndex >= path.finishLineIndex) {
                     followingPath = false;
                     pathIndex = 0;
-                    if (!useOldAnimSystem) StopWalkAnim();
+                    //if (!useOldAnimSystem) StopWalkAnim();
                     break;
                 } else {
                     pathIndex++;
@@ -186,6 +187,7 @@ public class Enemy_FollowPath : MonoBehaviour
             }
             yield return null;
         }
+        if (!useOldAnimSystem) StopWalkAnim();
     }
     // Allow the next path request check to pass no matter what.
     public void TriggerFreePath() {

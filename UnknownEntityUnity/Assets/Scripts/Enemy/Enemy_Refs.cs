@@ -16,6 +16,8 @@ public class Enemy_Refs : MonoBehaviour
     public SpriteAnim mySpriteAnim;
     public AnimationClip[] animClips;
     public Character_Health charHealth;
+    public Vector2 mySpawnPosition;
+    public AGrid aGrid;
     [Header("Enemy Scripts")]
     public Enemy_FollowPath eFollowPath;
     public Enemy_WalkAnim eWalkAnim;
@@ -37,6 +39,10 @@ public class Enemy_Refs : MonoBehaviour
         get{
             return playerCenter.position;
         }
+    }
+
+    void Start() {
+        mySpawnPosition = this.transform.position;
     }
 
     // Check circle cast line of sight to target or up to distance if specified.

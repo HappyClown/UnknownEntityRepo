@@ -165,7 +165,7 @@ public class RangedSkeleton_Actions : Enemy_Actions
         }
         // If my projectile attack is not ready, run away from the player.
         if (!throwProj.throwProjReady){
-            if (debugs) print("Neutral: Switching state to: RunAway.");
+            if (debugs) print("Neutral: Switching state to: MoveRandom.");
             brain.SetActiveState(MoveRandom);
             stateStarted = false;
             return;
