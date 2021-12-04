@@ -38,6 +38,8 @@ public class Enemy_Death : MonoBehaviour
         }
         // Play death animation.
         isDead = true;
+        // Signal to the level enemy list that an enemy has died.
+        eRefs.enemyList.EnemyHasDied();
     }
 
     void StopEnemyCoroutines () {

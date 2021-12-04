@@ -78,6 +78,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -87,8 +88,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -556,6 +557,25 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Firefly_2: -4562118610380826609
+      Firefly_4: 2592971266680790034
+      Firefly_16: -2829016753437943362
+      Firefly_7: -8998636335124874292
+      Firefly_14: 3938315614083734923
+      Firefly_1: -2036352711901840686
+      Firefly_5: 3632607211995183130
+      Firefly_13: 2915143411994634752
+      Firefly_17: -6676562334562475568
+      Firefly_6: 211852121629497288
+      Firefly_12: -5367845784885533278
+      Firefly_8: 2304333876060377619
+      Firefly_0: -8451752369490405339
+      Firefly_15: 5624406837842495983
+      Firefly_3: 5593410667545163955
+      Firefly_11: -5225837933338027680
+      Firefly_9: -2821137263900594111
+      Firefly_10: 8836236451393248014
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

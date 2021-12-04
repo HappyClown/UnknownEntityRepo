@@ -48,6 +48,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -57,8 +58,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -292,6 +293,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Character_Knight_Death_8frames_2: -6072298256207440457
+      Character_Knight_Death_8frames_0: -3265467846760811175
+      Character_Knight_Death_8frames_3: 5543442751306533146
+      Character_Knight_Death_8frames_7: 2936172682666599899
+      Character_Knight_Death_8frames_5: 3018202264035415660
+      Character_Knight_Death_8frames_4: 3065355301133690315
+      Character_Knight_Death_8frames_6: 7932032492527545859
+      Character_Knight_Death_8frames_1: 6300518345135983760
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

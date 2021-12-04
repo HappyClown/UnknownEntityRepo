@@ -48,6 +48,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -57,8 +58,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -292,6 +293,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      AttackFX_ShortBroadSword_03Proj_6: 6701720843190365938
+      AttackFX_ShortBroadSword_03Proj_2: 8461002379179341269
+      AttackFX_ShortBroadSword_03Proj_3: 4325094332545667050
+      AttackFX_ShortBroadSword_03Proj_1: 6543350016567360311
+      AttackFX_ShortBroadSword_03Proj_5: -1824017750894582618
+      AttackFX_ShortBroadSword_03Proj_4: 615237464452920938
+      AttackFX_ShortBroadSword_03Proj_7: -5467370296701029847
+      AttackFX_ShortBroadSword_03Proj_0: -2379977663514284478
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

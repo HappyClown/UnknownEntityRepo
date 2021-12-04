@@ -234,6 +234,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -243,8 +244,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -1888,6 +1889,77 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      DarkForest_TileMapV3_9: -5537474134835950319
+      DarkForest_TileMapV3_19: 1444783673017119628
+      DarkForest_TileMapV3_4: 6251515284106734305
+      DarkForest_TileMapV3_0: 2734846202422757371
+      DarkForest_TileMapV3_48: -5366341852770592386
+      DarkForest_TileMapV3_25: -8654627295517508684
+      DarkForest_TileMapV3_43: 6100906484585292055
+      DarkForest_TileMapV3_55: 2196665119697340160
+      DarkForest_TileMapV3_58: -8731080749656616375
+      DarkForest_TileMapV3_52: 7367442366191105187
+      DarkForest_TileMapV3_27: -4810833463853649186
+      DarkForest_TileMapV3_65: -3584468740849627651
+      DarkForest_TileMapV3_22: -2395952995771286149
+      DarkForest_TileMapV3_54: -4807713902692597760
+      DarkForest_TileMapV3_49: 6565366514671976422
+      DarkForest_TileMapV3_50: 6521881522953800724
+      DarkForest_TileMapV3_33: -5368208296095046149
+      DarkForest_TileMapV3_20: -4210508990819835706
+      DarkForest_TileMapV3_36: -2305646144492016508
+      DarkForest_TileMapV3_64: -9005300076033428078
+      DarkForest_TileMapV3_2: 2987486999783416766
+      DarkForest_TileMapV3_59: 873025568248541139
+      DarkForest_TileMapV3_5: -9115811433136444395
+      DarkForest_TileMapV3_40: -3763588475981152675
+      DarkForest_TileMapV3_68: -3470901199321822566
+      DarkForest_TileMapV3_61: -2324252815622673514
+      DarkForest_TileMapV3_30: 693296513153355540
+      DarkForest_TileMapV3_21: 844983527059321377
+      DarkForest_TileMapV3_29: -3899930234409117840
+      DarkForest_TileMapV3_46: -7481271758098337855
+      DarkForest_TileMapV3_31: 4024548290755960133
+      DarkForest_TileMapV3_13: -239207990839547585
+      DarkForest_TileMapV3_16: -5826171411807505154
+      DarkForest_TileMapV3_56: -1950213708304701562
+      DarkForest_TileMapV3_42: -5601045256915619384
+      DarkForest_TileMapV3_38: 5625172196535031200
+      DarkForest_TileMapV3_28: -4414850470289588274
+      DarkForest_TileMapV3_32: 1235255550198894390
+      DarkForest_TileMapV3_10: 5450060826522037563
+      DarkForest_TileMapV3_14: -7895281467820700176
+      DarkForest_TileMapV3_11: -573780782499908972
+      DarkForest_TileMapV3_34: -1657319120054914778
+      DarkForest_TileMapV3_67: -7751645287850758911
+      DarkForest_TileMapV3_26: -861099314800544318
+      DarkForest_TileMapV3_66: 1189283932793436929
+      DarkForest_TileMapV3_51: -6036434462192820819
+      DarkForest_TileMapV3_6: 4062458632615890523
+      DarkForest_TileMapV3_1: 5534205837320760454
+      DarkForest_TileMapV3_57: 3742600216444868411
+      DarkForest_TileMapV3_69: -5543195448014277193
+      DarkForest_TileMapV3_39: -7028942967252675870
+      DarkForest_TileMapV3_41: -8054476499305814429
+      DarkForest_TileMapV3_24: 7485843211534315591
+      DarkForest_TileMapV3_7: -3011166741061868735
+      DarkForest_TileMapV3_35: 2919275164125390710
+      DarkForest_TileMapV3_8: -5393012127095150085
+      DarkForest_TileMapV3_3: 9179362459916084601
+      DarkForest_TileMapV3_12: -9061249362300253073
+      DarkForest_TileMapV3_18: 5794272837609715752
+      DarkForest_TileMapV3_47: -3300813056035799038
+      DarkForest_TileMapV3_53: -3494698425608637052
+      DarkForest_TileMapV3_44: -3709427712591355993
+      DarkForest_TileMapV3_62: -8410530323426772401
+      DarkForest_TileMapV3_15: -3373657674353670333
+      DarkForest_TileMapV3_23: 2286632439588115123
+      DarkForest_TileMapV3_17: 4177573652771934675
+      DarkForest_TileMapV3_60: -3156922490799729656
+      DarkForest_TileMapV3_37: 5541681911961420665
+      DarkForest_TileMapV3_45: 5627783888553818203
+      DarkForest_TileMapV3_63: 4326771040004170148
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

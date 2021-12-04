@@ -40,9 +40,12 @@ public class Enemy_Refs : MonoBehaviour
             return playerCenter.position;
         }
     }
+    public EnemyList enemyList;
+    public int enemyListIndex;
 
     void Start() {
         mySpawnPosition = this.transform.position;
+        enemyListIndex = enemyList.AddEnemyToList(this);
     }
 
     // Check circle cast line of sight to target or up to distance if specified.

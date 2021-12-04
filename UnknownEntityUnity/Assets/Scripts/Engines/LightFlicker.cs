@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.Experimental.Rendering.Universal;
+
 using UnityEngine;
 
 public class LightFlicker : MonoBehaviour
 {
-    public UnityEngine.Experimental.Rendering.Universal.Light2D theLight;
+    public UnityEngine.Rendering.Universal.Light2D theLight;
     public bool flickering;
     public float minIntensity, maxIntensity;
     private float intensity;

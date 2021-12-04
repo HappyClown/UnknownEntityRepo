@@ -54,6 +54,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,8 +64,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -364,6 +365,17 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      ArcherSkeleton_BowWindUpAndReleaseArrow_0: -9023741180962788504
+      ArcherSkeleton_BowWindUpAndReleaseArrow_7: 5902476151749493220
+      ArcherSkeleton_BowWindUpAndReleaseArrow_5: -7747840847552335758
+      ArcherSkeleton_BowWindUpAndReleaseArrow_9: 2403672436670818161
+      ArcherSkeleton_BowWindUpAndReleaseArrow_2: -4859003404096662047
+      ArcherSkeleton_BowWindUpAndReleaseArrow_8: 3483068126651273991
+      ArcherSkeleton_BowWindUpAndReleaseArrow_4: 7988936218388243052
+      ArcherSkeleton_BowWindUpAndReleaseArrow_6: 1012059155228610230
+      ArcherSkeleton_BowWindUpAndReleaseArrow_1: 2658827851579582024
+      ArcherSkeleton_BowWindUpAndReleaseArrow_3: -1806520168207534558
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -60,6 +60,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -69,8 +70,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -388,6 +389,19 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      AttackFX_SimpleSpear_03Swirl_0: -6737427781493602638
+      AttackFX_SimpleSpear_03Swirl_7: -5736312673187670565
+      AttackFX_SimpleSpear_03Swirl_2: 4486436172785298902
+      AttackFX_SimpleSpear_03Swirl_4: -6270855640666546890
+      AttackFX_SimpleSpear_03Swirl_10: 2834797531257369894
+      AttackFX_SimpleSpear_03Swirl_8: -1849260295801741093
+      AttackFX_SimpleSpear_03Swirl_11: 6666359411114658793
+      AttackFX_SimpleSpear_03Swirl_3: -4952185558321734537
+      AttackFX_SimpleSpear_03Swirl_6: 7453402558238634378
+      AttackFX_SimpleSpear_03Swirl_9: 2106091503125167781
+      AttackFX_SimpleSpear_03Swirl_1: 6624964191110608225
+      AttackFX_SimpleSpear_03Swirl_5: -2781653706696496043
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

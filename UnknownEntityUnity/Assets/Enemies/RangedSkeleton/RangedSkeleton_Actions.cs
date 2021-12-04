@@ -157,14 +157,14 @@ public class RangedSkeleton_Actions : Enemy_Actions
         }
         // -- EXIT CONDITION --
         // If my projectile attack is ready start chasing the player.
-        if (throwProj.throwProjReady){
+        if (throwProj.throwProjReady && enemy_Random.CheckRangeToSpawnPoint()){
             if (debugs) print("Neutral: Switching state to: ChaseTarget.");
             brain.SetActiveState(ChaseTarget);
             stateStarted = false;
             return;
         }
         // If my projectile attack is not ready, run away from the player.
-        if (!throwProj.throwProjReady){
+        if (!throwProj.throwProjReady || !enemy_Random.CheckRangeToSpawnPoint()){
             if (debugs) print("Neutral: Switching state to: MoveRandom.");
             brain.SetActiveState(MoveRandom);
             stateStarted = false;

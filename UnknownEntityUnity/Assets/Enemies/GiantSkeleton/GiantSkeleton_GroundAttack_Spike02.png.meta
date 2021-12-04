@@ -72,6 +72,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -81,8 +82,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -508,6 +509,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      GiantSkeleton_GroundAttack_Spike02_2: -2406700055246827501
+      GiantSkeleton_GroundAttack_Spike02_11: -2739047664960984514
+      GiantSkeleton_GroundAttack_Spike02_7: -845727965869045499
+      GiantSkeleton_GroundAttack_Spike02_0: -4226556038209705905
+      GiantSkeleton_GroundAttack_Spike02_9: -6894132763574398326
+      GiantSkeleton_GroundAttack_Spike02_12: 2020127132830699116
+      GiantSkeleton_GroundAttack_Spike02_14: 3794858002502406374
+      GiantSkeleton_GroundAttack_Spike02_6: 5316535058600321836
+      GiantSkeleton_GroundAttack_Spike02_8: 4442337943039624651
+      GiantSkeleton_GroundAttack_Spike02_4: 6526147684327097393
+      GiantSkeleton_GroundAttack_Spike02_15: -8152547232651085316
+      GiantSkeleton_GroundAttack_Spike02_13: -3806131051215813746
+      GiantSkeleton_GroundAttack_Spike02_5: 5375783453898635912
+      GiantSkeleton_GroundAttack_Spike02_3: -5665257748383969017
+      GiantSkeleton_GroundAttack_Spike02_10: -3970619294001041537
+      GiantSkeleton_GroundAttack_Spike02_1: 4699457346709530041
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

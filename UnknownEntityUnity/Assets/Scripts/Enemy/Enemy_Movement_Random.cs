@@ -57,6 +57,13 @@ public class Enemy_Movement_Random : MonoBehaviour
         StartCoroutine(RandomMoveStateDuration());
     }
 
+    public bool CheckRangeToSpawnPoint(){
+        if (Vector2.Distance(this.transform.position, eRefs.mySpawnPosition) > tetherDistance) {
+            return false;
+        }
+        return true;
+    }
+
     IEnumerator RandomMoveStateDuration() {
         float timer = 0f;
         while (timer < duration) {

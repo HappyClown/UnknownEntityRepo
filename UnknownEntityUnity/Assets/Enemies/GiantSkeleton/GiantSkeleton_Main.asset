@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GiantSkeleton_Main
   m_EditorClassIdentifier: 
   name: Giant Skeleton
-  maximumLife: 60
+  maximumLife: 35
   maximumPoise: 3
   minDamage: 5
   maxDamage: 5

@@ -7,6 +7,7 @@ public class GiantSkeleton_Actions : Enemy_Actions
     [Header ("Script References")]
     public Enemy_Refs eRefs;
     public Enemy_Movement_Chase movement_Chase;
+    public Enemy_Wait enemy_Wait;
     public GiantSkeleton_SlashAttack giantSkel_SlashAtk;
     public GiantSkeleton_GroundAttack giantSkel_GroundAtk;
     [Header ("To-set Variables")]
@@ -117,8 +118,30 @@ public class GiantSkeleton_Actions : Enemy_Actions
         }
         if (debugs) print("ChaseTarget: In state.");
         // -- EXIT CONDITION --
+        // If my chase timer runs out, wait.
+        if (!movement_Chase.inChase) {
+            if (debugs) print("ChaseTarget: Switching state to: Wait");
+            brain.SetActiveState(Wait);
+            stateStarted = false;
+        }
         // Maybe if player is a certain distance away trigger a random walk around before chasing again.
     }
+    // --- ACTIVE STATE FUNCTION (WAIT) ---
+    public void Wait() {
+        // -- ENTER STATE --
+        if (!stateStarted) {
+            if (debugs) print("Wait: Initial state setup.");
+            enemy_Wait.Wait();
+            stateStarted = true;
+            return;
+        }
+        // -- EXIT CONDITION --
+        if (!enemy_Wait.inWait) {
+            if (debugs) print("Wait: Switching state to: Neutral");
+            brain.SetActiveState(Neutral);
+            stateStarted = false;
+        }
+    }  
     // --- ACTIVE STATE FUNCTION (NEUTRAL) ---
     public void Neutral() {
         // -- ENTER STATE --

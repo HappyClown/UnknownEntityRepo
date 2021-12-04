@@ -290,16 +290,16 @@ MonoBehaviour:
   eRefs: {fileID: 6264118744248117210}
   giantSkel_SlashAtk: {fileID: 1203715507877199406}
   projPool: {fileID: 0}
-  projValues: {fileID: 11400000, guid: 17cc0e65c60417d44ac2305b356df69a, type: 2}
-  lastProjValues: {fileID: 11400000, guid: 17cc0e65c60417d44ac2305b356df69a, type: 2}
+  projValues: {fileID: 11400000, guid: d257ab6022c9bea4f96390f2d30274f4, type: 2}
+  lastProjValues: {fileID: 11400000, guid: 760556efd8e418143b75b3df96043279, type: 2}
   groundAttackOrigin: {fileID: 859882067}
   attackDirPoint: {fileID: 7171370008164914717}
-  triggerRadius: 4
-  triggerThreshold: 2
+  triggerRadius: 6
+  triggerThreshold: 1.5
   firstSpikeMaxDist: 1.5
-  spikeSpawnDist: 1.25
-  delayBetweenSpikes: 0.15
-  spikeAmount: 3
+  spikeSpawnDist: 0.75
+  delayBetweenSpikes: 0.12
+  spikeAmount: 5
 --- !u!114 &463057788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,6 +329,7 @@ GameObject:
   - component: {fileID: 8540736067695667070}
   - component: {fileID: 6264118744248117152}
   - component: {fileID: 7799897352561013228}
+  - component: {fileID: 830006707165571995}
   - component: {fileID: 1983698432912115030}
   - component: {fileID: 6264118744248117157}
   - component: {fileID: 764420643866267352}
@@ -381,6 +382,8 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 12e043377700e8542ac149135a80617f, type: 2}
   - {fileID: 7400000, guid: f262153f182f3614c837b35f2b957152, type: 2}
   charHealth: {fileID: 0}
+  mySpawnPosition: {x: 0, y: 0}
+  aGrid: {fileID: 0}
   eFollowPath: {fileID: 8540736067695667070}
   eWalkAnim: {fileID: 6264118744248117152}
   eAggro: {fileID: 298442652256955470}
@@ -448,9 +451,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eRefs: {fileID: 6264118744248117210}
-  minDuration: 0
-  maxDuration: 0
+  minDuration: 3
+  maxDuration: 3.5
   inChase: 0
+--- !u!114 &830006707165571995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6264118744248117155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b82390184d27fb4bbf6fcc2c0e4a272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eRefs: {fileID: 6264118744248117210}
+  minDuration: 0.5
+  maxDuration: 0.75
+  inWait: 0
 --- !u!114 &1983698432912115030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,9 +517,10 @@ MonoBehaviour:
   brain: {fileID: 0}
   eRefs: {fileID: 6264118744248117210}
   movement_Chase: {fileID: 7799897352561013228}
+  enemy_Wait: {fileID: 830006707165571995}
   giantSkel_SlashAtk: {fileID: 1203715507877199406}
   giantSkel_GroundAtk: {fileID: 5777153203863305610}
-  debugs: 0
+  debugs: 1
   chaseDistance: 0
   curState: 
   updateState: 1
@@ -667,7 +687,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6264118744442853647}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.1}
+  m_LocalPosition: {x: -1.6499996, y: 0, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 298442652256955468}

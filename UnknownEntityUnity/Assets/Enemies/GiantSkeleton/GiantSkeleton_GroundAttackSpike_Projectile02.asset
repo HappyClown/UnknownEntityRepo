@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minDamage: 10
   maxDamage: 10
-  duration: 1.433
+  duration: 1.7
   maxSpeed: 0
   spawnDistance: 0
   destroyOnContact: 0
@@ -43,13 +43,14 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  sortingOrder: 0
   animated: 1
-  animTotalDuration: 1.462
+  animTotalDuration: 1.7
   animSprites: []
   animTimings: []
   animClip: {fileID: 7400000, guid: e21d2a1acc31ee84fb11e94c9b933060, type: 2}
   colStartTime: 0.28
-  colEndTime: 1
+  colEndTime: 1.15
   sprite: {fileID: -5696415690592143733, guid: efcc52ec15d204b4182df718fd73291f, type: 3}
   col: {fileID: 8562888170432636692, guid: 22fb37da6192c8b42b5f3c140c0f5c01, type: 3}
   contactFilter:

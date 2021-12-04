@@ -561,6 +561,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -570,8 +571,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -4588,6 +4589,186 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      DarkForest_TileMapV2_22: -2133329698859750200
+      DarkForest_TileMapV2_79: 1422424670174533680
+      DarkForest_TileMapV2_105: 2317778286656057811
+      DarkForest_TileMapV2_120: 987439057516634478
+      DarkForest_TileMapV2_4: 7086782743508554298
+      DarkForest_TileMapV2_123: 301372295647209773
+      DarkForest_TileMapV2_80: -2716587417285636010
+      DarkForest_TileMapV2_88: -5705501339227207334
+      DarkForest_TileMapV2_72: -2233457628867888940
+      DarkForest_TileMapV2_13: 7775712127021895448
+      DarkForest_TileMapV2_93: -1416747217488961818
+      DarkForest_TileMapV2_107: 8226515268990853810
+      DarkForest_TileMapV2_78: 2289531682915617196
+      DarkForest_TileMapV2_163: -4083252806104962072
+      DarkForest_TileMapV2_53: 6890736152123723443
+      DarkForest_TileMapV2_39: 4248862660851559211
+      DarkForest_TileMapV2_99: -4425037218756333634
+      DarkForest_TileMapV2_86: -7406211386424755685
+      DarkForest_TileMapV2_133: 5222762121269328489
+      DarkForest_TileMapV2_9: 3647963893728526057
+      DarkForest_TileMapV2_31: -7494389511479745162
+      DarkForest_TileMapV2_96: -1762937257345699536
+      DarkForest_TileMapV2_102: 1589855145669067112
+      DarkForest_TileMapV2_44: 5065093042978242559
+      DarkForest_TileMapV2_98: 2906047523491818771
+      DarkForest_TileMapV2_121: -82417229980789708
+      DarkForest_TileMapV2_154: -2711586244671670990
+      DarkForest_TileMapV2_169: 5006031071911825955
+      DarkForest_TileMapV2_172: 5276461950450531941
+      DarkForest_TileMapV2_139: -5594627660698314596
+      DarkForest_TileMapV2_113: 6897372992808485406
+      DarkForest_TileMapV2_11: 6206248957947169965
+      DarkForest_TileMapV2_56: -4448204272230571924
+      DarkForest_TileMapV2_128: -3996791986729499003
+      DarkForest_TileMapV2_114: -1663711948656046858
+      DarkForest_TileMapV2_144: 7549791397575007563
+      DarkForest_TileMapV2_84: 7063564556163208909
+      DarkForest_TileMapV2_145: -2798519861987495736
+      DarkForest_TileMapV2_25: 5248552364572531726
+      DarkForest_TileMapV2_166: -2116497112358954659
+      DarkForest_TileMapV2_21: 1733986053773995440
+      DarkForest_TileMapV2_159: -8723427036122460023
+      DarkForest_TileMapV2_74: 6316634810976687192
+      DarkForest_TileMapV2_177: 7239129445589514195
+      DarkForest_TileMapV2_28: 701556849060376739
+      DarkForest_TileMapV2_171: 3720507680220766143
+      DarkForest_TileMapV2_132: -5789165242437775740
+      DarkForest_TileMapV2_174: 6373684286155326201
+      DarkForest_TileMapV2_58: -1561744277751511498
+      DarkForest_TileMapV2_95: 7880405918454358576
+      DarkForest_TileMapV2_46: -6857603882387644826
+      DarkForest_TileMapV2_103: 4939337907931597709
+      DarkForest_TileMapV2_40: 2997298390939864965
+      DarkForest_TileMapV2_151: 1398816501448260701
+      DarkForest_TileMapV2_63: -5785730656623515346
+      DarkForest_TileMapV2_18: -8187077722974777881
+      DarkForest_TileMapV2_127: -6212780647661632219
+      DarkForest_TileMapV2_23: -8256366257340490451
+      DarkForest_TileMapV2_35: -957504570149893523
+      DarkForest_TileMapV2_37: 8332296448659839846
+      DarkForest_TileMapV2_62: 7641810514032563473
+      DarkForest_TileMapV2_3: 4340579274367612641
+      DarkForest_TileMapV2_106: 642407990245108884
+      DarkForest_TileMapV2_155: -8641236509802075164
+      DarkForest_TileMapV2_134: 7473382941183251799
+      DarkForest_TileMapV2_76: 5436471979526935165
+      DarkForest_TileMapV2_57: -7435406300423760835
+      DarkForest_TileMapV2_54: -5204858297160135703
+      DarkForest_TileMapV2_109: 8130600850675388759
+      DarkForest_TileMapV2_36: 9187220476787722404
+      DarkForest_TileMapV2_38: -8869560814374456324
+      DarkForest_TileMapV2_82: 7474706082341553972
+      DarkForest_TileMapV2_104: 4331099537968522361
+      DarkForest_TileMapV2_137: 6600533297501673112
+      DarkForest_TileMapV2_66: -2188518320036000828
+      DarkForest_TileMapV2_50: -4276488431930180961
+      DarkForest_TileMapV2_59: -4200057408136744135
+      DarkForest_TileMapV2_147: -2129542983841812962
+      DarkForest_TileMapV2_170: 5439802806269587026
+      DarkForest_TileMapV2_19: 1832802600715028192
+      DarkForest_TileMapV2_138: -1637023960190579805
+      DarkForest_TileMapV2_117: 1719210500513281038
+      DarkForest_TileMapV2_149: 8152217950018484232
+      DarkForest_TileMapV2_6: 1477928773247221129
+      DarkForest_TileMapV2_75: 2846960432180297076
+      DarkForest_TileMapV2_158: 8198927213312260429
+      DarkForest_TileMapV2_156: -5200953787007356336
+      DarkForest_TileMapV2_69: -3324447867681926351
+      DarkForest_TileMapV2_140: -5041697309364728421
+      DarkForest_TileMapV2_164: -8077522389038539739
+      DarkForest_TileMapV2_52: -1511455087054693789
+      DarkForest_TileMapV2_90: -8158661903198921372
+      DarkForest_TileMapV2_122: 811908925086755646
+      DarkForest_TileMapV2_85: -2441564844287787578
+      DarkForest_TileMapV2_47: 7682315228939504431
+      DarkForest_TileMapV2_92: -2729325974463414395
+      DarkForest_TileMapV2_108: -5361498162444645212
+      DarkForest_TileMapV2_70: -1682364324752459205
+      DarkForest_TileMapV2_77: 3796979534667540786
+      DarkForest_TileMapV2_167: 3810815337951265867
+      DarkForest_TileMapV2_29: -2897550872969588478
+      DarkForest_TileMapV2_41: 4814670811572369528
+      DarkForest_TileMapV2_30: -80710264174401160
+      DarkForest_TileMapV2_124: 981791361065707443
+      DarkForest_TileMapV2_161: 793976160310742236
+      DarkForest_TileMapV2_32: 8317775587502147512
+      DarkForest_TileMapV2_81: -289141298837951685
+      DarkForest_TileMapV2_129: -7675268416032696178
+      DarkForest_TileMapV2_143: 7226676541014681032
+      DarkForest_TileMapV2_178: -1891765152808932480
+      DarkForest_TileMapV2_94: -6410207087404565293
+      DarkForest_TileMapV2_100: 4993198684778840534
+      DarkForest_TileMapV2_118: -2961646175893167311
+      DarkForest_TileMapV2_146: 9014623860499503871
+      DarkForest_TileMapV2_160: 7482930170891203107
+      DarkForest_TileMapV2_165: -3205671014907164051
+      DarkForest_TileMapV2_20: -7602840170019954039
+      DarkForest_TileMapV2_16: 6192345736959141840
+      DarkForest_TileMapV2_110: -2220716415931370484
+      DarkForest_TileMapV2_87: -7816372822572020322
+      DarkForest_TileMapV2_17: 5358540095175113623
+      DarkForest_TileMapV2_33: 8490196953206015376
+      DarkForest_TileMapV2_24: 5516569103744143802
+      DarkForest_TileMapV2_26: 5783436555681132978
+      DarkForest_TileMapV2_71: 22985592428319774
+      DarkForest_TileMapV2_175: 4618388462788072093
+      DarkForest_TileMapV2_42: -562945740950595220
+      DarkForest_TileMapV2_101: 5513594766512632147
+      DarkForest_TileMapV2_141: 22082150573655286
+      DarkForest_TileMapV2_45: -732836722375718955
+      DarkForest_TileMapV2_0: 5086866274634647257
+      DarkForest_TileMapV2_125: 4642147803235066625
+      DarkForest_TileMapV2_153: -5234538826420405059
+      DarkForest_TileMapV2_8: 1583812143767533877
+      DarkForest_TileMapV2_150: 6619637629575527017
+      DarkForest_TileMapV2_14: 6726956387681094394
+      DarkForest_TileMapV2_15: -2586323262646484434
+      DarkForest_TileMapV2_61: 1458401665999317633
+      DarkForest_TileMapV2_131: -6763790513940949892
+      DarkForest_TileMapV2_152: -4671010213708733596
+      DarkForest_TileMapV2_157: -2766750845249072642
+      DarkForest_TileMapV2_89: -189097908713020903
+      DarkForest_TileMapV2_83: 2311324844379063095
+      DarkForest_TileMapV2_27: 2554505836905457522
+      DarkForest_TileMapV2_64: 8575839582814019420
+      DarkForest_TileMapV2_7: -5371409220163420211
+      DarkForest_TileMapV2_130: 8599113939562385867
+      DarkForest_TileMapV2_55: -798705085201315143
+      DarkForest_TileMapV2_68: 5201929324553123707
+      DarkForest_TileMapV2_73: 3259398102619490725
+      DarkForest_TileMapV2_142: 7705514399802860943
+      DarkForest_TileMapV2_168: 2156951453788501625
+      DarkForest_TileMapV2_116: -5363685576134816750
+      DarkForest_TileMapV2_135: 2911685004770921168
+      DarkForest_TileMapV2_10: 8728869379354366830
+      DarkForest_TileMapV2_112: -4322398497557851800
+      DarkForest_TileMapV2_162: -3978510221791930017
+      DarkForest_TileMapV2_136: -3145249143721740101
+      DarkForest_TileMapV2_173: -681586541030277245
+      DarkForest_TileMapV2_5: 8152240565034960315
+      DarkForest_TileMapV2_176: 2417400541937986094
+      DarkForest_TileMapV2_115: 6973576170214074429
+      DarkForest_TileMapV2_43: 885365975803567081
+      DarkForest_TileMapV2_34: -2068845115117554308
+      DarkForest_TileMapV2_1: 7536824948773280129
+      DarkForest_TileMapV2_119: 384098774605060637
+      DarkForest_TileMapV2_49: -7517012854507861468
+      DarkForest_TileMapV2_2: 7444516398007035994
+      DarkForest_TileMapV2_65: 1412735496591340184
+      DarkForest_TileMapV2_97: 2726941430322790036
+      DarkForest_TileMapV2_48: 3105127164918113914
+      DarkForest_TileMapV2_60: -7397023892470974376
+      DarkForest_TileMapV2_148: 5458646553137279045
+      DarkForest_TileMapV2_111: -408550787250147893
+      DarkForest_TileMapV2_12: 499680787066186825
+      DarkForest_TileMapV2_67: -7839215329199050161
+      DarkForest_TileMapV2_51: 1127632882630706370
+      DarkForest_TileMapV2_91: 4989734449602160753
+      DarkForest_TileMapV2_126: -2594645115580799534
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
